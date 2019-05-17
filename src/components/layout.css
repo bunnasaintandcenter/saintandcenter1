@@ -620,3 +620,24 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansTest-Regular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansTest-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansTest-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
