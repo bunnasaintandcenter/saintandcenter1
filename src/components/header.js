@@ -59,7 +59,7 @@ class Header extends Component {
       <Head pinned={this.state.pinned}>
         {location && location.pathname &&
           <>
-          <Logo><Link><img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' /></Link></Logo>
+          <Logo><Link to='/'><img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' /></Link></Logo>
           <Nav dark={location.pathname === '/' && !pinned} />
           </>
         }

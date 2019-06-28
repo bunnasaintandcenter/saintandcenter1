@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from './button'
 
 const Block = styled.section`
   text-transform: uppercase;
@@ -15,7 +14,6 @@ const Block = styled.section`
 const TextBlock = ({ children }) => (
   <Block>
     {children}
-    <Button>Shop CBD</Button>
   </Block>
 );
 
