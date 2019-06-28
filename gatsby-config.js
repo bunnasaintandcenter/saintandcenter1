@@ -14,9 +14,9 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-wordpress",
-      baseUrl: "andnone.co/saintcenter",
-      protocol: "http",
+      resolve: `gatsby-source-wordpress`,
+      baseUrl: `andnone.co/saintcenter`,
+      protocol: `http`,
       hostingWPCOM: false,
       useACF: true,
       auth: {
