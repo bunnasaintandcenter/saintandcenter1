@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Saint & Center`,
+    description: `We’ve reimagined the power of hemp to extract cbd with a higher calling - saving the earth, restoring equality. It’s hemp for humans who levitate, create, vibrate.`,
+    author: `@saintandcenter`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,6 +12,31 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: "gatsby-source-wordpress",
+      baseUrl: "andnone.co/saintcenter",
+      protocol: "http",
+      hostingWPCOM: false,
+      useACF: true,
+      auth: {
+        jwt_user: process.env.JWT_USER,
+        jwt_pass: process.env.JWT_PASS,
+        jwt_base_path: "/jwt-auth/v1/token"
+      },
+    },
+    {
+      resolve: "@massivdash/gatsby-source-woocommerce",
+      options: {
+      api: 'andnone.co/saintcenter',
+      itemCount: 20,
+      https: false,
+        api_keys: {
+          consumer_key: process.env.WOOCOMMERCE_KEY,
+          consumer_secret: process.env.WOOCOMMERCE_SECRET,
+        },
+        fields: ['products']
+      }
     },
     {
       resolve: `gatsby-plugin-styled-components`,

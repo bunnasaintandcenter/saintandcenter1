@@ -4,9 +4,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
+  font-family: 'US';
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(248,249,244);
 }
 article,
 aside,
@@ -200,7 +202,6 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -640,4 +641,9 @@ pre tt:after {
   src: url('../type/UntitledSansTest-Bold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
+}
+
+.headroom-wrapper {
+  width: 100vw;
+  position: fixed !important;
 }
