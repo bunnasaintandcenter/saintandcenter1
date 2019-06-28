@@ -32,19 +32,6 @@ module.exports = {
      ]
     },
     {
-      resolve: "@massivdash/gatsby-source-woocommerce",
-      options: {
-      api: 'andnone.co/saintcenter',
-      itemCount: 20,
-      https: false,
-        api_keys: {
-          consumer_key: process.env.WOOCOMMERCE_KEY,
-          consumer_secret: process.env.WOOCOMMERCE_SECRET,
-        },
-        fields: ['products']
-      }
-    },
-    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         // Add any options here
