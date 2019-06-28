@@ -14,24 +14,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-wordpress`,
-      baseUrl: `andnone.co/saintcenter`,
-      protocol: `http`,
-      hostingWPCOM: false,
-      useACF: true,
-      auth: {
-        jwt_user: process.env.JWT_USER,
-        jwt_pass: process.env.JWT_PASS,
-        jwt_base_path: "/jwt-auth/v1/token"
-      },
-      includedRoutes: [
-       "**/categories",
-       "**/posts",
-       "**/pages",
-       "**/media"
-     ]
-    },
-    {
       resolve: "@massivdash/gatsby-source-woocommerce",
       options: {
       api: 'andnone.co/saintcenter',
