@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import logo from '../images/logo.svg'
 import logoDark from '../images/logo-black.svg'
 import Nav from './nav'
+import { Link } from 'gatsby'
 import Headroom from 'react-headroom'
 
 const Head = styled.header`
@@ -13,10 +14,19 @@ const Head = styled.header`
   padding: 0 5vw;
   transition: all 0.3s ease-in-out;
   background: ${props => props.pinned ? 'rgb(248,249,244)' : 'transparent' };
+`;
+
+const Logo = styled.div`
+  width: 3vw;
+  padding: 1rem 0;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
 
   img {
-    width: 3vw;
-    padding: 1rem 0;
+    width: 100%;
     margin: 0;
   }
 `;
@@ -49,7 +59,7 @@ class Header extends Component {
       <Head pinned={this.state.pinned}>
         {location && location.pathname &&
           <>
-          <img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' />
+          <Logo><Link><img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' /></Link></Logo>
           <Nav dark={location.pathname === '/' && !pinned} />
           </>
         }
