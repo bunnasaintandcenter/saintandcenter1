@@ -23,7 +23,12 @@ const Home = ({ location }) => (
   <Layout location={location}>
     <SEO title='Saint and Center' />
     <Wrapper>
-      <Hero/>
+      <Hero
+        title='Your Higher Self'
+        subtitle='(Without the High)'
+        buttonText='Discover CBD'
+        url='/learn'
+      />
       <Header />
       <TextBlock>
         <p>We’ve reimagined the power of hemp to extract cbd with a higher calling - saving the earth, restoring equality. It’s hemp for humans who levitate, create, vibrate.</p>

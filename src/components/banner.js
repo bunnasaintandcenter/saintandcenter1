@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   margin: 6rem auto;
@@ -15,12 +16,17 @@ const Wrapper = styled.div`
 `;
 
 const Banner = ({title, image}) => (
-  <Wrapper>
+  <Wrapper data-testid='banner'>
     {title &&
       <h2>{title}</h2>
     }
     <img src={image} alt={title} />
   </Wrapper>
 );
+
+Banner.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string.isRequired
+}
 
 export default Banner;

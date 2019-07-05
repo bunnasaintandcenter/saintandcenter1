@@ -56,11 +56,11 @@ class Header extends Component {
         onUnpin={this.handleUnPin}
         onUnfix={this.handleUnPin}
       >
-      <Head pinned={this.state.pinned}>
+      <Head data-testid='header' pinned={this.state.pinned}>
         {location && location.pathname &&
           <>
-          <Logo><Link to='/'><img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' /></Link></Logo>
-          <Nav dark={location.pathname === '/' && !pinned} />
+            <Logo><Link to='/'><img src={location.pathname === '/' && !pinned ? logo : logoDark} alt='Saint and Center' /></Link></Logo>
+            <Nav dark={location.pathname === '/' && !pinned} />
           </>
         }
       </Head>

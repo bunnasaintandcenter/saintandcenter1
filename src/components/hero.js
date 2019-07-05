@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from './button'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   height: 80vh;
@@ -29,15 +30,26 @@ const Wrapper = styled.div`
 
 `;
 
-const Hero = () => (
-  <Wrapper>
+const Hero = ({ title, subtitle, buttonText, url }) => (
+  <Wrapper data-testid='hero'>
     <br/>
     <div>
-      <h2>Your Higher Self</h2>
-      <p>(Without the High)</p>
+      <h2 data-testid='title'>{title}</h2>
+      {subtitle &&
+        <p data-testid='subtitle'>{subtitle}</p>
+      }
     </div>
-    <Link to='/learn'><Button ghost>Discover CBD</Button></Link>
+    {buttonText && url &&
+      <Link to={url}><Button ghost>{buttonText}</Button></Link>
+    }
   </Wrapper>
 );
+
+Hero.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  buttonText: PropTypes.string,
+  url: PropTypes.string,
+}
 
 export default Hero;

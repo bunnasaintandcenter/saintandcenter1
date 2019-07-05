@@ -26,16 +26,28 @@ const Marquee = () => {
   const content = [
     {
       icon: <FaFlagUsa />,
-      text: 'Made in the USA'
+      text: 'Lift Mood'
     },
     {
       icon: <FaLeaf />,
-      text: 'Organically Grown'
+      text: 'Reduce Stress'
     },
     {
       icon: <FaCertificate />,
-      text: 'Non-GMO'
-    }
+      text: 'Improve Focus'
+    },
+    {
+      icon: <FaLeaf />,
+      text: 'Sleep Better'
+    },
+    {
+      icon: <FaLeaf />,
+      text: 'Create More'
+    },
+    {
+      icon: <FaLeaf />,
+      text: 'Vibrate Higher'
+    },
   ]
 
   let index = 0;
