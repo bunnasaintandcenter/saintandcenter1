@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo-black.svg'
 import Menu from './menu'
@@ -33,31 +33,20 @@ const Logo = styled.div`
   }
 `;
 
-class Header extends Component {
+const Header = () => {
 
-  state = {
-    navOpen: false
-  }
+  const [navOpen, toggleNav] = useState(false)
 
-  handleToggleNav = () => {
-    this.setState({ navOpen: !this.state.navOpen })
-  }
-
-  render(){
-
-    const { location } = this.props;
-
-    return (
-      <Head data-testid='header'>
-        <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
-        <Menu
-          open={this.state.navOpen}
-          onClick={this.handleToggleNav}
-        />
-        <Nav open={this.state.navOpen} />
-      </Head>
-    )
-  }
+  return (
+    <Head data-testid='header'>
+      <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
+      <Menu
+        open={navOpen}
+        onClick={() => toggleNav(!navOpen)}
+      />
+      <Nav open={navOpen} />
+    </Head>
+  )
 }
 
 export default Header;
