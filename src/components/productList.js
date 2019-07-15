@@ -2,9 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
-  width: 90vw;
   margin: 4rem auto;
-  max-width: 1440px;
 `;
 
 const List = styled.ul`
@@ -19,7 +17,7 @@ const List = styled.ul`
 
 const Item = styled.li`
   border-bottom: 2px solid black;
-  padding: 2rem 0;
+  padding: 2rem 5vw;
   display: flex;
   align-items: baseline;
   transition: 0.2s all ease-in-out;
@@ -29,7 +27,7 @@ const Item = styled.li`
   }
 
   &:hover {
-    padding-left: 0.25rem;
+    padding-left: 4.5vw;
   }
 
   span {

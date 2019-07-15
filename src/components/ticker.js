@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Ticker from 'react-ticker'
-import { FaFlagUsa, FaLeaf, FaCertificate } from 'react-icons/fa'
+import usa from '../images/icon-usa.svg'
+import organic from '../images/icon-organic.svg'
+import spectrum from '../images/icon-spectrum.svg'
+
 
 const Wrapper = styled.div`
   margin: 6rem 0;
@@ -14,7 +17,9 @@ const Block = styled.div`
   text-align: center;
   align-items: center;
   margin-right: 8rem;
-  font-size: 24px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 200;
 
   span {
     margin-bottom: 2rem;
@@ -25,28 +30,16 @@ const Marquee = () => {
 
   const content = [
     {
-      icon: <FaFlagUsa />,
-      text: 'Lift Mood'
+      icon: <img src={usa} />,
+      text: 'Made in USA'
     },
     {
-      icon: <FaLeaf />,
-      text: 'Reduce Stress'
+      icon: <img src={organic} />,
+      text: 'Organically Grown'
     },
     {
-      icon: <FaCertificate />,
-      text: 'Improve Focus'
-    },
-    {
-      icon: <FaLeaf />,
-      text: 'Sleep Better'
-    },
-    {
-      icon: <FaLeaf />,
-      text: 'Create More'
-    },
-    {
-      icon: <FaLeaf />,
-      text: 'Vibrate Higher'
+      icon: <img src={spectrum} />,
+      text: 'Broad Spectrum'
     },
   ]
 

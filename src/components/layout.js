@@ -2,16 +2,16 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from 'styled-components'
-import Header from './header'
 
 import "./layout.css"
 
 const theme = {
   color: {
     gold: 'rgb(239,181,8)',
-    forest: 'rgb(14,56,33)',
+    forest: 'rgb(0,51,37)',
+    green: 'rgb(0, 162, 123)',
     crimson: 'rgb(139,41,4)',
-    eggplant: 'rgb(42,34,90)'
+    eggplant: 'rgb(38,33,97)'
   }
 }
 
@@ -29,7 +29,6 @@ const Layout = ({ children, location }) => (
     render={data => (
       <ThemeProvider theme={theme}>
       <div>
-        <Header location={location} />
         {children}
       </div>
       </ThemeProvider>

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from './button'
 import { Link } from 'gatsby'
+import logotype from '../images/logotype.svg'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
@@ -17,22 +18,52 @@ const Wrapper = styled.div`
   color: white;
   text-transform: uppercase;
   text-align: center;
+  position: relative;
 
   h2 {
-    font-size: 72px;
+    font-size: 96px;
     font-weight: 300;
+    position: relative;
+    z-index: 1;
   }
 
   p {
     font-weight: 300;
     margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logotype {
+    z-index: 1;
+    width: 20vw;
+  }
+
+  picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  a {
+    position: relative;
+    z-index: 1;
   }
 
 `;
 
-const Hero = ({ title, subtitle, buttonText, url }) => (
+const Hero = ({ title, subtitle, buttonText, url, image }) => (
   <Wrapper data-testid='hero'>
-    <br/>
+    <img className='logotype' src={logotype} alt='Saint and Center' />
+    <picture><img src={image} alt={title} /></picture>
     <div>
       <h2 data-testid='title'>{title}</h2>
       {subtitle &&
