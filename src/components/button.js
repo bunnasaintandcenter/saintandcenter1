@@ -18,8 +18,14 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ children, ghost }) => (
-  <StyledButton ghost={ghost}>{children}</StyledButton>
+const Button = ({ children, ghost, onClick }) => (
+  <StyledButton
+    data-testid='button'
+    onClick={onClick}
+    ghost={ghost}
+  >
+    {children}
+  </StyledButton>
 );
 
 export default Button;

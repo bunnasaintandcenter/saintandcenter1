@@ -1,3 +1,12 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Saint & Center`,
@@ -13,19 +22,20 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // {
-    //   resolve: "@massivdash/gatsby-source-woocommerce",
-    //   options: {
-    //   api: 'andnone.co/saintcenter',
-    //   itemCount: 20,
-    //   https: false,
-    //     api_keys: {
-    //       consumer_key: process.env.WOOCOMMERCE_KEY,
-    //       consumer_secret: process.env.WOOCOMMERCE_SECRET,
-    //     },
-    //     fields: ['products']
-    //   }
-    // },
+    {
+      resolve: "@massivdash/gatsby-source-woocommerce",
+      options: {
+        api: 'andnone.co/saintcenter',
+        itemCount: 20,
+        verbose: true,
+        https: false,
+          api_keys: {
+            consumer_key: process.env.WOOCOMMERCE_KEY,
+            consumer_secret: process.env.WOOCOMMERCE_SECRET,
+          },
+        fields: ['products']
+      }
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
