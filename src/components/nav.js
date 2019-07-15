@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const Wrapper = styled.nav`
   position: fixed;
-  top: 150px;
+  bottom: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 156px);
+  height: calc(100vh - 4.5vw - 4rem);
   background: rgb(248,249,244);
   color: black;
   align-items: center;
   justify-content: center;
   z-index: 9;
   box-sizing: border-box;
+  padding-bottom: calc(4.5vw + 4rem);
   display: ${props => props.open ? `flex` : `none`};
 
   a {
@@ -40,7 +42,7 @@ const List = styled.ul`
 const Nav = ({ open }) => (
   <Wrapper open={open}>
     <List>
-      <li>Shop</li>
+      <li><Link to='/shop'>Shop</Link></li>
       <li>Learn</li>
       <li>About</li>
       <li>Login</li>
