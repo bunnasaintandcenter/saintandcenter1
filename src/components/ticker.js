@@ -30,15 +30,15 @@ const Marquee = () => {
 
   const content = [
     {
-      icon: <img src={usa} />,
+      icon: <img src={usa} alt='Made in USA' />,
       text: 'Made in USA'
     },
     {
-      icon: <img src={organic} />,
+      icon: <img src={organic} alt='Organically grown' />,
       text: 'Organically Grown'
     },
     {
-      icon: <img src={spectrum} />,
+      icon: <img src={spectrum} alt='Broad Spectrum' />,
       text: 'Broad Spectrum'
     },
   ]
