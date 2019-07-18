@@ -1,11 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
+import { device } from '../utils/devices'
 
 const Block = styled.section`
-  margin: 4rem 0;
-  padding: 0 5vw;
+  margin: 2rem 0;
+  padding: 2rem 5vw;
   background: ${props => props.bg};
   color: ${props => props.color};
+
+  @media ${device.laptop}{
+    margin: 4rem 0;
+    padding: 0 5vw;
+  }
 `;
 
 const Title = styled.div`
@@ -21,18 +27,30 @@ const Title = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 200;
   text-align: center;
-  line-height: 48px;
+  line-height: 24px;
+
+  @media ${device.laptop}{
+    font-size: 30px;
+    line-height: 48px;
+  }
 `;
 
 const Image = styled.div`
-  width: 600px;
-  margin: 2rem auto;
+  width: 50vw;
+  margin: 2rem auto 0;
+
+  @media ${device.laptop}{
+    width: 30vw;
+    min-width: 300px;
+    margin: 2rem auto;
+  }
 
   img {
     width: 100%;
+    margin: 0 auto 2rem;
   }
 `;
 

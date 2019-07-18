@@ -4,9 +4,10 @@ import Button from './button'
 import { Link } from 'gatsby'
 import logotype from '../images/logotype.svg'
 import PropTypes from 'prop-types'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
-  height: 80vh;
+  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,11 +21,19 @@ const Wrapper = styled.div`
   text-align: center;
   position: relative;
 
+  @media ${device.laptop}{
+    height: 80vh;
+  }
+
   h2 {
-    font-size: 96px;
+    font-size: 36px;
     font-weight: 300;
     position: relative;
     z-index: 1;
+
+    @media ${device.laptop}{
+      font-size: 96px;
+    }
   }
 
   p {
@@ -36,7 +45,11 @@ const Wrapper = styled.div`
 
   .logotype {
     z-index: 1;
-    width: 20vw;
+    width: 70vw;
+
+    @media ${device.laptop}{
+      width: 20vw;
+    }
   }
 
   picture {
