@@ -19,7 +19,7 @@ const Wrapper = styled.nav`
   display: ${props => props.open ? `flex` : `none`};
 
   @media ${device.laptop}{
-    height: calc(100vh - 4.5vw - 4rem);
+    height: calc(100vh - 2.5vw - 2rem);
   }
 
   a {

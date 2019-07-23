@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import menu from '../images/icon-menu.svg'
-import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -13,11 +12,6 @@ const Wrapper = styled.div`
   background: url(${menu});
   background-repeat: none;
   background-size: 100%;
-
-  @media ${device.laptop}{
-    width: 48px;
-    height: 48px;
-  }
 `;
 
 const Menu = ({ open, onClick }) => (

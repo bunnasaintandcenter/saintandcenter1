@@ -5,10 +5,9 @@ import { device } from '../utils/devices'
 const Block = styled.section`
   font-size: 18px;
   line-height: 24px;
-  text-align: center;
   width: 90vw;
   margin: 2rem auto;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   font-weight: 200;
 
   @media ${device.laptop}{

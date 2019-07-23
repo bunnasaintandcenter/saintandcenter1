@@ -24,7 +24,7 @@ const Head = styled.header`
   z-index: 10;
 
   @media ${device.laptop}{
-    padding: 1rem 5vw;
+    padding: 0 5vw;
   }
 `;
 
@@ -33,8 +33,9 @@ const Logo = styled.div`
   transition: 0.3s ease-in-out;
 
   @media ${device.laptop}{
-    width: 3vw;
+    width: 2vw;
     padding: 1rem 0;
+    margin-right: 10px;
   }
 
   &:hover {
@@ -126,11 +127,11 @@ const Header = ({cart}) => {
 
   return (
     <Head data-testid='header' id='header' navOpen={navOpen}>
-      <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
       <Menu
         open={navOpen}
         onClick={handleToggleNav}
       />
+      <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
       {isBrowser &&
         <CartButton
           onClick={handleSubmit}

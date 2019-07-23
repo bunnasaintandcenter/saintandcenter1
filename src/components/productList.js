@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import ProductListBlock from './productListBlock'
 import { StaticQuery } from 'gatsby'
 import { device } from '../utils/devices'
+import SectionHeader from './sectionHeader'
 
 const Wrapper = styled.section`
-  margin: 4rem auto;
+  margin: 0 auto 4rem;
 `;
 
 const List = styled.ul`
-  border-top: 2px solid black;
   list-style: none;
   font-size: 30px;
   font-weight: 300;
@@ -27,6 +27,21 @@ const Item = styled.li`
   align-items: baseline;
   cursor: pointer;
   flex-direction: column;
+
+  &:last-of-type {
+    border: 0;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-size: 24px;
+      padding: 2rem 0;
+
+      &:hover {
+        padding: 2rem 0;
+      }
+    }
+  }
 
   h2 {
     font-size: 30px;
@@ -88,6 +103,7 @@ const ProductList = ({updateCart}) => {
     `}
     render={(data) => (
       <Wrapper>
+        <SectionHeader>Shop</SectionHeader>
         <List>
           {data.allWcProducts.edges.map(({node}) => (
             <Item

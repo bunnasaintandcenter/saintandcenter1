@@ -10,7 +10,15 @@ const Block = styled.section`
 
   @media ${device.laptop}{
     margin: 4rem 0;
-    padding: 0 5vw;
+  }
+
+  span {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2rem;
   }
 `;
 
@@ -20,7 +28,7 @@ const Title = styled.div`
   text-align: center;
 
   h2 {
-    font-size: 10vw;
+    font-size: 5vw;
     font-weight: 300;
     margin: 0 0 2rem;
   }
@@ -43,24 +51,25 @@ const Image = styled.div`
   margin: 2rem auto 0;
 
   @media ${device.laptop}{
-    width: 30vw;
+    width: 20vw;
     min-width: 300px;
     margin: 2rem auto;
   }
 
   img {
     width: 100%;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
   }
 `;
 
-const TextBlockWithImage = ({bgColor, textColor, children, image, title, reverse}) => (
+const TextBlockWithImage = ({bgColor, textColor, children, image, title, reverse, actionText}) => (
   <Block bg={bgColor} color={textColor} reverse={reverse}>
+    <Image><img src={image} alt='placer' /></Image>
     <Title><h2>{title}</h2></Title>
     <Text>
       {children}
     </Text>
-    <Image><img src={image} alt='placer' /></Image>
+    <span>{actionText} ></span>
   </Block>
 );
 
