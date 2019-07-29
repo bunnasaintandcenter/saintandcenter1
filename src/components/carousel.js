@@ -1,7 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
 import styled from 'styled-components'
-import { device } from '../utils/devices'
 import arrow from '../images/arrow.svg'
 
 const Wrapper = styled.section`

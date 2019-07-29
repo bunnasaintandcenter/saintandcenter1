@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import ProductListBlock from './productListBlock'
 import { StaticQuery } from 'gatsby'
 import { device } from '../utils/devices'
-import SectionHeader from './sectionHeader'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
@@ -103,7 +102,6 @@ const ProductList = ({updateCart}) => {
     `}
     render={(data) => (
       <Wrapper>
-        <SectionHeader>Shop</SectionHeader>
         <List>
           {data.allWcProducts.edges.map(({node}) => (
             <Item

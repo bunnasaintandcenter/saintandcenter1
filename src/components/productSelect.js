@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from './button'
+import { useDispatch } from 'react-redux'
 
 const Wrapper = styled.div`
 
@@ -107,6 +108,20 @@ const Option = styled.div`
 
 const ProductSelect = ({ options, updateCart, id }) => {
 
+  const dispatch = useDispatch()
+
+  const addToCart = (productId, variationId, quantity) => {
+
+    const item = {
+      product_id: productId,
+      variation_id: variationId,
+      quantity: quantity
+    }
+
+    console.log(item)
+    dispatch({ type: 'ADD_TO_CART', payload: item})
+  }
+
   const [selectedOption, selectOption] = useState(options[0].id)
   const [ recurrence, selectRecurrence ] = useState('once')
   const [count, updateCount] = useState(1)
@@ -128,6 +143,7 @@ const ProductSelect = ({ options, updateCart, id }) => {
             name='option'
             type="radio"
             value={option.id}
+            onChange={value => console.log(value)}
             checked={selectedOption === option.id}
           />
           <label htmlFor='option'>{option.attributes[0].option}</label>
@@ -136,11 +152,11 @@ const ProductSelect = ({ options, updateCart, id }) => {
       </Select>
       <Select>
       <Option onClick={() => selectRecurrence('once')}>
-        <input name='recurrence' type="radio" value='once' checked={recurrence === 'once'}/>
+        <input name='recurrence' type="radio" value='once' checked={recurrence === 'once'} onChange={value => console.log(value)}/>
         <label htmlFor='recurrence'>Once</label>
       </Option>
       <Option onClick={() => selectRecurrence('monthly')}>
-        <input name='recurrence' type="radio" value='monthly' checked={recurrence === 'monthly'} />
+        <input name='recurrence' type="radio" value='monthly' checked={recurrence === 'monthly'} onChange={value => console.log(value)} />
         <label htmlFor='recurrence'>Monthly</label>
       </Option>
       <Price recurrence={recurrence}>
@@ -156,7 +172,7 @@ const ProductSelect = ({ options, updateCart, id }) => {
           <button onClick={addToCount}>+</button>
         </Counter>
       }
-      <Button className='btn' onClick={() => updateCart(id, selectedOption, count)}>Add to cart</Button>
+      <Button className='btn' onClick={() => addToCart(id, selectedOption, count)}>Add to cart</Button>
       </Select>
     </Wrapper>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import Button from './button'
 
 const Wrapper = styled.div`
-  padding: calc(4.5vw + 4rem + 6px) 0 0;
+  padding: calc(3vw + 2rem + 6px) 0 0;
   box-sizing: border-box;
   position: absolute;
   top: 0;
@@ -73,19 +73,17 @@ const Cart = ({ cart, open, handleSubmit }) => {
             <h4>Your Cart</h4>
             <ul>
             {cart.map(item => {
-              console.log(item.product_id)
-              console.log(data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id))
               const { name, variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
               const { price } = variations.find(o => o.id === item.variation_id)
               return (
-                <li>
+                <li key={name}>
                   <p>{name}</p>
                   <p>x{item.quantity} — ${(item.quantity * price).toFixed(2)}</p>
                 </li>
               )
             })}
             </ul>
-            <Button ghost onClick={handleSubmit}>Checkout</Button>
+            <Link to='/cart'><Button ghost>View Cart</Button></Link>
           </Tray>
         </Wrapper>
       )}

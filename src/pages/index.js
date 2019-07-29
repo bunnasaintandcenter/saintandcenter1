@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import Header from '../components/header'
 import TextBlock from '../components/textBlock'
 import TextBlockWithImage from '../components/textBlockWithImage'
 import ProductList from '../components/productList'
-import Banner from '../components/banner'
 import hemp from '../images/hemp.png'
 import arch from '../images/arch.svg'
-import banner from '../images/banner.jpg'
 import image from '../images/hero.jpg'
 import Carousel from '../components/carousel'
 import sliderOne from '../images/slider-1.jpg'
@@ -18,6 +15,7 @@ import sliderTwo from '../images/slider-2.jpg'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import SectionHeader from '../components/sectionHeader'
+import Footer from '../components/footer'
 
 const Wrapper = styled.div`
 
@@ -25,18 +23,7 @@ const Wrapper = styled.div`
 
 const Home = ({ location, theme }) => {
 
-  const [cart, updateCart] = useState([])
-
-  const addToCart = (productId, variationId, quantity) => {
-
-    const item = {
-      product_id: productId,
-      variation_id: variationId,
-      quantity: quantity
-    }
-
-    updateCart([...cart, item])
-  }
+  // const [cart, updateCart] = useState([])
 
   return (
     <Layout location={location}>
@@ -46,7 +33,6 @@ const Home = ({ location, theme }) => {
           image={image}
           title='We have a mission.'
         />
-        <Header cart={cart} />
         <TextBlock>
           <p>Your body and mind need to shine.</p>
           <p>Taking organically grown hemp, we extract CBD with a high potency and an even higher calling.</p>
@@ -70,7 +56,7 @@ const Home = ({ location, theme }) => {
             <img src={productTwo} alt='product 2' />
           </div>
         </Carousel>
-        <ProductList updateCart={addToCart} />
+        <ProductList />
         <SectionHeader
           title='Learn'
           secondary='ABC'
@@ -96,6 +82,7 @@ const Home = ({ location, theme }) => {
   communities unfairly harmed by cannabis laws.</p>
         </TextBlockWithImage>
       </Wrapper>
+      <Footer />
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const Block = styled.section`
   color: ${props => props.color};
 
   @media ${device.laptop}{
-    margin: 4rem 0;
+    margin: 4rem 0 0;
   }
 
   span {
