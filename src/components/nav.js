@@ -15,6 +15,7 @@ const Wrapper = styled.nav`
   justify-content: center;
   z-index: 9;
   box-sizing: border-box;
+  z-index: 20;
   padding-bottom: calc(4.5vw + 4rem);
   display: ${props => props.open ? `flex` : `none`};
 
@@ -63,7 +64,7 @@ const Nav = ({ open, cartItems, handleSubmit }) => (
       <li>Learn</li>
       <li>About</li>
       <li>Login</li>
-      <li onClick={handleSubmit}>Cart <span>({cartItems})</span></li>
+      <li><Link to='/cart'>Cart <span>({cartItems})</span></Link></li>
     </List>
   </Wrapper>
 );
