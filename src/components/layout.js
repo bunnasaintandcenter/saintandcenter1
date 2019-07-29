@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
+import { useSelector, useDispatch } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import Header from './header'
 
 import "./layout.css"
 
@@ -15,26 +17,32 @@ const theme = {
   }
 }
 
-const Layout = ({ children, location }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+const Layout = ({ children, location }) => {
+
+  const cart = useSelector(state => state.cart)
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <ThemeProvider theme={theme}>
-      <div>
-        {children}
-      </div>
-      </ThemeProvider>
-    )}
-  />
-)
+      `}
+      render={data => (
+        <ThemeProvider theme={theme}>
+          <div>
+            <Header cart={cart} />
+            {children}
+          </div>
+        </ThemeProvider>
+      )}
+    />
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

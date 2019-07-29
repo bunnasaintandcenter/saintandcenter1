@@ -4,8 +4,8 @@ import menu from '../images/icon-menu.svg'
 
 const Wrapper = styled.div`
   cursor: pointer;
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   transform: ${props => props.open ? `rotate(135deg)` : `none` };
   transition: 0.3s all ease-in-out;
   transform-origin: center center;

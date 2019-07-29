@@ -6,10 +6,12 @@ const StyledButton = styled.button`
   padding: 0.5rem 1rem;
   text-transform: uppercase;
   font-family: 'US';
+  font-size: 18px;
   background: transparent;
   color: ${props => props.ghost ? 'white' : 'black' };
   transition: 0.2s all ease-in-out;
   cursor: pointer;
+  outline: 0;
 
   &:hover {
     transform: translate(0, -2px);

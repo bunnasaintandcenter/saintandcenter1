@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.nav`
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 4.5vw - 4rem);
+  height: calc(100vh - 24px - 2rem);
   background: rgb(248,249,244);
   color: black;
   align-items: center;
@@ -16,6 +17,10 @@ const Wrapper = styled.nav`
   box-sizing: border-box;
   padding-bottom: calc(4.5vw + 4rem);
   display: ${props => props.open ? `flex` : `none`};
+
+  @media ${device.laptop}{
+    height: calc(100vh - 2.5vw - 2rem);
+  }
 
   a {
     color: black;
@@ -32,21 +37,33 @@ const List = styled.ul`
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
-  line-height: 3vw;
+  line-height: 48px;
+
+  @media ${device.laptop}{
+    line-height: 3vw;
+  }
 
   li {
-    font-size: 3vw;
+    font-size: 36px;
+
+    span {
+      font-weight: 200;
+    }
+
+    @media ${device.laptop}{
+      font-size: 3vw;
+    }
   }
 `;
 
-const Nav = ({ open }) => (
+const Nav = ({ open, cartItems, handleSubmit }) => (
   <Wrapper open={open}>
     <List>
       <li><Link to='/shop'>Shop</Link></li>
       <li>Learn</li>
       <li>About</li>
       <li>Login</li>
-      <li>Cart</li>
+      <li onClick={handleSubmit}>Cart <span>({cartItems})</span></li>
     </List>
   </Wrapper>
 );

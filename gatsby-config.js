@@ -1,5 +1,4 @@
-let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 console.log(`Using environment config: '${activeEnv}'`)
 
@@ -23,7 +22,7 @@ module.exports = {
       },
     },
     {
-      resolve: "@massivdash/gatsby-source-woocommerce",
+      resolve: '@pasdo501/gatsby-source-woocommerce',
       options: {
         api: 'andnone.co/saintcenter',
         itemCount: 20,
