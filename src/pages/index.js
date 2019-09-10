@@ -6,6 +6,7 @@ import Hero from '../components/hero'
 import TextBlock from '../components/textBlock'
 import TextBlockWithImage from '../components/textBlockWithImage'
 import ProductList from '../components/productList'
+import Benefits from '../components/benefits'
 import hemp from '../images/hemp.png'
 import arch from '../images/arch.svg'
 import image from '../images/hero.jpg'
@@ -35,11 +36,12 @@ const Home = ({ location, theme }) => {
         />
         <TextBlock>
           <p>Your body and mind need to shine.</p>
-          <p>Taking organically grown hemp, we extract CBD with a high potency and an even higher calling.</p>
-          <p>Zero % THC. Sustainably processed. Supporting hemp equality and justice for all.</p>
+          <p>Taking organically grown hemp, we extract CBD<br/> with a high potency and an even higher calling.</p>
+          <p>Zero % THC. Sustainably processed.<br/> Supporting hemp equality and justice for all.</p>
           <p>Feel good. Do better. Create more.</p>
+          <p>Let there be you.</p>
         </TextBlock>
-        <Carousel cover title='Let there be you.'>
+        <Carousel cover>
           <div>
             <img src={sliderOne} alt='slider 1' />
           </div>
@@ -57,6 +59,7 @@ const Home = ({ location, theme }) => {
           </div>
         </Carousel>
         <ProductList />
+        <Benefits />
         <SectionHeader
           title='Learn'
           secondary='ABC'
@@ -68,7 +71,7 @@ const Home = ({ location, theme }) => {
           image={hemp}
           actionText='See How CBD Works'
         >
-          <p>We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body’s endocannabinoid system to help regulate our mood, stress, anxiety and pain sensations.</p>
+          <p>A natural way to feel uplifted. We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body's endocannabinoid system to help regulate mood, stress, anxiety and pain sensations.</p>
         </TextBlockWithImage>
         <TextBlockWithImage
           title='Human Rites'
@@ -76,7 +79,7 @@ const Home = ({ location, theme }) => {
           reverse
           bgColor='rgb(38,33,97)'
           textColor='rgb(167,201,253)'
-          actionText='Get Active'
+          actionText='See How CBD Works'
         >
           <p>We believe that all companies profiting from the cultivation and production of hemp products have a responsibility to supporting fair legislation and creating equitable solutions for people and
   communities unfairly harmed by cannabis laws.</p>

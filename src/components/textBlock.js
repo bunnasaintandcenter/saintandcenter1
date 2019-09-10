@@ -16,6 +16,10 @@ const Block = styled.section`
     line-height: 60px;
   }
 
+  p {
+    margin-bottom: 3rem;
+  }
+
   strong {
     font-size: 30px;
     font-weight: 500;

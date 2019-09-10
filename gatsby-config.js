@@ -32,7 +32,7 @@ module.exports = {
             consumer_key: process.env.WOOCOMMERCE_KEY,
             consumer_secret: process.env.WOOCOMMERCE_SECRET,
           },
-        fields: ['products']
+        fields: ['products', 'products/categories']
       }
     },
     {

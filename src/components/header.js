@@ -35,7 +35,6 @@ const Logo = styled.div`
   @media ${device.laptop}{
     width: 2vw;
     padding: 1rem 0;
-    margin-right: 10px;
   }
 
   &:hover {
@@ -52,6 +51,17 @@ const CartButton = styled.div`
 
   span {
     cursor: pointer;
+    background: black;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1px solid black;
+    color: white;
+    font-size: 13px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &:hover {
@@ -83,7 +93,7 @@ const Header = ({ cart }) => {
         <CartButton
           onMouseEnter={() => toggleCart(!cartOpen)}
           onMouseLeave={() => toggleCart(!cartOpen)}>
-          <span>Cart({cart.length})</span>
+          <span>{cart.length > 0 && cart.length}</span>
           {cart.length > 0 &&
             <Cart open={cartOpen} cart={cart} />
           }
