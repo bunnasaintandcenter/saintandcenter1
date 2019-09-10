@@ -5,15 +5,16 @@ import rootReducer from '.';
 import { loadState, saveState } from './localStorage'
 
 const persistedStore = loadState()
-console.log(loadState)
-const createStore = () => reduxCreateStore( rootReducer);
-//
-// createStore.subscribe(() => {
-//   saveState({
-//     cart: createStore.getState().cart
-//   })
-// })
+const createStore = reduxCreateStore( rootReducer, persistedStore);
+
+createStore.subscribe(() => {
+  console.log('hmmm')
+  saveState({
+    cart: createStore.getState().cart,
+    user: createStore.getState().user
+  })
+})
 
 export default ({ element }) => (
-  <Provider store={createStore()}>{element}</Provider>
+  <Provider store={createStore}>{element}</Provider>
 );

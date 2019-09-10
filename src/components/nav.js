@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -47,6 +48,10 @@ const List = styled.ul`
   li {
     font-size: 36px;
 
+    &.clickable {
+      cursor: pointer;
+    }
+
     span {
       font-weight: 200;
     }
@@ -57,16 +62,36 @@ const List = styled.ul`
   }
 `;
 
-const Nav = ({ open, cartItems, handleSubmit }) => (
-  <Wrapper open={open}>
-    <List>
-      <li><Link to='/shop'>Shop</Link></li>
-      <li>Learn</li>
-      <li>About</li>
-      <li>Login</li>
-      <li><Link to='/cart'>Cart <span>({cartItems})</span></Link></li>
-    </List>
-  </Wrapper>
-);
+const Nav = ({ open, cartItems, handleSubmit }) => {
+
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    console.log('hey')
+    dispatch({ type: 'USER_SIGNOUT' })
+  }
+
+  return (
+    <Wrapper open={open}>
+      <List>
+        <li><Link to='/shop'>Shop</Link></li>
+        <li>Learn</li>
+        <li>About</li>
+        {user.email !== ''
+          ?
+            <>
+              <li><Link to='/settings'>Settings</Link></li>
+              <li className='clickable' onClick={() => handleLogout()}>Logout</li>
+            </>
+          : <li><Link to='/login'>Login</Link></li>
+
+        }
+        <br/>
+        <li><Link to='/cart'>Cart <span>({cartItems})</span></Link></li>
+      </List>
+    </Wrapper>
+  )
+}
 
 export default Nav

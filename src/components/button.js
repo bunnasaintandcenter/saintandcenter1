@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   text-transform: uppercase;
   font-family: 'US';
   font-size: 18px;
-  background: transparent;
-  color: ${props => props.ghost ? 'white' : 'black' };
+  background: ${props => props.primary ? 'black' : 'transparent' };
+  color: ${props => props.primary || props.ghost ? 'white' : 'black' };
   transition: 0.2s all ease-in-out;
   cursor: pointer;
   outline: 0;
@@ -20,11 +20,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ children, ghost, onClick }) => (
+const Button = ({ children, ghost, onClick, primary }) => (
   <StyledButton
     data-testid='button'
     onClick={onClick}
     ghost={ghost}
+    primary={primary}
   >
     {children}
   </StyledButton>
