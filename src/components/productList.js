@@ -80,20 +80,26 @@ const ProductList = ({updateCart}) => {
   <StaticQuery
     query={graphql`
       query MyQuery {
-        allWcProducts {
+        allWcProductsCategories {
           edges {
             node {
-              sku
-              name
               wordpress_id
-              description
-              variations {
-                price
-                attributes {
-                  option
-                }
-                sku
+              name
+              slug
+              products {
                 id
+                wordpress_id
+                sku
+                name
+                description
+                variations {
+                  attributes {
+                    option
+                  }
+                  price
+                  sku
+                  id
+                }
               }
             }
           }
@@ -103,7 +109,7 @@ const ProductList = ({updateCart}) => {
     render={(data) => (
       <Wrapper>
         <List>
-          {data.allWcProducts.edges.map(({node}) => (
+          {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => (
             <Item
               key={node.wordpress_id}
               selected={selected === node.wordpress_id}
@@ -112,10 +118,11 @@ const ProductList = ({updateCart}) => {
               <h2>{node.name}</h2>
               {selected === node.wordpress_id &&
                 <ProductListBlock
+                  products={node.products}
                   title={node.name}
                   info={node.info}
                   id={node.wordpress_id}
-                  color={`#${node.sku}`}
+                  color={`#${node.products[0].sku}`}
                   phrases={node.phrases}
                   updateCart={updateCart}
                   description={node.description}

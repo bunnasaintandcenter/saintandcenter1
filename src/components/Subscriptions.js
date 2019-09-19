@@ -5,12 +5,12 @@ import Button from './Button'
 import Moment from 'react-moment'
 
 const Wrapper = styled.div`
-
+  padding: 2rem;
 `;
 
 const Sub = styled.div`
-  border-bottom: 2px solid rgb(51,51,51);
-  padding: 1rem 0;
+  border: 2px solid rgb(51,51,51);
+  padding: 1rem;
   display: grid;
   grid-gap: 2rem;
   align-items: center;

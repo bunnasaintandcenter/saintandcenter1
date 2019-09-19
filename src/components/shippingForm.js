@@ -6,6 +6,19 @@ import states from '../utils/states'
 import useShippingForm from '../hooks/useShippingForm'
 import axios from 'axios'
 
+const Page = styled.div`
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 18px;
+  }
+`;
+
+const Wrapper = styled.div`
+  border: 1px solid rgb(51,51,51);
+  padding: 0.5rem;
+`;
+
 const Form = styled.form`
 
   label {
@@ -45,6 +58,11 @@ const Form = styled.form`
 const Actions = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 0.5rem;
+
+  span {
+    text-transform: uppercase;
+  }
 `;
 
 const ShippingForm = ({ user, address, title }) => {
@@ -85,8 +103,9 @@ const ShippingForm = ({ user, address, title }) => {
   const {inputs, handleInputChange, handleSubmit} = useShippingForm(editAddress)
 
   return (
-    <div>
+    <Page>
       <h2>{title}</h2>
+      <Wrapper>
       {editorOpen
         ?
           <Form onSubmit={handleSubmit}>
@@ -122,15 +141,16 @@ const ShippingForm = ({ user, address, title }) => {
             </div>
           : <p>No {title} address</p>
       }
+      </Wrapper>
       <Actions>
-      <Button onClick={() => toggleEditor(!editorOpen)}>{editorOpen ? 'Cancel' : 'Edit' }</Button>
+      <span onClick={() => toggleEditor(!editorOpen)}>{editorOpen ? 'Cancel' : 'Edit' }</span>
       {editorOpen &&
         <Button primary onClick={handleSubmit}>
           Save
         </Button>
       }
       </Actions>
-    </div>
+    </Page>
   )
 }
 

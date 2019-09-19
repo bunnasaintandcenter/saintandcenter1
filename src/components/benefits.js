@@ -58,7 +58,7 @@ const benefits = [
 const Benefits = () => (
   <Wrapper>
     {benefits.map(item => (
-      <Item>
+      <Item key={item.title}>
         {item.icon &&
           <img src={item.icon} alt={item.title} title={item.title} />
         }

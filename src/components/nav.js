@@ -81,7 +81,7 @@ const Nav = ({ open, cartItems, handleSubmit }) => {
         {user.email !== ''
           ?
             <>
-              <li><Link to='/settings'>Settings</Link></li>
+              <li><Link to='/account'>Account</Link></li>
               <li className='clickable' onClick={() => handleLogout()}>Logout</li>
             </>
           : <li><Link to='/login'>Login</Link></li>

@@ -108,37 +108,41 @@ const Desc = styled.div`
   color: rgb(51,51,51);
 `;
 
-const productListBlock = ({ title, id, description, color, phrases, options, info, updateCart }) => (
-  <Product>
-    <Block color={color}>
-      <Col>
-        A daily<br/>
-        microdose<br/>
-        of joy
-      </Col>
-      <Col>
-        <Mock>
-          <img className='logo' src={logo} alt='logo' />
-          <img className='logotype' src={logoType} alt='logotype' />
-          <div>
-            <p>CBD {title}</p>
-            <p>{options[0].attributes[0].option}</p>
-          </div>
-        </Mock>
-      </Col>
-      <Col>
-        Redrop<br/>
-        Rejoice
-      </Col>
-    </Block>
-    <Desc>{stripHtml(description)}</Desc>
-    <ProductSelect
-      id={id}
-      updateCart={updateCart}
-      options={options}
-    />
-    <ProductInfo info={info} />
-  </Product>
-);
+const productListBlock = ({ products, color, updateCart, info }) => {
+
+  return (
+    <Product>
+      <Block color={color}>
+        <Col>
+          A daily<br/>
+          microdose<br/>
+          of joy
+        </Col>
+        <Col>
+          <Mock>
+            <img className='logo' src={logo} alt='logo' />
+            <img className='logotype' src={logoType} alt='logotype' />
+            <div>
+              <p>CBD {products[0].title}</p>
+              <p>{products[0].variations[0].attributes[0].option}</p>
+            </div>
+          </Mock>
+        </Col>
+        <Col>
+          Redrop<br/>
+          Rejoice
+        </Col>
+      </Block>
+      <Desc>{stripHtml(products[0].description)}</Desc>
+      <ProductSelect
+        id={products[0].id}
+        updateCart={updateCart}
+        options={products[0].variations}
+        products={products}
+      />
+      <ProductInfo info={info} />
+    </Product>
+  )
+}
 
 export default productListBlock;

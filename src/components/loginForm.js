@@ -10,27 +10,53 @@ const Form = styled.form`
   padding: 4rem;
   flex-direction: column;
   min-height: 60vh;
-  justify-content: center;
   margin: 0;
   border-bottom: 2px solid rgb(51,51,51, 0.2);
 
   &:first-of-type {
-    background: #BDB3B2;
     border: 0;
   }
 
-  h2 {
-    font-weight: 400;
-    font-size: 36px;
+  label {
+    font-size: 13px;
+    font-weight: 300;
     text-transform: uppercase;
+    padding-bottom: 0.5rem;
   }
 
   input {
-    padding: 1rem;
-    border: 0;
+    padding: 0.5rem;
+    border: 1px solid rgb(51,51,51);
     margin-bottom: 1rem;
     outline: 0;
+    font-size: 13px;
     font-weight: 300;
+    text-transform: uppercase;
+    font-weight: 300;
+    background: transparent;
+  }
+
+  button {
+    background: white;
+    border: 0;
+    font-size: 24px;
+    padding: 1rem;
+    font-weight: 300;
+  }
+`;
+
+const Connect = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  margin-bottom: 4rem;
+
+  button {
+    padding: 0.5rem;
+    color: rgb(51,51,51);
+    border: 1px solid rgb(51,51,51);
+    font-size: 16px;
+    background: transparent;
   }
 `;
 
@@ -76,10 +102,15 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input type='email' value={email} placeholder='Email address' onChange={e => handleEmail(e.target.value)} />
-      <input type='password' value={password} placeholder='Password' onChange={e => handlePassword(e.target.value)} />
-      <Button disabled={email === '' || password === ''}>Login</Button>
+      <Connect>
+        <Button ghost>Connect with Google</Button>
+        <Button ghost>Connect with Facebook</Button>
+      </Connect>
+      <label for='email'>Email Address</label>
+      <input name='email' type='email' value={email} onChange={e => handleEmail(e.target.value)} />
+      <label for='password'>Password</label>
+      <input name='password' type='password' value={password} onChange={e => handlePassword(e.target.value)} />
+      <Button disabled={email === '' || password === ''}>Log in</Button>
     </Form>
   )
 }
