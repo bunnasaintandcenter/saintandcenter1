@@ -11,7 +11,7 @@ import { isBrowser } from 'react-device-detect'
 const Head = styled.header`
   z-index: 10;
   position: ${props => props.navOpen ? `fixed` : `sticky` };
-  top: 0;
+  top: ${props => props.bannerOpen ? `calc(2rem + 1.5vw)` : `0` };
   width: 100vw;
   box-sizing: border-box;
   left: 0;
@@ -71,7 +71,7 @@ const CartButton = styled.div`
   }
 `;
 
-const Header = ({ cart }) => {
+const Header = ({ cart, bannerOpen }) => {
 
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
@@ -83,7 +83,7 @@ const Header = ({ cart }) => {
 
 
   return (
-    <Head data-testid='header' id='header' navOpen={navOpen}>
+    <Head data-testid='header' id='header' navOpen={navOpen} bannerOpen={bannerOpen}>
       <Menu
         open={navOpen}
         onClick={handleToggleNav}
