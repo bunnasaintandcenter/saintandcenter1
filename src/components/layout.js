@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'
 import Header from './header'
+import Footer from './footer'
 
 import "./layout.css"
 
@@ -50,6 +51,7 @@ const Layout = ({ children, location }) => {
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} />
             {children}
+            <Footer />
           </Wrapper>
         </ThemeProvider>
       )}

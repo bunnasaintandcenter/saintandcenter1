@@ -16,7 +16,6 @@ import sliderTwo from '../images/slider-2.jpg'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import SectionHeader from '../components/sectionHeader'
-import Footer from '../components/footer'
 
 const Wrapper = styled.div`
 
@@ -85,7 +84,6 @@ const Home = ({ location, theme }) => {
   communities unfairly harmed by cannabis laws.</p>
         </TextBlockWithImage>
       </Wrapper>
-      <Footer />
     </Layout>
   )
 }

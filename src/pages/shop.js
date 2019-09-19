@@ -1,8 +1,10 @@
 import React from 'react'
 import Layout from '../components/layout'
+import SectionHeader from '../components/sectionHeader'
 import { StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Product from '../components/product'
+import Benefits from '../components/benefits'
 
 const ProductGrid = styled.div`
   display: grid;
@@ -13,20 +15,20 @@ const Shop = ({}) => (
   <StaticQuery
     query={graphql`
       query ShopQuery {
-        allWcProducts {
+        allWcProductsCategories {
           edges {
             node {
-              sku
-              name
               wordpress_id
-              description
-              variations {
-                price
-                attributes {
-                  option
+              name
+              slug
+              image {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
                 }
-                sku
-                id
               }
             }
           }
@@ -35,11 +37,13 @@ const Shop = ({}) => (
     `}
     render={(data) => (
     <Layout>
+      <SectionHeader title='Shop / Products' />
       <ProductGrid>
-        {data.allWcProducts.edges.map(product => (
-          <Product {...product.node} />
+        {data.allWcProductsCategories.edges.slice(0,3).map(product => (
+          <Product key={product.node.wordpress_id} {...product.node} />
         ))}
       </ProductGrid>
+      <Benefits />
     </Layout>
   )} />
 );

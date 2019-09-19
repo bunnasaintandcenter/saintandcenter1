@@ -9,7 +9,7 @@ const Wrapper = styled.section`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5vw;
   width: 70vw;
-  margin: 2rem auto;
+  margin: 8rem auto;
 `;
 
 const Item = styled.div`
