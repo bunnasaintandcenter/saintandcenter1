@@ -1,7 +1,57 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`)
+const slash = require(`slash`)
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  // query content for WordPress posts
+  const result = await graphql(`
+    query {
+      allWcProductsCategories {
+        edges {
+          node {
+            id
+            slug
+            name
+            description
+            products {
+              id
+              wordpress_id
+              sku
+              name
+              description
+              variations {
+                attributes {
+                  option
+                }
+                price
+                sku
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const categoryTemplate = path.resolve(`./src/templates/category.js`)
+  result.data.allWcProductsCategories.edges.forEach(edge => {
+    createPage({
+      // will be the url for the page
+      path: `shop/product/${edge.node.slug}`,
+      // specify the component template of your choice
+      component: slash(categoryTemplate),
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this posts's data.
+      context: {
+        id: edge.node.id,
+        slug: edge.node.slug,
+        name: edge.node.name,
+        image: edge.node.image,
+        description: edge.node.description,
+        products: edge.node.products
+      },
+    })
+  })
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import ProductListBlock from './productListBlock'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import { device } from '../utils/devices'
 
 const Wrapper = styled.section`

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Layout from '../components/layout'
 import styled from 'styled-components'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import Button from '../components/button'
 
 const Wrapper = styled.div`

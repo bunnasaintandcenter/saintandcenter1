@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import Button from './Button'
+import Button from './button'
 import Moment from 'react-moment'
 
 const Wrapper = styled.div`

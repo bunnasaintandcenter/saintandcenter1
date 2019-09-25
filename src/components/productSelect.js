@@ -4,6 +4,7 @@ import Button from './button'
 import { useDispatch } from 'react-redux'
 
 const Wrapper = styled.div`
+  font-weight: 300;
 
   button {
     grid-column: span 2;
@@ -30,79 +31,70 @@ const Select = styled.div`
 
 const Price = styled.div`
   padding: 2rem 5vw;
-  font-size: 18px;
+  font-size: 24px;
   grid-column: ${props => props.recurrence === 'once' ? `span 1` : `span 2`};
   text-transform: uppercase;
-  border-top: 2px solid rgba(51,51,51, 0.2);
+  border-top: 2px solid rgba(51,51,51, 1);
 `;
 
 const Counter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  border-top: 2px solid rgba(51,51,51, 0.2);
-  border-left: 2px solid rgba(51,51,51, 0.2);
+  font-size: 24px;
+  border-top: 2px solid rgba(51,51,51, 1);
 
   span {
-    margin: 0 1rem;
+    width: 48px;
+    height: 48px;
+    border-top: 1px solid rgb(51,51,51);
+    border-bottom: 1px solid rgb(51,51,51);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   button {
     cursor: pointer;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(51,51,51,0.2);
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(51,51,51,1);
     padding: 0;
     outline: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background: none;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 24px;
   }
 `;
 
 const Option = styled.div`
-  font-size: 18px;
+  font-size: 24px;
   text-transform: uppercase;
   padding: 2rem 0;
   cursor: pointer;
-  border-top: 2px solid rgba(51,51,51, 0.2);
+  border-top: 2px solid rgba(51,51,51, 1);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background: ${props => props.selected ? `white` : `transparent` };
 
   label {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    &:before {
-      content: "";
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgb(51,51,51);
-      border-radius: 50%;
-      margin-right: 1rem;
-    }
   }
 
   input {
     display: none;
-
-    &:checked ~ label {
-      &:before {
-        background: rgb(51,51,51)
-      }
-    }
   }
 
   &:nth-of-type(2n){
-    border-left: 2px solid rgba(51,51,51, 0.2);
+    border-left: 2px solid rgb(51,51,51);
   }
 `;
 
@@ -147,7 +139,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       <Select options={options.length}>
       {options.map((option, index) => {
         return (
-          <Option className='option' key={index} onClick={() => selectOption(index)}>
+          <Option selected={selectedOption === index} className='option' key={index} onClick={() => selectOption(index)}>
             <input
               name='option'
               type="radio"
@@ -161,11 +153,11 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       })}
       </Select>
       <Select>
-      <Option onClick={() => handleSwitchOption('once')}>
+      <Option selected={recurrence === 'once'} onClick={() => handleSwitchOption('once')}>
         <input name='recurrence' type="radio" value='once' checked={recurrence === 'once'} onChange={value => console.log(value)}/>
         <label htmlFor='recurrence'>Once</label>
       </Option>
-      <Option onClick={() => handleSwitchOption('monthly')}>
+      <Option selected={recurrence === 'monthly'} onClick={() => handleSwitchOption('monthly')}>
         <input name='recurrence' type="radio" value='monthly' checked={recurrence === 'monthly'} onChange={value => console.log(value)} />
         <label htmlFor='recurrence'>Monthly</label>
       </Option>

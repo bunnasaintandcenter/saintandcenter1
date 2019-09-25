@@ -31,6 +31,7 @@ const Wrapper = styled.div`
     object-fit: contain;
     align-self: center;
     margin: auto 0;
+    pointer-events: none;
 
     img {
       object-fit: contain !important;

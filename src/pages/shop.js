@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import SectionHeader from '../components/sectionHeader'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Product from '../components/product'
 import Benefits from '../components/benefits'
