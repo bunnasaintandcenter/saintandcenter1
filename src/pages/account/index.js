@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
 import ShippingForm from '../../components/ShippingForm'
-import Subscriptions from '../../components/Subscriptions'
+import Subscriptions from '../../components/subscriptions'
 import AccountNav from '../../components/AccountNav'
 
 const Section = styled.section`
