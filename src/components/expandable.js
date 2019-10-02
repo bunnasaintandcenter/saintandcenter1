@@ -31,7 +31,7 @@ const Content = styled.div`
   overflow: hidden;
   max-height: ${props => props.expanded ? `999px` : 0 };
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
 `;
 
