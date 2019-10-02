@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from './button'
 import { useDispatch } from 'react-redux'
+import Expandable from './expandable'
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -175,6 +176,16 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
         </Counter>
       }
       <Button className='btn' onClick={() => addToCart()}>Add to cart</Button>
+      <Expandable title='Ingredients'>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+      </Expandable>
+      <Expandable title='Lab Results'>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+        <p>Lorem ipsum dolor sit amet</p>
+      </Expandable>
       </Select>
     </Wrapper>
   )

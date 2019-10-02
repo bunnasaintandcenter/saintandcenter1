@@ -4,6 +4,7 @@ import SectionHeader from '../components/sectionHeader'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Product from '../components/product'
+import SEO from '../components/seo'
 import Benefits from '../components/benefits'
 
 const ProductGrid = styled.div`
@@ -37,6 +38,7 @@ const Shop = ({}) => (
     `}
     render={(data) => (
     <Layout>
+      <SEO title='Shop | Saint and Center' />
       <SectionHeader title='Shop / Products' />
       <ProductGrid>
         {data.allWcProductsCategories.edges.slice(0,3).map(product => (

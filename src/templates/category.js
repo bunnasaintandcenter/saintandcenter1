@@ -4,12 +4,12 @@ import Layout from '../components/Layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import SEO from '../components/seo'
 import ProductSelect from '../components/productSelect'
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: calc(100vh - 10vw);
 `;
 
 const Image = styled.div`
@@ -32,12 +32,14 @@ const Info = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  overflow: hidden;
+  min-height: calc(100vh - 10vw);
 
   h4 {
     font-weight: 300;
     font-size: 1.5vw;
     line-height: 3vw;
-    padding: 4rem;
+    padding: 4rem 4rem 0 4rem;
   }
 `;
 
@@ -51,7 +53,8 @@ const Category = ({ pageContext, updateCart, data }) => {
 
   return (
     <Layout>
-      <SectionHeader title={`Shop / Products / Balm`} />
+      <SectionHeader title={`Shop / Products / ${name}`} />
+      <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
         <Image>
           {image && <Img className='product-image' fluid={image.localFile.childImageSharp.fluid} /> }
