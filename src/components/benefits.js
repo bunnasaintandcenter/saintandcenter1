@@ -27,15 +27,6 @@ const Item = styled.div`
 
 const benefits = [
   {
-    title: 'Free Shipping',
-  },
-  {
-    title: 'Flexible Subscriptions',
-  },
-  {
-    title: '3rd Party Tested'
-  },
-  {
     title: 'Made in USA',
     icon: usa
   },
@@ -52,6 +43,9 @@ const benefits = [
   },
   {
     title: 'Zero THC'
+  },
+  {
+    title: '3rd Party Tested'
   }
 ]
 

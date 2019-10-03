@@ -40,6 +40,10 @@ const Item = styled.li`
       font-size: 24px;
       padding: 2rem 0;
 
+      a {
+        justify-content: center;
+      }
+
       &:hover {
         padding: 2rem 0;
       }
@@ -134,7 +138,7 @@ const ProductList = ({updateCart}) => {
             )
           }
           )}
-          <Item><h2>View All</h2></Item>
+          <Item><h2><Link to='/shop'>View All</Link></h2></Item>
         </List>
       </Wrapper>
     )}
