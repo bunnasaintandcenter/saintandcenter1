@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import ProductListBlock from './productListBlock'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
 
 const Wrapper = styled.section`
@@ -22,10 +21,15 @@ const List = styled.ul`
 
 const Item = styled.li`
   border-bottom: 2px solid black;
-  display: flex;
-  align-items: baseline;
-  cursor: pointer;
-  flex-direction: column;
+
+  a {
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+    justify-content: space-between;
+    text-decoration: none;
+    color: rgb(51,51,51);
+  }
 
   &:last-of-type {
     border: 0;
@@ -53,7 +57,7 @@ const Item = styled.li`
   h2 {
     font-size: 30px;
     font-weight: normal;
-    padding: 2rem 5vw;
+    padding: 2rem;
     margin: 0;
     transition: 0.2s all ease-in-out;
     text-transform: uppercase;
@@ -117,28 +121,19 @@ const ProductList = ({updateCart}) => {
     render={(data) => (
       <Wrapper>
         <List>
-          {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => (
-            <Item
-              key={node.wordpress_id}
-              selected={selected === node.wordpress_id}
-              onClick={() => select(node.wordpress_id)}
-            >
-              <h2>{node.name}</h2>
-              {selected === node.wordpress_id &&
-                <ProductListBlock
-                  products={node.products}
-                  title={node.name}
-                  info={node.info}
-                  id={node.wordpress_id}
-                  color={`#${node.products[0].sku}`}
-                  phrases={node.phrases}
-                  updateCart={updateCart}
-                  description={node.description}
-                  options={node.variations}
-                />
-              }
-            </Item>
-          ))}
+          {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => {
+            return (
+                <Item
+                  key={node.wordpress_id}
+                >
+                <Link to={`/shop/product/${node.slug}`}>
+                  <h2>{node.name}</h2>
+                  <h2>${node.products[1].variations[0].price}{node.products[1].variations.length > 1 && `+` }</h2>
+                </Link>
+              </Item>
+            )
+          }
+          )}
           <Item><h2>View All</h2></Item>
         </List>
       </Wrapper>
