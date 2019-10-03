@@ -140,7 +140,6 @@ const productListBlock = ({ products, color, updateCart, info }) => {
         options={products[0].variations}
         products={products}
       />
-      <ProductInfo info={info} />
     </Product>
   )
 }

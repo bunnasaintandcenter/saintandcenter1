@@ -40,7 +40,7 @@ const Expandable = ({ title, children }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <Menu>
+    <Menu className='expandable'>
       <Title expanded={expanded} onClick={() => setExpanded(!expanded)}>{title} <span>+</span></Title>
       <Content expanded={expanded}>{children}</Content>
     </Menu>

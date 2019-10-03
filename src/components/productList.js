@@ -42,6 +42,14 @@ const Item = styled.li`
     }
   }
 
+  .expandable {
+    font-size: 18px;
+
+    span {
+      font-size: 24px;
+    }
+  }
+
   h2 {
     font-size: 30px;
     font-weight: normal;
