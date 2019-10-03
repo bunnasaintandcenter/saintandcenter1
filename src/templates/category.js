@@ -49,8 +49,6 @@ const Category = ({ pageContext, updateCart, data }) => {
 
   const { image } = data.allWcProductsCategories.edges[0].node;
 
-  console.log(data.allWcProductsCategories.edges[0].node.image)
-
   return (
     <Layout>
       <SectionHeader title={`Shop / Products / ${name}`} />
@@ -61,12 +59,14 @@ const Category = ({ pageContext, updateCart, data }) => {
         </Image>
         <Info>
           <h4>{description}</h4>
-          <ProductSelect
-            id={products[0].id}
-            updateCart={updateCart}
-            options={products[0].variations}
-            products={products}
-          />
+          {products && products.length > 0 &&
+            <ProductSelect
+              id={products[0].id}
+              updateCart={updateCart}
+              options={products[0].variations}
+              products={products}
+            />
+          }
         </Info>
       </Wrapper>
     </Layout>
