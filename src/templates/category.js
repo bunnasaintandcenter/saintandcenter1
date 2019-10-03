@@ -1,6 +1,6 @@
 import React from 'react'
 import SectionHeader from '../components/sectionHeader'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
