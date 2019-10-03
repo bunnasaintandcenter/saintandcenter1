@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   background: url(${menu});
   background-repeat: none;
   background-size: 100%;
-  margin-right: 30px;
 `;
 
 const Menu = ({ open, onClick }) => (

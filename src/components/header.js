@@ -8,10 +8,14 @@ import { device } from '../utils/devices'
 import Cart from './cart'
 import { isBrowser } from 'react-device-detect'
 
-const Head = styled.header`
-  z-index: 10;
+const Wrapper = styled.div`
   position: ${props => props.navOpen ? `fixed` : `sticky` };
   top: ${props => props.bannerOpen ? `calc(2rem + 1.5vw)` : `0` };
+  z-index: 100;
+`;
+
+const Head = styled.header`
+  z-index: 10;
   width: 100vw;
   box-sizing: border-box;
   left: 0;
@@ -24,7 +28,7 @@ const Head = styled.header`
   z-index: 11;
 
   @media ${device.laptop}{
-    padding: 0 5vw;
+    padding: 0 2rem;
   }
 `;
 
@@ -78,12 +82,18 @@ const Header = ({ cart, bannerOpen }) => {
 
   const handleToggleNav = () => {
     document.getElementById('header').scrollIntoView()
+    toggleCart(false)
     toggleNav(!navOpen)
   }
 
 
   return (
+    <Wrapper cartOpen={cartOpen}>
+    {cart.length > 0 &&
+      <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
+    }
     <Head data-testid='header' id='header' navOpen={navOpen} bannerOpen={bannerOpen}>
+
       <Menu
         open={navOpen}
         onClick={handleToggleNav}
@@ -91,16 +101,13 @@ const Header = ({ cart, bannerOpen }) => {
       <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
       {isBrowser &&
         <CartButton
-          onMouseEnter={() => toggleCart(!cartOpen)}
-          onMouseLeave={() => toggleCart(!cartOpen)}>
+          onClick={() => toggleCart(!cartOpen)}>
           <span>{cart.length > 0 && cart.length}</span>
-          {cart.length > 0 &&
-            <Cart open={cartOpen} cart={cart} />
-          }
         </CartButton>
       }
       <Nav open={navOpen} cartItems={cart.length} />
     </Head>
+    </Wrapper>
   )
 }
 
