@@ -12,7 +12,7 @@ const ProductGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
 `;
 
-const Shop = ({}) => (
+const Shop = () => (
   <StaticQuery
     query={graphql`
       query ShopQuery {

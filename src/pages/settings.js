@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Layout from '../components/layout'
@@ -26,14 +26,13 @@ const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
 
-  const tabs = [
-    'orders',
-    'subscriptions',
-    'payment',
-    'addressBook',
-    'logout'
-  ]
-
+  // const tabs = [
+  //   'orders',
+  //   'subscriptions',
+  //   'payment',
+  //   'addressBook',
+  //   'logout'
+  // ]
 
   return (
     <Layout>

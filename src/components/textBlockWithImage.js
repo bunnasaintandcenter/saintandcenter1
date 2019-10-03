@@ -21,17 +21,17 @@ const Block = styled.section`
   }
 `;
 
-const Title = styled.div`
-  text-transform: uppercase;
-  position: relative;
-  text-align: center;
-
-  h2 {
-    font-size: 5vw;
-    font-weight: 300;
-    margin: 0 0 2rem;
-  }
-`;
+// const Title = styled.div`
+//   text-transform: uppercase;
+//   position: relative;
+//   text-align: center;
+//
+//   h2 {
+//     font-size: 5vw;
+//     font-weight: 300;
+//     margin: 0 0 2rem;
+//   }
+// `;
 
 const Text = styled.div`
   font-size: 18px;
