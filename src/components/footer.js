@@ -167,28 +167,6 @@ const Disclaimer = styled.div`
   }
 `;
 
-const Info = styled.div`
-  background: white;
-  grid-column: span 2;
-  font-size: 14px;
-  padding: 0 5vw;
-
-  p {
-    text-transform: uppercase;
-    font-weight: 500;
-
-    &:last-of-type {
-      opacity: 0.6;
-    }
-  }
-
-  small {
-    max-width: 650px;
-    display: block;
-    margin-bottom: 1rem;
-  }
-`;
-
 const Legal = styled.ul`
   list-style: none;
   padding: 0;
