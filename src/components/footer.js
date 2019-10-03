@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Slider from 'react-slick'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
+import arrow from '../images/arrow.svg'
 
 const Foot = styled.footer`
   display: grid;
@@ -194,6 +195,55 @@ const Legal = styled.ul`
   }
 `;
 
+const Signup = styled.div`
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    margin: 0 0 2rem;
+    display: block;
+    line-height: 16px;
+    text-align: left;
+  }
+
+  div {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0.5rem;
+      right: 0.5rem;
+      background: url(${arrow});
+      height: 30px;
+      width: 20px;
+      background-size: 100%;
+    }
+  }
+
+  input {
+    width: 100%;
+    min-width: 300px;
+    background: #DDD;
+    border: 2px solid #DDD;
+    padding: 0.5rem;
+    appearance: none;
+    outline: none;
+
+    &:focus {
+      background: transparent;
+      border: 2px solid rgb(51,51,51);
+    }
+  }
+
+  strong {
+    text-transform: uppercase;
+    margin: 0 0 2rem;
+  }
+`;
+
 const Footer = () => (
   <Foot>
     <Insta>
@@ -212,8 +262,12 @@ const Footer = () => (
       <button>Send</button>
     </Join>
     <FooterMenu>
-      <p></p>
-      <p></p>
+      <Signup>
+        <div>
+          <span><strong>Join Us</strong></span>
+          <input type='email' />
+        </div>
+      </Signup>
       <ul>
         <li><strong>Saint and Center</strong></li>
         <li>Meet Us</li>
