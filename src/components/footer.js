@@ -82,7 +82,8 @@ const Join = styled.div`
   align-items: center;
 
   input {
-    padding: 1rem;
+    padding: 2rem;
+    outline: 0;
     border: 0;
     appearance: none;
     text-align: center;
@@ -138,19 +139,31 @@ const FooterMenu = styled.div`
     list-style: none;
     font-weight: 200;
     text-transform: uppercase;
-    line-height: 1.4em;
+    line-height: 1em;
     margin: 0;
 
     li {
       strong {
-        font-weight: 500;
-      }
-
-      &.primary {
+        display: block;
         font-weight: 500;
         margin-bottom: 2rem;
       }
     }
+  }
+`;
+
+const Disclaimer = styled.div`
+  grid-column: span 2;
+  background: white;
+
+  p {
+    border: 1px solid rgb(51,51,51);
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 90vw;
+    max-width: 900px;
+    font-weight: 200;
+    font-size: 16px;
   }
 `;
 
@@ -189,6 +202,11 @@ const Legal = styled.ul`
   padding: 2rem 0;
   justify-content: center;
 
+  &.dark {
+    background: black;
+    color: white;
+  }
+
   li {
     margin-right: 2rem;
 
@@ -211,44 +229,50 @@ const Footer = () => (
       </Slider>
     </Insta>
     <Join>
-      <span>Join Us</span>
+      <span>Get the Good News</span>
       <input placeholder='Enter your email' type='email' />
       <button>Send</button>
     </Join>
     <FooterMenu>
       <p></p>
       <p></p>
-      <p></p>
+      <ul>
+        <li><strong>Saint and Center</strong></li>
+        <li>Meet Us</li>
+        <li>Contact Us</li>
+        <li>Wholesale</li>
+        <li>White Label</li>
+      </ul>
       <ul>
         <li><strong>Shop</strong></li>
-        <li><strong>White Label</strong></li>
-        <li><strong>Wholesale</strong></li>
+        <li>Account</li>
+        <li>Track Your Order</li>
+        <li>Lab Results</li>
+        <li>Returns</li>
       </ul>
       <ul>
-        <li className='primary'>Learn</li>
-        <li>Why Saint and Center</li>
+        <li><strong>Learn</strong></li>
         <li>Holy Hemp</li>
         <li>Human Rites</li>
+        <li>FAQ</li>
       </ul>
       <ul>
-        <li className='primary'>Support</li>
-        <li>Terms & Conditions</li>
+        <li><strong>Connect</strong></li>
+        <li>Instagram</li>
+        <li>Facebook</li>
+        <li>Twitter</li>
       </ul>
     </FooterMenu>
-    <Info>
-      <p>info@saintandcenter.com</p>
-      <p>123 Fake Street<br/> Atlanta, GA 30312</p>
-      <p>Connect with us:<br/> IG TW FB</p>
-      <br/>
-      <small>
-        Consult a medical doctor before taking this or any other supplement, if you are pregnant, nursing, have, or suspect a medical condition, or are taking any medications. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnoze, treat, cure or prevent any disease.
-      </small>
-      <p>Distributed by Noahfunk LLC D/B/A Saint and Center Atlanta, GA 30312</p>
-    </Info>
+    <Disclaimer>
+      <p>Consult a medical doctor before taking this or any other supplement, if you are pregnant, nursing, have, or suspect a medical condition, or are taking any medications. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnoze, treat, cure or prevent any disease.</p>
+    </Disclaimer>
     <Legal>
       <li>&copy; Saint and Center All Rights Reserved</li>
       <li>Privacy Policy</li>
       <li>Terms of Use</li>
+    </Legal>
+    <Legal className='dark'>
+      <li>Distributed by NoahFunk LLC D/B/A Saint and Center Atlanta, GA 30312</li>
     </Legal>
   </Foot>
 );
