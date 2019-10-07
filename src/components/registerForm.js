@@ -7,17 +7,12 @@ import { navigate } from 'gatsby'
 
 const Form = styled.form`
   display: flex;
-  padding: 4rem;
+  padding: 4rem 8rem;
   flex-direction: column;
   min-height: 60vh;
   justify-content: center;
   margin: 0;
   border-bottom: 2px solid rgb(51,51,51, 0.2);
-
-  &:first-of-type {
-    background: #BDB3B2;
-    border: 0;
-  }
 
   h2 {
     font-weight: 400;
@@ -34,12 +29,33 @@ const Form = styled.form`
   }
 `;
 
+const Connect = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem 2rem;
+  margin-bottom: 4rem;
+
+  span {
+    grid-column: span 2;
+    font-weight: 2;
+    text-transform: uppercase;
+  }
+
+  button {
+    padding: 0.5rem;
+    color: rgb(51,51,51);
+    border: 1px solid rgb(51,51,51);
+    font-size: 16px;
+    background: transparent;
+  }
+`;
+
 const RegisterForm = () => {
 
-  const [name, handleName] = useState('')
+  const [firstName, handleFirstName] = useState('')
+  const [lastName, handleLastName] = useState('')
   const [email, handleEmail] = useState('')
   const [password, handlePassword] = useState('')
-  const [passwordConfirm, handlePasswordConfirm] = useState('')
 
   const dispatch = useDispatch()
 
@@ -53,7 +69,7 @@ const RegisterForm = () => {
       const { nonce } = res.data
       console.log(nonce)
 
-      return axios.post(`https://andnone.co/saintcenter/api/user/register/?username=${name}&email=${email}&display_name=${name}&nonce=${nonce}&user_pass=${password}`)
+      return axios.post(`https://andnone.co/saintcenter/api/user/register/?username=${firstName}${lastName}&email=${email}&display_name=${firstName}${lastName}&nonce=${nonce}&user_pass=${password}`)
       .then(res => {
         const { status, cookie } = res.data;
         console.log('status', status)
@@ -61,14 +77,16 @@ const RegisterForm = () => {
           localStorage.setItem('cookie', cookie)
           localStorage.setItem('user', {
             email: email,
-            displayName: name
+            firstName: firstName,
+            lastName: lastName
           })
 
           dispatch({
             type: 'USER_SIGNIN',
             payload: {
               email: email,
-              displayName: name
+              firstName: firstName,
+              lastName: lastName
             }
           })
 
@@ -84,12 +102,16 @@ const RegisterForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input type='text' value={name} placeholder='Name' onChange={e => handleName(e.target.value)} />
+      <Connect>
+        <span>Connect With</span>
+        <Button ghost>Facebook</Button>
+        <Button ghost>Google</Button>
+      </Connect>
+      <input type='text' value={firstName} placeholder='First Name' onChange={e => handleFirstName(e.target.value)} />
+      <input type='text' value={lastName} placeholder='Last Name' onChange={e => handleLastName(e.target.value)} />
       <input type='email' value={email} placeholder='Email address' onChange={e => handleEmail(e.target.value)} />
       <input type='password' value={password} placeholder='Password' onChange={e => handlePassword(e.target.value)} />
-      <input type='password' value={passwordConfirm} placeholder='Confirm password' onChange={e => handlePasswordConfirm(e.target.value)} />
-      <Button disabled={email === '' || password === '' || passwordConfirm === ''}>Register</Button>
+      <Button>Register</Button>
     </Form>
   )
 }

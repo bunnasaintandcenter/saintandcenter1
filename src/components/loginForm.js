@@ -7,7 +7,7 @@ import { navigate } from 'gatsby'
 
 const Form = styled.form`
   display: flex;
-  padding: 4rem;
+  padding: 4rem 8rem;
   flex-direction: column;
   min-height: 60vh;
   margin: 0;
@@ -48,8 +48,14 @@ const Form = styled.form`
 const Connect = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
+  grid-gap: 1rem 2rem;
   margin-bottom: 4rem;
+
+  span {
+    grid-column: span 2;
+    font-weight: 2;
+    text-transform: uppercase;
+  }
 
   button {
     padding: 0.5rem;
@@ -103,8 +109,9 @@ const LoginForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Connect>
-        <Button ghost>Connect with Google</Button>
-        <Button ghost>Connect with Facebook</Button>
+        <span>Connect With</span>
+        <Button ghost>Facebook</Button>
+        <Button ghost>Google</Button>
       </Connect>
       <label for='email'>Email Address</label>
       <input name='email' type='email' value={email} onChange={e => handleEmail(e.target.value)} />
