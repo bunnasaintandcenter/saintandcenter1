@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Button from './button'
 import { useDispatch } from 'react-redux'
 import Expandable from './expandable'
+import stripHtml from 'string-strip-html'
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -177,9 +178,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       }
       <Button className='btn' onClick={() => addToCart()}>Add to cart</Button>
       <Expandable title='Ingredients'>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
+        <p>{stripHtml(products[1].short_description)}</p>
       </Expandable>
       <Expandable title='Lab Results'>
         <p>Lorem ipsum dolor sit amet</p>
