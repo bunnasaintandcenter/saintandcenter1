@@ -37,7 +37,7 @@ const Subscriptions = ({ customer_id }) => {
     .then(res => {
       setSubscriptions(res.data)
     })
-  }, [subscriptions])
+  }, [subscriptions, customer_id])
 
   return (
     <Wrapper>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
@@ -81,17 +81,6 @@ const Item = styled.li`
 `;
 
 const ProductList = ({updateCart}) => {
-
-  const [ selected, select ] = useState('');
-
-  // const handleSelect = (product) => {
-  //   if(selected === ''){
-  //     select(product)
-  //   } else {
-  //     select('')
-  //   }
-  // }
-
   return (
   <StaticQuery
     query={graphql`
