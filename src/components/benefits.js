@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import usa from '../images/icon-usa.svg'
 import organic from '../images/icon-organic.svg'
+import tested from '../images/icon-tested.svg'
+import gmo from '../images/icon-gmo.svg'
+import zeroTHC from '../images/icon-zero-thc.svg'
 import spectrum from '../images/icon-spectrum.svg'
 
 const Wrapper = styled.section`
@@ -39,13 +42,16 @@ const benefits = [
     icon: spectrum
   },
   {
-    title: 'No GMO'
+    title: 'No GMO',
+    icon: gmo
   },
   {
-    title: 'Zero THC'
+    title: 'Zero THC',
+    icon: zeroTHC
   },
   {
-    title: '3rd Party Tested'
+    title: '3rd Party Tested',
+    icon: tested
   }
 ]
 
