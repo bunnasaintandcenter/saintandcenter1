@@ -34,11 +34,9 @@ const Home = ({ location, theme }) => {
           title='We have a mission.'
         />
         <TextBlock>
-          <p>Your body and mind need to shine.</p>
-          <p>Taking organically grown hemp, we extract CBD<br/> with a high potency and an even higher calling.</p>
-          <p>Zero % THC. Sustainably processed.<br/> Supporting hemp equality and justice for all.</p>
-          <p>Feel good. Do better. Create more.</p>
-          <p>Let there be you.</p>
+          <p>From organically grown hemp,<br/>we've extracted CBD with a high potency<br/>and an even higher calling.</p>
+          <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
+          <p>Your higher self<br/>without the high.</p>
         </TextBlock>
         <Carousel cover>
           <div>

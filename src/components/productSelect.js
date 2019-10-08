@@ -177,10 +177,10 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
         </Counter>
       }
       <Button className='btn' onClick={() => addToCart()}>Add to cart</Button>
-      <Expandable title='Ingredients'>
+      <Expandable padded title='Ingredients'>
         <p>{stripHtml(products[1].short_description)}</p>
       </Expandable>
-      <Expandable title='Lab Results'>
+      <Expandable padded title='Lab Results'>
         <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor sit amet</p>
         <p>Lorem ipsum dolor sit amet</p>

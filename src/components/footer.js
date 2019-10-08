@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
+import { Link } from 'gatsby'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import arrow from '../images/arrow.svg'
@@ -135,6 +136,11 @@ const FooterMenu = styled.div`
   font-size: 14px;
   margin-top: -8px;
   grid-template-columns: repeat(6, 1fr);
+
+  a {
+    color: rgb(51,51,51);
+    text-decoration: none;
+  }
 
   ul {
     list-style: none;
@@ -286,7 +292,7 @@ const Footer = () => (
         <li><strong>Learn</strong></li>
         <li>Holy Hemp</li>
         <li>Human Rites</li>
-        <li>FAQ</li>
+        <li><Link to='/faqs'>FAQ</Link></li>
       </ul>
       <ul>
         <li><strong>Connect</strong></li>
