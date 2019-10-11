@@ -296,8 +296,8 @@ const Footer = () => (
       </ul>
       <ul>
         <li><strong>Connect</strong></li>
-        <li>Instagram</li>
-        <li>Facebook</li>
+        <li><a href="https://www.instagram.com/saintandcenter/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.facebook.com/saintandcenter/posts/422070068388076" target="_blank"  rel="noopener noreferrer">Facebook</a></li>
         <li>Twitter</li>
       </ul>
     </FooterMenu>
