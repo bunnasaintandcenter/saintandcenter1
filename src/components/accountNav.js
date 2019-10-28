@@ -51,7 +51,7 @@ const AccountNav = ({location, tabs}) => (
       {tabs.map(({url, title, action}) => (
         <Item key={title} data-testid='tab'>
           {url
-            ? <Link data=testid='tab-link' to={`/account/${url}`}>{title}</Link>
+            ? <Link to={`/account/${url}`}>{title}</Link>
             : <span onClick={action}>{title}</span>
           }
         </Item>

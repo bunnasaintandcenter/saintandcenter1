@@ -10,15 +10,12 @@ const startingState = {
   user: {
     username: 'janedoe',
     email: 'janedoe@gmail.com',
-    displayName: 'Jane Doe',
-    token: '13453468'
+    displayName: 'Jane Doe'
   },
-  {
-    cart: [
-      {id: 1},
-      {id: 2}
-    ]
-  }
+  cart: [
+    {id: 1},
+    {id: 2}
+  ]
 }
 
 function reducer(state = startingState, action){
@@ -39,8 +36,7 @@ it('renders', () => {
   expect(getByTestId('nav')).toBeTruthy()
 })
 
-// it('renders correct cart count', () => {
-//   const { getByTestId } = renderWithRedux(<Nav cartIems={3} />)
-//   console.log(getByTestId('cart-count'))
-//   expect(getByTestId('cart-count')).toHaveTextContent('(3)')
-// })
+it('renders cart number correctly', () => {
+  const { getByTestId } = renderWithRedux(<Nav />)
+  expect(getByTestId('cart-count')).toHaveTextContent('(2)')
+})

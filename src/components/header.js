@@ -101,7 +101,7 @@ const Header = ({ cart, bannerOpen }) => {
       <CartButton
         data-testid='cart-button'
         onClick={() => toggleCart(!cartOpen)}>
-        <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
+        <span data-testid='header-cart-count'>{cart.length > 0 && cart.length}</span>
       </CartButton>
       <Nav open={navOpen} cartItems={cart.length} />
     </Head>
