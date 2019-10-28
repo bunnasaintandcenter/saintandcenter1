@@ -63,7 +63,7 @@ const Category = ({ pageContext, updateCart, data }) => {
             <ProductSelect
               id={products[0].id}
               updateCart={updateCart}
-              options={products[0].variations}
+              options={products[0].product_variations}
               products={products}
             />
           }

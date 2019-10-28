@@ -86,7 +86,6 @@ const Header = ({ cart, bannerOpen }) => {
     toggleNav(!navOpen)
   }
 
-
   return (
     <Wrapper cartOpen={cartOpen}>
     {cart.length > 0 &&
@@ -101,8 +100,9 @@ const Header = ({ cart, bannerOpen }) => {
       <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
       {isBrowser &&
         <CartButton
+          data-testid='cart-button'
           onClick={() => toggleCart(!cartOpen)}>
-          <span>{cart.length > 0 && cart.length}</span>
+          <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
         </CartButton>
       }
       <Nav open={navOpen} cartItems={cart.length} />

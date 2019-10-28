@@ -81,7 +81,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hero = ({ title, subtitle, buttonText, url, image }) => (
+const Hero = ({ title, buttonText, url, image }) => (
   <Wrapper data-testid='hero'>
     <img className='logotype' src={logotype} alt='Saint and Center' />
     <picture><img src={image} alt={title} /></picture>

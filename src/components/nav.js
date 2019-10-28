@@ -62,9 +62,10 @@ const List = styled.ul`
   }
 `;
 
-const Nav = ({ open, cartItems, handleSubmit }) => {
+const Nav = ({ open, handleSubmit }) => {
 
   const user = useSelector(state => state.user)
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -73,7 +74,7 @@ const Nav = ({ open, cartItems, handleSubmit }) => {
   }
 
   return (
-    <Wrapper open={open}>
+    <Wrapper open={open} data-testid='nav'>
       <List>
         <li><Link to='/shop'>Shop</Link></li>
         <li>Learn</li>
@@ -88,7 +89,7 @@ const Nav = ({ open, cartItems, handleSubmit }) => {
 
         }
         <br/>
-        <li><Link to='/cart'>Cart <span>({cartItems})</span></Link></li>
+        <li><Link to='/cart'>Cart <span data-testid='cart-count'>({cart.length})</span></Link></li>
       </List>
     </Wrapper>
   )

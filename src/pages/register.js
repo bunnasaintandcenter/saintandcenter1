@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import RegisterForm from '../components/registerForm'
-import Footer from '../components/footer'
 import SectionHeader from '../components/sectionHeader'
 
 const Wrapper = styled.div`

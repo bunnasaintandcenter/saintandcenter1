@@ -121,11 +121,11 @@ const LoginForm = () => {
   }
 
   const handleFacebook = async (response) => {
-    const { accessToken, name } = response;
+    const { accessToken } = response;
 
     try {
       const facebookConnect = await axios.post(`https://andnone.co/saintcenter/api/user/fb_connect/?access_token=${accessToken}`)
-      const { cookie, status } = facebookConnect;
+      const { cookie } = facebookConnect;
 
       const user = await axios.get(`https://andnone.co/saintcenter/wp-json/wc/v3/customers?email=${response.email}&consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`)
       const { data } = user;

@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
               name
               description
               short_description
-              variations {
+              product_variations {
                 attributes {
                   option
                 }

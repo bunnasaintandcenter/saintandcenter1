@@ -97,7 +97,7 @@ const ProductList = ({updateCart}) => {
                 sku
                 name
                 description
-                variations {
+                product_variations {
                   attributes {
                     option
                   }
@@ -121,7 +121,7 @@ const ProductList = ({updateCart}) => {
                 >
                 <Link to={`/shop/product/${node.slug}`}>
                   <h2>{node.name}</h2>
-                  <h2>${node.products[1].variations[0].price}{node.products[1].variations.length > 1 && `+` }</h2>
+                  <h2>${node.products[1].product_variations[0].price}{node.products[1].product_variations.length > 1 && `+` }</h2>
                 </Link>
               </Item>
             )

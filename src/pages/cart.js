@@ -203,7 +203,7 @@ const Cart = ({ location, data }) => {
                 name
                 wordpress_id
                 description
-                variations {
+                product_variations {
                   price
                   attributes {
                     option

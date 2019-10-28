@@ -114,7 +114,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
 
     const item = {
       product_id: products[recurrence === 'monthly' ? 0 : 1].wordpress_id,
-      variation_id: products[recurrence === 'monthly' ? 0 : 1].variations[selectedOption].id,
+      variation_id: products[recurrence === 'monthly' ? 0 : 1].product_variations[selectedOption].id,
       quantity: count
     }
 
@@ -149,7 +149,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
               onChange={value => console.log(value)}
               checked={selectedOption === index}
             />
-            <label htmlFor='option'>{products[0].variations[index].attributes[0].option}</label>
+            <label htmlFor='option'>{products[0].product_variations[index].attributes[0].option}</label>
           </Option>
         )
       })}
@@ -165,8 +165,8 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       </Option>
       <Price recurrence={recurrence}>
         {recurrence === 'monthly'
-          ? <>${products[0].variations[selectedOption].price} per month</>
-          : <>${(products[1].variations[selectedOption].price) * count}</>
+          ? <>${products[0].product_variations[selectedOption].price} per month</>
+          : <>${(products[1].product_variations[selectedOption].price) * count}</>
         }
       </Price>
       {recurrence === 'once' &&

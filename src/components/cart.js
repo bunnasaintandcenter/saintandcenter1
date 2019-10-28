@@ -89,8 +89,8 @@ const Cart = ({ cart, open, toggle, handleSubmit }) => {
     let initialValue = 0
     const sum = cart.reduce((acc, item) => {
       const { quantity } = item;
-      const { variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
-      const { price } = variations.find(o => o.id === item.variation_id)
+      const { product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
+      const { price } = product_variations.find(o => o.id === item.variation_id)
 
       return acc + (price * quantity)
     }, initialValue)
@@ -109,7 +109,7 @@ const Cart = ({ cart, open, toggle, handleSubmit }) => {
                 name
                 wordpress_id
                 description
-                variations {
+                product_variations {
                   price
                   attributes {
                     option
@@ -131,8 +131,8 @@ const Cart = ({ cart, open, toggle, handleSubmit }) => {
               <span>Free Shipping Forever</span>
             </Row>
             {cart.map(item => {
-              const { name, variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
-              const { price } = variations.find(o => o.id === item.variation_id)
+              const { name, product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
+              const { price } = product_variations.find(o => o.id === item.variation_id)
               return (
                 <Row key={name}>
                   <span>{name}</span>

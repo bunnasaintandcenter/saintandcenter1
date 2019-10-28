@@ -11,8 +11,3 @@ it('renders the title', () => {
   const { getByTestId } = render(<Hero title='Hello World' />)
   expect(getByTestId('title')).toHaveTextContent('Hello World')
 });
-
-it('renders the subtitle', () => {
-  const { getByTestId } = render(<Hero title='Hello World' subtitle='foo bar' />)
-  expect(getByTestId('subtitle')).toHaveTextContent('foo bar')
-});

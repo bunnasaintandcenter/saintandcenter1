@@ -1,6 +1,8 @@
 import React from 'react'
 import Banner from '../banner'
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
+
+afterEach(cleanup)
 
 it('renders', () => {
 
