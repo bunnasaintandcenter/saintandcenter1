@@ -12,6 +12,12 @@ const startingState = {
     email: 'janedoe@gmail.com',
     displayName: 'Jane Doe',
     token: '13453468'
+  },
+  {
+    cart: [
+      {id: 1},
+      {id: 2}
+    ]
   }
 }
 
@@ -29,7 +35,7 @@ function renderWithRedux(
 }
 
 it('renders', () => {
-  const { getByTestId } = renderWithRedux(<Nav cartIems={2} />)
+  const { getByTestId } = renderWithRedux(<Nav />)
   expect(getByTestId('nav')).toBeTruthy()
 })
 
