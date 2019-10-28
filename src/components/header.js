@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo-black.svg'
+import logotype from '../images/logotype.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
@@ -8,10 +9,14 @@ import { device } from '../utils/devices'
 import Cart from './cart'
 import { isBrowser } from 'react-device-detect'
 
+const Wrapper = styled.div`
+  position: ${props => props.navOpen ? `fixed` : `sticky` };
+  top: ${props => props.bannerOpen ? `calc(2rem + 1.5vw)` : `0` };
+  z-index: 100;
+`;
+
 const Head = styled.header`
   z-index: 10;
-  position: ${props => props.navOpen ? `fixed` : `sticky` };
-  top: 0;
   width: 100vw;
   box-sizing: border-box;
   left: 0;
@@ -24,7 +29,7 @@ const Head = styled.header`
   z-index: 11;
 
   @media ${device.laptop}{
-    padding: 0 5vw;
+    padding: 0 2rem;
   }
 `;
 
@@ -71,36 +76,36 @@ const CartButton = styled.div`
   }
 `;
 
-const Header = ({ cart }) => {
+const Header = ({ cart, bannerOpen }) => {
 
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
   const handleToggleNav = () => {
     document.getElementById('header').scrollIntoView()
+    toggleCart(false)
     toggleNav(!navOpen)
   }
 
-
   return (
-    <Head data-testid='header' id='header' navOpen={navOpen}>
+    <Wrapper cartOpen={cartOpen}>
+    {cart.length > 0 &&
+      <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
+    }
+    <Head data-testid='header' id='header' navOpen={navOpen} bannerOpen={bannerOpen}>
       <Menu
         open={navOpen}
         onClick={handleToggleNav}
       />
       <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
-      {isBrowser &&
-        <CartButton
-          onMouseEnter={() => toggleCart(!cartOpen)}
-          onMouseLeave={() => toggleCart(!cartOpen)}>
-          <span>{cart.length > 0 && cart.length}</span>
-          {cart.length > 0 &&
-            <Cart open={cartOpen} cart={cart} />
-          }
-        </CartButton>
-      }
+      <CartButton
+        data-testid='cart-button'
+        onClick={() => toggleCart(!cartOpen)}>
+        <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
+      </CartButton>
       <Nav open={navOpen} cartItems={cart.length} />
     </Head>
+    </Wrapper>
   )
 }
 

@@ -22,6 +22,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        baseUrl: `andnone.co/saintcenter`,
+        protocol: 'https',
+        verbose: true,
+        hostingWPCOM: false,
+        includedRoutes: [
+          "**/faq",
+          "**/categories"
+       ]
+      }
+    },
+    {
       resolve: '@pasdo501/gatsby-source-woocommerce',
       options: {
         api: 'andnone.co/saintcenter',

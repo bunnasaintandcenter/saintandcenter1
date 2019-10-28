@@ -1,25 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, StaticQuery } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import Button from './button'
+import { MdClose } from 'react-icons/md'
 
 const Wrapper = styled.div`
-  padding: calc(3vw + 2rem + 6px) 0 0;
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  right: -300px;
-  width: 300px;
-  z-index: 999999;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
   transition: 0.2s all ease-in-out;
-  transform: ${props => props.open ? `translate(-300px, 0)` : `translate(0,0)`};
+  max-height: ${props => props.open ? `999px` : `0` };
 `;
 
 const Tray = styled.div`
-  background: rgb(51,51,51);
-  border: 2px solid rgb(51,51,51);
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: black;
   color: rgb(248,249,244);
+
+  section {
+    border-right: 2px solid white;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    button {
+      border-left: 0;
+      border-right: 0;
+      font-size: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
 
   ul {
     padding: 0;
@@ -42,7 +56,48 @@ const Tray = styled.div`
   }
 `;
 
-const Cart = ({ cart, open, handleSubmit }) => {
+const Row = styled.div`
+  border-bottom: 2px solid white;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  &:last-of-type {
+    padding: 1.5rem 1rem;
+  }
+`;
+
+const Close = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: white;
+  outline: 0;
+  font-size: 30px;
+  cursor: pointer;
+`;
+
+const Cart = ({ cart, open, toggle, handleSubmit }) => {
+
+  const cartTotal = (data) => {
+
+    let initialValue = 0
+    const sum = cart.reduce((acc, item) => {
+      const { quantity } = item;
+      const { product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
+      const { price } = product_variations.find(o => o.id === item.variation_id)
+
+      return acc + (price * quantity)
+    }, initialValue)
+
+    return sum
+  }
+
   return (
     <StaticQuery
       query={graphql`
@@ -54,7 +109,7 @@ const Cart = ({ cart, open, handleSubmit }) => {
                 name
                 wordpress_id
                 description
-                variations {
+                product_variations {
                   price
                   attributes {
                     option
@@ -70,21 +125,31 @@ const Cart = ({ cart, open, handleSubmit }) => {
       render={(data) => (
         <Wrapper open={open}>
           <Tray>
-            <h4>Your Cart</h4>
-            <ul>
+            <section>
+            <Row>
+              <span>Cart</span>
+              <span>Free Shipping Forever</span>
+            </Row>
             {cart.map(item => {
-              const { name, variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
-              const { price } = variations.find(o => o.id === item.variation_id)
+              const { name, product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
+              const { price } = product_variations.find(o => o.id === item.variation_id)
               return (
-                <li key={name}>
-                  <p>{name}</p>
-                  <p>x{item.quantity} — ${(item.quantity * price).toFixed(2)}</p>
-                </li>
+                <Row key={name}>
+                  <span>{name}</span>
+                  <span>${(item.quantity * price).toFixed(2)}</span>
+                </Row>
               )
             })}
-            </ul>
-            <Link to='/cart'><Button ghost>View Cart</Button></Link>
+            <Row>
+              <span>Subtotal</span>
+              <span>${cartTotal(data).toFixed(2)}</span>
+            </Row>
+            </section>
+            <aside>
+              <Link to='/cart'><Button ghost>checkout</Button></Link>
+            </aside>
           </Tray>
+          <Close onClick={() => toggle()}><MdClose /></Close>
         </Wrapper>
       )}
     />

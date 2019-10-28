@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import Button from './Button'
+import Button from './button'
 import Moment from 'react-moment'
 
 const Wrapper = styled.div`
-
+  padding: 2rem;
 `;
 
 const Sub = styled.div`
-  border-bottom: 2px solid rgb(51,51,51);
-  padding: 1rem 0;
+  border: 2px solid rgb(51,51,51);
+  padding: 1rem;
   display: grid;
   grid-gap: 2rem;
   align-items: center;
@@ -37,7 +37,7 @@ const Subscriptions = ({ customer_id }) => {
     .then(res => {
       setSubscriptions(res.data)
     })
-  }, [subscriptions])
+  }, [subscriptions, customer_id])
 
   return (
     <Wrapper>

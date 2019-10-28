@@ -1,18 +1,18 @@
-
-<svg width="74px" height="74px" viewBox="0 0 74 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="USA" fill="#000000">
-            <g id="Group-10">
-                <polygon id="Fill-1" points="55.87 4.0006 73.161 4.0006 73.161 -0.0004 55.87 -0.0004"></polygon>
-                <polygon id="Fill-2" points="0.0423 27.4426 0.0423 31.4426 73.1613 31.4276 73.1613 27.4286"></polygon>
-                <polygon id="Fill-3" points="0 58.8706 73.161 58.8706 73.161 54.8706 0 54.8706"></polygon>
-                <polygon id="Fill-4" points="0 45.1566 73.118 45.1566 73.118 41.1556 0 41.1556"></polygon>
-                <polygon id="Fill-5" points="55.87 17.7136 73.161 17.7136 73.161 13.7136 55.87 13.7136"></polygon>
-                <polygon id="Fill-6" points="9.5004 -0.0002 9.5004 14.7178 3.5004 14.7178 3.5004 -0.0002 0.5004 -0.0002 0.5004 17.7178 12.5004 17.7178 12.5004 -0.0002"></polygon>
-                <polygon id="Fill-7" points="33.8238 -0.0002 33.8238 17.7178 36.8248 17.7178 36.8248 3.0008 42.8238 3.0008 42.8238 17.7178 45.8248 17.7178 45.8248 -0.0002"></polygon>
-                <polygon id="Fill-8" points="35.324 10.5706 44.324 10.5706 44.324 7.5706 35.324 7.5706"></polygon>
-                <polygon id="Fill-9" points="18.162 -0.0002 18.162 10.5698 25.162 10.5698 25.162 14.7178 17.663 14.7178 17.663 17.7178 28.162 17.7178 28.162 7.5708 21.162 7.5708 21.162 3.0008 28.662 3.0008 28.662 -0.0002"></polygon>
-            </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>made_in_usa_48px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="made_in_usa_48px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-9" transform="translate(0.000000, 3.000000)" fill="#000000">
+            <polygon id="Fill-1" points="36 2.001 48 2.001 48 2.84217094e-14 36 2.84217094e-14"></polygon>
+            <polygon id="Fill-2" points="-4.51097493e-14 20.0089597 -4.51097493e-14 22 48 21.9910403 48 20"></polygon>
+            <polygon id="Fill-3" points="0 32 48 32 48 30 0 30"></polygon>
+            <polygon id="Fill-4" points="0 42 48 42 48 40 0 40"></polygon>
+            <polygon id="Fill-5" points="36 12 48 12 48 10 36 10"></polygon>
+            <polygon id="Fill-6" points="6 0 6 9.99916674 2 10 1.999 0 0 0 0 12 8 12 8 0"></polygon>
+            <path d="M20,0 L20,12 L22.001,12 L22.001,6.00798935 L26,6.00798935 L26,12 L28,12 L28,0 L20,0 Z M22,4 L26,4 L26,2 L22,2 L22,4 Z" id="Fill-7"></path>
+            <polygon id="Fill-8" points="11 0 11 6.00798935 15.001 6.00798935 15.001 10.0016644 11 10.0016644 11 12 17 12 17 4.01065246 13.001 4.01065246 13.001 1.99733688 17 1.99733688 17 0"></polygon>
         </g>
     </g>
 </svg>

@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import usa from '../images/icon-usa.svg'
 import organic from '../images/icon-organic.svg'
+import tested from '../images/icon-tested.svg'
+import gmo from '../images/icon-gmo.svg'
+import zeroTHC from '../images/icon-zero-thc.svg'
 import spectrum from '../images/icon-spectrum.svg'
 
 const Wrapper = styled.section`
@@ -9,7 +12,7 @@ const Wrapper = styled.section`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5vw;
   width: 70vw;
-  margin: 2rem auto;
+  margin: 8rem auto;
 `;
 
 const Item = styled.div`
@@ -27,15 +30,6 @@ const Item = styled.div`
 
 const benefits = [
   {
-    title: 'Free Shipping',
-  },
-  {
-    title: 'Flexible Subscriptions',
-  },
-  {
-    title: '3rd Party Tested'
-  },
-  {
     title: 'Made in USA',
     icon: usa
   },
@@ -48,17 +42,23 @@ const benefits = [
     icon: spectrum
   },
   {
-    title: 'No GMO'
+    title: 'No GMO',
+    icon: gmo
   },
   {
-    title: 'Zero THC'
+    title: 'Zero THC',
+    icon: zeroTHC
+  },
+  {
+    title: '3rd Party Tested',
+    icon: tested
   }
 ]
 
 const Benefits = () => (
   <Wrapper>
     {benefits.map(item => (
-      <Item>
+      <Item key={item.title}>
         {item.icon &&
           <img src={item.icon} alt={item.title} title={item.title} />
         }

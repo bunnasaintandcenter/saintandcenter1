@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
-import LoginForm from '../components/loginForm'
+import RegisterForm from '../components/registerForm'
 import SectionHeader from '../components/sectionHeader'
 
 const Wrapper = styled.div`
@@ -27,13 +27,13 @@ const Home = ({ location, theme }) => {
 
   return (
     <Layout location={location}>
-      <SEO title='Login | Saint and Center' />
+      <SEO title='Register | Saint and Center' />
       <SectionHeader title='Account' />
       <Wrapper>
         <aside>
-          <h2>Log in</h2>
+          <h2>Register</h2>
         </aside>
-        <LoginForm />
+        <RegisterForm />
       </Wrapper>
     </Layout>
   )

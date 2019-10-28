@@ -8,7 +8,6 @@ const persistedStore = loadState()
 const createStore = reduxCreateStore( rootReducer, persistedStore);
 
 createStore.subscribe(() => {
-  console.log('hmmm')
   saveState({
     cart: createStore.getState().cart,
     user: createStore.getState().user

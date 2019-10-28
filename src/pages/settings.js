@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import Layout from '../components/layout'
 import SectionHeader from '../components/sectionHeader'
 import ShippingForm from '../components/ShippingForm'
-import Subscriptions from '../components/Subscriptions'
+import Subscriptions from '../components/subscriptions'
+import AccountNav from '../components/AccountNav'
 
 const Section = styled.section`
   width: 90vw;
@@ -24,14 +25,22 @@ const Section = styled.section`
 const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
-  console.log(user)
+
+  // const tabs = [
+  //   'orders',
+  //   'subscriptions',
+  //   'payment',
+  //   'addressBook',
+  //   'logout'
+  // ]
 
   return (
     <Layout>
       {user.id &&
         <>
-          <SectionHeader title='Settings' secondary={`Hello, ${user.first_name}`} />
-          <Section cols={3}>
+          <AccountNav />
+          <SectionHeader title='Account' secondary={`Hello, ${user.first_name}`} />
+          <Section cols={2}>
             <ShippingForm address={user.shipping} user={user} title='shipping' />
             <ShippingForm address={user.billing} user={user} title='billing' />
           </Section>

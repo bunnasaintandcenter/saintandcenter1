@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import ProductListBlock from './productListBlock'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
+import { isMobile } from 'react-device-detect'
+import { FiArrowRight } from 'react-icons/fi'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
@@ -22,30 +23,50 @@ const List = styled.ul`
 
 const Item = styled.li`
   border-bottom: 2px solid black;
-  display: flex;
-  align-items: baseline;
-  cursor: pointer;
-  flex-direction: column;
+
+  a {
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+    justify-content: space-between;
+    text-decoration: none;
+    color: rgb(51,51,51);
+  }
 
   &:last-of-type {
     border: 0;
-    justify-content: center;
-    align-items: center;
 
-    h2 {
-      font-size: 24px;
-      padding: 2rem 0;
+    @media ${device.laptop}{
+      justify-content: center;
+      align-items: center;
 
-      &:hover {
+      h2 {
+        font-size: 24px;
         padding: 2rem 0;
+
+        a {
+          justify-content: center;
+        }
+
+        &:hover {
+          padding: 2rem 0;
+        }
       }
+    }
+  }
+
+  .expandable {
+    font-size: 18px;
+
+    span {
+      font-size: 24px;
     }
   }
 
   h2 {
     font-size: 30px;
     font-weight: normal;
-    padding: 2rem 5vw;
+    padding: 2rem;
     margin: 0;
     transition: 0.2s all ease-in-out;
     text-transform: uppercase;
@@ -59,41 +80,40 @@ const Item = styled.li`
     }
   }
 
+  svg {
+    padding: 2rem;
+  }
+
   &:after {
     content: ${props => props.after ? props.after : ''};
   }
 `;
 
 const ProductList = ({updateCart}) => {
-
-  const [ selected, select ] = useState('');
-
-  // const handleSelect = (product) => {
-  //   if(selected === ''){
-  //     select(product)
-  //   } else {
-  //     select('')
-  //   }
-  // }
-
   return (
   <StaticQuery
     query={graphql`
       query MyQuery {
-        allWcProducts {
+        allWcProductsCategories {
           edges {
             node {
-              sku
-              name
               wordpress_id
-              description
-              variations {
-                price
-                attributes {
-                  option
-                }
-                sku
+              name
+              slug
+              products {
                 id
+                wordpress_id
+                sku
+                name
+                description
+                product_variations {
+                  attributes {
+                    option
+                  }
+                  price
+                  sku
+                  id
+                }
               }
             }
           }
@@ -103,28 +123,25 @@ const ProductList = ({updateCart}) => {
     render={(data) => (
       <Wrapper>
         <List>
-          {data.allWcProducts.edges.map(({node}) => (
-            <Item
-              key={node.wordpress_id}
-              selected={selected === node.wordpress_id}
-              onClick={() => select(node.wordpress_id)}
-            >
-              <h2>{node.name}</h2>
-              {selected === node.wordpress_id &&
-                <ProductListBlock
-                  title={node.name}
-                  info={node.info}
-                  id={node.wordpress_id}
-                  color={`#${node.sku}`}
-                  phrases={node.phrases}
-                  updateCart={updateCart}
-                  description={node.description}
-                  options={node.variations}
-                />
-              }
-            </Item>
-          ))}
-          <Item><h2>View All</h2></Item>
+          {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => {
+            return (
+                <Item
+                  key={node.wordpress_id}
+                >
+                <Link to={`/shop/product/${node.slug}`}>
+                  <h2>{node.name}</h2>
+                  <h2>${node.products[1].product_variations[0].price}{node.products[1].product_variations.length > 1 && `+` }</h2>
+                </Link>
+              </Item>
+            )
+          }
+          )}
+          <Item>
+            <Link to='/shop'>
+            <h2>View All</h2>
+            {isMobile && <FiArrowRight />}
+            </Link>
+          </Item>
         </List>
       </Wrapper>
     )}

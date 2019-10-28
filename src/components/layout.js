@@ -1,11 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
+import styled from 'styled-components'
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
+import Announcement from './announcement'
 import Header from './header'
+import Footer from './footer'
+import { isBrowser } from 'react-device-detect'
 
 import "./layout.css"
+
+const Wrapper = styled.div`
+  /* transition: 0.2 all ease-in-out; */
+  padding-top: ${props => props.bannerOpen ? `calc(1.5vw + 2rem)` : `0`};
+`;
 
 const theme = {
   color: {
@@ -21,6 +30,8 @@ const Layout = ({ children, location }) => {
 
   const cart = useSelector(state => state.cart)
 
+  const [bannerOpen, toggleBanner] = useState(true)
+
   return (
     <StaticQuery
       query={graphql`
@@ -34,10 +45,17 @@ const Layout = ({ children, location }) => {
       `}
       render={data => (
         <ThemeProvider theme={theme}>
-          <div>
-            <Header cart={cart} />
+          <Wrapper bannerOpen={bannerOpen}>
+            <Announcement
+              text='Free Shipping on Orders over $75'
+              toggle={toggleBanner}
+              open={bannerOpen} />
+            <Header bannerOpen={bannerOpen} cart={cart} />
             {children}
-          </div>
+            {isBrowser &&
+              <Footer />
+            }
+          </Wrapper>
         </ThemeProvider>
       )}
     />
