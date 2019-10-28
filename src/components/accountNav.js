@@ -49,7 +49,7 @@ const AccountNav = ({location, tabs}) => (
   <Nav>
     <List>
       {tabs.map(({url, title, action}) => (
-        <Item>
+        <Item key={title}>
           {url
             ? <Link to={`/account/${url}`}>{title}</Link>
             : <span onClick={action}>{title}</span>

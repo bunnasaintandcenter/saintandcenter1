@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Button from './button'
 import axios from 'axios'
 import { navigate } from 'gatsby'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 const Form = styled.form`
   display: flex;
@@ -35,7 +36,7 @@ const Connect = styled.div`
   grid-gap: 1rem 2rem;
   margin-bottom: 4rem;
 
-  span {
+  p {
     grid-column: span 2;
     font-weight: 2;
     text-transform: uppercase;
@@ -43,6 +44,8 @@ const Connect = styled.div`
 
   button {
     padding: 0.5rem;
+    font-weight: 400;
+    width: 100%;
     color: rgb(51,51,51);
     border: 1px solid rgb(51,51,51);
     font-size: 16px;
@@ -71,22 +74,24 @@ const RegisterForm = () => {
 
       return axios.post(`https://andnone.co/saintcenter/api/user/register/?username=${firstName}${lastName}&email=${email}&display_name=${firstName}${lastName}&nonce=${nonce}&user_pass=${password}`)
       .then(res => {
-        const { status, cookie } = res.data;
+        const { status, cookie, wp_user_id } = res.data;
         console.log('status', status)
         if(status === 'ok'){
           localStorage.setItem('cookie', cookie)
           localStorage.setItem('user', {
             email: email,
-            firstName: firstName,
-            lastName: lastName
+            first_name: firstName,
+            last_name: lastName,
+            id: wp_user_id
           })
 
           dispatch({
             type: 'USER_SIGNIN',
             payload: {
               email: email,
-              firstName: firstName,
-              lastName: lastName
+              first_name: firstName,
+              last_name: lastName,
+              id: wp_user_id
             }
           })
 
@@ -100,11 +105,43 @@ const RegisterForm = () => {
     .catch(err => console.error(err))
   }
 
+  const handleFacebook = async (response) => {
+    const { accessToken, name } = response;
+
+    try {
+      const facebookConnect = await axios.post(`https://andnone.co/saintcenter/api/user/fb_connect/?access_token=${accessToken}`)
+      const { cookie, status } = facebookConnect;
+
+      const user = await axios.get(`https://andnone.co/saintcenter/wp-json/wc/v3/customers?email=${response.email}&consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`)
+      const { data } = user;
+
+      localStorage.setItem('cookie', cookie)
+      localStorage.setItem('user', data[0])
+
+      dispatch({
+        type: 'USER_SIGNIN',
+        payload: data[0]
+      })
+
+      navigate('/')
+
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Connect>
-        <span>Connect With</span>
-        <Button ghost>Facebook</Button>
+        <p>Connect With</p>
+        <FacebookLogin
+          appId="595105721025341"
+          fields="name, email, picture"
+          callback={res => handleFacebook(res)}
+          render={renderProps => (
+            <Button ghost onClick={renderProps.onClick}>Facebook</Button>
+          )}
+        />
         <Button ghost>Google</Button>
       </Connect>
       <input type='text' value={firstName} placeholder='First Name' onChange={e => handleFirstName(e.target.value)} />

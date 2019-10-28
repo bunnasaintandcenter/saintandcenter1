@@ -36,7 +36,6 @@ const Home = ({ location, theme }) => {
         </aside>
         <LoginForm />
       </Wrapper>
-      <Footer />
     </Layout>
   )
 }

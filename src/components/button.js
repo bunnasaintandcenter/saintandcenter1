@@ -7,11 +7,13 @@ const StyledButton = styled.button`
   text-transform: uppercase;
   font-family: 'US';
   font-size: 18px;
+  font-weight: 400;
   background: ${props => props.primary ? 'black' : 'transparent' };
   color: ${props => props.primary || props.ghost ? 'white' : 'black' };
   transition: 0.2s all ease-in-out;
   cursor: pointer;
-  outline: 0;
+  outline: 0 !important;
+  appearance: none !important;
 
   &:hover {
     transform: translate(0, -2px);

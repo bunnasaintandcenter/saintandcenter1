@@ -38,6 +38,8 @@ const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
 
+  console.log(user)
+
   const tabs = [
     { url: 'orders', title: 'Orders'},
     { url: 'subscriptions', title: 'Subscriptions'},
@@ -48,7 +50,7 @@ const Settings = ({ location, data }) => {
 
   return (
     <Layout>
-      {user.id &&
+      {user.id ?
         <>
         <SectionHeader title='Account' secondary={`Hello, ${user.first_name}`} />
         <Section cols={2}>
@@ -63,6 +65,7 @@ const Settings = ({ location, data }) => {
           </Main>
         </Section>
         </>
+        : <span>Please log in</span>
       }
     </Layout>
   )
