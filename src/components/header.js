@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo-black.svg'
+import logotype from '../images/logotype.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
@@ -92,19 +93,16 @@ const Header = ({ cart, bannerOpen }) => {
       <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
     }
     <Head data-testid='header' id='header' navOpen={navOpen} bannerOpen={bannerOpen}>
-
       <Menu
         open={navOpen}
         onClick={handleToggleNav}
       />
       <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
-      {isBrowser &&
-        <CartButton
-          data-testid='cart-button'
-          onClick={() => toggleCart(!cartOpen)}>
-          <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
-        </CartButton>
-      }
+      <CartButton
+        data-testid='cart-button'
+        onClick={() => toggleCart(!cartOpen)}>
+        <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
+      </CartButton>
       <Nav open={navOpen} cartItems={cart.length} />
     </Head>
     </Wrapper>

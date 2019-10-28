@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'
 import Header from './header'
 import Footer from './footer'
+import { isBrowser } from 'react-device-detect'
 
 import "./layout.css"
 
@@ -51,7 +52,9 @@ const Layout = ({ children, location }) => {
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} />
             {children}
-            <Footer />
+            {isBrowser &&
+              <Footer />
+            }
           </Wrapper>
         </ThemeProvider>
       )}

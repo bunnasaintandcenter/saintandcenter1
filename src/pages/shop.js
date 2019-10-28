@@ -5,11 +5,17 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Product from '../components/product'
 import SEO from '../components/seo'
+import { isBrowser } from 'react-device-detect'
 import Benefits from '../components/benefits'
+import { device } from '../utils/devices'
 
 const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Shop = () => (
@@ -45,7 +51,9 @@ const Shop = () => (
           <Product key={product.node.wordpress_id} {...product.node} />
         ))}
       </ProductGrid>
-      <Benefits />
+      {isBrowser &&
+        <Benefits />
+      }
     </Layout>
   )} />
 );

@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
+import { isMobile } from 'react-device-detect'
+import { FiArrowRight } from 'react-icons/fi'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
@@ -33,19 +35,22 @@ const Item = styled.li`
 
   &:last-of-type {
     border: 0;
-    justify-content: center;
-    align-items: center;
 
-    h2 {
-      font-size: 24px;
-      padding: 2rem 0;
+    @media ${device.laptop}{
+      justify-content: center;
+      align-items: center;
 
-      a {
-        justify-content: center;
-      }
-
-      &:hover {
+      h2 {
+        font-size: 24px;
         padding: 2rem 0;
+
+        a {
+          justify-content: center;
+        }
+
+        &:hover {
+          padding: 2rem 0;
+        }
       }
     }
   }
@@ -73,6 +78,10 @@ const Item = styled.li`
     &:hover {
       padding-left: 4.5vw;
     }
+  }
+
+  svg {
+    padding: 2rem;
   }
 
   &:after {
@@ -127,7 +136,12 @@ const ProductList = ({updateCart}) => {
             )
           }
           )}
-          <Item><h2><Link to='/shop'>View All</Link></h2></Item>
+          <Item>
+            <Link to='/shop'>
+            <h2>View All</h2>
+            {isMobile && <FiArrowRight />}
+            </Link>
+          </Item>
         </List>
       </Wrapper>
     )}

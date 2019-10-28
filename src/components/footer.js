@@ -5,14 +5,17 @@ import { Link } from 'gatsby'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import arrow from '../images/arrow.svg'
+import { device } from '../utils/devices'
 
 const Foot = styled.footer`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  @media ${device.laptop}{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const Insta = styled.div`
-  width: 50vw;
   position: relative;
 
   span {
@@ -78,7 +81,6 @@ const Insta = styled.div`
 `;
 
 const Join = styled.div`
-  width: 50vw;
   position: relative;
   display: flex;
   align-items: center;

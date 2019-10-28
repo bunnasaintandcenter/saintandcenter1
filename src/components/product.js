@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
-  height: 33.3vw;
+  height: 50vw;
   padding: 1rem;
   box-sizing: border-box;
   display: flex;
@@ -12,6 +13,10 @@ const Wrapper = styled.div`
   justify-content: center;
   background: #E1D6D6;
   position: relative;
+
+  @media ${device.laptop}{
+    height: 33.3vw;
+  }
 
   a {
     position: absolute;
@@ -21,8 +26,14 @@ const Wrapper = styled.div`
     height: 100%;
   }
 
-  &:nth-child(even){
+  &:nth-of-type(3n + 1) {
     background: #D1CECE;
+  }
+
+  @media ${device.laptop}{
+    &:nth-child(even){
+      background: #D1CECE;
+    }
   }
 
   .product-image {
@@ -47,8 +58,12 @@ const Info = styled.div`
   h2, h3 {
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 1vw;
+    font-size: 3vw;
     margin: 0;
+
+    @media ${device.laptop}{
+      font-size: 1vw;
+    }
   }
 
   h2 {

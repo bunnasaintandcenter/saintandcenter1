@@ -3,10 +3,9 @@ import styled from 'styled-components'
 import { device } from '../utils/devices'
 
 const Block = styled.section`
-  margin: 2rem 0;
-  padding: 2rem 5vw;
 
   @media ${device.laptop}{
+    padding: 2rem 5vw;
     margin: 4rem 0 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -14,10 +13,14 @@ const Block = styled.section`
 
   span {
     display: block;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     text-transform: uppercase;
     margin-top: 2rem;
+
+    @media ${device.laptop}{
+      font-size: 24px;
+    }
   }
 `;
 
@@ -36,7 +39,6 @@ const Block = styled.section`
 const Text = styled.div`
   font-size: 18px;
   font-weight: 200;
-  text-align: center;
   padding: 1rem;
   line-height: 24px;
 
@@ -58,8 +60,12 @@ const Image = styled.div`
   padding: 4rem 0;
 
   img {
-    height: 60vh;
+    height: 20vh;
     margin: 0 auto;
+
+    @media ${device.laptop}{
+      height: 60vh;
+    }
   }
 `;
 

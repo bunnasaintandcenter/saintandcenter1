@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   background-position: center center;
   color: white;
   position: relative;
+  box-sizing: border-box;
 
   @media ${device.laptop}{
     height: 80vh;
@@ -26,21 +27,29 @@ const Wrapper = styled.div`
     font-weight: 300;
     position: relative;
     z-index: 1;
+    margin-bottom: 4rem;
 
     @media ${device.laptop}{
       font-size: 60px;
+      margin-bottom: 2rem;
     }
 
     &:after {
       content: "";
       position: absolute;
       left: 0;
-      top: 5rem;
+      top: 3rem;
       background: url(${arrow});
       background-size: 100%;
-      width: 30px;
-      height: 40px;
+      width: 20px;
+      height: 26px;
       z-index: 2;
+
+      @media ${device.laptop}{
+        width: 30px;
+        height: 40px;
+        top: 5rem;
+      }
     }
   }
 
