@@ -79,9 +79,12 @@ const Header = ({ cart, bannerOpen }) => {
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
+  const toggleBodyLock = () => {
+    document.body.classList.toggle('locked')
+  }
+
   const handleToggleNav = () => {
     // document.getElementById('header').scrollIntoView()
-    document.body.classList.toggle('locked')
     toggleCart(false)
     toggleNav(!navOpen)
   }

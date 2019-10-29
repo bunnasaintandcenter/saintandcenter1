@@ -22,7 +22,7 @@ const Shop = () => (
   <StaticQuery
     query={graphql`
       query ShopQuery {
-        allWcProductsCategories(sort: {fields: menu_order}) {
+        allWcProductsCategories(sort: {fields: menu_order}, filter: {wordpress_id: {ne: 29}}) {
           edges {
             node {
               wordpress_id
