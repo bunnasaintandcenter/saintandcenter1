@@ -40,13 +40,14 @@ const Item = styled.li`
       justify-content: center;
       align-items: center;
 
+      a {
+        justify-content: center;
+        display: flex;
+      }
+
       h2 {
         font-size: 24px;
         padding: 2rem 0;
-
-        a {
-          justify-content: center;
-        }
 
         &:hover {
           padding: 2rem 0;
@@ -94,12 +95,13 @@ const ProductList = ({updateCart}) => {
   <StaticQuery
     query={graphql`
       query MyQuery {
-        allWcProductsCategories {
+        allWcProductsCategories(skip: 29, sort: {fields: menu_order}) {
           edges {
             node {
               wordpress_id
               name
               slug
+              menu_order
               products {
                 id
                 wordpress_id

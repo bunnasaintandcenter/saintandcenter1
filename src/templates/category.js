@@ -8,6 +8,7 @@ import { isBrowser, isMobile } from 'react-device-detect'
 import Img from 'gatsby-image'
 import SEO from '../components/seo'
 import ProductSelect from '../components/productSelect'
+import Slider from 'react-slick'
 
 const Wrapper = styled.div`
 
@@ -19,19 +20,20 @@ const Wrapper = styled.div`
 
 const Image = styled.div`
   background: #D1CECE;
-  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
 
-  .product-image {
-    height: 60vh;
-    width: 30vw;
-
-    img {
-      object-fit: contain !important;
+  @media ${device.laptop}{
+    .slick-slider, .slick-track, .slick-list {
+      height: 100%;
     }
+  }
+
+  img {
+    object-fit: cover !important;
+    margin-bottom: 0 !important;
   }
 `;
 
@@ -78,6 +80,7 @@ const InfoOverlay = styled.div`
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  pointer-events: none;
 
   h4 {
     opacity: ${props => props.open ? 1 : 0};
@@ -105,10 +108,22 @@ const InfoOverlay = styled.div`
 
 const Category = ({ pageContext, updateCart, data }) => {
 
-  const { name, description, products, images } = pageContext;
+  const { name, description, products } = pageContext;
   const [infoShown, setInfoShown] = useState(false)
 
+  let images = []
+
+  if(products && products.length > 0){
+    images = products[1].images
+  }
+
   const { image } = data.allWcProductsCategories.edges[0].node;
+
+  const config = {
+    dots: false,
+    arrows: false,
+    slidesToShow: 1
+  }
 
   return (
     <Layout>
@@ -124,7 +139,15 @@ const Category = ({ pageContext, updateCart, data }) => {
               }
             </InfoToggle>
           }
-          {image && <Img className='product-image' fluid={image.localFile.childImageSharp.fluid} /> }
+          <Slider
+            speed={500}
+            infinite
+            arrows={false}
+          >
+            {images.length > 0 && images.map(img => (
+              <img src={img.localFile.childImageSharp.fluid.src} />
+            ))}
+          </Slider>
           {isMobile &&
             <InfoOverlay open={infoShown}>
               <h4>{description}</h4>

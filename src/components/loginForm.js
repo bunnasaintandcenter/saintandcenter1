@@ -5,14 +5,19 @@ import Button from './button'
 import axios from 'axios'
 import { navigate, Link } from 'gatsby'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { device } from '../utils/devices'
 
 const Form = styled.form`
   display: flex;
-  padding: 4rem 8rem;
+  padding: 0 5vw 5vw;
   flex-direction: column;
   min-height: 60vh;
   margin: 0;
   border-bottom: 2px solid rgb(51,51,51, 0.2);
+
+  @media ${device.laptop}{
+    padding: 4rem 8rem;
+  }
 
   &:first-of-type {
     border: 0;

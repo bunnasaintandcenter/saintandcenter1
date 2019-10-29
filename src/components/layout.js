@@ -8,12 +8,17 @@ import Announcement from './announcement'
 import Header from './header'
 import Footer from './footer'
 import { isBrowser } from 'react-device-detect'
+import { device } from '../utils/devices'
 
 import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props => props.bannerOpen ? `calc(1.5vw + 2rem)` : `0`};
+  padding-top: ${props => props.bannerOpen ? `74px` : `0`};
+
+  @media ${device.laptop}{
+    padding-top: ${props => props.bannerOpen ? `calc(1.5vw + 2rem)` : `0`};
+  }
 `;
 
 const theme = {

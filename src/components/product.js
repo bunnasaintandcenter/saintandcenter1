@@ -26,8 +26,10 @@ const Wrapper = styled.div`
     height: 100%;
   }
 
-  &:nth-of-type(3n + 1) {
-    background: #D1CECE;
+  @media (max-width: 400px){
+    &:nth-of-type(3n + 1) {
+      background: #D1CECE;
+    }
   }
 
   @media ${device.laptop}{
