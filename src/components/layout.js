@@ -32,6 +32,13 @@ const Layout = ({ children, location }) => {
 
   const [bannerOpen, toggleBanner] = useState(true)
 
+  const handleToggleAnnouncement = () => {
+    const storageObj = { timestamp: new Date().getTime()};
+    console.log(storageObj)
+    localStorage.setItem('sc-hide-announcement', JSON.stringify(storageObj))
+    toggleBanner()
+  }
+
   return (
     <StaticQuery
       query={graphql`
@@ -48,7 +55,7 @@ const Layout = ({ children, location }) => {
           <Wrapper bannerOpen={bannerOpen}>
             <Announcement
               text='Free Shipping on Orders over $75'
-              toggle={toggleBanner}
+              toggle={handleToggleAnnouncement}
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} />
             {children}

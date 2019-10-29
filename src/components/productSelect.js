@@ -4,6 +4,7 @@ import Button from './button'
 import { useDispatch } from 'react-redux'
 import Expandable from './expandable'
 import stripHtml from 'string-strip-html'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
   font-weight: 300;

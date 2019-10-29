@@ -18,6 +18,10 @@ const Foot = styled.footer`
 const Insta = styled.div`
   position: relative;
 
+  @media ${device.laptop}{
+    width: 50vw;
+  }
+
   span {
     text-transform: uppercase;
 

@@ -1288,9 +1288,9 @@
     fastq "^1.6.0"
 
 "@pasdo501/gatsby-source-woocommerce@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@pasdo501/gatsby-source-woocommerce/-/gatsby-source-woocommerce-0.8.0.tgz#e50357458b41094a2ad1344ad0b4ea6df0291f13"
-  integrity sha512-SdSO/Cawu7FUfeNKxt40raWow0UiI0iBKSxwGFBn6hyWPOWQ/XPf78xprMIGCe38FkM2XVzXfBnVf+31vFpSDw==
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@pasdo501/gatsby-source-woocommerce/-/gatsby-source-woocommerce-0.8.1.tgz#d0c02ac3f32824ef49d6893ee0a97c5b38ff370d"
+  integrity sha512-GywD1bayR6lVNqG3wEzcMdwTt0x0vhVNqwd5Vv8mQOCHFGvpyxP74jOfpxm/ellFfsDTprJvBf+mlNzVoeVZyw==
   dependencies:
     "@woocommerce/woocommerce-rest-api" "^1.0.1"
     gatsby-source-filesystem "^2.0.27"

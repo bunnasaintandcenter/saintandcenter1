@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo-black.svg'
-import logotype from '../images/logotype.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
 import Cart from './cart'
-import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
   position: ${props => props.navOpen ? `fixed` : `sticky` };
