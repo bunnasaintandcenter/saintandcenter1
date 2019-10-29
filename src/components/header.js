@@ -8,7 +8,7 @@ import { device } from '../utils/devices'
 import Cart from './cart'
 
 const Wrapper = styled.div`
-  position: ${props => props.navOpen ? `fixed` : `sticky` };
+  position: fixed;
   top: ${props => props.bannerOpen ? `calc(2rem + 1.5vw)` : `0` };
   z-index: 100;
 `;
@@ -24,7 +24,7 @@ const Head = styled.header`
   padding: 1rem 5vw;
   transition: all 0.3s ease-in-out;
   background: rgb(248,249,244);
-  z-index: 11;
+  z-index: 30;
 
   @media ${device.laptop}{
     padding: 0 2rem;
@@ -80,12 +80,14 @@ const Header = ({ cart, bannerOpen }) => {
   const [cartOpen, toggleCart] = useState(false)
 
   const handleToggleNav = () => {
-    document.getElementById('header').scrollIntoView()
+    // document.getElementById('header').scrollIntoView()
+    document.body.classList.toggle('locked')
     toggleCart(false)
     toggleNav(!navOpen)
   }
 
   return (
+    <>
     <Wrapper cartOpen={cartOpen}>
     {cart.length > 0 &&
       <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
@@ -101,9 +103,10 @@ const Header = ({ cart, bannerOpen }) => {
         onClick={() => toggleCart(!cartOpen)}>
         <span data-testid='header-cart-count'>{cart.length > 0 && cart.length}</span>
       </CartButton>
-      <Nav open={navOpen} cartItems={cart.length} />
     </Head>
     </Wrapper>
+    <Nav open={navOpen} cartItems={cart.length} />
+    </>
   )
 }
 
