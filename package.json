@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "saint-and-center",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Saint and Center website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jermaine Davis <majorwaves@gmail.com>",
   "dependencies": {
     "@massivdash/gatsby-source-woocommerce": "^0.2.4",
     "@pasdo501/gatsby-source-woocommerce": "^0.8.0",
