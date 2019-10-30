@@ -61,7 +61,7 @@ const CartButton = styled.div`
     height: 32px;
     border-radius: 16px;
     border: ${props => props.background ? `1px solid black` : `1px solid white`};
-    color: white;
+    color: ${props => props.background ? `white`: `black`};
     font-size: 13px;
     font-weight: 100;
     display: flex;
@@ -76,17 +76,19 @@ const CartButton = styled.div`
   }
 `;
 
-const Header = ({ cart, bannerOpen }) => {
+const Header = ({ cart, bannerOpen, home }) => {
 
-  const [background, setBackground] = useState(false)
+  const [background, setBackground] = useState(home ? false : true)
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
   const listenScrollEvent = e => {
-    if(window.scrollY > 400) {
-      setBackground(true)
-    } else {
-      setBackground(false)
+    if(home){
+      if(window.scrollY > 400) {
+        setBackground(true)
+      } else {
+        setBackground(false)
+      }
     }
   }
 

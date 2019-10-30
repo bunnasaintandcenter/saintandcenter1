@@ -73,7 +73,7 @@ const Layout = ({ children, location }) => {
               text='Free Shipping on Orders over $75'
               toggle={handleToggleAnnouncement}
               open={bannerOpen} />
-            <Header bannerOpen={bannerOpen} cart={cart} />
+            <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
             {children}
             {isBrowser &&
               <Footer />
