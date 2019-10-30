@@ -39,7 +39,7 @@ const Settings = ({ location, data }) => {
           <AccountNav
             tabs={tabs}
           />
-          <Subscriptions />
+          <Subscriptions id={user.id} />
         </Section>
         </>
       }
