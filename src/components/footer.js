@@ -6,6 +6,7 @@ import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import arrow from '../images/arrow.svg'
 import { device } from '../utils/devices'
+import Signup from './Signup'
 
 const Foot = styled.footer`
 
@@ -17,6 +18,10 @@ const Foot = styled.footer`
 
 const Insta = styled.div`
   position: relative;
+
+  @media ${device.laptop}{
+    width: 50vw;
+  }
 
   span {
     text-transform: uppercase;
@@ -76,56 +81,6 @@ const Insta = styled.div`
           content: none;
         }
       }
-    }
-  }
-`;
-
-const Join = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  input {
-    padding: 2rem;
-    outline: 0;
-    border: 0;
-    appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    width: 100%;
-    text-transform: uppercase;
-    font-weight: 200;
-    font-size: 24px;
-  }
-
-  button {
-    position: absolute;
-    bottom: 3rem;
-    right: 5vw;
-    border: 0;
-    appearance: none;
-    padding: 0;
-    font-size: 36px;
-    text-transform: uppercase;
-    font-weight: 200;
-    cursor: pointer;
-    background: transparent;
-
-    &:hover {
-      opacity: 0.6;
-    }
-  }
-
-  span {
-    text-transform: uppercase;
-
-    &:first-of-type {
-      position: absolute;
-      top: 3rem;
-      left: 5vw;
-      z-index: 1;
-      font-size: 36px;
-      font-weight: 300;
     }
   }
 `;
@@ -203,7 +158,7 @@ const Legal = styled.ul`
   }
 `;
 
-const Signup = styled.div`
+const SignupSmall = styled.div`
   grid-column: span 2;
   display: flex;
   align-items: center;
@@ -264,18 +219,14 @@ const Footer = () => (
         <img src={productTwo} alt='instagram two' />
       </Slider>
     </Insta>
-    <Join>
-      <span>Get the Good News</span>
-      <input placeholder='Enter your email' type='email' />
-      <button>Send</button>
-    </Join>
+    <Signup />
     <FooterMenu>
-      <Signup>
+      <SignupSmall>
         <div>
           <span><strong>Join Us</strong></span>
           <input type='email' />
         </div>
-      </Signup>
+      </SignupSmall>
       <ul>
         <li><strong>Saint and Center</strong></li>
         <li>Meet Us</li>

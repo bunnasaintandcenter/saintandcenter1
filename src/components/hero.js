@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import logotype from '../images/logotype.svg'
 import PropTypes from 'prop-types'
 import { device } from '../utils/devices'
 import arrow from '../images/down.svg'
+import Div100vh from 'react-div-100vh'
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
   padding: 5vw;
-  background: black;
+  background: ${props => props.theme.color.gold};
   background-size: cover;
   background-position: center center;
   color: white;
@@ -90,14 +90,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hero = ({ title, buttonText, url, image }) => (
-  <Wrapper data-testid='hero'>
-    <img className='logotype' src={logotype} alt='Saint and Center' />
-    <picture><img src={image} alt={title} /></picture>
-    <div>
-      <h2 data-testid='title'>{title}</h2>
-    </div>
-  </Wrapper>
+const Hero = ({ title, buttonText, url }) => (
+  <Div100vh style={{ height: 'calc(100rvh - 74px)', width: '100%' }}>
+    <Wrapper data-testid='hero'>
+      <div>
+        <h2 data-testid='title'>{title}</h2>
+      </div>
+    </Wrapper>
+  </Div100vh>
 );
 
 Hero.propTypes = {

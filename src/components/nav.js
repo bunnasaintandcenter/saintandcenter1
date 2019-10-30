@@ -9,7 +9,7 @@ const Wrapper = styled.nav`
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 24px - 2rem);
+  height: fill-available;
   background: rgb(248,249,244);
   color: black;
   align-items: center;
@@ -17,7 +17,6 @@ const Wrapper = styled.nav`
   z-index: 9;
   box-sizing: border-box;
   z-index: 20;
-  padding-bottom: calc(4.5vw + 4rem);
   display: ${props => props.open ? `flex` : `none`};
 
   @media ${device.laptop}{
@@ -62,7 +61,7 @@ const List = styled.ul`
   }
 `;
 
-const Nav = ({ open, handleSubmit }) => {
+const Nav = ({ open, handleSubmit, toggle}) => {
 
   const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)

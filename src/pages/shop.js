@@ -22,7 +22,7 @@ const Shop = () => (
   <StaticQuery
     query={graphql`
       query ShopQuery {
-        allWcProductsCategories {
+        allWcProductsCategories(sort: {fields: menu_order}, filter: {wordpress_id: {ne: 29}}) {
           edges {
             node {
               wordpress_id
@@ -47,7 +47,7 @@ const Shop = () => (
       <SEO title='Shop | Saint and Center' />
       <SectionHeader title='Shop / Products' />
       <ProductGrid>
-        {data.allWcProductsCategories.edges.slice(0,3).map(product => (
+        {data.allWcProductsCategories.edges.slice(0,5).map(product => (
           <Product key={product.node.wordpress_id} {...product.node} />
         ))}
       </ProductGrid>

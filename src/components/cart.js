@@ -123,7 +123,7 @@ const Cart = ({ cart, open, toggle, handleSubmit }) => {
         }
       `}
       render={(data) => (
-        <Wrapper open={open}>
+        <Wrapper open={open} data-testid='cart'>
           <Tray>
             <section>
             <Row>

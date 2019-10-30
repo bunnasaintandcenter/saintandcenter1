@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { device } from '../utils/devices'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
@@ -15,9 +16,25 @@ import sliderOne from '../images/slider-1.jpg'
 import sliderTwo from '../images/slider-2.jpg'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
+import storyboard from '../images/storyboard.gif'
 import SectionHeader from '../components/sectionHeader'
 
 const Wrapper = styled.div`
+`;
+
+const Gif = styled.div`
+  background: white;
+
+  img {
+    margin: 0;
+    width: 100%;
+    display: flex;
+
+    @media ${device.laptop}{
+      height: calc(100vh - 2rem - 4vw);
+      object-fit: contain;
+    }
+  }
 
 `;
 
@@ -38,14 +55,9 @@ const Home = ({ location, theme }) => {
           <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
           <p>Your higher self<br/>without the high.</p>
         </TextBlock>
-        <Carousel cover>
-          <div>
-            <img src={sliderOne} alt='slider 1' />
-          </div>
-          <div>
-            <img src={sliderTwo} alt='slider 2' />
-          </div>
-        </Carousel>
+        <Gif>
+          <img src={storyboard} alt='animation' />
+        </Gif>
         <SectionHeader title='Shop' />
         <Carousel arrows bg='#E1D6D6'>
           <div>

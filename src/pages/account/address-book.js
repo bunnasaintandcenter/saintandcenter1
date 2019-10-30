@@ -9,7 +9,7 @@ import AccountNav from '../../components/AccountNav'
 const Section = styled.section`
   display: grid;
   grid-template-columns: repeat(${props => props.cols}, 1fr);
-  margin: 0 auto;
+  margin: 2rem auto;
   font-weight: 200;
 
   h2 {

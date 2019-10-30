@@ -4,10 +4,14 @@ import SEO from '../components/seo'
 import Layout from '../components/layout'
 import LoginForm from '../components/loginForm'
 import SectionHeader from '../components/sectionHeader'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+  @media ${device.laptop}{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   aside {
     border-right: 2px solid black;
@@ -19,6 +23,11 @@ const Wrapper = styled.div`
       font-weight: 400;
       font-size: 36px;
       text-transform: uppercase;
+      text-align: center;
+
+      @media ${device.laptop}{
+        text-align: left;
+      }
     }
   }
 `;

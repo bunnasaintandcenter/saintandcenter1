@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo-black.svg'
-import logotype from '../images/logotype.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
 import Cart from './cart'
-import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
-  position: ${props => props.navOpen ? `fixed` : `sticky` };
+  position: fixed;
   top: ${props => props.bannerOpen ? `calc(2rem + 1.5vw)` : `0` };
   z-index: 100;
 `;
@@ -26,7 +24,7 @@ const Head = styled.header`
   padding: 1rem 5vw;
   transition: all 0.3s ease-in-out;
   background: rgb(248,249,244);
-  z-index: 11;
+  z-index: 30;
 
   @media ${device.laptop}{
     padding: 0 2rem;
@@ -81,13 +79,18 @@ const Header = ({ cart, bannerOpen }) => {
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
+  // const toggleBodyLock = () => {
+  //   document.body.classList.toggle('locked')
+  // }
+
   const handleToggleNav = () => {
-    document.getElementById('header').scrollIntoView()
+    // toggleBodyLock()
     toggleCart(false)
     toggleNav(!navOpen)
   }
 
   return (
+    <>
     <Wrapper cartOpen={cartOpen}>
     {cart.length > 0 &&
       <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
@@ -101,11 +104,12 @@ const Header = ({ cart, bannerOpen }) => {
       <CartButton
         data-testid='cart-button'
         onClick={() => toggleCart(!cartOpen)}>
-        <span data-testid='cart-count'>{cart.length > 0 && cart.length}</span>
+        <span data-testid='header-cart-count'>{cart.length > 0 && cart.length}</span>
       </CartButton>
-      <Nav open={navOpen} cartItems={cart.length} />
     </Head>
     </Wrapper>
+    <Nav open={navOpen} cartItems={cart.length} />
+    </>
   )
 }
 

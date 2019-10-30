@@ -46,10 +46,10 @@ const Item = styled.li`
 `;
 
 const AccountNav = ({location, tabs}) => (
-  <Nav>
+  <Nav data-testid='account-nav'>
     <List>
       {tabs.map(({url, title, action}) => (
-        <Item key={title}>
+        <Item key={title} data-testid='tab'>
           {url
             ? <Link to={`/account/${url}`}>{title}</Link>
             : <span onClick={action}>{title}</span>

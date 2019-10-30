@@ -16,6 +16,15 @@ exports.createPages = async ({ graphql, actions }) => {
             description
             products {
               id
+              images {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
               wordpress_id
               sku
               name
@@ -50,6 +59,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: edge.node.slug,
         name: edge.node.name,
         image: edge.node.image,
+        images: edge.node.images,
         description: edge.node.description,
         products: edge.node.products
       },
