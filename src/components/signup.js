@@ -56,19 +56,34 @@ const Join = styled.div`
 const Signup = () => {
 
   const [email, setEmail] = useState('')
+  const [success, setSuccess] = useState(false)
 
   const handleSubmit = async () => {
-    const response = await axios.post(`https://saint-and-center-beta.netlify.com/.netlify/functions/omnisend`, {
-      email: email
-    })
-    console.log(response)
+    try {
+      const response = await axios.post(process.env.OMNISEND_FUNCTION, {
+        email: email
+      })
+      console.log(response)
+      setSuccess(true)
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   return (
     <Join>
-      <span>Get the Good News</span>
-      <input placeholder='Enter your email' value={email} onChange={e => setEmail(e.target.value)} name='email' type='email' />
-      <button onClick={handleSubmit}>Send</button>
+      {success
+        ?
+          <>
+            <span>You're Subscribed!</span>
+          </>
+        :
+          <>
+          <span>Get the Good News</span>
+            <input placeholder='Enter your email' value={email} onChange={e => setEmail(e.target.value)} name='email' type='email' />
+            <button onClick={handleSubmit}>Send</button>
+          </>
+      }
     </Join>
   )
 }
