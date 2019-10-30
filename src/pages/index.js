@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { device } from '../utils/devices'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
@@ -22,10 +23,19 @@ const Wrapper = styled.div`
 `;
 
 const Gif = styled.div`
+  background: white;
+
   img {
     margin: 0;
+    width: 100%;
     display: flex;
+
+    @media ${device.laptop}{
+      height: calc(100vh - 2rem - 4vw);
+      object-fit: contain;
+    }
   }
+
 `;
 
 const Home = ({ location, theme }) => {
@@ -45,14 +55,6 @@ const Home = ({ location, theme }) => {
           <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
           <p>Your higher self<br/>without the high.</p>
         </TextBlock>
-        <Carousel cover>
-          <div>
-            <img src={sliderOne} alt='slider 1' />
-          </div>
-          <div>
-            <img src={sliderTwo} alt='slider 2' />
-          </div>
-        </Carousel>
         <Gif>
           <img src={storyboard} alt='animation' />
         </Gif>
