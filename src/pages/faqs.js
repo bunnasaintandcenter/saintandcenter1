@@ -16,7 +16,7 @@ const FAQs = () => {
     <StaticQuery
       query={graphql`
         query FAQCategoryQuery {
-          allWordpressWpFaq {
+          allWordpressWpFaq(sort: {fields: slug}) {
             edges {
               node {
                 title
@@ -32,6 +32,7 @@ const FAQs = () => {
             edges {
               node {
                 id
+                slug
                 wordpress_id
                 name
               }
