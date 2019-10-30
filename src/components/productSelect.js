@@ -34,18 +34,26 @@ const Select = styled.div`
 
 const Price = styled.div`
   padding: 2rem 5vw;
-  font-size: 24px;
+  font-size: 16px;
   grid-column: ${props => props.recurrence === 'once' ? `span 1` : `span 2`};
   text-transform: uppercase;
   border-top: 2px solid rgba(51,51,51, 1);
+
+  @media ${device.laptop}{
+    font-size: 18px;
+  }
 `;
 
 const Counter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 16px;
   border-top: 2px solid rgba(51,51,51, 1);
+
+  @media ${device.laptop}{
+    font-size: 18px;
+  }
 
   span {
     width: 48px;
@@ -74,7 +82,7 @@ const Counter = styled.div`
 `;
 
 const Option = styled.div`
-  font-size: 24px;
+  font-size: 16px;
   text-transform: uppercase;
   padding: 2rem 0;
   cursor: pointer;
@@ -84,6 +92,10 @@ const Option = styled.div`
   -ms-user-select: none;
   user-select: none;
   background: ${props => props.selected ? `white` : `transparent` };
+
+  @media ${device.laptop}{
+    font-size: 18px;
+  }
 
   label {
     display: flex;
