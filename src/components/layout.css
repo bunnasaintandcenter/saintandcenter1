@@ -698,7 +698,7 @@ pre tt:after {
   font-family: 'US';
   src: url('../type/UntitledSansWeb-BlackItalic.woff') format('woff');
   font-weight: 800;
-  font-style: normal;
+  font-style: italic;
 }
 
 .headroom-wrapper {

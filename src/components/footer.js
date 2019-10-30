@@ -204,6 +204,7 @@ const SignupSmall = styled.div`
   strong {
     text-transform: uppercase;
     margin: 0 0 2rem;
+    font-weight: 500;
   }
 `;
 

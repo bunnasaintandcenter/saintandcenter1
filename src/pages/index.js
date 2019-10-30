@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import styled from 'styled-components'
 import { device } from '../utils/devices'
 import SEO from '../components/seo'
@@ -10,7 +10,6 @@ import ProductList from '../components/productList'
 import Benefits from '../components/benefits'
 import hemp from '../images/hemp.png'
 import arch from '../images/arch.svg'
-import image from '../images/hero.jpg'
 import Carousel from '../components/carousel'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
@@ -38,17 +37,23 @@ const Gif = styled.div`
 
 const Home = ({ location, theme }) => {
 
-  // const [cart, updateCart] = useState([])
+  const intro = createRef()
+
+
+  const handleHeroScroll = () => {
+    console.log('scrolling')
+    console.log(intro.current.scrollIntoView({behavior: "smooth", block: "center"}))
+  }
 
   return (
     <Layout location={location}>
       <SEO title='Saint and Center' />
       <Wrapper>
         <Hero
-          image={image}
           title='We have a mission.'
+          handleHeroScroll={handleHeroScroll}
         />
-        <TextBlock>
+        <TextBlock ref={intro}>
           <p>From organically grown hemp,<br/>we've extracted CBD with a high potency<br/>and an even higher calling.</p>
           <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
           <p>Your higher self<br/>without the high.</p>
