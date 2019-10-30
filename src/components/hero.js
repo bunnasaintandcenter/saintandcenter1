@@ -18,10 +18,6 @@ const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
 
-  @media ${device.laptop}{
-    height: 80vh;
-  }
-
   h2 {
     font-size: 24px;
     font-weight: 300;
@@ -91,7 +87,7 @@ const Wrapper = styled.div`
 `;
 
 const Hero = ({ title, buttonText, url }) => (
-  <Div100vh style={{ height: 'calc(100rvh - 74px)', width: '100%' }}>
+  <Div100vh style={{ height: 'calc(100rvh)', width: '100%' }}>
     <Wrapper data-testid='hero'>
       <div>
         <h2 data-testid='title'>{title}</h2>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import logo from '../images/logo-black.svg'
+import logoBlack from '../images/logo-black.svg'
+import logo from '../images/logo.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
@@ -23,7 +24,7 @@ const Head = styled.header`
   align-items: center;
   padding: 1rem 5vw;
   transition: all 0.3s ease-in-out;
-  background: rgb(248,249,244);
+  background: ${props => props.background ? `rgb(248,249,244);` : `transparent` };
   z-index: 30;
 
   @media ${device.laptop}{
@@ -54,11 +55,12 @@ const CartButton = styled.div`
 
   span {
     cursor: pointer;
-    background: black;
+    background: ${props => props.background ? `black` : `white` };
+    transition: 0.2s all ease-in-out;
     width: 32px;
     height: 32px;
     border-radius: 16px;
-    border: 1px solid black;
+    border: ${props => props.background ? `1px solid black` : `1px solid white`};
     color: white;
     font-size: 13px;
     font-weight: 100;
@@ -76,8 +78,21 @@ const CartButton = styled.div`
 
 const Header = ({ cart, bannerOpen }) => {
 
+  const [background, setBackground] = useState(false)
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
+
+  const listenScrollEvent = e => {
+    if(window.scrollY > 400) {
+      setBackground(true)
+    } else {
+      setBackground(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenScrollEvent)
+  })
 
   // const toggleBodyLock = () => {
   //   document.body.classList.toggle('locked')
@@ -91,24 +106,30 @@ const Header = ({ cart, bannerOpen }) => {
 
   return (
     <>
-    <Wrapper cartOpen={cartOpen}>
-    {cart.length > 0 &&
-      <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
-    }
-    <Head data-testid='header' id='header' navOpen={navOpen} bannerOpen={bannerOpen}>
-      <Menu
-        open={navOpen}
-        onClick={handleToggleNav}
-      />
-      <Logo><Link to='/'><img src={logo} alt='Saint and Center' /></Link></Logo>
-      <CartButton
-        data-testid='cart-button'
-        onClick={() => toggleCart(!cartOpen)}>
-        <span data-testid='header-cart-count'>{cart.length > 0 && cart.length}</span>
-      </CartButton>
-    </Head>
-    </Wrapper>
-    <Nav open={navOpen} cartItems={cart.length} />
+      <Wrapper cartOpen={cartOpen} bannerOpen={bannerOpen}>
+      {cart.length > 0 &&
+        <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
+      }
+      <Head data-testid='header' id='header' navOpen={navOpen} background={background}>
+        <Menu
+          background={background}
+          open={navOpen}
+          onClick={handleToggleNav}
+        />
+        <Logo>
+          <Link to='/'>
+            <img src={background ? logoBlack : logo} alt='Saint and Center' />
+          </Link>
+        </Logo>
+        <CartButton
+          background={background}
+          data-testid='cart-button'
+          onClick={() => toggleCart(!cartOpen)}>
+          <span data-testid='header-cart-count'>{cart.length > 0 && cart.length}</span>
+        </CartButton>
+      </Head>
+      </Wrapper>
+      <Nav open={navOpen} cartItems={cart.length} />
     </>
   )
 }
