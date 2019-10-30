@@ -1,3 +1,4 @@
+var proxy = require("http-proxy-middleware")
 let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 console.log(`Using environment config: '${activeEnv}'`)
@@ -11,6 +12,17 @@ module.exports = {
     title: `Saint & Center`,
     description: `We’ve reimagined the power of hemp to extract cbd with a higher calling - saving the earth, restoring equality. It’s hemp for humans who levitate, create, vibrate.`,
     author: `@saintandcenter`,
+  },
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      proxy({
+        target: "http://localhost:34567",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
