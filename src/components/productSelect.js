@@ -103,8 +103,6 @@ const Option = styled.div`
 
 const ProductSelect = ({ options, updateCart, id, products }) => {
 
-  console.log(products)
-
   const dispatch = useDispatch()
 
   const [selectedOption, selectOption] = useState(0)
@@ -119,7 +117,6 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       quantity: count
     }
 
-    console.log(item)
     dispatch({ type: 'ADD_TO_CART', payload: item})
   }
 
@@ -132,9 +129,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
   }
 
   const handleSwitchOption = (type) => {
-    console.log(type)
     selectRecurrence(type)
-
   }
 
   return (

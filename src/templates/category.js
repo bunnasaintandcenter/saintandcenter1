@@ -145,7 +145,7 @@ const Category = ({ pageContext, updateCart, data }) => {
             arrows={false}
           >
             {images.length > 0 && images.map(img => (
-              <img src={img.localFile.childImageSharp.fluid.src} />
+              <img key={img.localFile.childImageSharp.fluid.src} src={img.localFile.childImageSharp.fluid.src} />
             ))}
           </Slider>
           {isMobile &&

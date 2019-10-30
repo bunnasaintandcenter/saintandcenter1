@@ -6,6 +6,7 @@ import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import arrow from '../images/arrow.svg'
 import { device } from '../utils/devices'
+import Signup from './Signup'
 
 const Foot = styled.footer`
 
@@ -207,7 +208,7 @@ const Legal = styled.ul`
   }
 `;
 
-const Signup = styled.div`
+const SignupSmall = styled.div`
   grid-column: span 2;
   display: flex;
   align-items: center;
@@ -268,18 +269,14 @@ const Footer = () => (
         <img src={productTwo} alt='instagram two' />
       </Slider>
     </Insta>
-    <Join>
-      <span>Get the Good News</span>
-      <input placeholder='Enter your email' type='email' />
-      <button>Send</button>
-    </Join>
+    <Signup />
     <FooterMenu>
-      <Signup>
+      <SignupSmall>
         <div>
           <span><strong>Join Us</strong></span>
           <input type='email' />
         </div>
-      </Signup>
+      </SignupSmall>
       <ul>
         <li><strong>Saint and Center</strong></li>
         <li>Meet Us</li>

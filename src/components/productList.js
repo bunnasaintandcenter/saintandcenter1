@@ -95,7 +95,7 @@ const ProductList = ({updateCart}) => {
   <StaticQuery
     query={graphql`
       query MyQuery {
-        allWcProductsCategories(skip: 29, sort: {fields: menu_order}) {
+        allWcProductsCategories(sort: {fields: menu_order}) {
           edges {
             node {
               wordpress_id

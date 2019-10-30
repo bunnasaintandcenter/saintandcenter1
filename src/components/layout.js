@@ -9,6 +9,7 @@ import Header from './header'
 import Footer from './footer'
 import { isBrowser } from 'react-device-detect'
 import { device } from '../utils/devices'
+import Helmet from 'react-helmet'
 
 import "./layout.css"
 
@@ -57,6 +58,16 @@ const Layout = ({ children, location }) => {
       `}
       render={data => (
         <ThemeProvider theme={theme}>
+          <Helmet>
+            <script>
+              {`
+                window.omnisend = window.omnisend || [];
+                omnisend.push(["accountID", "5d6d46aa8653ed0357cf4de1"]);
+                omnisend.push(["track", "$pageViewed"]);
+                !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisrc.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+              `}
+            </script>
+          </Helmet>
           <Wrapper bannerOpen={bannerOpen}>
             <Announcement
               text='Free Shipping on Orders over $75'

@@ -41,8 +41,3 @@ it('renders cart button', () => {
   const { getByTestId } = renderWithRedux(<Header cart={[]} />)
   expect(getByTestId('cart-button')).toBeTruthy()
 });
-
-it('renders correct cart count', () => {
-  const { getByTestId } = renderWithRedux(<Header cart={startingState.cart} />)
-  expect(getByTestId('cart-button')).toBeTruthy()
-});

@@ -15,10 +15,17 @@ import sliderOne from '../images/slider-1.jpg'
 import sliderTwo from '../images/slider-2.jpg'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
+import storyboard from '../images/storyboard.gif'
 import SectionHeader from '../components/sectionHeader'
 
 const Wrapper = styled.div`
+`;
 
+const Gif = styled.div`
+  img {
+    margin: 0;
+    display: flex;
+  }
 `;
 
 const Home = ({ location, theme }) => {
@@ -46,6 +53,9 @@ const Home = ({ location, theme }) => {
             <img src={sliderTwo} alt='slider 2' />
           </div>
         </Carousel>
+        <Gif>
+          <img src={storyboard} alt='animation' />
+        </Gif>
         <SectionHeader title='Shop' />
         <Carousel arrows bg='#E1D6D6'>
           <div>
