@@ -6,6 +6,7 @@ import Moment from 'react-moment'
 
 const Wrapper = styled.div`
   padding: 2rem;
+  margin-top: 2rem;
 `;
 
 const Sub = styled.div`
