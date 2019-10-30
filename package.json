@@ -4,6 +4,9 @@
   "description": "Saint and Center website",
   "version": "0.1.0",
   "author": "Jermaine Davis <majorwaves@gmail.com>",
+  "resolutions": {
+    "svgo": "1.3.0"
+  },
   "dependencies": {
     "@massivdash/gatsby-source-woocommerce": "^0.2.4",
     "@pasdo501/gatsby-source-woocommerce": "^0.8.0",
