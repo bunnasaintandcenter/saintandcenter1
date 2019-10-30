@@ -633,22 +633,71 @@ pre tt:after {
 
 @font-face {
   font-family: 'US';
-  src: url('../type/UntitledSansTest-Regular.woff') format('woff');
+  src: url('../type/UntitledSansWeb-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'US';
-  src: url('../type/UntitledSansTest-Medium.woff') format('woff');
+  src: url('../type/UntitledSansWeb-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-Regular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-RegularItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'US';
-  src: url('../type/UntitledSansTest-Bold.woff') format('woff');
+  src: url('../type/UntitledSansWeb-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-Bold.woff') format('woff');
   font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-BoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-Black.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'US';
+  src: url('../type/UntitledSansWeb-BlackItalic.woff') format('woff');
+  font-weight: 800;
   font-style: normal;
 }
 

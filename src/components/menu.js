@@ -12,10 +12,11 @@ const Wrapper = styled.div`
   background: url(${menu});
   background-repeat: none;
   background-size: 100%;
+  filter: ${props => props.background ? `none` : `invert(100%)`};
 `;
 
-const Menu = ({ open, onClick }) => (
-  <Wrapper open={open} onClick={onClick} />
+const Menu = ({ open, onClick, background }) => (
+  <Wrapper background={background} open={open} onClick={onClick} />
 );
 
 export default Menu;
