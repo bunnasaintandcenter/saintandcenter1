@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
-import ShippingForm from '../../components/ShippingForm'
-import AccountNav from '../../components/AccountNav'
+import ShippingForm from '../../components/shippingForm'
+import AccountNav from '../../components/accountNav'
 
 const Section = styled.section`
   display: grid;

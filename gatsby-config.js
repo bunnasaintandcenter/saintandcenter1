@@ -1,8 +1,6 @@
 var proxy = require("http-proxy-middleware")
 let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
-console.log(`Using environment config: '${activeEnv}'`)
-
 require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
@@ -79,9 +77,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    }
   ],
 }

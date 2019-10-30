@@ -6,7 +6,7 @@ import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import arrow from '../images/arrow.svg'
 import { device } from '../utils/devices'
-import Signup from './Signup'
+import Signup from './signup'
 
 const Foot = styled.footer`
 
