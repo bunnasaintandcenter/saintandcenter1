@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import TextTransition, { presets } from "react-text-transition"
 import { Waypoint } from 'react-waypoint'
 import SectionHeader from '../components/sectionHeader'
+import SEO from '../components/SEO'
 
 const Wrapper = styled.div`
   margin-top: 6rem;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const Block = styled.div`
-  height: calc(80vh - 4vw - 2rem);
+  height: calc(100vh - 4vw - 2rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,8 +36,8 @@ const Heading = styled.div`
   line-height: 1.4em;
   box-sizing: border-box;
   text-transform: uppercase;
-  background: ${props => props.theme.color.gold};
-  color: white;
+  background: ${props => props.theme.color.forest};
+  color: ${props => props.theme.color.green};
 `;
 
 // const Progress = styled.progress`
@@ -102,6 +103,7 @@ const HolyHemp = () => {
 
   return (
     <Layout>
+      <SEO title='Holy Hemp | Saint and Center' />
       <Wrapper>
         <div>
         {content.map(({paragraph}, index) => (

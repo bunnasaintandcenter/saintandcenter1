@@ -28,7 +28,9 @@ const theme = {
     forest: 'rgb(0,51,37)',
     green: 'rgb(0, 162, 123)',
     crimson: 'rgb(139,41,4)',
-    eggplant: 'rgb(38,33,97)'
+    eggplant: 'rgb(38,33,97)',
+    darkBlue: 'rgb(38,33,97)',
+    blue: 'rgb(167,201,253)'
   }
 }
 
@@ -58,7 +60,7 @@ const Layout = ({ children, location }) => {
       `}
       render={data => (
         <ThemeProvider theme={theme}>
-          <Helmet>
+          <Helmet title='Saint and Center'>
             <script>
               {`
                 window.omnisend = window.omnisend || [];
