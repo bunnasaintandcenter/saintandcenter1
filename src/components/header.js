@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import logoBlack from '../images/logo-black.svg'
-import logo from '../images/logo.svg'
+import logo from '../images/logo-black.svg'
+import logotype from '../images/logotype.svg'
 import Menu from './menu'
 import Nav from './nav'
 import { Link } from 'gatsby'
@@ -33,16 +33,16 @@ const Head = styled.header`
 `;
 
 const Logo = styled.div`
-  width: 24px;
-  transition: 0.3s ease-in-out;
+  width: ${props => props.background ? `24px` : `200px` };
+  transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop}{
-    width: 2vw;
+    width: ${props => props.background ? `2vw` : `15vw` };
     padding: 1rem 0;
   }
 
   &:hover {
-    transform: rotate(180deg);
+    transform: ${props => props.background ? `rotate(180deg)` : `none`};
   }
 
   img {
@@ -118,9 +118,9 @@ const Header = ({ cart, bannerOpen, home }) => {
           open={navOpen}
           onClick={handleToggleNav}
         />
-        <Logo>
+        <Logo background={background}>
           <Link to='/'>
-            <img src={background ? logoBlack : logo} alt='Saint and Center' />
+            <img src={background ? logo : logotype} alt='Saint and Center' />
           </Link>
         </Logo>
         <CartButton
