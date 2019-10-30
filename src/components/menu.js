@@ -13,6 +13,8 @@ const Wrapper = styled.div`
   background-repeat: none;
   background-size: 100%;
   filter: ${props => props.background ? `none` : `invert(100%)`};
+  z-index: 300;
+  position: relative;
 `;
 
 const Menu = ({ open, onClick, background }) => (
