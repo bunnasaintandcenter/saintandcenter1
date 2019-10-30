@@ -245,7 +245,7 @@ const Footer = () => (
       <ul>
         <li><strong>Learn</strong></li>
         <li><Link to='/holy-hemp'>Holy Hemp</Link></li>
-        <li>Human Rites</li>
+        <li><Link to='/human-rites'>Human Rites</Link></li>
         <li><Link to='/faqs'>FAQ</Link></li>
       </ul>
       <ul>
