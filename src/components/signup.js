@@ -60,8 +60,8 @@ const Signup = () => {
 
   const handleSubmit = async () => {
     try {
-      console.log('omnisend url', process.env.OMNISEND_FUNCTION)
-      const response = await axios.post(process.env.OMNISEND_FUNCTION, {
+      console.log('omnisend url', process.env.GATSBY_OMNISEND_FUNCTION)
+      const response = await axios.post(process.env.GATSBY_OMNISEND_FUNCTION, {
         email: email
       })
       console.log(response)
