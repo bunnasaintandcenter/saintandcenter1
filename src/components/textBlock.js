@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { device } from '../utils/devices'
 
@@ -30,10 +30,10 @@ const Block = styled.section`
   }
 `;
 
-const TextBlock = ({ children }) => (
-  <Block>
+const TextBlock = forwardRef(({ children }, ref) => (
+  <Block ref={ref}>
     {children}
   </Block>
-);
+));
 
 export default TextBlock;

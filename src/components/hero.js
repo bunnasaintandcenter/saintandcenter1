@@ -40,6 +40,7 @@ const Wrapper = styled.div`
       width: 20px;
       height: 26px;
       z-index: 2;
+      cursor: pointer;
 
       @media ${device.laptop}{
         width: 30px;
@@ -86,11 +87,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hero = ({ title, buttonText, url }) => (
+const Hero = ({ title, buttonText, url, handleHeroScroll }) => (
   <Div100vh style={{ height: 'calc(100rvh)', width: '100%' }}>
     <Wrapper data-testid='hero'>
       <div>
-        <h2 data-testid='title'>{title}</h2>
+        <h2 data-testid='title' onClick={handleHeroScroll}>{title}</h2>
       </div>
     </Wrapper>
   </Div100vh>
