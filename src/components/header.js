@@ -103,6 +103,14 @@ const Header = ({ cart, bannerOpen, home }) => {
     // toggleBodyLock()
     toggleCart(false)
     toggleNav(!navOpen)
+
+    if(!navOpen && !background){
+      setBackground(true)
+    }
+
+    if(background && navOpen){
+      setBackground(false)
+    }
   }
 
   return (
