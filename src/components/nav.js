@@ -14,7 +14,6 @@ const Wrapper = styled.nav`
   color: black;
   align-items: center;
   justify-content: center;
-  z-index: 9;
   box-sizing: border-box;
   z-index: 20;
   display: ${props => props.open ? `flex` : `none`};

@@ -15,7 +15,6 @@ const Wrapper = styled.div`
 `;
 
 const Head = styled.header`
-  z-index: 10;
   width: 100vw;
   box-sizing: border-box;
   left: 0;
