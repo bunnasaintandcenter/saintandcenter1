@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { device } from '../utils/devices'
 import { isBrowser, isMobile } from 'react-device-detect'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import SEO from '../components/seo'
 import ProductSelect from '../components/productSelect'
 import Slider from 'react-slick'
@@ -117,13 +117,7 @@ const Category = ({ pageContext, updateCart, data }) => {
     images = products[1].images
   }
 
-  const { image } = data.allWcProductsCategories.edges[0].node;
-
-  const config = {
-    dots: false,
-    arrows: false,
-    slidesToShow: 1
-  }
+  // const { image } = data.allWcProductsCategories.edges[0].node;
 
   return (
     <Layout>
@@ -144,8 +138,8 @@ const Category = ({ pageContext, updateCart, data }) => {
             infinite
             arrows={false}
           >
-            {images.length > 0 && images.map(img => (
-              <img key={img.localFile.childImageSharp.fluid.src} src={img.localFile.childImageSharp.fluid.src} />
+            {images.length > 0 && images.map((img, index) => (
+              <img key={img.localFile.childImageSharp.fluid.src} src={img.localFile.childImageSharp.fluid.src} alt={`${index}`} />
             ))}
           </Slider>
           {isMobile &&
