@@ -243,6 +243,7 @@ const Footer = () => (
       <span>Hemp+High Vibes</span>
       <Slider
         dots
+        arrows={false}
         fade
       >
         <img src={productOne} alt='instagram' />
