@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
   @media ${device.laptop}{
     top: calc(3vw + 2rem);
-    font-size: 24px;
+    font-size: 18px;
   }
 `;
 
