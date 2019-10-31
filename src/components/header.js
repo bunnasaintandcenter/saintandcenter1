@@ -23,7 +23,7 @@ const Head = styled.header`
   align-items: center;
   padding: 1rem 5vw;
   transition: all 0.3s ease-in-out;
-  background: ${props => props.background ? `rgb(248,249,244);` : `transparent` };
+  background: ${props => props.background ? `rgb(248,249,244)` : `transparent` };
   z-index: 30;
 
   @media ${device.laptop}{

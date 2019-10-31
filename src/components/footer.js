@@ -87,12 +87,16 @@ const Insta = styled.div`
 
 const FooterMenu = styled.div`
   background: white;
-  grid-column: span 2;
   padding: 2rem 0;
-  display: grid;
   font-size: 14px;
   margin-top: -8px;
-  grid-template-columns: repeat(6, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media ${device.laptop}{
+    grid-column: span 2;
+    grid-template-columns: repeat(6, 1fr);
+  }
 
   a {
     color: rgb(51,51,51);
@@ -104,7 +108,13 @@ const FooterMenu = styled.div`
     font-weight: 200;
     text-transform: uppercase;
     line-height: 1em;
-    margin: 0;
+    margin: 0 0 2rem;
+    text-align: center;
+
+    @media ${device.laptop}{
+      text-align: center;
+      margin: 0;
+    }
 
     li {
       strong {
@@ -136,13 +146,19 @@ const Legal = styled.ul`
   padding: 0;
   margin: 0;
   background: white;
-  display: flex;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
   grid-column: span 2;
-  padding: 2rem 0;
-  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+
+  @media ${device.laptop}{
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    padding: 2rem 0;
+  }
 
   &.dark {
     background: black;
@@ -150,7 +166,10 @@ const Legal = styled.ul`
   }
 
   li {
-    margin-right: 2rem;
+
+    @media ${device.laptop}{
+      margin-right: 2rem;
+    }
 
     &:last-of-type {
       margin: 0;
@@ -168,11 +187,21 @@ const SignupSmall = styled.div`
     margin: 0 0 2rem;
     display: block;
     line-height: 16px;
-    text-align: left;
+    text-align: center;
+
+    @media ${device.laptop}{
+      text-align: center;
+    }
   }
 
   div {
     position: relative;
+    margin-bottom: 2rem;
+
+    @media ${device.laptop}{
+      text-align: center;
+      margin: 0;
+    }
 
     &:after {
       position: absolute;

@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { device } from '../utils/devices'
 
 const Join = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  height: 50vh;
+
+  @media ${device.laptop}{
+    height: auto;
+  }
 
   input {
     padding: 2rem;
@@ -17,7 +23,11 @@ const Join = styled.div`
     width: 100%;
     text-transform: uppercase;
     font-weight: 200;
-    font-size: 24px;
+    font-size: 16px;
+
+    @media ${device.laptop}{
+      font-size: 24px;
+    }
   }
 
   button {
@@ -27,12 +37,16 @@ const Join = styled.div`
     border: 0;
     appearance: none;
     padding: 0;
-    font-size: 36px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 200;
     cursor: pointer;
     background: transparent;
     outline: 0;
+
+    @media ${device.laptop}{
+      font-size: 36px;
+    }
 
     &:hover {
       opacity: 0.6;
@@ -47,8 +61,12 @@ const Join = styled.div`
       top: 3rem;
       left: 5vw;
       z-index: 1;
-      font-size: 36px;
       font-weight: 300;
+      font-size: 18px;
+
+      @media ${device.laptop}{
+        font-size: 36px;
+      }
     }
   }
 `;
