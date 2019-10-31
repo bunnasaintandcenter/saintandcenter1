@@ -116,7 +116,7 @@ const HolyHemp = () => {
         <Heading>
         <TextTransition
           text={content[slide].heading}
-          springConfig={presets.default}
+          springConfig={presets && presets.default}
         />
         </Heading>
       </Wrapper>
