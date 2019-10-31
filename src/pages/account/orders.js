@@ -7,7 +7,7 @@ import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
 import tabs from '../../utils/tabs'
 import useOrders from '../../hooks/useOrders'
-import Orders from '../../components/Orders'
+import Orders from '../../components/orders'
 
 const Section = styled.section`
   margin: 0 auto;
