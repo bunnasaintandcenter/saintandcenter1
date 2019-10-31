@@ -27,7 +27,6 @@ const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
 
-
   return (
     <Layout>
       {user.id &&

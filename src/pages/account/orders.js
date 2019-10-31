@@ -23,7 +23,7 @@ const Section = styled.section`
 `;
 
 const Settings = ({ location, data }) => {
-
+  
   const user = useSelector(state => state.user)
 
   const tabs = [

@@ -42,7 +42,7 @@ const Main = styled.div`
 const Payment = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
-
+  
   return (
     <Layout>
       {user.id ?
