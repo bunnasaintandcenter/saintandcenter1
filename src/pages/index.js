@@ -50,7 +50,7 @@ const Home = ({ location, theme }) => {
       <SEO title='Saint and Center' />
       <Wrapper>
         <Hero
-          title='We have a mission.'
+          title='We have a mission'
           handleHeroScroll={handleHeroScroll}
         />
         <TextBlock ref={intro}>
