@@ -6,8 +6,6 @@ import { device } from '../utils/devices'
 const Block = styled.section`
 
   @media ${device.laptop}{
-    padding: 2rem 5vw;
-    margin: 4rem 0 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
