@@ -14,7 +14,7 @@ import Carousel from '../components/carousel'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 // import storyboard from '../images/storyboard.gif'
-import BlockQuote from '../components/blockQuote'
+// import BlockQuote from '../components/blockQuote'
 import SectionHeader from '../components/sectionHeader'
 import { isBrowser } from 'react-device-detect'
 
@@ -84,9 +84,6 @@ const Home = ({ location, theme }) => {
         >
           <p>A natural way to feel uplifted. We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body's endocannabinoid system to help regulate mood, stress, anxiety and pain sensations.</p>
         </TextBlockWithImage>
-        <BlockQuote color='rgb(38,33,97)'>
-          “The Illegality of cannibis is outrageous, an impediment to full
-        </BlockQuote>
         <TextBlockWithImage
           title='Human Rites'
           image={humanRites}
