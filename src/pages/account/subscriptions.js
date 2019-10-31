@@ -6,7 +6,7 @@ import SectionHeader from '../../components/sectionHeader'
 import Subscriptions from '../../components/subscriptions'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
-import tabs from './tabs'
+import tabs from '../../utils/tabs'
 
 const Section = styled.section`
   margin: 0 auto;
@@ -26,7 +26,6 @@ const Section = styled.section`
 const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
-
 
   return (
     <Layout>
