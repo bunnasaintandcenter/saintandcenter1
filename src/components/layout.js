@@ -77,9 +77,7 @@ const Layout = ({ children, location }) => {
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
             {children}
-            {isBrowser &&
-              <Footer />
-            }
+            <Footer />
           </Wrapper>
         </ThemeProvider>
       )}
