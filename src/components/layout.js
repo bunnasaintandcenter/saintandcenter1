@@ -7,7 +7,6 @@ import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'
 import Header from './header'
 import Footer from './footer'
-import { isBrowser } from 'react-device-detect'
 import { device } from '../utils/devices'
 import Helmet from 'react-helmet'
 
@@ -72,7 +71,7 @@ const Layout = ({ children, location }) => {
           </Helmet>
           <Wrapper bannerOpen={bannerOpen}>
             <Announcement
-              text='Free Shipping on Orders over $75'
+              text='Free Shipping on All Orders'
               toggle={handleToggleAnnouncement}
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
