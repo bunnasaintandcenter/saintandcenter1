@@ -5,12 +5,16 @@ import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
 import Subscriptions from '../../components/subscriptions'
 import AccountNav from '../../components/accountNav'
+import { device } from '../../utils/devices'
 
 const Section = styled.section`
-  display: grid;
-  grid-template-columns: repeat(${props => props.cols}, 1fr);
   margin: 0 auto;
   font-weight: 200;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(${props => props.cols}, 1fr);
+  }
 
   h2 {
     font-weight: 300;

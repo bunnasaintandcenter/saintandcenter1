@@ -38,7 +38,7 @@ const Main = styled.div`
   }
 `;
 
-const Settings = ({ location, data }) => {
+const Payment = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
 
@@ -62,10 +62,6 @@ const Settings = ({ location, data }) => {
             tabs={tabs}
           />
           <Main>
-            <p>Hi {user.first_name}</p>
-            <p>Welcome to your Saint and Center account dashboard.</p>
-            <p>Here you can track your orders, edit your subscriptions and update your billing and shipping information.</p>
-            <p>And, as always, contact us <a href="mailto:test@gmail.com">here</a> if you have any questions.</p>
           </Main>
         </Section>
         </>
@@ -75,4 +71,4 @@ const Settings = ({ location, data }) => {
   )
 }
 
-export default Settings;
+export default Payment;
