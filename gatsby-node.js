@@ -73,7 +73,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       module: {
         rules: [
           {
-            test: /bad-module/,
+            test: /react-text-transition/,
             use: loaders.null(),
           },
         ],
