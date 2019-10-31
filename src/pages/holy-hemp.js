@@ -114,10 +114,12 @@ const HolyHemp = () => {
         ))}
         </div>
         <Heading>
-        <TextTransition
-          text={content[slide].heading}
-          springConfig={presets && presets.default}
-        />
+        {presets &&
+          <TextTransition
+            text={content[slide].heading}
+            springConfig={presets.default}
+          />
+        }
         </Heading>
       </Wrapper>
     </Layout>
