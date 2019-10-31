@@ -6,25 +6,42 @@ import tested from '../images/icon-tested.svg'
 import gmo from '../images/icon-gmo.svg'
 import zeroTHC from '../images/icon-zero-thc.svg'
 import spectrum from '../images/icon-spectrum.svg'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5vw;
-  width: 70vw;
-  margin: 8rem auto;
+  grid-column-gap: 5vw;
+  grid-row-gap: 4rem;
+  width: 90vw;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 4rem auto;
+
+  @media ${device.laptop}{
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5vw;
+    width: 70vw;
+    margin: 8rem auto;
+  }
 `;
 
 const Item = styled.div`
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 16px;
+
+  @media ${device.laptop}{
+    font-size: 18px;
+  }
 
   img {
     margin: 0 auto 2rem;
     display: block;
-    width: 3vw;
+    width: 10vw;
+
+    @media ${device.laptop}{
+      width: 3vw;
+    }
   }
 `;
 
