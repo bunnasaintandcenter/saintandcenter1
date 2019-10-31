@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   background: ${props => props.primary ? 'black' : 'transparent' };
   color: ${props => props.primary || props.ghost ? 'white' : 'black' };
   transition: 0.2s all ease-in-out;
-  cursor: pointer;
+  cursor: ${props => props.disabled ? `not-allowed` : `pointer` };
   outline: 0 !important;
   appearance: none !important;
 
@@ -22,9 +22,10 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ children, ghost, onClick, primary }) => (
+const Button = ({ children, ghost, onClick, primary, disabled }) => (
   <StyledButton
     data-testid='button'
+    disabled={disabled}
     onClick={onClick}
     ghost={ghost}
     primary={primary}
