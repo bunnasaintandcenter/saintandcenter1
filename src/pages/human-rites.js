@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import TextTransition, { presets } from "react-text-transition"
 import { Waypoint } from 'react-waypoint'
 import SectionHeader from '../components/sectionHeader'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 
 const Wrapper = styled.div`
   margin-top: 6rem;
