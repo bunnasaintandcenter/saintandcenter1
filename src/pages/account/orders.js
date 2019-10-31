@@ -5,6 +5,7 @@ import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
+import tabs from './tabs'
 
 const Section = styled.section`
   margin: 0 auto;
@@ -26,6 +27,7 @@ const Settings = ({ location, data }) => {
   const user = useSelector(state => state.user)
 
   const tabs = [
+    {url: '', title: 'Dashboard'},
     { url: 'orders', title: 'Orders'},
     { url: 'subscriptions', title: 'Subscriptions'},
     { url: 'payment', title: 'Payment'},

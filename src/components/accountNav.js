@@ -4,20 +4,37 @@ import { Link } from 'gatsby'
 import { device } from '../utils/devices'
 
 const Nav = styled.nav`
+  position: relative;
 
   @media ${device.laptop} {
-    border-right: 2px solid rgb(51,51,51);
+    border-right: 2px solid rgb(228,229,225);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 5;
+    width: 20vw;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(228,229,225,1) 70%);
+
+    @media ${device.laptop}{
+      content: none;
+    }
   }
 `;
 
 const List = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 0 ;
   margin: 74px 0 0;
   display: flex;
+  box-sizing: border-box;
   width: 100vw;
   overflow: scroll;
-  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
   background: rgb(51,51,51,0.1);
 
   @media ${device.laptop} {
@@ -40,10 +57,19 @@ const Item = styled.li`
 
   &:last-of-type {
     border: 0;
+    margin-right: 20vw;
+
+    @media ${device.laptop}{
+      margin-right: 0;
+    }
   }
 
   span {
     cursor: pointer;
+  }
+
+  .active {
+    border-bottom: 3px solid rgb(51,51,51);
   }
 
   a, span {
@@ -57,11 +83,11 @@ const Item = styled.li`
 
     @media ${device.laptop} {
       padding: 2rem 4rem;
-    }
 
-    &:hover {
-      background: rgb(25,25,25);
-      color: white;
+      &:hover {
+        background: rgb(25,25,25);
+        color: white;
+      }
     }
   }
 `;
@@ -72,11 +98,12 @@ const AccountNav = ({location, tabs}) => (
       {tabs.map(({url, title, action}) => (
         <Item key={title} data-testid='tab'>
           {url
-            ? <Link to={`/account/${url}`}>{title}</Link>
+            ? <Link activeClassName='active' to={`/account/${url}`}>{title}</Link>
             : <span onClick={action}>{title}</span>
           }
         </Item>
       ))}
+      <Item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Item>
     </List>
   </Nav>
 );
