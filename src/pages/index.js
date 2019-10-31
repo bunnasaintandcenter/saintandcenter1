@@ -8,33 +8,34 @@ import TextBlock from '../components/textBlock'
 import TextBlockWithImage from '../components/textBlockWithImage'
 import ProductList from '../components/productList'
 import Benefits from '../components/benefits'
-import hemp from '../images/hemp.png'
-import arch from '../images/arch.svg'
+import holyHemp from '../images/holy-hemp.svg'
+import humanRites from '../images/human-rites.svg'
 import Carousel from '../components/carousel'
 import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
-import storyboard from '../images/storyboard.gif'
+// import storyboard from '../images/storyboard.gif'
+import BlockQuote from '../components/blockQuote'
 import SectionHeader from '../components/sectionHeader'
 import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
 `;
 
-const Gif = styled.div`
-  background: white;
-
-  img {
-    margin: 0;
-    width: 100%;
-    display: flex;
-
-    @media ${device.laptop}{
-      height: calc(100vh - 2rem - 4vw);
-      object-fit: contain;
-    }
-  }
-
-`;
+// const Gif = styled.div`
+//   background: white;
+//
+//   img {
+//     margin: 0;
+//     width: 100%;
+//     display: flex;
+//
+//     @media ${device.laptop}{
+//       height: calc(100vh - 2rem - 4vw);
+//       object-fit: contain;
+//     }
+//   }
+//
+// `;
 
 const Home = ({ location, theme }) => {
 
@@ -50,17 +51,14 @@ const Home = ({ location, theme }) => {
       <SEO title='Saint and Center' />
       <Wrapper>
         <Hero
-          title='We have a mission.'
+          title='We have a mission'
           handleHeroScroll={handleHeroScroll}
         />
         <TextBlock ref={intro}>
           <p>From organically grown hemp,<br/>we've extracted CBD with a high potency{isBrowser && <br/> }and an even higher calling.</p>
           <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
-          <p>Your higher self<br/>without the high.</p>
+          <h2>Your higher self<br/>without the high.</h2>
         </TextBlock>
-        <Gif>
-          <img src={storyboard} alt='animation' />
-        </Gif>
         <SectionHeader title='Shop' />
         <Carousel arrows bg='#E1D6D6'>
           <div>
@@ -80,15 +78,18 @@ const Home = ({ location, theme }) => {
           title='Holy Hemp'
           bgColor='rgb(0,51,37)'
           textColor='rgb(2, 210, 161)'
-          image={hemp}
+          image={holyHemp}
           url='/holy-hemp'
           actionText='Learn More About Hemp'
         >
           <p>A natural way to feel uplifted. We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body's endocannabinoid system to help regulate mood, stress, anxiety and pain sensations.</p>
         </TextBlockWithImage>
+        <BlockQuote color='rgb(38,33,97)'>
+          “The Illegality of cannibis is outrageous, an impediment to full
+        </BlockQuote>
         <TextBlockWithImage
           title='Human Rites'
-          image={arch}
+          image={humanRites}
           reverse
           url='/human-rites'
           bgColor='rgb(38,33,97)'

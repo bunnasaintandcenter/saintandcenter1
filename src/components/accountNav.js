@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
+import { isMobile } from 'react-device-detect'
 
 const Nav = styled.nav`
   position: relative;
 
   @media ${device.laptop} {
-    border-right: 2px solid rgb(228,229,225);
+    border-right: 2px solid rgb(51,51,51);
   }
 
   &:after {
@@ -38,7 +39,10 @@ const List = styled.ul`
   background: rgb(51,51,51,0.1);
 
   @media ${device.laptop} {
+    width: auto;
+    background: transparent;
     display: grid;
+    overflow: visible;
     height: calc(100vh - 155px);
     grid-template-rows: repeat(5, 1fr);
   }
@@ -61,6 +65,10 @@ const Item = styled.li`
 
     @media ${device.laptop}{
       margin-right: 0;
+      
+      span {
+        padding: 2rem 4rem;
+      }
     }
   }
 
@@ -70,6 +78,10 @@ const Item = styled.li`
 
   .active {
     border-bottom: 3px solid rgb(51,51,51);
+
+    @media ${device.laptop} {
+      border-bottom: 0;
+    }
   }
 
   a, span {
@@ -103,7 +115,9 @@ const AccountNav = ({location, tabs}) => (
           }
         </Item>
       ))}
-      <Item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Item>
+      {isMobile &&
+        <Item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Item>
+      }
     </List>
   </Nav>
 );

@@ -88,7 +88,7 @@ const Wrapper = styled.div`
 `;
 
 const Hero = ({ title, buttonText, url, handleHeroScroll }) => (
-  <Div100vh style={{ height: 'calc(100rvh)', width: '100%' }}>
+  <Div100vh style={{ height: 'calc(100rvh - 2rem - 1.5vw)', width: '100%' }}>
     <Wrapper data-testid='hero'>
       <div>
         <h2 data-testid='title' onClick={handleHeroScroll}>{title}</h2>

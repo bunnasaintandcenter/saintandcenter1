@@ -6,6 +6,8 @@ import SectionHeader from '../../components/sectionHeader'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
 import tabs from '../../utils/tabs'
+import useOrders from '../../hooks/useOrders'
+import Orders from '../../components/Orders'
 
 const Section = styled.section`
   margin: 0 auto;
@@ -23,17 +25,8 @@ const Section = styled.section`
 `;
 
 const Settings = ({ location, data }) => {
-  
-  const user = useSelector(state => state.user)
 
-  const tabs = [
-    {url: '', title: 'Dashboard'},
-    { url: 'orders', title: 'Orders'},
-    { url: 'subscriptions', title: 'Subscriptions'},
-    { url: 'payment', title: 'Payment'},
-    { url: 'address-book', title: 'Address Book'},
-    { action: () => console.log('logout'), title: 'Logout'}
-  ]
+  const user = useSelector(state => state.user)
 
   return (
     <Layout>
@@ -44,6 +37,7 @@ const Settings = ({ location, data }) => {
           <AccountNav
             tabs={tabs}
           />
+          <Orders id={user.id} />
         </Section>
         </>
       }
