@@ -15,7 +15,7 @@ import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  /* padding-top: ${props => props.bannerOpen ? `74px` : `0`}; */
+  padding-top: ${props => props.bannerOpen ? `74px` : `0`};
 
   @media ${device.laptop}{
     padding-top: ${props => props.bannerOpen ? `calc(1.5vw + 2rem)` : `0`};

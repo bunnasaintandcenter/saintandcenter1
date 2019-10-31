@@ -3,35 +3,56 @@ import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import Button from './button'
 import { MdClose } from 'react-icons/md'
+import { device } from '../utils/devices'
+import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   position: relative;
   transition: 0.2s all ease-in-out;
-  max-height: ${props => props.open ? `999px` : `0` };
+  max-height: ${props => props.open ? `9999px` : `0` };
 `;
 
 const Tray = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   background: black;
   color: rgb(248,249,244);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media ${device.laptop}{
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
   section {
-    border-right: 2px solid white;
+
+    @media ${device.laptop}{
+      border-right: 2px solid white;
+    }
   }
 
   aside {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding: 5vw;
+
+    @media ${device.laptop}{
+      padding: 0;
+    }
 
     button {
-      border-left: 0;
-      border-right: 0;
       font-size: 1.5rem;
       padding: 1.5rem;
+
+      @media ${device.laptop}{
+        border-left: 0;
+        border-right: 0;
+      }
     }
   }
 
@@ -66,13 +87,18 @@ const Row = styled.div`
 
   &:last-of-type {
     padding: 1.5rem 1rem;
+    border: 0;
+
+    @media ${device.laptop}{
+      border-bottom: 2px solid white;
+    }
   }
 `;
 
 const Close = styled.button`
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 2.5vw;
+  right: 5vw;
   appearance: none;
   border: 0;
   background: transparent;
@@ -80,6 +106,11 @@ const Close = styled.button`
   outline: 0;
   font-size: 30px;
   cursor: pointer;
+
+  @media ${device.laptop}{
+    top: 2rem;
+    right: 2rem;
+  }
 `;
 
 const Cart = ({ cart, open, toggle }) => {
@@ -182,7 +213,9 @@ const Cart = ({ cart, open, toggle }) => {
             <section>
             <Row>
               <span>Cart</span>
-              <span>Free Shipping Forever</span>
+              {isBrowser &&
+                <span>Free Shipping Forever</span>
+              }
             </Row>
             {cart.map(item => {
               const { name, product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
