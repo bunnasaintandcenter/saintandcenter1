@@ -84,6 +84,7 @@ const Home = ({ location, theme }) => {
         >
           <p>A natural way to feel uplifted. We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body's endocannabinoid system to help regulate mood, stress, anxiety and pain sensations.</p>
         </TextBlockWithImage>
+        <br/><br/><br/><br/>
         <TextBlockWithImage
           title='Human Rites'
           image={humanRites}
