@@ -91,7 +91,8 @@ const Option = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: ${props => props.selected ? `white` : `transparent` };
+  background: ${props => props.selected ? `rgb(51,51,51)` : `transparent` };
+  color: ${props => props.selected ? `white` : `rgb(51,51,51)` };
 
   @media ${device.laptop}{
     font-size: 18px;
