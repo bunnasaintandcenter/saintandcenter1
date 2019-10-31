@@ -6,7 +6,7 @@ import SectionHeader from '../components/sectionHeader'
 import ShippingForm from '../components/shippingForm'
 import Subscriptions from '../components/subscriptions'
 import AccountNav from '../components/accountNav'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 
 const Section = styled.section`
   width: 90vw;
