@@ -91,7 +91,8 @@ const Option = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: ${props => props.selected ? `white` : `transparent` };
+  background: ${props => props.selected ? `rgb(51,51,51)` : `transparent` };
+  color: ${props => props.selected ? `white` : `rgb(51,51,51)` };
 
   @media ${device.laptop}{
     font-size: 18px;
@@ -173,7 +174,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       </Option>
       <Price recurrence={recurrence}>
         {recurrence === 'monthly'
-          ? <>${products[0].product_variations[selectedOption].price} per month</>
+          ? <>Coming soon</>
           : <>${(products[1].product_variations[selectedOption].price) * count}</>
         }
       </Price>
@@ -184,7 +185,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
           <button onClick={addToCount}>+</button>
         </Counter>
       }
-      <Button className='btn' onClick={() => addToCart()}>Add to cart</Button>
+      <Button disabled={recurrence === 'monthly'} className='btn' onClick={() => addToCart()}>Add to cart</Button>
       <Expandable padded title='Ingredients'>
         <p>{stripHtml(products[1].short_description)}</p>
       </Expandable>
