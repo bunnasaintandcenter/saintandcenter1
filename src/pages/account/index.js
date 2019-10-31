@@ -5,7 +5,7 @@ import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
-import tabs from './tabs'
+import tabs from '../../utils/tabs'
 
 const Section = styled.section`
   margin: 0 auto;
