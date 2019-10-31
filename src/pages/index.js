@@ -81,7 +81,8 @@ const Home = ({ location, theme }) => {
           bgColor='rgb(0,51,37)'
           textColor='rgb(2, 210, 161)'
           image={hemp}
-          actionText='See How CBD Works'
+          url='/holy-hemp'
+          actionText='Learn More About Hemp'
         >
           <p>A natural way to feel uplifted. We use organically grown hemp to extract a pure, non-psychoactive CBD that works with our body's endocannabinoid system to help regulate mood, stress, anxiety and pain sensations.</p>
         </TextBlockWithImage>
@@ -89,6 +90,7 @@ const Home = ({ location, theme }) => {
           title='Human Rites'
           image={arch}
           reverse
+          url='/human-rites'
           bgColor='rgb(38,33,97)'
           textColor='rgb(167,201,253)'
           actionText='See How CBD Works'
