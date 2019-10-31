@@ -11,8 +11,10 @@ import ProductSelect from '../components/productSelect'
 import Slider from 'react-slick'
 
 const Wrapper = styled.div`
+  margin-top: 55px;
 
   @media ${device.laptop}{
+    margin-top: 62px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
