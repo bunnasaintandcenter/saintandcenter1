@@ -5,16 +5,15 @@ import Layout from '../../components/layout'
 import SectionHeader from '../../components/sectionHeader'
 import ShippingForm from '../../components/shippingForm'
 import AccountNav from '../../components/accountNav'
+import { device } from '../../utils/devices'
 
 const Section = styled.section`
-  display: grid;
-  grid-template-columns: repeat(${props => props.cols}, 1fr);
-  margin: 2rem auto;
+  margin: 0 auto;
   font-weight: 200;
 
-  h2 {
-    font-weight: 300;
-    text-transform: uppercase;
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(${props => props.cols}, 1fr);
   }
 
   h3 {
