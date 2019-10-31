@@ -108,7 +108,7 @@ const Header = ({ cart, bannerOpen, home }) => {
       setBackground(true)
     }
 
-    if(background && navOpen){
+    if(home && background && navOpen){
       setBackground(false)
     }
   }
