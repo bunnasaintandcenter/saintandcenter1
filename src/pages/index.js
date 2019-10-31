@@ -15,6 +15,7 @@ import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 import storyboard from '../images/storyboard.gif'
 import SectionHeader from '../components/sectionHeader'
+import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
 `;
@@ -39,7 +40,6 @@ const Home = ({ location, theme }) => {
 
   const intro = createRef()
 
-
   const handleHeroScroll = () => {
     console.log('scrolling')
     console.log(intro.current.scrollIntoView({behavior: "smooth", block: "center"}))
@@ -54,7 +54,7 @@ const Home = ({ location, theme }) => {
           handleHeroScroll={handleHeroScroll}
         />
         <TextBlock ref={intro}>
-          <p>From organically grown hemp,<br/>we've extracted CBD with a high potency<br/>and an even higher calling.</p>
+          <p>From organically grown hemp,<br/>we've extracted CBD with a high potency{isBrowser && <br/> }and an even higher calling.</p>
           <p>Supporting hemp equality and justice.<br/> Sustainably processed. And 0% THC.</p>
           <p>Your higher self<br/>without the high.</p>
         </TextBlock>
