@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import SectionHeader from '../components/sectionHeader'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
@@ -11,10 +10,8 @@ import ProductSelect from '../components/productSelect'
 import Slider from 'react-slick'
 
 const Wrapper = styled.div`
-  margin-top: 55px;
 
   @media ${device.laptop}{
-    margin-top: 62px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -108,8 +105,7 @@ const InfoOverlay = styled.div`
   }
 `;
 
-const Category = ({ pageContext, updateCart, data }) => {
-
+const Category = ({ pageContext, updateCart, data, location }) => {
   const { name, description, products } = pageContext;
   const [infoShown, setInfoShown] = useState(false)
 
@@ -122,8 +118,7 @@ const Category = ({ pageContext, updateCart, data }) => {
   // const { image } = data.allWcProductsCategories.edges[0].node;
 
   return (
-    <Layout>
-      <SectionHeader title={`Shop / Products / ${name}`} />
+    <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
         <Image>

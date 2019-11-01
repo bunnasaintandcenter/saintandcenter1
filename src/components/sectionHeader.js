@@ -17,15 +17,31 @@ const Wrapper = styled.div`
 
   @media ${device.laptop}{
     top: calc(3vw + 2rem);
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 
-const SectionHeader = ({ title, secondary }) => (
-  <Wrapper>
-    <span>{title}</span>
-    <span>{secondary}</span>
-  </Wrapper>
-);
+const SectionHeader = ({ location }) => {
+
+  const renderTitle = (page) => {
+    console.log(page.split('/')[2] === 'product')
+    switch (true) {
+      case page.split('/')[2] === 'product':
+        return `Shop / ${page.split('/')[3]}`
+      case page.split('/')[1] === 'shop':
+        return 'Shop / Products'
+      case page.split('/')[1] === 'holy-hemp':
+        return 'Learn'
+      default:
+        return false
+    }
+  }
+
+  return (
+    <Wrapper>
+      {location && renderTitle(location.pathname)}
+    </Wrapper>
+  )
+}
 
 export default SectionHeader

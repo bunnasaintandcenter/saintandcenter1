@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/layout'
-import SectionHeader from '../components/sectionHeader'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Product from '../components/product'
@@ -18,7 +17,7 @@ const ProductGrid = styled.div`
   }
 `;
 
-const Shop = () => (
+const Shop = ({ location }) => (
   <StaticQuery
     query={graphql`
       query ShopQuery {
@@ -43,9 +42,8 @@ const Shop = () => (
       }
     `}
     render={(data) => (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Shop | Saint and Center' />
-      <SectionHeader title='Shop / Products' />
       <ProductGrid>
         {data.allWcProductsCategories.edges.slice(0,5).map(product => (
           <Product key={product.node.wordpress_id} {...product.node} />

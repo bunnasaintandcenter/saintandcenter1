@@ -9,15 +9,16 @@ import Header from './header'
 import Footer from './footer'
 import { device } from '../utils/devices'
 import Helmet from 'react-helmet'
+import SectionHeader from './sectionHeader'
 
 import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props => props.bannerOpen ? `74px` : `0`};
+  padding-top: ${props => props.bannerOpen ? props.home ? `calc(2rem + 1.5vw)` : `calc(1.5vw + 2rem + 74px)` : `0`};
 
   @media ${device.laptop}{
-    padding-top: ${props => props.bannerOpen ? `calc(1vw + 2rem)` : `0`};
+    padding-top: ${props => props.bannerOpen ? props.home ? `calc(1.5vw + 2rem)` : `calc(4vw + 4rem + 16px)` : `0`};
   }
 `;
 
@@ -37,11 +38,12 @@ const Layout = ({ children, location }) => {
 
   const cart = useSelector(state => state.cart)
 
+  console.log('location', location)
+
   const [bannerOpen, toggleBanner] = useState(true)
 
   const handleToggleAnnouncement = () => {
     const storageObj = { timestamp: new Date().getTime()};
-    console.log(storageObj)
     localStorage.setItem('sc-hide-announcement', JSON.stringify(storageObj))
     toggleBanner()
   }
@@ -69,12 +71,15 @@ const Layout = ({ children, location }) => {
               `}
             </script>
           </Helmet>
-          <Wrapper bannerOpen={bannerOpen}>
+          <Wrapper bannerOpen={bannerOpen} home={location.pathname === '/'}>
             <Announcement
               text='Free Shipping on All Orders'
               toggle={handleToggleAnnouncement}
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
+            {location.pathname !== '/' &&
+              <SectionHeader location={location} />
+            }
             {children}
             <Footer />
           </Wrapper>
