@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-  border: 2px solid ${props => props.ghost ? 'white' : 'black' };
+  border: 2px solid ${props => props.ghost ? 'white' : 'rgb(51,51,51)' };
   padding: 0.5rem 1rem;
   text-transform: uppercase;
   font-family: 'US';
   font-size: 18px;
   font-weight: 400;
-  background: ${props => props.primary ? 'black' : 'transparent' };
-  color: ${props => props.primary || props.ghost ? 'white' : 'black' };
+  background: ${props => props.primary ? 'rgb(51,51,51)' : 'transparent' };
+  color: ${props => props.primary || props.ghost ? 'white' : 'rgb(51,51,51)' };
   transition: 0.2s all ease-in-out;
   cursor: ${props => props.disabled ? `not-allowed` : `pointer` };
   outline: 0 !important;
@@ -17,8 +17,8 @@ const StyledButton = styled.button`
 
   &:hover {
     transform: translate(0, -2px);
-    background: ${props => props.ghost ? 'white' : 'black'};
-    color: ${props => props.ghost ? 'black' : 'white'};
+    background: ${props => props.ghost ? 'white' : 'rgb(51,51,51)'};
+    color: ${props => props.ghost ? 'rgb(51,51,51)' : 'white'};
   }
 `;
 

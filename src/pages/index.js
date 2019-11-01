@@ -1,6 +1,5 @@
 import React, { createRef } from 'react'
 import styled from 'styled-components'
-import { device } from '../utils/devices'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
