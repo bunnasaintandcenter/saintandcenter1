@@ -17,9 +17,15 @@ const Block = styled.section`
   }
 
   h2 {
-    font-size: 60px;
+    font-size: 30px;
     font-weight: 300;
-    line-height: 72px;
+    line-height: 36px;
+
+    @media ${device.laptop}{
+      font-size: 60px;
+      font-weight: 300;
+      line-height: 72px;
+    }
   }
 
   p {
