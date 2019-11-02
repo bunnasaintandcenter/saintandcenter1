@@ -34,6 +34,22 @@ const theme = {
   }
 }
 
+const renderTitle = (page) => {
+  console.log(page.split('/')[2] === 'product')
+  switch (true) {
+    case page.split('/')[2] === 'product':
+      return `Shop / ${page.split('/')[3]}`
+    case page.split('/')[1] === 'shop':
+      return 'Shop / Products'
+    case page.split('/')[1] === 'holy-hemp':
+      return 'Learn'
+    case page.split('/')[1] === 'account':
+      return 'Account'
+    default:
+      return false
+  }
+}
+
 const Layout = ({ children, location }) => {
 
   const cart = useSelector(state => state.cart)
@@ -78,7 +94,7 @@ const Layout = ({ children, location }) => {
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
             {location.pathname !== '/' &&
-              <SectionHeader location={location} />
+              <SectionHeader title={renderTitle(location.pathname)} />
             }
             {children}
             <Footer />

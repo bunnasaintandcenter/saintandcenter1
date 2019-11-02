@@ -267,7 +267,7 @@ const Footer = () => (
       </ul>
       <ul>
         <li><strong>Shop</strong></li>
-        <li>Account</li>
+        <li><Link to='/account'>Account</Link></li>
         <li>Track Your Order</li>
         <li>Lab Results</li>
         <li>Returns</li>

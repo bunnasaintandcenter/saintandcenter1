@@ -21,25 +21,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const SectionHeader = ({ location }) => {
-
-  const renderTitle = (page) => {
-    console.log(page.split('/')[2] === 'product')
-    switch (true) {
-      case page.split('/')[2] === 'product':
-        return `Shop / ${page.split('/')[3]}`
-      case page.split('/')[1] === 'shop':
-        return 'Shop / Products'
-      case page.split('/')[1] === 'holy-hemp':
-        return 'Learn'
-      default:
-        return false
-    }
-  }
+const SectionHeader = ({ title, secondary }) => {
 
   return (
     <Wrapper>
-      {location && renderTitle(location.pathname)}
+      <span>{title}</span>
+      <span>{secondary}</span>
     </Wrapper>
   )
 }

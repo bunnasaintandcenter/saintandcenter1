@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Layout from '../../components/layout'
-import SectionHeader from '../../components/sectionHeader'
 import ShippingForm from '../../components/shippingForm'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
@@ -31,10 +30,9 @@ const Settings = ({ location, data }) => {
   const user = useSelector(state => state.user)
 
   return (
-    <Layout>
+    <Layout location={location}>
       {user.id &&
         <>
-        <SectionHeader title='Account' secondary={`Hello, ${user.first_name}`} />
         <Section cols={2}>
           <AccountNav
             tabs={tabs}

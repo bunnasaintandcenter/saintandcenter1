@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Layout from '../components/layout'
-import SectionHeader from '../components/sectionHeader'
 import ShippingForm from '../components/shippingForm'
 import Subscriptions from '../components/subscriptions'
 import AccountNav from '../components/accountNav'
@@ -36,18 +35,16 @@ const Settings = ({ location, data }) => {
   // ]
 
   return (
-    <Layout>
+    <Layout location={location}>
     <SEO title='Settings | Saint and Center' />
       {user.id &&
         <>
           <AccountNav />
-          <SectionHeader title='Account' secondary={`Hello, ${user.first_name}`} />
           <Section cols={2}>
             <ShippingForm address={user.shipping} user={user} title='shipping' />
             <ShippingForm address={user.billing} user={user} title='billing' />
           </Section>
-          <SectionHeader title='Subscriptions' />
-          <Section>
+           <Section>
             <Subscriptions customer_id={user.id} />
           </Section>
         </>
