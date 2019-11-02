@@ -26,6 +26,7 @@ const FAQsCategory = ({ data }) => (
   <Wrapper>
     {data.map(item => (
       <Expandable
+        key={item.node.title}
         title={stripHtml(item.node.title)}
         padded
       >

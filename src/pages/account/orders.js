@@ -2,11 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Layout from '../../components/layout'
-import SectionHeader from '../../components/sectionHeader'
 import AccountNav from '../../components/accountNav'
 import { device } from '../../utils/devices'
 import tabs from '../../utils/tabs'
-import useOrders from '../../hooks/useOrders'
 import Orders from '../../components/orders'
 
 const Section = styled.section`
@@ -29,10 +27,9 @@ const Settings = ({ location, data }) => {
   const user = useSelector(state => state.user)
 
   return (
-    <Layout>
+    <Layout location={location}>
       {user.id &&
         <>
-        <SectionHeader title='Account' secondary={`Hello, ${user.first_name}`} />
         <Section cols={2}>
           <AccountNav
             tabs={tabs}

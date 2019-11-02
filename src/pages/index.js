@@ -1,9 +1,9 @@
 import React, { createRef } from 'react'
 import styled from 'styled-components'
-import { device } from '../utils/devices'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
+import SectionHeader from '../components/sectionHeader'
 import TextBlock from '../components/textBlock'
 import TextBlockWithImage from '../components/textBlockWithImage'
 import ProductList from '../components/productList'
@@ -15,7 +15,6 @@ import productOne from '../images/product-1.jpg'
 import productTwo from '../images/product-2.jpg'
 // import storyboard from '../images/storyboard.gif'
 // import BlockQuote from '../components/blockQuote'
-import SectionHeader from '../components/sectionHeader'
 import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`

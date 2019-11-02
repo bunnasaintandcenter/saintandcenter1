@@ -15,12 +15,26 @@ const List = styled.div`
 const Order = styled.div`
   border: 2px solid rgb(51,51,51);
   padding: 2rem;
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 2rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
 
   span {
     text-transform: capitalize;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+
+    }
   }
 `;
 
@@ -37,10 +51,20 @@ const Orders = ({ id }) => {
               const { id, date_created, total, line_items, status } = order;
               return (
                 <Order key={id}>
+                  <div>
                   <span>Order #{id}</span>
                   <span><Moment format='LL'>{date_created}</Moment></span>
                   <span>${total}</span>
                   <span>{status}</span>
+                  </div>
+                  <ul>
+                    {line_items.map(item => {
+                      const { name, subtotal, id } = item;
+                      return (
+                        <li key={id}>{name} - ${subtotal}</li>
+                      )
+                    })}
+                  </ul>
                 </Order>
               )
             })}

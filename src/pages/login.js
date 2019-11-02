@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import SEO from '../components/seo'
 import Layout from '../components/layout'
 import LoginForm from '../components/loginForm'
-import SectionHeader from '../components/sectionHeader'
 import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
@@ -37,7 +36,6 @@ const Home = ({ location, theme }) => {
   return (
     <Layout location={location}>
       <SEO title='Login | Saint and Center' />
-      <SectionHeader title='Account' />
       <Wrapper>
         <aside>
           <h2>Log in</h2>
