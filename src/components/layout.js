@@ -87,7 +87,7 @@ const Layout = ({ children, location }) => {
               `}
             </script>
           </Helmet>
-          <Wrapper bannerOpen={bannerOpen} home={location.pathname === '/'}>
+          <Wrapper bannerOpen={bannerOpen} home={location && location.pathname === '/'}>
             <Announcement
               text='Free Shipping on All Orders'
               toggle={handleToggleAnnouncement}
