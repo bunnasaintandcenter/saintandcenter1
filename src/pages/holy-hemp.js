@@ -96,12 +96,12 @@ const content = [
   }
 ]
 
-const HolyHemp = () => {
+const HolyHemp = ({location}) => {
 
   const [slide, setSlide] = useState(0)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Holy Hemp | Saint and Center' />
       <Wrapper>
         <div>

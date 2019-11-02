@@ -9,9 +9,9 @@ import FAQsCategory from '../components/faqsCategory'
 const Wrapper = styled.div`
 `;
 
-const FAQs = () => {
+const FAQs = ({location}) => {
   return (
-    <Layout>
+    <Layout location={location}>
     <SectionHeader title='Home / FAQS' />
     <StaticQuery
       query={graphql`

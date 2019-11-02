@@ -17,15 +17,18 @@ const Wrapper = styled.div`
 
   @media ${device.laptop}{
     top: calc(3vw + 2rem);
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 
-const SectionHeader = ({ title, secondary }) => (
-  <Wrapper>
-    <span>{title}</span>
-    <span>{secondary}</span>
-  </Wrapper>
-);
+const SectionHeader = ({ title, secondary }) => {
+
+  return (
+    <Wrapper>
+      <span>{title}</span>
+      <span>{secondary}</span>
+    </Wrapper>
+  )
+}
 
 export default SectionHeader

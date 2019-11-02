@@ -62,12 +62,12 @@ const content = [
   }
 ]
 
-const HumanRites = () => {
+const HumanRites = ({ location }) => {
 
   const [slide, setSlide] = useState(0)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Human Rites | Saint and Center' />
       <Wrapper>
         <div>
