@@ -20,6 +20,11 @@ const Block = styled.section`
     font-size: 60px;
     font-weight: 300;
     line-height: 72px;
+
+    @media ${device.laptop}{
+      font-size: 36px;
+      line-height: 48px;
+    }
   }
 
   p {
