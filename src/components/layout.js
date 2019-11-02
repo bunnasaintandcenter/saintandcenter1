@@ -93,7 +93,7 @@ const Layout = ({ children, location }) => {
               toggle={handleToggleAnnouncement}
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
-            {location.pathname !== '/' &&
+            {location && location.pathname !== '/' &&
               <SectionHeader title={renderTitle(location.pathname)} />
             }
             {children}
