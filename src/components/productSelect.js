@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import Expandable from './expandable'
 import stripHtml from 'string-strip-html'
 import { device } from '../utils/devices'
+import axios from 'axios'
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -122,7 +123,13 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
   const [recurrence, selectRecurrence ] = useState('once')
   const [count, updateCount] = useState(1)
 
-  const addToCart = () => {
+  const addToCart = async () => {
+
+    const response = await axios.get(`https://andnone.co/saintcenter/wp-json/wc/v3`,
+      { withCredentials: true}
+    )
+
+    console.log(response)
 
     const item = {
       product_id: products[recurrence === 'monthly' ? 0 : 1].wordpress_id,
@@ -130,6 +137,8 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       quantity: count
     }
 
+    const res = await axios.post(`https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`, item)
+    console.log(res)
     dispatch({ type: 'ADD_TO_CART', payload: item})
   }
 
