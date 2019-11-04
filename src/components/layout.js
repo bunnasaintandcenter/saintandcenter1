@@ -15,10 +15,10 @@ import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props => props.bannerOpen ? props.home ? `calc(2rem + 1.5vw)` : `calc(1.5vw + 2rem + 74px)` : `0`};
+  padding-top: ${props => props.bannerOpen ? props.home ? `calc(2rem + 1.5vw)` : `calc(1.5vw + 2rem + 74px)` : props.home ? `0` : `74px`};
 
   @media ${device.laptop}{
-    padding-top: ${props => props.bannerOpen ? props.home ? `calc(1.5vw + 2rem)` : `calc(4vw + 4rem + 16px)` : `0`};
+    padding-top: ${props => props.bannerOpen ? props.home ? `calc(1.5vw + 2rem)` : `calc(4vw + 4rem + 16px)` : props.home ? `0` : `calc(4vw + 2rem)`};
   }
 `;
 
@@ -42,8 +42,12 @@ const renderTitle = (page) => {
       return 'Shop / Products'
     case page.split('/')[1] === 'holy-hemp':
       return 'Learn'
+    case page.split('/')[1] === 'human-rites':
+      return 'Learn'
     case page.split('/')[1] === 'account':
       return 'Account'
+    case page.split('/')[1] === 'faqs':
+      return 'FAQS'
     default:
       return false
   }
