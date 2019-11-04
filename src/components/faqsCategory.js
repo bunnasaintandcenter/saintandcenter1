@@ -2,6 +2,7 @@ import React from "react"
 import Expandable from './expandable'
 import styled from 'styled-components'
 import stripHtml from 'string-strip-html'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
   .expandable {
@@ -15,9 +16,14 @@ const Wrapper = styled.div`
     }
 
     .expandable-title {
-      padding: 2rem 4rem;
-      font-weight: 500;
-      font-size: 24px;
+      padding: 1rem 2rem;
+      font-size: 16px;
+
+      @media ${device.laptop}{
+        font-size: 24px;
+        font-weight: 500;
+        padding: 2rem 4rem;
+      }
     }
   }
 `;
