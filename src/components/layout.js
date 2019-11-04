@@ -35,7 +35,6 @@ const theme = {
 }
 
 const renderTitle = (page) => {
-  console.log(page.split('/')[2] === 'product')
   switch (true) {
     case page.split('/')[2] === 'product':
       return `Shop / ${page.split('/')[3]}`
@@ -53,8 +52,6 @@ const renderTitle = (page) => {
 const Layout = ({ children, location }) => {
 
   const cart = useSelector(state => state.cart)
-
-  console.log('location', location)
 
   const [bannerOpen, toggleBanner] = useState(true)
 
