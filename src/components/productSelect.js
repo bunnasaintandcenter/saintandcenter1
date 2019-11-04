@@ -57,19 +57,24 @@ const Counter = styled.div`
   }
 
   span {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border-top: 1px solid rgb(51,51,51);
     border-bottom: 1px solid rgb(51,51,51);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media ${device.laptop}{
+      width: 48px;
+      height: 48px;
+    }
   }
 
   button {
     cursor: pointer;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border: 1px solid rgba(51,51,51,1);
     padding: 0;
     outline: 0;
@@ -78,14 +83,20 @@ const Counter = styled.div`
     align-items: center;
     background: none;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
+
+    @media ${device.laptop}{
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+    }
   }
 `;
 
 const Option = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
-  padding: 2rem 0;
+  padding: 1rem 0;
   cursor: pointer;
   border-top: 2px solid rgba(51,51,51, 1);
   -webkit-user-select: none;
@@ -97,6 +108,7 @@ const Option = styled.div`
 
   @media ${device.laptop}{
     font-size: 18px;
+    padding: 2rem 0;
   }
 
   label {

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { device } from '../utils/devices'
 import { isBrowser, isMobile } from 'react-device-detect'
-// import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 import SEO from '../components/seo'
 import ProductSelect from '../components/productSelect'
 import Slider from 'react-slick'
@@ -24,13 +24,26 @@ const Image = styled.div`
   position: relative;
   overflow: hidden;
 
-  @media ${device.laptop}{
-    .slick-slider, .slick-track, .slick-list {
+  .slick-slider {
+    height: 50vh;
+
+    @media ${device.laptop}{
+      height: 100%;
+    }
+  }
+
+  .slick-track, .slick-list {
+    height: 100%;
+  }
+
+  .slick-slide {
+    div, picture {
       height: 100%;
     }
   }
 
   img {
+    height: 100%;
     object-fit: cover !important;
     margin-bottom: 0 !important;
   }
@@ -136,7 +149,7 @@ const Category = ({ pageContext, updateCart, data, location }) => {
             arrows={false}
           >
             {images.length > 0 && images.map((img, index) => (
-              <img key={img.localFile.childImageSharp.fluid.src} src={img.localFile.childImageSharp.fluid.src} alt={`${index}`} />
+              <Img key={img.localFile.childImageSharp.fluid.src} fluid={img.localFile.childImageSharp.fluid} alt={`${index}`} />
             ))}
           </Slider>
           {isMobile &&
