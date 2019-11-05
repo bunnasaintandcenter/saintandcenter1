@@ -86,6 +86,12 @@ const Row = styled.div`
   align-items: center;
   padding: 1rem;
 
+  span {
+    &:first-of-type {
+      margin-right: auto;
+    }
+  }
+
   span, div {
     display: flex;
     align-items: center;
@@ -111,6 +117,7 @@ const Counter = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 14px;
+  margin-right: 2rem;
 
   @media ${device.laptop}{
     font-size: 16px;
