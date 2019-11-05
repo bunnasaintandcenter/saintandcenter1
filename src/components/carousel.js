@@ -36,6 +36,11 @@ const Wrapper = styled.section`
     margin-top: 15px;
     z-index: 4;
 
+    &:hover {
+      background: url(${arrow});
+      background-size: 100%;
+    }
+
     &:before {
       content: none;
     }
@@ -47,6 +52,11 @@ const Wrapper = styled.section`
     background-size: 100%;
     height: 30px;
 
+    &:hover {
+      background: url(${arrow});
+      background-size: 100%;
+    }
+
     &:before {
       content: none;
     }
@@ -55,7 +65,7 @@ const Wrapper = styled.section`
   img {
     width: ${props => props.cover ? `100vw` : `auto`};
     height: 70vh;
-    object-fit: cover;
+    object-fit: contain;
     margin: 0;
     display: flex;
     padding: 0;

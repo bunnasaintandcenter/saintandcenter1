@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import Expandable from './expandable'
 import stripHtml from 'string-strip-html'
 import { device } from '../utils/devices'
+import axios from 'axios'
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -56,19 +57,24 @@ const Counter = styled.div`
   }
 
   span {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border-top: 1px solid rgb(51,51,51);
     border-bottom: 1px solid rgb(51,51,51);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media ${device.laptop}{
+      width: 48px;
+      height: 48px;
+    }
   }
 
   button {
     cursor: pointer;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border: 1px solid rgba(51,51,51,1);
     padding: 0;
     outline: 0;
@@ -77,14 +83,20 @@ const Counter = styled.div`
     align-items: center;
     background: none;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
+
+    @media ${device.laptop}{
+      width: 48px;
+      height: 48px;
+      font-size: 24px;
+    }
   }
 `;
 
 const Option = styled.div`
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
-  padding: 2rem 0;
+  padding: 1rem 0;
   cursor: pointer;
   border-top: 2px solid rgba(51,51,51, 1);
   -webkit-user-select: none;
@@ -96,6 +108,7 @@ const Option = styled.div`
 
   @media ${device.laptop}{
     font-size: 18px;
+    padding: 2rem 0;
   }
 
   label {
@@ -124,7 +137,13 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
   const [recurrence, selectRecurrence ] = useState('once')
   const [count, updateCount] = useState(1)
 
-  const addToCart = () => {
+  const addToCart = async () => {
+
+    const response = await axios.get(`https://andnone.co/saintcenter/wp-json/wc/v3`,
+      { withCredentials: true}
+    )
+
+    console.log(response)
 
     const item = {
       product_id: products[recurrence === 'monthly' ? 0 : 1].wordpress_id,
@@ -132,6 +151,8 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       quantity: count
     }
 
+    const res = await axios.post(`https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`, item)
+    console.log(res)
     dispatch({ type: 'ADD_TO_CART', payload: item})
   }
 

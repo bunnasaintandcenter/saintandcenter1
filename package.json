@@ -4,12 +4,9 @@
   "description": "Saint and Center website",
   "version": "0.1.0",
   "author": "Jermaine Davis <majorwaves@gmail.com>",
-  "resolutions": {
-    "svgo": "1.3.0"
-  },
   "dependencies": {
     "@massivdash/gatsby-source-woocommerce": "^0.2.4",
-    "@pasdo501/gatsby-source-woocommerce": "^0.8.0",
+    "@pasdo501/gatsby-source-woocommerce": "^0.9.0",
     "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.51",
@@ -26,6 +23,7 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
+    "qs": "^6.9.0",
     "react": "^16.8.6",
     "react-device-detect": "^1.6.2",
     "react-div-100vh": "^0.3.4",
@@ -48,7 +46,7 @@
     "slick-carousel": "^1.8.1",
     "string-strip-html": "^4.3.1",
     "styled-components": "^4.2.0",
-    "svgo": "1.3.0"
+    "svgo": "^1.3.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",

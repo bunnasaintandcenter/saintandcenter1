@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
-import SectionHeader from '../components/sectionHeader'
 import Layout from '../components/layout'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { device } from '../utils/devices'
 import { isBrowser, isMobile } from 'react-device-detect'
-// import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 import SEO from '../components/seo'
 import ProductSelect from '../components/productSelect'
 import Slider from 'react-slick'
 
 const Wrapper = styled.div`
-  margin-top: 55px;
 
   @media ${device.laptop}{
-    margin-top: 62px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -27,13 +24,26 @@ const Image = styled.div`
   position: relative;
   overflow: hidden;
 
-  @media ${device.laptop}{
-    .slick-slider, .slick-track, .slick-list {
+  .slick-slider {
+    height: 50vh;
+
+    @media ${device.laptop}{
+      height: 100%;
+    }
+  }
+
+  .slick-track, .slick-list {
+    height: 100%;
+  }
+
+  .slick-slide {
+    div, picture {
       height: 100%;
     }
   }
 
   img {
+    height: 100%;
     object-fit: cover !important;
     margin-bottom: 0 !important;
   }
@@ -108,8 +118,7 @@ const InfoOverlay = styled.div`
   }
 `;
 
-const Category = ({ pageContext, updateCart, data }) => {
-
+const Category = ({ pageContext, updateCart, data, location }) => {
   const { name, description, products } = pageContext;
   const [infoShown, setInfoShown] = useState(false)
 
@@ -122,8 +131,7 @@ const Category = ({ pageContext, updateCart, data }) => {
   // const { image } = data.allWcProductsCategories.edges[0].node;
 
   return (
-    <Layout>
-      <SectionHeader title={`Shop / Products / ${name}`} />
+    <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
         <Image>
@@ -141,7 +149,7 @@ const Category = ({ pageContext, updateCart, data }) => {
             arrows={false}
           >
             {images.length > 0 && images.map((img, index) => (
-              <img key={img.localFile.childImageSharp.fluid.src} src={img.localFile.childImageSharp.fluid.src} alt={`${index}`} />
+              <Img key={img.localFile.childImageSharp.fluid.src} fluid={img.localFile.childImageSharp.fluid} alt={`${index}`} />
             ))}
           </Slider>
           {isMobile &&

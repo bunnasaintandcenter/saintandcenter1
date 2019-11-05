@@ -10,7 +10,6 @@ const Banner = styled.div`
   box-sizing: border-box;
   text-align: center;
   color: white;
-  text-transform: uppercase;
   font-size: 3vw;
   font-weight: 300;
   background: black;
@@ -23,7 +22,7 @@ const Banner = styled.div`
   justify-content: center;
 
   @media ${device.laptop}{
-    font-size: 1.5vw;
+    font-size: 1vw;
   }
 `;
 

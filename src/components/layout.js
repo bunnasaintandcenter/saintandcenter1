@@ -9,15 +9,16 @@ import Header from './header'
 import Footer from './footer'
 import { device } from '../utils/devices'
 import Helmet from 'react-helmet'
+import SectionHeader from './sectionHeader'
 
 import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props => props.bannerOpen ? `74px` : `0`};
+  padding-top: ${props => props.bannerOpen ? props.home ? `calc(2rem + 1.5vw)` : `calc(1.5vw + 2rem + 74px)` : props.home ? `0` : `74px`};
 
   @media ${device.laptop}{
-    padding-top: ${props => props.bannerOpen ? `calc(1.5vw + 2rem)` : `0`};
+    padding-top: ${props => props.bannerOpen ? props.home ? `calc(1.5vw + 2rem)` : `calc(4vw + 4rem + 16px)` : props.home ? `0` : `calc(4vw + 2rem)`};
   }
 `;
 
@@ -33,6 +34,27 @@ const theme = {
   }
 }
 
+const renderTitle = (page) => {
+  switch (true) {
+    case page.split('/')[2] === 'product':
+      return `Shop / ${page.split('/')[3]}`
+    case page.split('/')[1] === 'shop':
+      return 'Shop / Products'
+    case page.split('/')[1] === 'holy-hemp':
+      return 'Learn'
+    case page.split('/')[1] === 'human-rites':
+      return 'Learn'
+    case page.split('/')[1] === 'account':
+      return 'Account'
+    case page.split('/')[1] === 'faqs':
+      return 'FAQS'
+    case page.split('/')[1] === 'order-received':
+      return 'Order Recieved'
+    default:
+      return false
+  }
+}
+
 const Layout = ({ children, location }) => {
 
   const cart = useSelector(state => state.cart)
@@ -41,7 +63,6 @@ const Layout = ({ children, location }) => {
 
   const handleToggleAnnouncement = () => {
     const storageObj = { timestamp: new Date().getTime()};
-    console.log(storageObj)
     localStorage.setItem('sc-hide-announcement', JSON.stringify(storageObj))
     toggleBanner()
   }
@@ -69,12 +90,15 @@ const Layout = ({ children, location }) => {
               `}
             </script>
           </Helmet>
-          <Wrapper bannerOpen={bannerOpen}>
+          <Wrapper bannerOpen={bannerOpen} home={location && location.pathname === '/'}>
             <Announcement
               text='Free Shipping on All Orders'
               toggle={handleToggleAnnouncement}
               open={bannerOpen} />
             <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
+            {location && location.pathname !== '/' &&
+              <SectionHeader title={renderTitle(location.pathname)} />
+            }
             {children}
             <Footer />
           </Wrapper>

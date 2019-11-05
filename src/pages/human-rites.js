@@ -6,7 +6,6 @@ import { Waypoint } from 'react-waypoint'
 import SEO from '../components/seo'
 
 const Wrapper = styled.div`
-  margin-top: 6rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `;
@@ -62,12 +61,12 @@ const content = [
   }
 ]
 
-const HumanRites = () => {
+const HumanRites = ({ location }) => {
 
   const [slide, setSlide] = useState(0)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Human Rites | Saint and Center' />
       <Wrapper>
         <div>
