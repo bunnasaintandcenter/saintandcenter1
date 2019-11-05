@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Moment from 'react-moment'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
   border: 2px solid rgb(51,51,51);
@@ -9,12 +10,22 @@ const Wrapper = styled.div`
 
   div {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 2rem;
+
+    @media ${device.laptop}{
+      flex-direction: row;
+    }
   }
 
   span {
     text-transform: capitalize;
+    margin-bottom: 1rem;
+
+    @media ${device.laptop}{
+      margin: 0;
+    }
   }
 
   ul {
