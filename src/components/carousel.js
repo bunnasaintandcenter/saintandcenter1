@@ -36,6 +36,11 @@ const Wrapper = styled.section`
     margin-top: 15px;
     z-index: 4;
 
+    &:hover {
+      background: url(${arrow});
+      background-size: 100%;
+    }
+
     &:before {
       content: none;
     }
@@ -46,6 +51,11 @@ const Wrapper = styled.section`
     background: url(${arrow});
     background-size: 100%;
     height: 30px;
+
+    &:hover {
+      background: url(${arrow});
+      background-size: 100%;
+    }
 
     &:before {
       content: none;
@@ -86,7 +96,6 @@ const Wrapper = styled.section`
 
         &:hover {
           transform: scale(1.1);
-          background: initial !important;
         }
 
         &:before {

@@ -48,6 +48,8 @@ const renderTitle = (page) => {
       return 'Account'
     case page.split('/')[1] === 'faqs':
       return 'FAQS'
+    case page.split('/')[1] === 'order-received':
+      return 'Order Recieved'
     default:
       return false
   }

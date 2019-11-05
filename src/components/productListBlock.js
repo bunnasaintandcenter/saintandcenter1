@@ -1,147 +1,212 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import logo from '../images/logo.svg'
-import logoType from '../images/logotype-vertical.svg'
-import ProductSelect from './productSelect'
-import ProductInfo from './productInfo'
 import { device } from '../utils/devices'
-import stripHtml from 'string-strip-html'
+import { isBrowser, isMobile } from 'react-device-detect'
+import Img from 'gatsby-image'
+import ProductSelect from '../components/productSelect'
+import Slider from 'react-slick'
 
-const Product = styled.div`
-  cursor: default;
-`;
-
-const Block = styled.div`
-  background: ${props => props.color};
-  color: white;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-rows: repeat(3, 1fr);
-  box-sizing: border-box;
-  padding: 5vw;
-  align-items: center;
+const Wrapper = styled.div`
 
   @media ${device.laptop}{
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5vw;
-    height: calc(100vh - 24px - 2rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
-const Col = styled.div`
-  line-height: 30px;
-  font-size: 30px;
+const Image = styled.div`
+  background: #D1CECE;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .slick-slider {
+    height: 50vh;
+
+    @media ${device.laptop}{
+      height: 100%;
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
+    left: 0;
+    bottom: 4rem;
+    text-align: left;
+    padding: 0 0 0 2rem;
+    display: flex;
+
+    li {
+      width: auto;
+      height: auto;
+
+      &.slick-active {
+        button {
+          background: rgb(51,51,51);
+        }
+      }
+
+      button {
+        border: 2px solid rgb(51,51,51);
+        border-radius: 50%;
+        transition: 0.2s all ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .slick-track, .slick-list {
+    height: 100%;
+  }
+
+  .slick-slide {
+    div, picture {
+      height: 100%;
+    }
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover !important;
+    margin-bottom: 0 !important;
+  }
+`;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: calc(100vh - 10vw);
+
+  h4 {
+    font-weight: 300;
+    font-size: 1.5vw;
+    line-height: 3vw;
+    padding: 4rem 4rem 0 4rem;
+  }
+`;
+
+const InfoToggle = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 24px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
-
-  @media ${device.laptop}{
-    line-height: 48px;
-    font-size: 48px;
-  }
-
-  &:first-of-type {
-    justify-content: start;
-    align-self: start;
-  }
-
-  &:last-of-type {
-    justify-content: flex-end;
-
-    @media ${device.laptop}{
-      align-self: end;
-    }
-  }
-
-`;
-
-const Mock = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 60vh;
-  border: 2px solid white;
   align-items: center;
+`;
+
+const InfoOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  padding: 5vw;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
-  padding: 2.5vw;
-  width: 24vh;
+  pointer-events: none;
 
-  .logo {
-    width: 5vw;
-
-    @media ${device.laptop}{
-      width: 2vw;
-    }
+  h4 {
+    opacity: ${props => props.open ? 1 : 0};
+    position: relative;
+    z-index: 2;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 1.4em;
+    transition-delay: 0.3s;
+    transition: 0.2s all ease-in-out;
   }
 
-  .logotype {
-    height: 50vw;
-
-    @media ${device.laptop}{
-      height: 13vw;
-    }
-  }
-
-  div {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 3vw;
-    line-height: 4vw;
-    font-weight: 400;
-
-    @media ${device.laptop}{
-      font-size: 0.75vw;
-      line-height: 1.4vw;
-    }
-
-    p {
-      margin: 0;
-      padding: 0;
-    }
+  .background {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgb(248,249,244);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.3s all ease-in-out;
+    transform: ${props => props.open ? `scale(100)` : `scale(0)` };
   }
 `;
 
-const Desc = styled.div`
-  padding: 2rem 5vw;
-  font-size: 18px;
-  color: rgb(51,51,51);
-`;
+const ProductListBlock = ({ product, updateCart }) => {
 
-const productListBlock = ({ products, color, updateCart, info }) => {
+  console.log(product)
+
+  const { name, description, products } = product;
+  const [infoShown, setInfoShown] = useState(false)
+
+  let images = []
+
+  if(products && products.length > 0){
+    images = products[1].images
+  }
+
+  // const { image } = data.allWcProductsCategories.edges[0].node;
 
   return (
-    <Product>
-      <Block color={color}>
-        <Col>
-          A daily<br/>
-          microdose<br/>
-          of joy
-        </Col>
-        <Col>
-          <Mock>
-            <img className='logo' src={logo} alt='logo' />
-            <img className='logotype' src={logoType} alt='logotype' />
-            <div>
-              <p>CBD {products[0].title}</p>
-              <p>{products[0].variations[0].attributes[0].option}</p>
-            </div>
-          </Mock>
-        </Col>
-        <Col>
-          Redrop<br/>
-          Rejoice
-        </Col>
-      </Block>
-      <Desc>{stripHtml(products[0].description)}</Desc>
-      <ProductSelect
-        id={products[0].id}
-        updateCart={updateCart}
-        options={products[0].variations}
-        products={products}
-      />
-    </Product>
+    <Wrapper>
+      <Image>
+        {isMobile &&
+          <InfoToggle onClick={() => setInfoShown(!infoShown)}>
+            {infoShown
+              ? <span>X</span>
+              : <span>?</span>
+            }
+          </InfoToggle>
+        }
+        <Slider
+          speed={500}
+          infinite
+          arrows={false}
+          dots
+        >
+          {images.length > 0 && images.map((img, index) => (
+            <Img key={img.localFile.childImageSharp.fluid.src} fluid={img.localFile.childImageSharp.fluid} alt={`${index}`} />
+          ))}
+        </Slider>
+        {isMobile &&
+          <InfoOverlay open={infoShown}>
+            <h4>{description}</h4>
+            <div class='background' />
+          </InfoOverlay>
+        }
+      </Image>
+      <Info>
+        {isBrowser &&
+          <h4>{description}</h4>
+        }
+        {products && products.length > 0 &&
+          <ProductSelect
+            id={products[0].id}
+            updateCart={updateCart}
+            options={products[0].product_variations}
+            products={products}
+          />
+        }
+      </Info>
+    </Wrapper>
   )
 }
 
-export default productListBlock;
+export default ProductListBlock;
