@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
 import { isMobile } from 'react-device-detect'
 import { FiArrowRight } from 'react-icons/fi'
+import ProductListBlock from './ProductListBlock'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
@@ -23,6 +24,11 @@ const List = styled.ul`
 
 const Item = styled.li`
   border-bottom: 2px solid black;
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+  margin: 0;
+  justify-content: space-between;
 
   a {
     display: flex;
@@ -91,6 +97,9 @@ const Item = styled.li`
 `;
 
 const ProductList = ({updateCart}) => {
+
+  const [current, setCurrent] = useState(null)
+
   return (
   <StaticQuery
     query={graphql`
@@ -100,6 +109,7 @@ const ProductList = ({updateCart}) => {
             node {
               wordpress_id
               name
+              description
               slug
               menu_order
               products {
@@ -107,7 +117,17 @@ const ProductList = ({updateCart}) => {
                 wordpress_id
                 sku
                 name
+                images {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1500, quality: 80) {
+                        src
+                      }
+                    }
+                  }
+                }
                 description
+                short_description
                 product_variations {
                   attributes {
                     option
@@ -127,14 +147,21 @@ const ProductList = ({updateCart}) => {
         <List>
           {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => {
             return (
+              <>
                 <Item
                   key={node.wordpress_id}
+                  onClick={() => current === node.wordpress_id ? setCurrent(null) : setCurrent(node.wordpress_id)}
                 >
-                <Link to={`/shop/product/${node.slug}`}>
                   <h2>{node.name}</h2>
                   <h2>${node.products[1].product_variations[0].price}{node.products[1].product_variations.length > 1 && `+` }</h2>
-                </Link>
               </Item>
+              {current === node.wordpress_id &&
+                <ProductListBlock
+                  product={node}
+                  updateCart={updateCart}
+                />
+              }
+              </>
             )
           }
           )}

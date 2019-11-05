@@ -129,6 +129,8 @@ const Option = styled.div`
 
 const ProductSelect = ({ options, updateCart, id, products }) => {
 
+  console.log(products)
+
   const dispatch = useDispatch()
 
   const [selectedOption, selectOption] = useState(0)
