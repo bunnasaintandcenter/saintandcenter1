@@ -4,10 +4,40 @@ import styled from 'styled-components'
 import TextTransition, { presets } from "react-text-transition"
 import { Waypoint } from 'react-waypoint'
 import SEO from '../components/seo'
+import { isMobile } from 'react-device-detect'
+import { device } from '../utils/devices'
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+  p {
+    width: 90vw;
+    margin: 2rem auto;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.4em;
+  }
+
+  blockquote {
+    height: 50vh;
+    background: ${props => props.theme.color.forest};
+    color: ${props => props.theme.color.green};
+    padding: 0 5vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-align: center;
+    line-height: 30px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+
+  @media ${device.laptop}{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+  }
 `;
 
 const Block = styled.div`
@@ -37,21 +67,6 @@ const Heading = styled.div`
   background: ${props => props.theme.color.forest};
   color: ${props => props.theme.color.green};
 `;
-
-// const Progress = styled.progress`
-//   top: calc(4vw + 1.25rem);
-//   width: 100vw;
-//   height: 6px;
-//   position: fixed;
-//   transition: 0.1s all ease-in-out;
-//   z-index: 10;
-//   background: transparent;
-//   appearance: none;
-//
-//   &[value]: {
-//     background: red;
-//   }
-// `;
 
 const content = [
   {
@@ -102,24 +117,38 @@ const HolyHemp = ({location}) => {
   return (
     <Layout location={location}>
       <SEO title='Holy Hemp | Saint and Center' />
-      <Wrapper>
-        <div>
-        {content.map(({paragraph}, index) => (
-          <Block key={paragraph}>
-            {paragraph}
-            <Waypoint onEnter={() => setSlide(index)} />
-          </Block>
-        ))}
-        </div>
-        <Heading>
-        {presets &&
-          <TextTransition
-            text={content[slide].heading}
-            springConfig={presets.default}
-          />
-        }
-        </Heading>
-      </Wrapper>
+      {isMobile
+        ?
+          <Wrapper>
+            {content.map(({paragraph, heading}) => (
+              <div>
+                <blockquote>
+                  {heading}
+                </blockquote>
+                <p>{paragraph}</p>
+              </div>
+            ))}
+          </Wrapper>
+        :
+          <Wrapper>
+            <div>
+            {content.map(({paragraph}, index) => (
+              <Block key={paragraph}>
+                {paragraph}
+                <Waypoint onEnter={() => setSlide(index)} />
+              </Block>
+            ))}
+            </div>
+            <Heading>
+            {presets &&
+              <TextTransition
+                text={content[slide].heading}
+                springConfig={presets.default}
+              />
+            }
+            </Heading>
+          </Wrapper>
+      }
     </Layout>
   )
 }
