@@ -129,59 +129,59 @@ const Cart = ({ cart, open, toggle }) => {
     return sum
   }
 
-  const handleSubmit = () => {
-
-    const headers = new Headers();
-
-    const data = {
-      billing: {
-      first_name: 'John',
-      last_name: 'Doe',
-      address_1: '969 Market',
-      address_2: '',
-      city: 'San Francisco',
-      state: 'CA',
-      postcode: '94103',
-      country: 'US',
-      email: 'john.doe@example.com',
-      phone: '(555) 555-5555'
-      },
-      shipping: {
-        first_name: 'John',
-        last_name: 'Doe',
-        address_1: '969 Market',
-        address_2: '',
-        city: 'San Francisco',
-        state: 'CA',
-        postcode: '94103',
-        country: 'US'
-      },
-      set_paid: false,
-      line_items: cart
-    }
-
-    headers.set('Authorization', 'Basic ' + btoa('ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a:cs_0c39f3c5f8db99d8f1493394fffadba7629215cd'));
-
-    fetch(`https://andnone.co/saintcenter/wp-json/wc/v3/orders?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`, {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(res => {
-      console.log('status', res.status)
-      if(res.status === 201){
-        return res.json()
-      } else {
-        throw new Error(res)
-      }
-    })
-    .then(data => {
-      window.location.href = `http://andnone.co/saintcenter/checkout/order-pay/${data.id}/?pay_for_order=true&key=${data.order_key}`
-    })
-    .catch(err => console.log(err))
-  }
+  // const handleSubmit = () => {
+  //
+  //   const headers = new Headers();
+  //
+  //   const data = {
+  //     billing: {
+  //     first_name: 'John',
+  //     last_name: 'Doe',
+  //     address_1: '969 Market',
+  //     address_2: '',
+  //     city: 'San Francisco',
+  //     state: 'CA',
+  //     postcode: '94103',
+  //     country: 'US',
+  //     email: 'john.doe@example.com',
+  //     phone: '(555) 555-5555'
+  //     },
+  //     shipping: {
+  //       first_name: 'John',
+  //       last_name: 'Doe',
+  //       address_1: '969 Market',
+  //       address_2: '',
+  //       city: 'San Francisco',
+  //       state: 'CA',
+  //       postcode: '94103',
+  //       country: 'US'
+  //     },
+  //     set_paid: false,
+  //     line_items: cart
+  //   }
+  //
+  //   headers.set('Authorization', 'Basic ' + btoa('ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a:cs_0c39f3c5f8db99d8f1493394fffadba7629215cd'));
+  //
+  //   fetch(`https://andnone.co/saintcenter/wp-json/wc/v3/orders?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`, {
+  //     method: 'POST',
+  //     headers:{
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //   .then(res => {
+  //     console.log('status', res.status)
+  //     if(res.status === 201){
+  //       return res.json()
+  //     } else {
+  //       throw new Error(res)
+  //     }
+  //   })
+  //   .then(data => {
+  //     window.location.href = `http://andnone.co/saintcenter/checkout/order-pay/${data.id}/?pay_for_order=true&key=${data.order_key}`
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   return (
     <StaticQuery
@@ -233,7 +233,7 @@ const Cart = ({ cart, open, toggle }) => {
             </Row>
             </section>
             <aside>
-              <Button ghost onClick={handleSubmit}>Checkout</Button>
+              <a href="https://andnone.co/saintcenter/checkout"><Button ghost>Checkout</Button></a>
             </aside>
           </Tray>
           <Close onClick={() => toggle()}><MdClose /></Close>
