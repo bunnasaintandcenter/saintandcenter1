@@ -6,7 +6,6 @@ import { Waypoint } from 'react-waypoint'
 import SEO from '../components/seo'
 
 const Wrapper = styled.div`
-  margin-top: 6rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `;

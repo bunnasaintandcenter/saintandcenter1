@@ -11,6 +11,7 @@ module.exports = {
     description: `We’ve reimagined the power of hemp to extract cbd with a higher calling - saving the earth, restoring equality. It’s hemp for humans who levitate, create, vibrate.`,
     author: `@saintandcenter`,
   },
+  pathPrefix: `/saint`,
   developMiddleware: app => {
     app.use(
       "/.netlify/functions/",

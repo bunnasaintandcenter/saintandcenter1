@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { device } from '../utils/devices'
 
 const Menu = styled.div`
   cursor: pointer;
@@ -10,21 +11,30 @@ const Menu = styled.div`
 const Title = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: ${props => props.large ? `4rem` : `1rem 4rem` };
+  padding: ${props => props.large ? `2rem` : `1rem` };
   font-weight: 200;
   text-transform: uppercase;
   transition: 0.2s all ease-in-out;
-  font-size: ${props => props.large ? `48px` : `16px`};
+  font-size: ${props => props.large ? `20px` : `16px`};
+
+  @media ${device.laptop}{
+    font-size: ${props => props.large ? `48px` : `16px`};
+    padding: ${props => props.large ? `4rem` : `1rem 4rem` };
+  }
 
   &:hover {
     background: rgba(0,0,0,0.1);
   }
 
   span {
-    font-size: 48px;
+    font-size: 18px;
     font-weight: 200;
     transform: ${props => props.expanded ? `rotate(45deg)` : `rotate(0)` };
     transition: 0.2s all ease-in-out;
+
+    @media ${device.laptop}{
+      font-size: 48px;
+    }
   }
 `;
 

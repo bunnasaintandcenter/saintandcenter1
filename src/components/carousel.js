@@ -55,7 +55,7 @@ const Wrapper = styled.section`
   img {
     width: ${props => props.cover ? `100vw` : `auto`};
     height: 70vh;
-    object-fit: cover;
+    object-fit: contain;
     margin: 0;
     display: flex;
     padding: 0;
@@ -86,6 +86,7 @@ const Wrapper = styled.section`
 
         &:hover {
           transform: scale(1.1);
+          background: initial !important;
         }
 
         &:before {
