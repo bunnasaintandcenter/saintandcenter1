@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Button from './button'
 import { MdClose } from 'react-icons/md'
 import { device } from '../utils/devices'
+import { useDispatch } from 'react-redux'
 import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
@@ -85,12 +86,70 @@ const Row = styled.div`
   align-items: center;
   padding: 1rem;
 
+  span, div {
+    display: flex;
+    align-items: center;
+  }
+
+  .remove {
+    margin-left: 2rem;
+    cursor: pointer;
+  }
+
   &:last-of-type {
     padding: 1.5rem 1rem;
     border: 0;
 
     @media ${device.laptop}{
       border-bottom: 2px solid white;
+    }
+  }
+`;
+
+const Counter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+
+  @media ${device.laptop}{
+    font-size: 16px;
+  }
+
+  span {
+    width: 24px;
+    height: 24px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media ${device.laptop}{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
+    padding: 0;
+    color: white;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    font-weight: 400;
+    font-size: 16px;
+
+    @media ${device.laptop}{
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
     }
   }
 `;
@@ -115,6 +174,8 @@ const Close = styled.button`
 
 const Cart = ({ cart, open, toggle }) => {
 
+  const dispatch = useDispatch()
+
   const cartTotal = (data) => {
 
     let initialValue = 0
@@ -129,59 +190,17 @@ const Cart = ({ cart, open, toggle }) => {
     return sum
   }
 
-  // const handleSubmit = () => {
-  //
-  //   const headers = new Headers();
-  //
-  //   const data = {
-  //     billing: {
-  //     first_name: 'John',
-  //     last_name: 'Doe',
-  //     address_1: '969 Market',
-  //     address_2: '',
-  //     city: 'San Francisco',
-  //     state: 'CA',
-  //     postcode: '94103',
-  //     country: 'US',
-  //     email: 'john.doe@example.com',
-  //     phone: '(555) 555-5555'
-  //     },
-  //     shipping: {
-  //       first_name: 'John',
-  //       last_name: 'Doe',
-  //       address_1: '969 Market',
-  //       address_2: '',
-  //       city: 'San Francisco',
-  //       state: 'CA',
-  //       postcode: '94103',
-  //       country: 'US'
-  //     },
-  //     set_paid: false,
-  //     line_items: cart
-  //   }
-  //
-  //   headers.set('Authorization', 'Basic ' + btoa('ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a:cs_0c39f3c5f8db99d8f1493394fffadba7629215cd'));
-  //
-  //   fetch(`https://andnone.co/saintcenter/wp-json/wc/v3/orders?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`, {
-  //     method: 'POST',
-  //     headers:{
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //   .then(res => {
-  //     console.log('status', res.status)
-  //     if(res.status === 201){
-  //       return res.json()
-  //     } else {
-  //       throw new Error(res)
-  //     }
-  //   })
-  //   .then(data => {
-  //     window.location.href = `http://andnone.co/saintcenter/checkout/order-pay/${data.id}/?pay_for_order=true&key=${data.order_key}`
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+  const removeFromCart = (index) => {
+    dispatch({ type: 'REMOVE_FROM_CART', payload: index })
+  }
+
+  const addToCount = (index, quantity) => {
+    dispatch({ type: 'CHANGE_QUANTITY', payload: { index: index, quantity: quantity + 1 } })
+  }
+
+  const subtractfromCount = (index, quantity) => {
+    dispatch({ type: 'CHANGE_QUANTITY', payload: { index: index, quantity: quantity - 1  } })
+  }
 
   return (
     <StaticQuery
@@ -217,13 +236,21 @@ const Cart = ({ cart, open, toggle }) => {
                 <span>Free Shipping Forever</span>
               }
             </Row>
-            {cart.map(item => {
+            {cart.map((item, index) => {
               const { name, product_variations }= data.allWcProducts.edges.find(o => o.node.wordpress_id === item.product_id).node
               const { price } = product_variations.find(o => o.id === item.variation_id)
               return (
                 <Row key={name}>
                   <span>{name}</span>
-                  <span>${(item.quantity * price).toFixed(2)}</span>
+                  <Counter>
+                    <button disabled={item.quantity < 2} onClick={() => subtractfromCount(index, item.quantity)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => addToCount(index, item.quantity)}>+</button>
+                  </Counter>
+                  <div>
+                    <span>${(item.quantity * price).toFixed(2)}</span>
+                    <span className='remove' onClick={() => removeFromCart(index)}><MdClose /></span>
+                  </div>
                 </Row>
               )
             })}
