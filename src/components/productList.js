@@ -4,7 +4,7 @@ import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
 import { isMobile } from 'react-device-detect'
 import { FiArrowRight } from 'react-icons/fi'
-import ProductListBlock from './ProductListBlock'
+import ProductListBlock from './productListBlock'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
