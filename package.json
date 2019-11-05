@@ -26,6 +26,7 @@
     "gatsby-transformer-sharp": "^2.1.19",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
+    "qs": "^6.9.0",
     "react": "^16.8.6",
     "react-device-detect": "^1.6.2",
     "react-div-100vh": "^0.3.4",
