@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import qs from 'qs'
 import styled from 'styled-components'
 import useOrder from '../hooks/useOrder'
