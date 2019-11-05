@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
-import SectionHeader from '../components/sectionHeader'
 import Expandable from '../components/expandable'
 import { StaticQuery, graphql } from 'gatsby'
 import FAQsCategory from '../components/faqsCategory'
@@ -12,7 +11,6 @@ const Wrapper = styled.div`
 const FAQs = ({location}) => {
   return (
     <Layout location={location}>
-    <SectionHeader title='Home / FAQS' />
     <StaticQuery
       query={graphql`
         query FAQCategoryQuery {

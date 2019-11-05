@@ -52,7 +52,7 @@ const Image = styled.div`
   padding: 4rem 0;
 
   img {
-    height: 20vh;
+    height: 30vh;
     margin: 0 auto;
 
     @media ${device.laptop}{

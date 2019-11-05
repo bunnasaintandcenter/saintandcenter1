@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
               images {
                 localFile {
                   childImageSharp {
-                    fluid {
+                    fluid(maxWidth: 1500, quality: 80) {
                       src
                     }
                   }
@@ -27,6 +27,9 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               wordpress_id
               sku
+              meta_data {
+                key
+              }
               name
               description
               short_description
