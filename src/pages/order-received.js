@@ -35,6 +35,7 @@ const OrderReceived = ({ location }) => {
         <p>Thank you! Your order has been received.</p>
         {loaded &&
           <Order
+            id={query.order}
             date={order.date_created}
             total={order.total}
             lineItems={order.line_items}
