@@ -32,6 +32,40 @@ const Image = styled.div`
     }
   }
 
+  .slick-dots {
+    position: absolute;
+    left: 0;
+    bottom: 4rem;
+    text-align: left;
+    padding: 0 0 0 2rem;
+    display: flex;
+
+    li {
+      width: auto;
+      height: auto;
+
+      &.slick-active {
+        button {
+          background: rgb(51,51,51);
+        }
+      }
+
+      button {
+        border: 2px solid rgb(51,51,51);
+        border-radius: 50%;
+        transition: 0.2s all ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+
   .slick-track, .slick-list {
     height: 100%;
   }
@@ -146,6 +180,7 @@ const Category = ({ pageContext, updateCart, data, location }) => {
           <Slider
             speed={500}
             infinite
+            dots
             arrows={false}
           >
             {images.length > 0 && images.map((img, index) => (

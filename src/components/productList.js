@@ -4,7 +4,7 @@ import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
 import { isMobile } from 'react-device-detect'
 import { FiArrowRight } from 'react-icons/fi'
-import ProductSelect from './productSelect'
+import ProductListBlock from './ProductListBlock'
 
 const Wrapper = styled.section`
   margin: 0 auto 4rem;
@@ -27,6 +27,7 @@ const Item = styled.li`
   display: flex;
   align-items: baseline;
   cursor: pointer;
+  margin: 0;
   justify-content: space-between;
 
   a {
@@ -108,6 +109,7 @@ const ProductList = ({updateCart}) => {
             node {
               wordpress_id
               name
+              description
               slug
               menu_order
               products {
@@ -115,6 +117,15 @@ const ProductList = ({updateCart}) => {
                 wordpress_id
                 sku
                 name
+                images {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1500, quality: 80) {
+                        src
+                      }
+                    }
+                  }
+                }
                 description
                 short_description
                 product_variations {
@@ -139,16 +150,15 @@ const ProductList = ({updateCart}) => {
               <>
                 <Item
                   key={node.wordpress_id}
-                  onClick={() => setCurrent(node.wordpress_id)}
+                  onClick={() => current === node.wordpress_id ? setCurrent(null) : setCurrent(node.wordpress_id)}
                 >
                   <h2>{node.name}</h2>
                   <h2>${node.products[1].product_variations[0].price}{node.products[1].product_variations.length > 1 && `+` }</h2>
               </Item>
               {current === node.wordpress_id &&
-                <ProductSelect
-                  id={node.products[0].id}
-                  options={node.products[0].product_variations}
-                  products={node.products}
+                <ProductListBlock
+                  product={node}
+                  updateCart={updateCart}
                 />
               }
               </>
