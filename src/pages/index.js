@@ -10,9 +10,7 @@ import ProductList from '../components/productList'
 import Benefits from '../components/benefits'
 import holyHemp from '../images/holy-hemp.svg'
 import humanRites from '../images/human-rites.svg'
-import Carousel from '../components/carousel'
-import productOne from '../images/product-1.jpg'
-import productTwo from '../images/product-2.jpg'
+import ProductCarousel from '../components/productCarousel'
 // import storyboard from '../images/storyboard.gif'
 // import BlockQuote from '../components/blockQuote'
 import { isBrowser } from 'react-device-detect'
@@ -20,29 +18,12 @@ import { isBrowser } from 'react-device-detect'
 const Wrapper = styled.div`
 `;
 
-// const Gif = styled.div`
-//   background: white;
-//
-//   img {
-//     margin: 0;
-//     width: 100%;
-//     display: flex;
-//
-//     @media ${device.laptop}{
-//       height: calc(100vh - 2rem - 4vw);
-//       object-fit: contain;
-//     }
-//   }
-//
-// `;
-
 const Home = ({ location, theme }) => {
 
   const intro = createRef()
 
   const handleHeroScroll = () => {
-    console.log('scrolling')
-    console.log(intro.current.scrollIntoView({behavior: "smooth", block: "center"}))
+    intro.current.scrollIntoView({behavior: "smooth", block: "center"})
   }
 
   return (
@@ -59,14 +40,7 @@ const Home = ({ location, theme }) => {
           <h2>Your higher self<br/>without the high.</h2>
         </TextBlock>
         <SectionHeader title='Shop' />
-        <Carousel arrows bg='#E1D6D6'>
-          <div>
-            <img src={productOne} alt='product 1' />
-          </div>
-          <div>
-            <img src={productTwo} alt='product 2' />
-          </div>
-        </Carousel>
+        <ProductCarousel />
         <ProductList />
         <Benefits />
         <SectionHeader
