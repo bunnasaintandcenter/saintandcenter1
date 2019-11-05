@@ -1,7 +1,6 @@
 import React from 'react'
 import Carousel from './carousel'
 import { StaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
 
 const ProductCarousel = () => (
   <StaticQuery
