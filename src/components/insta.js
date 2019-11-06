@@ -98,6 +98,7 @@ const Insta = () => {
 
   return (
     <Instagram>
+      <span>Hemp + High Vibes</span>
       {images.length > 0 &&
         <Slider
          dots
