@@ -93,7 +93,7 @@ const Row = styled.div`
   }
 
   .price {
-    min-width: 125px;
+    min-width: 200px;
   }
 
   span, div {
