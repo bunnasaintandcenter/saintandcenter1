@@ -96,7 +96,7 @@ const Item = styled.li`
   }
 `;
 
-const ProductList = ({updateCart}) => {
+const ProductList = () => {
 
   const [current, setCurrent] = useState(null)
 
@@ -158,7 +158,6 @@ const ProductList = ({updateCart}) => {
               {current === node.wordpress_id &&
                 <ProductListBlock
                   product={node}
-                  updateCart={updateCart}
                 />
               }
               </>

@@ -11,8 +11,6 @@ import Benefits from '../components/benefits'
 import holyHemp from '../images/holy-hemp.svg'
 import humanRites from '../images/human-rites.svg'
 import ProductCarousel from '../components/productCarousel'
-// import storyboard from '../images/storyboard.gif'
-// import BlockQuote from '../components/blockQuote'
 import { isBrowser } from 'react-device-detect'
 
 const Wrapper = styled.div`
