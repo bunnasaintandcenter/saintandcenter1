@@ -92,6 +92,10 @@ const Row = styled.div`
     }
   }
 
+  .price {
+    min-width: 125px;
+  }
+
   span, div {
     display: flex;
     align-items: center;
@@ -254,7 +258,7 @@ const Cart = ({ cart, open, toggle }) => {
                     <span>{item.quantity}</span>
                     <button onClick={() => addToCount(index, item.quantity)}>+</button>
                   </Counter>
-                  <div>
+                  <div className='price'>
                     <span>${(item.quantity * price).toFixed(2)}</span>
                     <span className='remove' onClick={() => removeFromCart(index)}><MdClose /></span>
                   </div>
