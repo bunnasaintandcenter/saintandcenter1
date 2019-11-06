@@ -38,9 +38,11 @@ module.exports = {
         baseUrl: `andnone.co/saintcenter`,
         protocol: 'https',
         verbose: true,
+        useACF:  true,
         hostingWPCOM: false,
         includedRoutes: [
           "**/faq",
+          "**/products",
           "**/categories"
        ]
       }

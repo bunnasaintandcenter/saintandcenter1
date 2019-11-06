@@ -73,14 +73,15 @@ const Info = styled.div`
   }
 `;
 
-const Product = ({name, image, slug}) => {
+const Product = ({name, image, slug, products}) => {
+  console.log(products)
   return (
     <Wrapper>
       <Link to={`/shop/product/${slug}`}></Link>
       {image && <Img className='product-image' fluid={image.localFile.childImageSharp.fluid} />}
       <Info>
         <h2>{name}</h2>
-        <h3>$100</h3>
+        <h3>${products[1].price}</h3>
       </Info>
     </Wrapper>
   )
