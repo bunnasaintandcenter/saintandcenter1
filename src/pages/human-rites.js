@@ -15,6 +15,10 @@ const Wrapper = styled.div`
     font-weight: 200;
     font-size: 18px;
     line-height: 1.4em;
+
+    @media ${device.laptop}{
+      width: auto;
+    }
   }
 
   blockquote {
