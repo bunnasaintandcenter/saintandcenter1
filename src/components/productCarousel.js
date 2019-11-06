@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from './carousel'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 
 const ProductCarousel = () => (
   <StaticQuery

@@ -18,6 +18,8 @@ const Wrapper = styled.div`
 
     @media ${device.laptop}{
       width: auto;
+      margin: 0 0 1.45rem 0;
+      font-size: 30px;
     }
   }
 
