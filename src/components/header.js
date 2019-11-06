@@ -7,6 +7,7 @@ import Nav from './nav'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
 import Cart from './cart'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -95,10 +96,6 @@ const Header = ({ cart, bannerOpen, home }) => {
     window.addEventListener('scroll', listenScrollEvent)
   })
 
-  // const toggleBodyLock = () => {
-  //   document.body.classList.toggle('locked')
-  // }
-
   const handleToggleNav = () => {
     // toggleBodyLock()
     toggleCart(false)
@@ -141,6 +138,12 @@ const Header = ({ cart, bannerOpen, home }) => {
       <Nav open={navOpen} cartItems={cart.length} />
     </>
   )
+}
+
+Header.propTypes = {
+  cart: PropTypes.array.isRequired,
+  bannerOpen: PropTypes.bool,
+  home: PropTypes.bool
 }
 
 export default Header;

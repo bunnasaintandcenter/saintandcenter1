@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Banner = styled.div`
   position: fixed;
@@ -49,5 +50,11 @@ const Announcement = ({ open, text, toggle }) => (
     <Close onClick={() => toggle()}><MdClose /></Close>
   </Banner>
 );
+
+Announcement.propTypes = {
+  open: PropTypes.bool,
+  text: PropTypes.string.isRequired,
+  toggle: PropTypes.func.isRequired
+}
 
 export default Announcement;

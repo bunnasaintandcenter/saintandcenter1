@@ -6,6 +6,7 @@ import { MdClose } from 'react-icons/md'
 import { device } from '../utils/devices'
 import { useDispatch } from 'react-redux'
 import { isBrowser } from 'react-device-detect'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -90,6 +91,10 @@ const Row = styled.div`
     &:first-of-type {
       margin-right: auto;
     }
+  }
+
+  .price {
+    min-width: 200px;
   }
 
   span, div {
@@ -254,7 +259,7 @@ const Cart = ({ cart, open, toggle }) => {
                     <span>{item.quantity}</span>
                     <button onClick={() => addToCount(index, item.quantity)}>+</button>
                   </Counter>
-                  <div>
+                  <div className='price'>
                     <span>${(item.quantity * price).toFixed(2)}</span>
                     <span className='remove' onClick={() => removeFromCart(index)}><MdClose /></span>
                   </div>
@@ -275,6 +280,12 @@ const Cart = ({ cart, open, toggle }) => {
       )}
     />
   )
+}
+
+Cart.propTypes = {
+  cart: PropTypes.array.isRequired,
+  open: PropTypes.bool,
+  toggle: PropTypes.func
 }
 
 export default Cart;

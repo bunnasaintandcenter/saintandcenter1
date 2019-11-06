@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 import arrow from '../images/arrow.svg'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.section`
   position: relative;
@@ -122,5 +123,13 @@ const Carousel = ({ children, cover, arrows, bg, title }) => (
     </Slider>
   </Wrapper>
 );
+
+Carousel.propTypes = {
+  children: PropTypes.any.isRequired,
+  cover: PropTypes.bool,
+  arrows: PropTypes.bool,
+  bg: PropTypes.string,
+  title: PropTypes.string
+}
 
 export default Carousel;

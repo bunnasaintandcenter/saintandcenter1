@@ -153,7 +153,7 @@ const ProductListBlock = ({ product, updateCart }) => {
 
   console.log(product)
 
-  const { name, description, products } = product;
+  const { description, products } = product;
   const [infoShown, setInfoShown] = useState(false)
 
   let images = []

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Quote = styled.blockquote`
   color: ${props => props.color};
@@ -23,5 +24,10 @@ const Quote = styled.blockquote`
 const BlockQuote = ({ color, children }) => (
   <Quote color={color}>{children}</Quote>
 );
+
+BlockQuote.propTypes = {
+  color: PropTypes.string.isRequired,
+  children: PropTypes.instanceOf(Element).isRequired
+}
 
 export default BlockQuote;
