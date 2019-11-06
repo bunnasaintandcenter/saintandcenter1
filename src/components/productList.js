@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import styled from 'styled-components'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { device } from '../utils/devices'
@@ -147,9 +147,8 @@ const ProductList = () => {
         <List>
           {data.allWcProductsCategories.edges.slice(0,3).map(({node}) => {
             return (
-              <>
+              <Fragment key={node.wordpress_id}>
                 <Item
-                  key={node.wordpress_id}
                   onClick={() => current === node.wordpress_id ? setCurrent(null) : setCurrent(node.wordpress_id)}
                 >
                   <h2>{node.name}</h2>
@@ -160,7 +159,7 @@ const ProductList = () => {
                   product={node}
                 />
               }
-              </>
+              </Fragment>
             )
           }
           )}

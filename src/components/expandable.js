@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Menu = styled.div`
   cursor: pointer;
@@ -60,7 +61,13 @@ const Expandable = ({ title, children, large, padded }) => {
       </Content>
     </Menu>
   )
+}
 
+Expandable.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.any,
+  large: PropTypes.bool,
+  padded: PropTypes.bool
 }
 
 export default Expandable;

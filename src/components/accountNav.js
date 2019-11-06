@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { device } from '../utils/devices'
 import { isMobile } from 'react-device-detect'
+import PropTypes from 'prop-types'
 
 const Nav = styled.nav`
   position: relative;
@@ -65,7 +66,7 @@ const Item = styled.li`
 
     @media ${device.laptop}{
       margin-right: 0;
-      
+
       span {
         padding: 2rem 4rem;
       }
@@ -121,5 +122,10 @@ const AccountNav = ({location, tabs}) => (
     </List>
   </Nav>
 );
+
+AccountNav.propTypes = {
+  location: PropTypes.object.isRequired,
+  tabs: PropTypes.array.isRequired
+}
 
 export default AccountNav;

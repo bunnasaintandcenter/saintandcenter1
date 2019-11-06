@@ -3,6 +3,7 @@ import Expandable from './expandable'
 import styled from 'styled-components'
 import stripHtml from 'string-strip-html'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   .expandable {
@@ -41,5 +42,9 @@ const FAQsCategory = ({ data }) => (
     ))}
   </Wrapper>
 )
+
+FAQsCategory.propTypes = {
+  data: PropTypes.object.isRequired
+}
 
 export default FAQsCategory

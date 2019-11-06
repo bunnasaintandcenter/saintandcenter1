@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
   border: 2px solid ${props => props.ghost ? 'white' : 'rgb(51,51,51)' };
@@ -33,5 +34,13 @@ const Button = ({ children, ghost, onClick, primary, disabled }) => (
     {children}
   </StyledButton>
 );
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  ghost: PropTypes.bool,
+  onClick: PropTypes.func,
+  primary: PropTypes.bool,
+  disabled: PropTypes.bool
+}
 
 export default Button;
