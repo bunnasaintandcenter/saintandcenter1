@@ -172,7 +172,7 @@ const Counter = styled.div`
 const Close = styled.button`
   position: absolute;
   top: 2.5vw;
-  right: 5vw;
+  right: 2.5vw;
   appearance: none;
   border: 0;
   background: transparent;
