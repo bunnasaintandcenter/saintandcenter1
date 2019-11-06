@@ -94,7 +94,10 @@ const Row = styled.div`
   }
 
   .price {
-    min-width: 200px;
+
+    @media ${device.laptop}{
+      min-width: 200px;
+    }
   }
 
   span, div {
