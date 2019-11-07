@@ -28,6 +28,9 @@ exports.createPages = async ({ graphql, actions }) => {
               wordpress_id
               sku
               acf {
+                product_lab_results {
+                  url
+                }
                 bulk_cbd_lab_results {
                   url
                 }
