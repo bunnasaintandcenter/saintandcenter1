@@ -27,8 +27,10 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               wordpress_id
               sku
-              meta_data {
-                key
+              acf {
+                bulk_cbd_lab_results {
+                  url
+                }
               }
               name
               description
