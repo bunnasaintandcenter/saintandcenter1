@@ -214,10 +214,10 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
         <p>{stripHtml(products[1].short_description)}</p>
       </Expandable>
       <Expandable padded title='Lab Results'>
-        {products[1].acf.product_lab_results.url &&
+        {products[1].acf.product_lab_results &&
           <a target="_blank" rel="noopener noreferrer" href={products[1].acf.product_lab_results.url }><MdAttachFile size={24} /> Product Lab Results</a>
         }
-        {products[1].acf.bulk_cbd_lab_results.url &&
+        {products[1].acf.bulk_cbd_lab_results &&
           <a target="_blank" rel="noopener noreferrer" href={products[1].acf.bulk_cbd_lab_results.url }><MdAttachFile size={24} /> Bulk CBD Lab Results</a>
         }
       </Expandable>
