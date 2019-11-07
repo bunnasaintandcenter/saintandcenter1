@@ -47,6 +47,17 @@ const Content = styled.div`
   font-size: 16px;
   text-transform: uppercase;
   box-sizing: border-box;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
 `;
 
 const Expandable = ({ title, children, large, padded }) => {
