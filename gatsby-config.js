@@ -38,9 +38,12 @@ module.exports = {
         baseUrl: `andnone.co/saintcenter`,
         protocol: 'https',
         verbose: true,
+        useACF:  true,
         hostingWPCOM: false,
+        useACF: true,
         includedRoutes: [
           "**/faq",
+          "**/products",
           "**/categories"
        ]
       }
@@ -51,6 +54,7 @@ module.exports = {
         api: 'andnone.co/saintcenter',
         itemCount: 20,
         verbose: true,
+        useACF: true,
         https: false,
           api_keys: {
             consumer_key: process.env.WOOCOMMERCE_KEY,

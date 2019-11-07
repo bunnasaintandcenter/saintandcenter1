@@ -27,6 +27,9 @@ const Shop = ({ location }) => (
               wordpress_id
               name
               slug
+              products {
+                price
+              }
               image {
                 localFile {
                   childImageSharp {

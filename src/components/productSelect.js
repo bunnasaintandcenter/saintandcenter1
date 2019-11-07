@@ -6,6 +6,7 @@ import Expandable from './expandable'
 import stripHtml from 'string-strip-html'
 import { device } from '../utils/devices'
 import axios from 'axios'
+import { MdAttachFile } from 'react-icons/md'
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -152,7 +153,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
     }
 
     const res = await axios.post(`https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`, item)
-    console.log(res)
+      console.log(res)
     dispatch({ type: 'ADD_TO_CART', payload: item})
   }
 
@@ -213,9 +214,12 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
         <p>{stripHtml(products[1].short_description)}</p>
       </Expandable>
       <Expandable padded title='Lab Results'>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
+        {products[1].acf.product_lab_results.url &&
+          <a target="_blank" rel="noopener noreferrer" href={products[1].acf.product_lab_results.url }><MdAttachFile size={24} /> Product Lab Results</a>
+        }
+        {products[1].acf.bulk_cbd_lab_results.url &&
+          <a target="_blank" rel="noopener noreferrer" href={products[1].acf.bulk_cbd_lab_results.url }><MdAttachFile size={24} /> Bulk CBD Lab Results</a>
+        }
       </Expandable>
       </Select>
     </Wrapper>
