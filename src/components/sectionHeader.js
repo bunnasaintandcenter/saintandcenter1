@@ -15,6 +15,15 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
+  a {
+    color: rgb(51,51,51);
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
   @media ${device.laptop}{
     top: calc(3vw + 2rem);
     font-size: 16px;

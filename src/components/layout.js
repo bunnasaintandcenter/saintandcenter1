@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'
@@ -35,20 +35,22 @@ const theme = {
 }
 
 const renderTitle = (page) => {
+  const pagePath = page.split('/')[1];
+
   switch (true) {
     case page.split('/')[2] === 'product':
-      return `Shop / ${page.split('/')[3]}`
-    case page.split('/')[1] === 'shop':
+      return <><Link to='/shop'>Shop</Link> / {page.split('/')[3]}</>
+    case pagePath === 'shop':
       return 'Shop / Products'
-    case page.split('/')[1] === 'holy-hemp':
+    case pagePath === 'holy-hemp':
       return 'Learn'
-    case page.split('/')[1] === 'human-rites':
+    case pagePath === 'human-rites':
       return 'Learn'
-    case page.split('/')[1] === 'account':
+    case pagePath === 'account':
       return 'Account'
-    case page.split('/')[1] === 'faqs':
+    case pagePath === 'faqs':
       return 'FAQS'
-    case page.split('/')[1] === 'order-received':
+    case pagePath === 'order-received':
       return 'Order Recieved'
     default:
       return false
