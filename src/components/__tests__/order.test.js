@@ -8,7 +8,7 @@ it('renders', () => {
 
   const props = {
     id: '123',
-    date: ,
+    date: 'January 01, 2019' ,
     total: 42,
     status: 'processing',
     lineItems: [{"lorem": "ipsum"}]

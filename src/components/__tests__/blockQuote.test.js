@@ -6,6 +6,6 @@ afterEach(cleanup)
 
 it('renders', () => {
 
-  const { getByTestId } = render(<BlockQuote color='#FFF'>Hello World</BlockQuote>)
+  const { getByTestId } = render(<BlockQuote color='#FFF'><p>Hello World</p></BlockQuote>)
   expect(getByTestId('blockquote')).toBeTruthy()
 })
