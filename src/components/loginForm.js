@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import Button from './button'
@@ -6,6 +6,7 @@ import axios from 'axios'
 import { navigate, Link } from 'gatsby'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { device } from '../utils/devices'
+import useForm from 'react-hook-form'
 
 const Form = styled.form`
   display: flex;
@@ -21,25 +22,6 @@ const Form = styled.form`
 
   &:first-of-type {
     border: 0;
-  }
-
-  label {
-    font-size: 13px;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding-bottom: 0.5rem;
-  }
-
-  input {
-    padding: 0.5rem;
-    border: 1px solid rgb(51,51,51);
-    margin-bottom: 1rem;
-    outline: 0;
-    font-size: 13px;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-weight: 300;
-    background: transparent;
   }
 
   button {
@@ -85,15 +67,48 @@ const Connect = styled.div`
   }
 `;
 
+const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-weight: 300;
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: ${props => props.error ? `1px solid red` : `1px solid rgb(51,51,51)`};
+    margin-bottom: 1rem;
+    outline: 0;
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-weight: 300;
+    background: transparent;
+  }
+`;
+
 const LoginForm = () => {
 
-  const [email, handleEmail] = useState('')
-  const [password, handlePassword] = useState('')
+  const { handleSubmit, register, errors, reset } = useForm()
 
   const dispatch = useDispatch()
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const onSubmit = values => {
+    const { email, password } = values;
 
     axios.post('https://andnone.co/saintcenter/wp-json/jwt-auth/v1/token', {
       username: email,
@@ -122,7 +137,10 @@ const LoginForm = () => {
       navigate('/')
 
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      // console.error(err)
+      console.log('AHHHH')
+    })
   }
 
   const handleFacebook = async (response) => {
@@ -151,7 +169,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Connect>
         <p>Connect With</p>
         <FacebookLogin
@@ -164,11 +182,28 @@ const LoginForm = () => {
         />
         <Button ghost>Google</Button>
       </Connect>
-      <label htmlFor='email'>Email Address</label>
-      <input name='email' type='email' value={email} onChange={e => handleEmail(e.target.value)} />
-      <label htmlFor='password'>Password</label>
-      <input name='password' type='password' value={password} onChange={e => handlePassword(e.target.value)} />
-      <Button disabled={email === '' || password === ''}>Log in</Button>
+      <Field error={errors.email}>
+        <label htmlFor='email'>Email Address</label>
+        <input
+          name='email'
+          type='email'
+          placeholder='Email Address'
+          ref={register({required: true, pattern: /^\S+@\S+$/i})}
+        />
+        {errors.email && <span>Required</span>}
+      </Field>
+      <Field error={errors.password}>
+        <label htmlFor='password'>Password</label>
+        <input
+          name='password'
+          type='password'
+          placeholder='Password'
+          suggested='current-password'
+          ref={register({required: true})}
+        />
+        {errors.password && <span>Required</span>}
+      </Field>
+      <Button type='submit'>Log in</Button>
       <p>Don't have an account? <Link to='/register'>Register</Link></p>
     </Form>
   )

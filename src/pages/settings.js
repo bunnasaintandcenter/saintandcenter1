@@ -26,14 +26,6 @@ const Settings = ({ location, data }) => {
 
   const user = useSelector(state => state.user)
 
-  // const tabs = [
-  //   'orders',
-  //   'subscriptions',
-  //   'payment',
-  //   'addressBook',
-  //   'logout'
-  // ]
-
   return (
     <Layout location={location}>
     <SEO title='Settings | Saint and Center' />

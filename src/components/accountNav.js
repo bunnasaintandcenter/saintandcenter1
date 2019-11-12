@@ -124,7 +124,7 @@ const AccountNav = ({location, tabs}) => (
 );
 
 AccountNav.propTypes = {
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
   tabs: PropTypes.array.isRequired
 }
 
