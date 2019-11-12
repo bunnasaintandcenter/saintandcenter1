@@ -65,7 +65,7 @@ const Expandable = ({ title, children, large, padded }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <Menu className='expandable' >
+    <Menu data-testid='expandable' className='expandable' >
       <Title className='expandable-title' expanded={expanded} large={large} onClick={() => setExpanded(!expanded)}>{title} <span>+</span></Title>
       <Content className='expandable-content' padded={padded} expanded={expanded}>
         {children}

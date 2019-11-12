@@ -3,7 +3,7 @@ import Button from '../button'
 import { render, fireEvent } from '@testing-library/react'
 
 it('renders', () => {
-  const { getAllByTestId } = render(<Button />)
+  const { getAllByTestId } = render(<Button>Hello World</Button>)
   expect(getAllByTestId('button')).toHaveLength(1)
 });
 
