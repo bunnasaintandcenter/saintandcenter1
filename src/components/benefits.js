@@ -73,7 +73,7 @@ const benefits = [
 ]
 
 const Benefits = () => (
-  <Wrapper>
+  <Wrapper data-testid='benefits'>
     {benefits.map(item => (
       <Item key={item.title}>
         {item.icon &&

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'
@@ -70,43 +70,30 @@ const Layout = ({ children, location }) => {
   }
 
   return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
-            }
-          }
+    <ThemeProvider theme={theme}>
+      <Helmet title='Saint and Center'>
+        <script>
+          {`
+            window.omnisend = window.omnisend || [];
+            omnisend.push(["accountID", "5d6d46aa8653ed0357cf4de1"]);
+            omnisend.push(["track", "$pageViewed"]);
+            !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisrc.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
+          `}
+        </script>
+      </Helmet>
+      <Wrapper data-testid='layout' bannerOpen={bannerOpen} home={location && location.pathname === '/'}>
+        <Announcement
+          text='Free Shipping on All Orders'
+          toggle={handleToggleAnnouncement}
+          open={bannerOpen} />
+        <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
+        {location && location.pathname !== '/' &&
+          <SectionHeader title={renderTitle(location.pathname)} />
         }
-      `}
-      render={data => (
-        <ThemeProvider theme={theme}>
-          <Helmet title='Saint and Center'>
-            <script>
-              {`
-                window.omnisend = window.omnisend || [];
-                omnisend.push(["accountID", "5d6d46aa8653ed0357cf4de1"]);
-                omnisend.push(["track", "$pageViewed"]);
-                !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisrc.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
-              `}
-            </script>
-          </Helmet>
-          <Wrapper bannerOpen={bannerOpen} home={location && location.pathname === '/'}>
-            <Announcement
-              text='Free Shipping on All Orders'
-              toggle={handleToggleAnnouncement}
-              open={bannerOpen} />
-            <Header bannerOpen={bannerOpen} cart={cart} home={location && location.pathname === '/' ? true : false} />
-            {location && location.pathname !== '/' &&
-              <SectionHeader title={renderTitle(location.pathname)} />
-            }
-            {children}
-            <Footer />
-          </Wrapper>
-        </ThemeProvider>
-      )}
-    />
+        {children}
+        <Footer />
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 

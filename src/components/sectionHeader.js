@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   background: white;
@@ -33,11 +34,16 @@ const Wrapper = styled.div`
 const SectionHeader = ({ title, secondary }) => {
 
   return (
-    <Wrapper>
-      <span>{title}</span>
-      <span>{secondary}</span>
+    <Wrapper data-testid='section-header'>
+      <span data-testid='section-header-title'>{title}</span>
+      <span data-testid='section-header-secondary'>{secondary}</span>
     </Wrapper>
   )
+}
+
+SectionHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  secondary: PropTypes.string,
 }
 
 export default SectionHeader

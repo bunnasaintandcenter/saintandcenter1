@@ -38,7 +38,7 @@ const Main = styled.div`
   }
 `;
 
-const Payment = ({ location, data }) => {
+const Payment = ({ location }) => {
 
   const user = useSelector(state => state.user)
 

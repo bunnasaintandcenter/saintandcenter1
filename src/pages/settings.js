@@ -22,17 +22,9 @@ const Section = styled.section`
   }
 `;
 
-const Settings = ({ location, data }) => {
+const Settings = ({ location }) => {
 
   const user = useSelector(state => state.user)
-
-  // const tabs = [
-  //   'orders',
-  //   'subscriptions',
-  //   'payment',
-  //   'addressBook',
-  //   'logout'
-  // ]
 
   return (
     <Layout location={location}>

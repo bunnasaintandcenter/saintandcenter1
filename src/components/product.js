@@ -74,14 +74,13 @@ const Info = styled.div`
 `;
 
 const Product = ({name, image, slug, products}) => {
-  console.log(products)
   return (
-    <Wrapper>
+    <Wrapper data-testid='product'>
       <Link to={`/shop/product/${slug}`}></Link>
       {image && <Img className='product-image' fluid={image.localFile.childImageSharp.fluid} />}
       <Info>
-        <h2>{name}</h2>
-        <h3>${products[1].price}</h3>
+        <h2 data-testid='product-name'>{name}</h2>
+        <h3 data-testid='product-price'>${products[1].price}</h3>
       </Info>
     </Wrapper>
   )

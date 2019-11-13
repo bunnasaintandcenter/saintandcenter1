@@ -167,7 +167,7 @@ const SignupSmall = styled.div`
 `;
 
 const Footer = () => (
-  <Foot>
+  <Foot data-testid='footer'>
     <Insta />
     <Signup />
     <FooterMenu>

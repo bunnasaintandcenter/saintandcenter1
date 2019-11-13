@@ -135,7 +135,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form data-testid='register-form' onSubmit={handleSubmit}>
       <Connect>
         <p>Connect With</p>
         <FacebookLogin

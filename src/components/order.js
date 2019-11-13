@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Moment from 'react-moment'
 import { device } from '../utils/devices'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   border: 2px solid rgb(51,51,51);
@@ -40,7 +41,7 @@ const Wrapper = styled.div`
 `;
 
 const Order = ({ id, date, total, status, lineItems }) => (
-  <Wrapper>
+  <Wrapper data-testid='order'>
     <div>
     <span>Order #{id}</span>
     <span><Moment format='LL'>{date}</Moment></span>
@@ -57,5 +58,13 @@ const Order = ({ id, date, total, status, lineItems }) => (
     </ul>
   </Wrapper>
 );
+
+Order.propTypes = {
+  id: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  total: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  lineItems: PropTypes.array.isRequired
+}
 
 export default Order;

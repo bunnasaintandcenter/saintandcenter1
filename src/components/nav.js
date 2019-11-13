@@ -60,7 +60,7 @@ const List = styled.ul`
   }
 `;
 
-const Nav = ({ open, handleSubmit, toggle}) => {
+const Nav = ({ open }) => {
 
   const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)

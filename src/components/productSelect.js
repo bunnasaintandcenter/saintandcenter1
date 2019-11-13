@@ -6,6 +6,7 @@ import Expandable from './expandable'
 import stripHtml from 'string-strip-html'
 import { device } from '../utils/devices'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import { MdAttachFile } from 'react-icons/md'
 
 const Wrapper = styled.div`
@@ -128,7 +129,7 @@ const Option = styled.div`
   }
 `;
 
-const ProductSelect = ({ options, updateCart, id, products }) => {
+const ProductSelect = ({ options, products }) => {
 
   console.log(products)
 
@@ -170,7 +171,7 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-testid='product-select'>
       <Select options={options.length}>
       {options.map((option, index) => {
         return (
@@ -224,6 +225,11 @@ const ProductSelect = ({ options, updateCart, id, products }) => {
       </Select>
     </Wrapper>
   )
+}
+
+ProductSelect.propTypes = {
+  options: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired,
 }
 
 export default ProductSelect;

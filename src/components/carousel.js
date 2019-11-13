@@ -108,7 +108,7 @@ const Wrapper = styled.section`
 `;
 
 const Carousel = ({ children, cover, arrows, bg, title }) => (
-  <Wrapper bg={bg} cover={cover}>
+  <Wrapper data-testid='carousel' bg={bg} cover={cover}>
     {title &&
       <span>Let there be you.</span>
     }

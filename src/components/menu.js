@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const Menu = ({ open, onClick, background }) => (
-  <Wrapper background={background} open={open} onClick={onClick} />
+  <Wrapper data-testid='menu' background={background} open={open} onClick={onClick} />
 );
 
 export default Menu;

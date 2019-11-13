@@ -61,7 +61,7 @@ const Image = styled.div`
   }
 `;
 
-const TextBlockWithImage = ({bgColor, textColor, children, image, title, reverse, actionText, url}) => (
+const TextBlockWithImage = ({bgColor, textColor, children, image, reverse, actionText, url}) => (
   <Block reverse={reverse}>
     <Image bg={bgColor} color={textColor}><img src={image} alt='placer' /></Image>
     <Text>

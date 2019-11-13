@@ -28,7 +28,7 @@ const ProductCarousel = () => (
       }
     `}
     render={data => (
-      <Carousel arrows bg='#E1D6D6'>
+      <Carousel data-testid='product-carousel' arrows bg='#E1D6D6'>
         {data.allWcProductsCategories.edges.map(({node}) => <img key={node.wordpress_id} src={node.products[1].images[0].localFile.childImageSharp.fluid.src} alt={node.products[1].name} />)}
       </Carousel>
     )}

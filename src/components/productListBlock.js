@@ -162,8 +162,6 @@ const ProductListBlock = ({ product, updateCart }) => {
     images = products[1].images
   }
 
-  // const { image } = data.allWcProductsCategories.edges[0].node;
-
   return (
     <Wrapper>
       <Image>
@@ -188,7 +186,7 @@ const ProductListBlock = ({ product, updateCart }) => {
         {isMobile &&
           <InfoOverlay open={infoShown}>
             <h4>{description}</h4>
-            <div class='background' />
+            <div className='background' />
           </InfoOverlay>
         }
       </Image>

@@ -97,15 +97,15 @@ const Insta = () => {
   }, [])
 
   return (
-    <Instagram>
+    <Instagram data-testid='instafeed'>
       <span>Hemp + High Vibes</span>
       {images.length > 0 &&
         <Slider
          dots
         >
-        {images.map(({ caption, images }, index) => {
+        {images.map(({ caption, images }) => {
           const src = images[options.resolution].url
-          return <img src={src} alt={caption.text} />
+          return <img key={src} src={src} alt={caption.text} />
         })}
         </Slider>
       }

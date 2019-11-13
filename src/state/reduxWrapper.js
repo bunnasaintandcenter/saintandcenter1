@@ -14,6 +14,8 @@ createStore.subscribe(() => {
   })
 })
 
-export default ({ element }) => (
+const reduxWrapper = ({ element }) => (
   <Provider store={createStore}>{element}</Provider>
 );
+
+export default reduxWrapper

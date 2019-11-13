@@ -22,7 +22,7 @@ const Quote = styled.blockquote`
 `;
 
 const BlockQuote = ({ color, children }) => (
-  <Quote color={color}>{children}</Quote>
+  <Quote data-testid='blockquote' color={color}>{children}</Quote>
 );
 
 BlockQuote.propTypes = {

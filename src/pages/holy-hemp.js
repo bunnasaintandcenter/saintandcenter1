@@ -126,7 +126,7 @@ const HolyHemp = ({location}) => {
         ?
           <Wrapper>
             {content.map(({paragraph, heading}) => (
-              <div>
+              <div key={heading}>
                 <blockquote>
                   {heading}
                 </blockquote>

@@ -82,7 +82,7 @@ const Header = ({ cart, bannerOpen, home }) => {
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
-  const listenScrollEvent = e => {
+  const listenScrollEvent = () => {
     if(home){
       if(window.scrollY > 400) {
         setBackground(true)

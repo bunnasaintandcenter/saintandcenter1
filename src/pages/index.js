@@ -16,7 +16,7 @@ import { isBrowser } from 'react-device-detect'
 const Wrapper = styled.div`
 `;
 
-const Home = ({ location, theme }) => {
+const Home = ({ location }) => {
 
   const intro = createRef()
 

@@ -152,7 +152,7 @@ const InfoOverlay = styled.div`
   }
 `;
 
-const Category = ({ pageContext, updateCart, data, location }) => {
+const Category = ({ pageContext, updateCart, location }) => {
   const { name, description, products } = pageContext;
   const [infoShown, setInfoShown] = useState(false)
 
@@ -190,7 +190,7 @@ const Category = ({ pageContext, updateCart, data, location }) => {
           {isMobile &&
             <InfoOverlay open={infoShown}>
               <h4>{description}</h4>
-              <div class='background' />
+              <div className='background' />
             </InfoOverlay>
           }
         </Image>

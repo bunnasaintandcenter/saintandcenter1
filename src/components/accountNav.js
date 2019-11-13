@@ -105,7 +105,7 @@ const Item = styled.li`
   }
 `;
 
-const AccountNav = ({location, tabs}) => (
+const AccountNav = ({ tabs }) => (
   <Nav data-testid='account-nav'>
     <List>
       {tabs.map(({url, title, action}) => (
@@ -124,7 +124,7 @@ const AccountNav = ({location, tabs}) => (
 );
 
 AccountNav.propTypes = {
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
   tabs: PropTypes.array.isRequired
 }
 

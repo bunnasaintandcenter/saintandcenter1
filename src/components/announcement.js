@@ -45,9 +45,9 @@ const Close = styled.button`
 `;
 
 const Announcement = ({ open, text, toggle }) => (
-  <Banner open={open}>
-    {text}
-    <Close onClick={() => toggle()}><MdClose /></Close>
+  <Banner data-testid='announcement' open={open}>
+    <span data-testid='announcement-text'>{text}</span>
+    <Close data-testid='announcement-close' onClick={() => toggle()}><MdClose /></Close>
   </Banner>
 );
 
