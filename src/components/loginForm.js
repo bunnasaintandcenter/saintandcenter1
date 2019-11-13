@@ -103,7 +103,7 @@ const Field = styled.div`
 
 const LoginForm = () => {
 
-  const { handleSubmit, register, errors, reset } = useForm()
+  const { handleSubmit, register, errors } = useForm()
 
   const dispatch = useDispatch()
 
@@ -138,8 +138,7 @@ const LoginForm = () => {
 
     })
     .catch(err => {
-      // console.error(err)
-      console.log('AHHHH')
+      console.error(err)
     })
   }
 
@@ -169,7 +168,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form data-testid='login-form' onSubmit={handleSubmit(onSubmit)}>
       <Connect>
         <p>Connect With</p>
         <FacebookLogin

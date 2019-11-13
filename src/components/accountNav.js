@@ -105,7 +105,7 @@ const Item = styled.li`
   }
 `;
 
-const AccountNav = ({location, tabs}) => (
+const AccountNav = ({ tabs }) => (
   <Nav data-testid='account-nav'>
     <List>
       {tabs.map(({url, title, action}) => (

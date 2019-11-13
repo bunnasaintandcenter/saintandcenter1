@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from 'styled-components'
 import PropTypes from "prop-types"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import Announcement from './announcement'

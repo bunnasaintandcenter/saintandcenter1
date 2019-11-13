@@ -93,7 +93,7 @@ const ShippingForm = ({ user, address, title }) => {
       ...user,
       [title]: data
     })
-    .then(res => {
+    .then(() => {
       dispatch({ type: 'USER_UPDATE_SHIPPING', payload: data })
       toggleEditor(false)
     })

@@ -103,7 +103,7 @@ const Insta = () => {
         <Slider
          dots
         >
-        {images.map(({ caption, images }, index) => {
+        {images.map(({ caption, images }) => {
           const src = images[options.resolution].url
           return <img key={src} src={src} alt={caption.text} />
         })}

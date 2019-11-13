@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const FAQsCategory = ({ data }) => (
-  <Wrapper>
+  <Wrapper data-testid='faqs-category'>
     {data.map(item => (
       <Expandable
         key={item.node.title}
@@ -44,7 +44,7 @@ const FAQsCategory = ({ data }) => (
 )
 
 FAQsCategory.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.array.isRequired
 }
 
 export default FAQsCategory

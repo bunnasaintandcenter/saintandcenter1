@@ -42,7 +42,7 @@ const FAQs = ({location}) => {
         console.log(data)
         return (
           <Wrapper>
-            {data.allWordpressWpFaq && data.allWordpressCategory.edges.map((category, index) => (
+            {data.allWordpressWpFaq && data.allWordpressCategory.edges.map((category) => (
               <Expandable large key={category.node.wordpress_id} title={category.node.name}>
                 <FAQsCategory
                   data={data.allWordpressWpFaq.edges.filter(x => x.node.categories[0].wordpress_id === category.node.wordpress_id)}

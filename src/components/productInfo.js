@@ -20,7 +20,7 @@ const Item = styled.div`
 `;
 
 const ProductInfo = ({ info }) => (
-  <Wrapper>
+  <Wrapper data-testid='product-info'>
     <Item>
       <h4>Ingredients</h4>
     </Item>

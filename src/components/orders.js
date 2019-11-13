@@ -17,7 +17,7 @@ const Orders = ({ id }) => {
   const {loaded, orders} = useOrders(id)
 
   return (
-    <Wrapper>
+    <Wrapper data-testid='orders'>
       {loaded && orders.length > 0
         ?
           <List>

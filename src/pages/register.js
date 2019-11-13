@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Home = ({ location, theme }) => {
+const Home = ({ location }) => {
 
   return (
     <Layout location={location}>

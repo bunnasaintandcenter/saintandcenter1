@@ -218,7 +218,7 @@ export const PureCart = ({ data, cart, open, toggle }) => {
   }
 
   return (
-    <Wrapper data-testid='cart' open={open} data-testid='cart'>
+    <Wrapper data-testid='cart' open={open}>
       <Tray>
         <section>
         <Row>
@@ -259,7 +259,7 @@ export const PureCart = ({ data, cart, open, toggle }) => {
   )
 }
 
-const Cart = ({ cart, open, toggle, data }) => {
+const Cart = (props) => {
 
   return (
     <StaticQuery

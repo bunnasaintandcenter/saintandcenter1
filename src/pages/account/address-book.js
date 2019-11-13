@@ -25,7 +25,7 @@ const Main = styled.div`
   padding: 2rem;
 `;
 
-const Settings = ({ location, data }) => {
+const Settings = ({ location }) => {
 
   const user = useSelector(state => state.user)
 

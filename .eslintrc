@@ -1,0 +1,38 @@
+{
+  parser: "babel-eslint",
+  rules: {
+    "strict": 0,
+    "react/prop-types": 0,
+    "no-unused-vars": 1,
+    "no-case-declarations": 0,
+    "react/no-unescaped-entities": 0,
+    "react/jsx-key": 1,
+    "react/display-name": 0
+  },
+  env: {
+    browser: true,
+    node: true,
+    jest: true
+  },
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  plugins: ['react'],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  parserOptions: {
+    ecmaVersion: 2017
+  },
+  overrides: [
+    {
+      files: [
+        "**/*.test.js",
+        "**/*.test.jsx"
+      ]
+    }
+  ]
+}
