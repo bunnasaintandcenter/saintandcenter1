@@ -162,8 +162,6 @@ const ProductListBlock = ({ product, updateCart }) => {
     images = products[1].images
   }
 
-  // const { image } = data.allWcProductsCategories.edges[0].node;
-
   return (
     <Wrapper>
       <Image>
