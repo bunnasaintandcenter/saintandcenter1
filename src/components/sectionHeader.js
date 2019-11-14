@@ -5,11 +5,11 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   background: white;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   position: sticky;
   top: 74px;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 14px;
   color: rgb(51, 51, 51);
   font-weight: 100;
   z-index: 10;
@@ -27,7 +27,6 @@ const Wrapper = styled.div`
 
   @media ${device.laptop} {
     top: calc(3vw + 2rem);
-    font-size: 16px;
   }
 `
 
