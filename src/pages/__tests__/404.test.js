@@ -1,12 +1,13 @@
 import React from "react"
-import NotFoundPage from "../404.js"
 import { StaticQuery } from "gatsby"
 import renderWithRedux from "../../utils/renderWithRedux"
-import { render, cleanup } from "@testing-library/react"
+import { cleanup } from "@testing-library/react"
+import NotFoundPage from "../404.js"
 
 afterEach(cleanup)
+
 beforeEach(() => {
-  StaticQuery.mockImplementationOnce(({ render }) =>
+  StaticQuery.mockImplementationOnce(({ render }) => {
     render({
       site: {
         siteMetadata: {
@@ -243,10 +244,10 @@ beforeEach(() => {
         ],
       },
     })
-  )
+  })
 })
 
 it("renders", () => {
   const { getByTestId } = renderWithRedux(<NotFoundPage />)
-  expect(getByTestId("404")).toBeTruthy()
+  expect(getByTestId("NotFoundPage")).toBeTruthy()
 })

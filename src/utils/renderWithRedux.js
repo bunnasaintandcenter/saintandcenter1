@@ -3,7 +3,13 @@ import { createStore } from "redux"
 import { Provider } from "react-redux"
 import { render } from "@testing-library/react"
 
-const startingState = {
+const initialState = {
+  user: {
+    username: "janedoe",
+    email: "janedoe@gmail.com",
+    displayName: "Jane Doe",
+    token: "13453468",
+  },
   cart: [
     {
       product_id: 27,
@@ -16,15 +22,9 @@ const startingState = {
       variation_id: 32,
     },
   ],
-  user: {
-    username: "janedoe",
-    email: "janedoe@gmail.com",
-    displayName: "Jane Doe",
-    token: "13453468",
-  },
 }
 
-function reducer(state = startingState) {
+function reducer(state = initialState) {
   return state
 }
 
