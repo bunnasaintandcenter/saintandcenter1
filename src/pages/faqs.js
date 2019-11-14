@@ -40,7 +40,7 @@ const FAQs = ({ location }) => {
         render={data => {
           console.log(data)
           return (
-            <Wrapper>
+            <Wrapper data-testid="faqs">
               {data.allWordpressWpFaq &&
                 data.allWordpressCategory.edges.map(category => (
                   <Expandable

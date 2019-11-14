@@ -4,7 +4,18 @@ import { Provider } from "react-redux"
 import { render } from "@testing-library/react"
 
 const startingState = {
-  cart: [{ id: 1 }, { id: 2 }],
+  cart: [
+    {
+      product_id: 27,
+      quantity: 1,
+      variation_id: 30,
+    },
+    {
+      product_id: 31,
+      quantity: 1,
+      variation_id: 32,
+    },
+  ],
   user: {
     username: "janedoe",
     email: "janedoe@gmail.com",
@@ -13,7 +24,7 @@ const startingState = {
   },
 }
 
-function reducer(state = startingState, action) {
+function reducer(state = startingState) {
   return state
 }
 

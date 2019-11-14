@@ -186,7 +186,7 @@ const Close = styled.button`
   }
 `
 
-export const PureCart = ({ data, cart, open, toggle }) => {
+const Cart = ({ open, cart, toggle }) => {
   const dispatch = useDispatch()
 
   const cartTotal = data => {
@@ -223,67 +223,6 @@ export const PureCart = ({ data, cart, open, toggle }) => {
   }
 
   return (
-    <Wrapper data-testid="cart" open={open}>
-      <Tray>
-        <section>
-          <Row>
-            <span>Cart</span>
-            {isBrowser && <span>Free Shipping Forever</span>}
-          </Row>
-          {cart.map((item, index) => {
-            const { name, product_variations } = data.allWcProducts.edges.find(
-              o => o.node.wordpress_id === item.product_id
-            ).node
-            const { price } = product_variations.find(
-              o => o.id === item.variation_id
-            )
-            return (
-              <Row key={name}>
-                <span>{name}</span>
-                <Counter>
-                  <button
-                    disabled={item.quantity < 2}
-                    onClick={() => subtractfromCount(index, item.quantity)}
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => addToCount(index, item.quantity)}>
-                    +
-                  </button>
-                </Counter>
-                <div className="price">
-                  <span>${(item.quantity * price).toFixed(2)}</span>
-                  <span
-                    className="remove"
-                    onClick={() => removeFromCart(index)}
-                  >
-                    <MdClose />
-                  </span>
-                </div>
-              </Row>
-            )
-          })}
-          <Row>
-            <span>Subtotal</span>
-            <span>${cartTotal(data).toFixed(2)}</span>
-          </Row>
-        </section>
-        <aside>
-          <a href="https://andnone.co/saintcenter/checkout">
-            <Button ghost>Checkout</Button>
-          </a>
-        </aside>
-      </Tray>
-      <Close onClick={() => toggle()}>
-        <MdClose />
-      </Close>
-    </Wrapper>
-  )
-}
-
-const Cart = props => {
-  return (
     <StaticQuery
       query={graphql`
         query CartQuery {
@@ -307,7 +246,67 @@ const Cart = props => {
           }
         }
       `}
-      render={data => <PureCart {...props} data={data} />}
+      render={data => (
+        <Wrapper data-testid="cart" open={open}>
+          <Tray>
+            <section>
+              <Row>
+                <span>Cart</span>
+                {isBrowser && <span>Free Shipping Forever</span>}
+              </Row>
+              {cart.map((item, index) => {
+                const {
+                  name,
+                  product_variations,
+                } = data.allWcProducts.edges.find(
+                  o => o.node.wordpress_id === item.product_id
+                ).node
+                const { price } = product_variations.find(
+                  o => o.id === item.variation_id
+                )
+                return (
+                  <Row data-testid="cart-item" key={name}>
+                    <span>{name}</span>
+                    <Counter>
+                      <button
+                        disabled={item.quantity < 2}
+                        onClick={() => subtractfromCount(index, item.quantity)}
+                      >
+                        -
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => addToCount(index, item.quantity)}>
+                        +
+                      </button>
+                    </Counter>
+                    <div className="price">
+                      <span>${(item.quantity * price).toFixed(2)}</span>
+                      <span
+                        className="remove"
+                        onClick={() => removeFromCart(index)}
+                      >
+                        <MdClose />
+                      </span>
+                    </div>
+                  </Row>
+                )
+              })}
+              <Row>
+                <span>Subtotal</span>
+                <span>${cartTotal(data).toFixed(2)}</span>
+              </Row>
+            </section>
+            <aside>
+              <a href="https://andnone.co/saintcenter/checkout">
+                <Button ghost>Checkout</Button>
+              </a>
+            </aside>
+          </Tray>
+          <Close data-testid="cart-close" onClick={() => toggle()}>
+            <MdClose />
+          </Close>
+        </Wrapper>
+      )}
     />
   )
 }
