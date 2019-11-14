@@ -5,6 +5,7 @@ import Button from "./button"
 import states from "../utils/states"
 import useShippingForm from "../hooks/useShippingForm"
 import axios from "axios"
+import PropTypes from "prop-types"
 
 const Page = styled.div`
   margin-bottom: 2rem;
@@ -113,7 +114,7 @@ const ShippingForm = ({ user, address, title }) => {
   )
 
   return (
-    <Page>
+    <Page data-testid="shipping-form">
       <h2>{title}</h2>
       <Wrapper>
         {editorOpen ? (
@@ -207,6 +208,10 @@ const ShippingForm = ({ user, address, title }) => {
       </Actions>
     </Page>
   )
+}
+
+ShippingForm.propTypes = {
+  address: PropTypes.object.isRequired,
 }
 
 export default ShippingForm

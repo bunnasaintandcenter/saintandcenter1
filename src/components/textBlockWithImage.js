@@ -69,7 +69,7 @@ const TextBlockWithImage = ({
   actionText,
   url,
 }) => (
-  <Block reverse={reverse}>
+  <Block data-testid="text-block-w-image" reverse={reverse}>
     <Image bg={bgColor} color={textColor}>
       <img src={image} alt="placer" />
     </Image>

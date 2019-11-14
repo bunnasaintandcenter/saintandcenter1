@@ -89,7 +89,7 @@ const Signup = () => {
   }
 
   return (
-    <Join>
+    <Join data-testid="signup">
       {success ? (
         <>
           <span>You're Subscribed!</span>

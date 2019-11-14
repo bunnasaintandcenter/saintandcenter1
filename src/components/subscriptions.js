@@ -119,7 +119,7 @@ const Subscriptions = ({ id }) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="subscriptions">
       {loaded && subscriptions.length > 0 ? (
         subscriptions.map(sub => {
           const { total, line_items, next_payment_date, status } = sub

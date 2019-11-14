@@ -67,7 +67,7 @@ const Submit = styled.button`
 `
 
 const Subscribe = ({ email, handleSubmit, handleChange, phrase, color }) => (
-  <Wrapper>
+  <Wrapper data-testid="subscribe">
     <Text color={color}>
       <p>Get A Free CBD Sample and</p>
       <p>{phrase}</p>

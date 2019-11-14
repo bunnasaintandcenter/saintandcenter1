@@ -43,7 +43,9 @@ const Block = styled.section`
 `
 
 const TextBlock = forwardRef(({ children }, ref) => (
-  <Block ref={ref}>{children}</Block>
+  <Block data-testid="text-block" ref={ref}>
+    {children}
+  </Block>
 ))
 
 export default TextBlock
