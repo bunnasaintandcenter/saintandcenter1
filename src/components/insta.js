@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { buildUrl } from 'react-instafeed'
-import Slider from 'react-slick'
-import { device } from '../utils/devices'
-import axios from 'axios'
+import React, { useState, useEffect } from "react"
+import styled from "styled-components"
+import { buildUrl } from "react-instafeed"
+import Slider from "react-slick"
+import { device } from "../utils/devices"
+import axios from "axios"
 
 const Instagram = styled.div`
   position: relative;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     width: 50vw;
   }
 
@@ -26,7 +26,7 @@ const Instagram = styled.div`
   }
 
   img {
-    width: ${props => props.cover ? `100vw` : `auto`};
+    width: ${props => (props.cover ? `100vw` : `auto`)};
     height: 70vh;
     object-fit: cover;
     margin: 0;
@@ -53,12 +53,12 @@ const Instagram = styled.div`
 
       &.slick-active {
         button {
-          background: rgb(51,51,51);
+          background: rgb(51, 51, 51);
         }
       }
 
       button {
-        border: 2px solid rgb(51,51,51);
+        border: 2px solid rgb(51, 51, 51);
         border-radius: 50%;
         transition: 0.2s all ease-in-out;
 
@@ -72,19 +72,18 @@ const Instagram = styled.div`
       }
     }
   }
-`;
+`
 
 const options = {
   accessToken: process.env.GATSBY_INSTAGRAM_KEY,
   clientId: process.env.GATSBY_INSTAGRAM_ID,
-  get: 'user',
-  resolution: 'standard_resolution',
-  sortBy: 'most-recent',
-  userId: 10011102866
+  get: "user",
+  resolution: "standard_resolution",
+  sortBy: "most-recent",
+  userId: 10011102866,
 }
 
 const Insta = () => {
-
   const [images, setImages] = useState([])
 
   useEffect(() => {
@@ -97,20 +96,18 @@ const Insta = () => {
   }, [])
 
   return (
-    <Instagram data-testid='instafeed'>
+    <Instagram data-testid="instafeed">
       <span>Hemp + High Vibes</span>
-      {images.length > 0 &&
-        <Slider
-         dots
-        >
-        {images.map(({ caption, images }) => {
-          const src = images[options.resolution].url
-          return <img key={src} src={src} alt={caption.text} />
-        })}
+      {images.length > 0 && (
+        <Slider dots>
+          {images.map(({ caption, images }) => {
+            const src = images[options.resolution].url
+            return <img key={src} src={src} alt={caption.text} />
+          })}
         </Slider>
-      }
+      )}
     </Instagram>
   )
 }
 
-export default Insta;
+export default Insta

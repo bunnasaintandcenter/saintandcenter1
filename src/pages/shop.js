@@ -1,12 +1,12 @@
-import React from 'react'
-import Layout from '../components/layout'
-import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import Product from '../components/product'
-import SEO from '../components/seo'
-import { isBrowser } from 'react-device-detect'
-import Benefits from '../components/benefits'
-import { device } from '../utils/devices'
+import React from "react"
+import Layout from "../components/layout"
+import { StaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import Product from "../components/product"
+import SEO from "../components/seo"
+import { isBrowser } from "react-device-detect"
+import Benefits from "../components/benefits"
+import { device } from "../utils/devices"
 
 const ProductGrid = styled.div`
   display: grid;
@@ -15,13 +15,16 @@ const ProductGrid = styled.div`
   @media ${device.laptop} {
     grid-template-columns: repeat(3, 1fr);
   }
-`;
+`
 
 const Shop = ({ location }) => (
   <StaticQuery
     query={graphql`
       query ShopQuery {
-        allWcProductsCategories(sort: {fields: menu_order}, filter: {wordpress_id: {ne: 29}}) {
+        allWcProductsCategories(
+          sort: { fields: menu_order }
+          filter: { wordpress_id: { ne: 29 } }
+        ) {
           edges {
             node {
               wordpress_id
@@ -44,19 +47,18 @@ const Shop = ({ location }) => (
         }
       }
     `}
-    render={(data) => (
-    <Layout location={location}>
-      <SEO title='Shop | Saint and Center' />
-      <ProductGrid>
-        {data.allWcProductsCategories.edges.slice(0,5).map(product => (
-          <Product key={product.node.wordpress_id} {...product.node} />
-        ))}
-      </ProductGrid>
-      {isBrowser &&
-        <Benefits />
-      }
-    </Layout>
-  )} />
-);
+    render={data => (
+      <Layout location={location}>
+        <SEO title="Shop | Saint and Center" />
+        <ProductGrid>
+          {data.allWcProductsCategories.edges.slice(0, 5).map(product => (
+            <Product key={product.node.wordpress_id} {...product.node} />
+          ))}
+        </ProductGrid>
+        {isBrowser && <Benefits />}
+      </Layout>
+    )}
+  />
+)
 
-export default Shop;
+export default Shop

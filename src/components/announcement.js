@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { MdClose } from 'react-icons/md'
-import { device } from '../utils/devices'
-import PropTypes from 'prop-types'
+import React from "react"
+import styled from "styled-components"
+import { MdClose } from "react-icons/md"
+import { device } from "../utils/devices"
+import PropTypes from "prop-types"
 
 const Banner = styled.div`
   position: fixed;
@@ -15,17 +15,17 @@ const Banner = styled.div`
   font-weight: 300;
   background: black;
   transition: 0.2s all ease-in-out;
-  transform: translate(${props => props.open ? `0,0` : `0,-100%` });
+  transform: translate(${props => (props.open ? `0,0` : `0,-100%`)});
   z-index: 5;
   display: flex;
   align-items: center;
   height: calc(2rem + 1.5vw);
   justify-content: center;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     font-size: 1vw;
   }
-`;
+`
 
 const Close = styled.button`
   position: absolute;
@@ -38,23 +38,25 @@ const Close = styled.button`
   cursor: pointer;
   font-size: 24px;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     font-size: 16px;
     right: 2rem;
   }
-`;
+`
 
 const Announcement = ({ open, text, toggle }) => (
-  <Banner data-testid='announcement' open={open}>
-    <span data-testid='announcement-text'>{text}</span>
-    <Close data-testid='announcement-close' onClick={() => toggle()}><MdClose /></Close>
+  <Banner data-testid="announcement" open={open}>
+    <span data-testid="announcement-text">{text}</span>
+    <Close data-testid="announcement-close" onClick={() => toggle()}>
+      <MdClose />
+    </Close>
   </Banner>
-);
+)
 
 Announcement.propTypes = {
   open: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  toggle: PropTypes.func.isRequired
+  toggle: PropTypes.func.isRequired,
 }
 
-export default Announcement;
+export default Announcement

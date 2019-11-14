@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import { device } from '../utils/devices'
-import PropTypes from 'prop-types'
+import React from "react"
+import styled from "styled-components"
+import { device } from "../utils/devices"
+import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   background: white;
@@ -10,14 +10,14 @@ const Wrapper = styled.div`
   top: 74px;
   text-transform: uppercase;
   font-size: 16px;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
   font-weight: 100;
   z-index: 10;
   display: flex;
   justify-content: space-between;
 
   a {
-    color: rgb(51,51,51);
+    color: rgb(51, 51, 51);
     text-decoration: none;
 
     &:hover {
@@ -25,18 +25,17 @@ const Wrapper = styled.div`
     }
   }
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     top: calc(3vw + 2rem);
     font-size: 16px;
   }
-`;
+`
 
 const SectionHeader = ({ title, secondary }) => {
-
   return (
-    <Wrapper data-testid='section-header'>
-      <span data-testid='section-header-title'>{title}</span>
-      <span data-testid='section-header-secondary'>{secondary}</span>
+    <Wrapper data-testid="section-header">
+      <span data-testid="section-header-title">{title}</span>
+      <span data-testid="section-header-secondary">{secondary}</span>
     </Wrapper>
   )
 }

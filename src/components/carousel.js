@@ -1,12 +1,12 @@
-import React from 'react'
-import Slider from 'react-slick'
-import styled from 'styled-components'
-import arrow from '../images/arrow.svg'
-import PropTypes from 'prop-types'
+import React from "react"
+import Slider from "react-slick"
+import styled from "styled-components"
+import arrow from "../images/arrow.svg"
+import PropTypes from "prop-types"
 
 const Wrapper = styled.section`
   position: relative;
-  background: ${props => props.bg ? props.bg : `transparent`};
+  background: ${props => (props.bg ? props.bg : `transparent`)};
 
   span {
     &:first-of-type {
@@ -64,7 +64,7 @@ const Wrapper = styled.section`
   }
 
   img {
-    width: ${props => props.cover ? `100vw` : `auto`};
+    width: ${props => (props.cover ? `100vw` : `auto`)};
     height: 70vh;
     object-fit: contain;
     margin: 0;
@@ -86,12 +86,12 @@ const Wrapper = styled.section`
 
       &.slick-active {
         button {
-          background: rgb(51,51,51);
+          background: rgb(51, 51, 51);
         }
       }
 
       button {
-        border: 2px solid rgb(51,51,51);
+        border: 2px solid rgb(51, 51, 51);
         border-radius: 50%;
         transition: 0.2s all ease-in-out;
 
@@ -105,31 +105,23 @@ const Wrapper = styled.section`
       }
     }
   }
-`;
+`
 
 const Carousel = ({ children, cover, arrows, bg, title }) => (
-  <Wrapper data-testid='carousel' bg={bg} cover={cover}>
-    {title &&
-      <span>Let there be you.</span>
-    }
-    <Slider
-      dots
-      fade
-      speed={500}
-      infinite
-      arrows={arrows}
-    >
+  <Wrapper data-testid="carousel" bg={bg} cover={cover}>
+    {title && <span>Let there be you.</span>}
+    <Slider dots fade speed={500} infinite arrows={arrows}>
       {children}
     </Slider>
   </Wrapper>
-);
+)
 
 Carousel.propTypes = {
   children: PropTypes.any.isRequired,
   cover: PropTypes.bool,
   arrows: PropTypes.bool,
   bg: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
 
-export default Carousel;
+export default Carousel

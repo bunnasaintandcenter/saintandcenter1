@@ -59,11 +59,11 @@
     "eslint": "^6.6.0",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "gatsby-plugin-eslint": "^2.0.8",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.8.0",
-    "prettier": "^1.17.1"
+    "jest": "^24.8.0"
   },
   "keywords": [
     "gatsby"
@@ -72,7 +72,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "jest"

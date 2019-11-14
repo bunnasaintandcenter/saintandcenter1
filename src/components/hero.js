@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { device } from '../utils/devices'
-import arrow from '../images/down.svg'
-import Div100vh from 'react-div-100vh'
+import React from "react"
+import styled from "styled-components"
+import PropTypes from "prop-types"
+import { device } from "../utils/devices"
+import arrow from "../images/down.svg"
+import Div100vh from "react-div-100vh"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     z-index: 1;
     margin-bottom: 4rem;
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       font-size: 60px;
       margin-bottom: 2rem;
     }
@@ -42,7 +42,7 @@ const Wrapper = styled.div`
       z-index: 2;
       cursor: pointer;
 
-      @media ${device.laptop}{
+      @media ${device.laptop} {
         width: 30px;
         height: 40px;
         top: 5rem;
@@ -62,7 +62,7 @@ const Wrapper = styled.div`
     width: 70vw;
     margin: 0 auto;
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       width: 20vw;
     }
   }
@@ -85,20 +85,22 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 1;
   }
-`;
+`
 
 const Hero = ({ title, handleHeroScroll }) => (
-  <Div100vh style={{ height: 'calc(100rvh - 2rem - 1.5vw)', width: '100%' }}>
-    <Wrapper data-testid='hero'>
+  <Div100vh style={{ height: "calc(100rvh - 2rem - 1.5vw)", width: "100%" }}>
+    <Wrapper data-testid="hero">
       <div>
-        <h2 data-testid='title' onClick={handleHeroScroll}>{title}</h2>
+        <h2 data-testid="title" onClick={handleHeroScroll}>
+          {title}
+        </h2>
       </div>
     </Wrapper>
   </Div100vh>
-);
+)
 
 Hero.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 }
 
-export default Hero;
+export default Hero

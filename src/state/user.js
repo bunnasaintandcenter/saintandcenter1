@@ -1,13 +1,13 @@
 const initialState = {
-  username: '',
-  email: '',
-  displayName: '',
-  token: ''
+  username: "",
+  email: "",
+  displayName: "",
+  token: "",
 }
 
-const USER_SIGNIN = 'USER_SIGNIN';
-const USER_SIGNOUT = 'USER_SIGNOUT';
-const USER_UPDATE_SHIPPING = 'USER_UPDATE_SHIPPING'
+const USER_SIGNIN = "USER_SIGNIN"
+const USER_SIGNOUT = "USER_SIGNOUT"
+const USER_UPDATE_SHIPPING = "USER_UPDATE_SHIPPING"
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -17,17 +17,18 @@ export default (state = initialState, action) => {
     case USER_SIGNOUT:
       return {
         ...state,
-        username: '',
-        email: '',
-        displayName: '',
-        token: ''
+        username: "",
+        email: "",
+        displayName: "",
+        token: "",
       }
     case USER_UPDATE_SHIPPING:
       console.log(action.payload)
       return {
         ...state,
-        shipping: action.payload
+        shipping: action.payload,
       }
-    default : return state
+    default:
+      return state
   }
-};
+}
