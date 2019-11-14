@@ -4,14 +4,12 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Hero from "../components/hero"
 import SectionHeader from "../components/sectionHeader"
-import TextBlock from "../components/textBlock"
 import TextBlockWithImage from "../components/textBlockWithImage"
 import ProductList from "../components/productList"
 import Benefits from "../components/benefits"
 import holyHemp from "../images/holy-hemp.svg"
 import humanRites from "../images/human-rites.svg"
 import ProductCarousel from "../components/productCarousel"
-import { isBrowser } from "react-device-detect"
 
 const Wrapper = styled.div``
 
@@ -27,23 +25,6 @@ const Home = ({ location }) => {
       <SEO title="Saint and Center" />
       <Wrapper>
         <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
-        <TextBlock ref={intro}>
-          <p>
-            From organically grown hemp,
-            <br />
-            we've extracted CBD with a high potency{isBrowser && <br />}and an
-            even higher calling.
-          </p>
-          <p>
-            Supporting hemp equality and justice.
-            <br /> Sustainably processed. And 0% THC.
-          </p>
-          <h2>
-            Your higher self
-            <br />
-            without the high.
-          </h2>
-        </TextBlock>
         <SectionHeader title="Shop" />
         <ProductCarousel />
         <ProductList />
