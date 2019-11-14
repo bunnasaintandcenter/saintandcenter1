@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, createRef } from "react"
+import React, { Fragment, useState, createRef } from "react"
 import styled from "styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { device } from "../utils/devices"
@@ -99,15 +99,40 @@ const Item = styled.li`
 const ProductList = () => {
   const [current, setCurrent] = useState(null)
 
-  let refs = useRef([createRef(), createRef()])
+  const refs = []
 
-  const handleClick = (wordpress_id, index) => {
-    if (current === wordpress_id) {
+  const handleClick = index => {
+    if (current === index) {
+      console.log("clearing current")
       setCurrent(null)
     } else {
-      setCurrent(wordpress_id)
-      console.log(refs[index].current)
-      refs[index].current.scrollIntoView({ behavior: "smooth", block: "start" })
+      setCurrent(index)
+      if (current !== null) {
+        console.log("current exists")
+        if (index < current) {
+          console.log("going up!")
+          window.scrollTo({
+            left: 0,
+            top: refs[index].current.offsetTop,
+            behavior: "smooth",
+          })
+        } else {
+          console.log("going down!")
+          window.scrollTo({
+            left: 0,
+            top:
+              refs[index].current.offsetTop -
+              (window.innerHeight - window.innerWidth * 0.1),
+            behavior: "smooth",
+          })
+        }
+      } else {
+        window.scrollTo({
+          left: 0,
+          top: refs[index].current.offsetTop,
+          behavior: "smooth",
+        })
+      }
     }
   }
 
@@ -140,7 +165,7 @@ const ProductList = () => {
                     localFile {
                       childImageSharp {
                         fluid(maxWidth: 1500, quality: 80) {
-                          src
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -168,22 +193,19 @@ const ProductList = () => {
               .slice(0, 3)
               .map(({ node }, index) => {
                 const ref = createRef()
+
                 refs[index] = ref
+
                 return (
                   <Fragment key={node.wordpress_id}>
-                    <Item
-                      ref={ref}
-                      onClick={() => handleClick(node.wordpress_id, index)}
-                    >
+                    <Item ref={ref} onClick={() => handleClick(index)}>
                       <h2>{node.name}</h2>
                       <h2>
                         ${node.products[1].product_variations[0].price}
                         {node.products[1].product_variations.length > 1 && `+`}
                       </h2>
                     </Item>
-                    {current === node.wordpress_id && (
-                      <ProductListBlock product={node} />
-                    )}
+                    {current === index && <ProductListBlock product={node} />}
                   </Fragment>
                 )
               })}
