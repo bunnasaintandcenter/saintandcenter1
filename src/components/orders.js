@@ -23,6 +23,7 @@ const Orders = ({ id }) => {
             return (
               <Order
                 key={id}
+                id={id}
                 date={date_created}
                 total={total}
                 lineItems={line_items}

@@ -42,18 +42,18 @@ const Wrapper = styled.div`
 const Order = ({ id, date, total, status, lineItems }) => (
   <Wrapper data-testid="order">
     <div>
-      <span>Order #{id}</span>
+      <span data-testid="order-id">Order #{id}</span>
       <span>
         <Moment format="LL">{date}</Moment>
       </span>
-      <span>${total}</span>
-      <span>{status}</span>
+      <span data-testid="order-total">${total}</span>
+      <span data-testid="order-status">{status}</span>
     </div>
     <ul>
       {lineItems.map(item => {
         const { name, subtotal, id } = item
         return (
-          <li key={id}>
+          <li key={id} data-test-id="order-item">
             {name} - ${subtotal}
           </li>
         )
@@ -63,7 +63,7 @@ const Order = ({ id, date, total, status, lineItems }) => (
 )
 
 Order.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   total: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,

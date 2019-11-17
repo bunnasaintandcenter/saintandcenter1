@@ -10,11 +10,7 @@ beforeEach(() => {
   StaticQuery.mockImplementationOnce(({ render }) =>
     render({
       allWcProducts: {
-        edges: {
-          node: {
-            ...data.allWcProducts.edges,
-          },
-        },
+        edges: [...data.allWcProducts.edges],
       },
     })
   )
@@ -251,32 +247,62 @@ const data = {
     ],
   },
 }
+describe("Cart tray", () => {
+  it("renders", () => {
+    const { getByTestId } = renderWithRedux(<Cart cart={[]} />)
+    expect(getByTestId("cart")).toBeTruthy()
+  })
 
-it("renders", () => {
-  const { getByTestId } = renderWithRedux(<Cart cart={[]} />)
-  expect(getByTestId("cart")).toBeTruthy()
+  it("shows when open", () => {
+    const { getByTestId } = renderWithRedux(<Cart open cart={[]} />)
+    expect(getByTestId("cart")).toHaveStyle(`max-height: 9999px`)
+  })
+
+  it("hides when closed", () => {
+    const { getByTestId } = renderWithRedux(<Cart cart={[]} />)
+    expect(getByTestId("cart")).toHaveStyle(`max-height: 0`)
+  })
+
+  it("fires onclick", () => {
+    const onClick = jest.fn()
+    const { getByTestId } = renderWithRedux(
+      <Cart toggle={onClick} open cart={[]} />
+    )
+    fireEvent.click(getByTestId("cart-close"))
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it("renders items", () => {
+    const fullCart = [
+      {
+        product_id: 27,
+        quantity: 1,
+        variation_id: 30,
+      },
+      {
+        product_id: 31,
+        quantity: 1,
+        variation_id: 32,
+      },
+    ]
+    const { getAllByTestId } = renderWithRedux(<Cart cart={fullCart} />)
+    expect(getAllByTestId("cart-item")).toHaveLength(2)
+  })
+
+  it("renders correct total", () => {
+    const fullCart = [
+      {
+        product_id: 27,
+        quantity: 1,
+        variation_id: 30,
+      },
+      {
+        product_id: 31,
+        quantity: 1,
+        variation_id: 32,
+      },
+    ]
+    const { getAllByTestId } = renderWithRedux(<Cart cart={fullCart} />)
+    expect(getAllByTestId("cart-item")).toHaveLength(2)
+  })
 })
-
-it("shows when open", () => {
-  const { getByTestId } = renderWithRedux(<Cart open cart={[]} />)
-  expect(getByTestId("cart")).toHaveStyle(`max-height: 9999px`)
-})
-
-it("hides when closed", () => {
-  const { getByTestId } = renderWithRedux(<Cart cart={[]} />)
-  expect(getByTestId("cart")).toHaveStyle(`max-height: 0`)
-})
-
-it("fires onclick", () => {
-  const onClick = jest.fn()
-  const { getByTestId } = renderWithRedux(
-    <Cart toggle={onClick} open cart={[]} />
-  )
-  fireEvent.click(getByTestId("cart-close"))
-  expect(onClick).toHaveBeenCalledTimes(1)
-})
-
-// it("renders items", () => {
-//   const { getAllByTestId } = renderWithRedux(<Cart cart={[]} />)
-//   expect(getAllByTestId("cart-items")).toHaveLength(2)
-// })
