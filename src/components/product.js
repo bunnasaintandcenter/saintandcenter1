@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
-import { Link } from 'gatsby'
-import { device } from '../utils/devices'
+import React from "react"
+import styled from "styled-components"
+import Img from "gatsby-image"
+import { Link } from "gatsby"
+import { device } from "../utils/devices"
 
 const Wrapper = styled.div`
   height: 50vw;
@@ -11,10 +11,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #E1D6D6;
+  background: #e1d6d6;
   position: relative;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     height: 33.3vw;
   }
 
@@ -26,15 +26,15 @@ const Wrapper = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 400px){
+  @media (max-width: 400px) {
     &:nth-of-type(3n + 1) {
-      background: #D1CECE;
+      background: #d1cece;
     }
   }
 
-  @media ${device.laptop}{
-    &:nth-child(even){
-      background: #D1CECE;
+  @media ${device.laptop} {
+    &:nth-child(even) {
+      background: #d1cece;
     }
   }
 
@@ -52,18 +52,19 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
-`;
+`
 
 const Info = styled.div`
   justify-self: end;
 
-  h2, h3 {
+  h2,
+  h3 {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 3vw;
     margin: 0;
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       font-size: 1vw;
     }
   }
@@ -71,20 +72,24 @@ const Info = styled.div`
   h2 {
     margin-bottom: 0.5rem;
   }
-`;
+`
 
-const Product = ({name, image, slug, products}) => {
-  console.log(products)
+const Product = ({ name, image, slug, products }) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="product">
       <Link to={`/shop/product/${slug}`}></Link>
-      {image && <Img className='product-image' fluid={image.localFile.childImageSharp.fluid} />}
+      {image && (
+        <Img
+          className="product-image"
+          fluid={image.localFile.childImageSharp.fluid}
+        />
+      )}
       <Info>
-        <h2>{name}</h2>
-        <h3>${products[1].price}</h3>
+        <h2 data-testid="product-name">{name}</h2>
+        <h3 data-testid="product-price">${products[1].price}</h3>
       </Info>
     </Wrapper>
   )
 }
 
-export default Product;
+export default Product

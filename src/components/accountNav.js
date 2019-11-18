@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import { device } from '../utils/devices'
-import { isMobile } from 'react-device-detect'
-import PropTypes from 'prop-types'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "gatsby"
+import { device } from "../utils/devices"
+import { isMobile } from "react-device-detect"
+import PropTypes from "prop-types"
 
 const Nav = styled.nav`
   position: relative;
 
   @media ${device.laptop} {
-    border-right: 2px solid rgb(51,51,51);
+    border-right: 2px solid rgb(51, 51, 51);
   }
 
   &:after {
@@ -20,24 +20,28 @@ const Nav = styled.nav`
     height: 100%;
     z-index: 5;
     width: 20vw;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(228,229,225,1) 70%);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(228, 229, 225, 1) 70%
+    );
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       content: none;
     }
   }
-`;
+`
 
 const List = styled.ul`
   list-style: none;
-  padding: 0 ;
+  padding: 0;
   margin: 74px 0 0;
   display: flex;
   box-sizing: border-box;
   width: 100vw;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  background: rgb(51,51,51,0.1);
+  background: rgb(51, 51, 51, 0.1);
 
   @media ${device.laptop} {
     width: auto;
@@ -47,7 +51,7 @@ const List = styled.ul`
     height: calc(100vh - 155px);
     grid-template-rows: repeat(5, 1fr);
   }
-`;
+`
 
 const Item = styled.li`
   text-transform: uppercase;
@@ -57,14 +61,14 @@ const Item = styled.li`
 
   @media ${device.laptop} {
     font-size: 36px;
-    border-bottom: 2px solid rgb(51,51,51);
+    border-bottom: 2px solid rgb(51, 51, 51);
   }
 
   &:last-of-type {
     border: 0;
     margin-right: 20vw;
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       margin-right: 0;
 
       span {
@@ -78,15 +82,16 @@ const Item = styled.li`
   }
 
   .active {
-    border-bottom: 3px solid rgb(51,51,51);
+    border-bottom: 3px solid rgb(51, 51, 51);
 
     @media ${device.laptop} {
       border-bottom: 0;
     }
   }
 
-  a, span {
-    color: rgb(51,51,51);
+  a,
+  span {
+    color: rgb(51, 51, 51);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -98,34 +103,39 @@ const Item = styled.li`
       padding: 2rem 4rem;
 
       &:hover {
-        background: rgb(25,25,25);
+        background: rgb(25, 25, 25);
         color: white;
       }
     }
   }
-`;
+`
 
-const AccountNav = ({location, tabs}) => (
-  <Nav data-testid='account-nav'>
+const AccountNav = ({ tabs }) => (
+  <Nav data-testid="account-nav">
     <List>
-      {tabs.map(({url, title, action}) => (
-        <Item key={title} data-testid='tab'>
-          {url
-            ? <Link activeClassName='active' to={`/account/${url}`}>{title}</Link>
-            : <span onClick={action}>{title}</span>
-          }
+      {tabs.map(({ url, title, action }) => (
+        <Item key={title} data-testid="tab">
+          {url ? (
+            <Link activeClassName="active" to={`/account/${url}`}>
+              {title}
+            </Link>
+          ) : (
+            <span onClick={action}>{title}</span>
+          )}
         </Item>
       ))}
-      {isMobile &&
-        <Item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Item>
-      }
+      {isMobile && (
+        <Item>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </Item>
+      )}
     </List>
   </Nav>
-);
+)
 
 AccountNav.propTypes = {
-  location: PropTypes.object.isRequired,
-  tabs: PropTypes.array.isRequired
+  location: PropTypes.object,
+  tabs: PropTypes.array.isRequired,
 }
 
-export default AccountNav;
+export default AccountNav

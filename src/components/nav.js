@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import { device } from '../utils/devices'
-import { useSelector, useDispatch } from 'react-redux'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "gatsby"
+import { device } from "../utils/devices"
+import { useSelector, useDispatch } from "react-redux"
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -10,15 +10,15 @@ const Wrapper = styled.nav`
   left: 0;
   width: 100vw;
   height: fill-available;
-  background: rgb(248,249,244);
+  background: rgb(248, 249, 244);
   color: black;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   z-index: 20;
-  display: ${props => props.open ? `flex` : `none`};
+  display: ${props => (props.open ? `flex` : `none`)};
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     height: calc(100vh - 2.5vw - 2rem);
   }
 
@@ -26,7 +26,7 @@ const Wrapper = styled.nav`
     color: black;
     text-decoration: none;
   }
-`;
+`
 
 const List = styled.ul`
   list-style: none;
@@ -39,7 +39,7 @@ const List = styled.ul`
   align-items: center;
   line-height: 48px;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     line-height: 3vw;
   }
 
@@ -54,40 +54,50 @@ const List = styled.ul`
       font-weight: 200;
     }
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       font-size: 3vw;
     }
   }
-`;
+`
 
-const Nav = ({ open, handleSubmit, toggle}) => {
-
+const Nav = ({ open }) => {
   const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    console.log('hey')
-    dispatch({ type: 'USER_SIGNOUT' })
+    console.log("hey")
+    dispatch({ type: "USER_SIGNOUT" })
   }
 
   return (
-    <Wrapper open={open} data-testid='nav'>
+    <Wrapper open={open} data-testid="nav">
       <List>
-        <li><Link to='/shop'>Shop</Link></li>
+        <li>
+          <Link to="/shop">Shop</Link>
+        </li>
         <li>Learn</li>
         <li>About</li>
-        {user.email !== ''
-          ?
-            <>
-              <li><Link to='/account'>Account</Link></li>
-              <li className='clickable' onClick={() => handleLogout()}>Logout</li>
-            </>
-          : <li><Link to='/login'>Login</Link></li>
-
-        }
-        <br/>
-        <li><Link to='/cart'>Cart <span data-testid='cart-count'>({cart.length})</span></Link></li>
+        {user.email !== "" ? (
+          <>
+            <li>
+              <Link to="/account">Account</Link>
+            </li>
+            <li className="clickable" onClick={() => handleLogout()}>
+              Logout
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
+        <br />
+        <li>
+          <Link to="/cart">
+            Cart <span data-testid="cart-count">({cart.length})</span>
+          </Link>
+        </li>
       </List>
     </Wrapper>
   )

@@ -38,7 +38,7 @@ const Main = styled.div`
   }
 `;
 
-const Settings = ({ location, data }) => {
+const Settings = ({ location }) => {
 
   const user = useSelector(state => state.user)
 

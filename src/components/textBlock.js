@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { device } from '../utils/devices'
+import React, { forwardRef } from "react"
+import styled from "styled-components"
+import { device } from "../utils/devices"
 
 const Block = styled.section`
   font-size: 18px;
@@ -10,7 +10,7 @@ const Block = styled.section`
   /* max-width: 1440px; */
   font-weight: 200;
 
-  @media ${device.laptop}{
+  @media ${device.laptop} {
     font-size: 36px;
     margin: 4rem auto;
     line-height: 60px;
@@ -21,8 +21,7 @@ const Block = styled.section`
     font-weight: 300;
     line-height: 36px;
 
-    @media ${device.laptop}{
-      
+    @media ${device.laptop} {
       font-size: 60px;
       font-weight: 300;
       line-height: 72px;
@@ -37,16 +36,16 @@ const Block = styled.section`
     font-size: 30px;
     font-weight: 500;
 
-    @media ${device.laptop}{
+    @media ${device.laptop} {
       font-size: 48px;
     }
   }
-`;
+`
 
 const TextBlock = forwardRef(({ children }, ref) => (
-  <Block ref={ref}>
+  <Block data-testid="text-block" ref={ref}>
     {children}
   </Block>
-));
+))
 
-export default TextBlock;
+export default TextBlock

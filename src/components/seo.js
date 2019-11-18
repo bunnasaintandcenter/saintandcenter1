@@ -29,6 +29,7 @@ function SEO({ description, lang, meta, keywords, title }) {
 
   return (
     <Helmet
+      data-testid="SEO"
       htmlAttributes={{
         lang,
       }}
