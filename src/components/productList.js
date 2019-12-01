@@ -23,7 +23,7 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  border-bottom: 1px solid black;
+  border-bottom: ${props => (props.active ? `0` : `1px solid black`)};
   display: flex;
   align-items: baseline;
   cursor: pointer;
@@ -183,7 +183,11 @@ const ProductList = () => {
 
                 return (
                   <Fragment key={node.wordpress_id}>
-                    <Item ref={ref} onClick={() => handleClick(index)}>
+                    <Item
+                      ref={ref}
+                      active={current === index}
+                      onClick={() => handleClick(index)}
+                    >
                       <h2>{node.name}</h2>
                       <h2>
                         ${node.products[1].product_variations[0].price}
