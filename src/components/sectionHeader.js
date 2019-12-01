@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   background: white;
-  padding: 0.5rem 2rem;
+  padding: 0.25rem 2rem;
   position: sticky;
   top: 74px;
   text-transform: uppercase;

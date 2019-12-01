@@ -19,7 +19,7 @@ const Wrapper = styled.section`
   @media ${device.laptop} {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5vw;
-    width: 70vw;
+    width: 75vw;
     margin: 8rem auto;
   }
 `
@@ -31,7 +31,7 @@ const Item = styled.div`
   font-size: 16px;
 
   @media ${device.laptop} {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   img {
@@ -40,7 +40,7 @@ const Item = styled.div`
     width: 10vw;
 
     @media ${device.laptop} {
-      width: 3vw;
+      width: 3.5vw;
     }
   }
 `

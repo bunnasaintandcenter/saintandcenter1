@@ -13,6 +13,7 @@ import holyHemp from "../images/holy-hemp.svg"
 import humanRites from "../images/human-rites.svg"
 
 import tincture from "../images/tincture.jpg"
+import products from "../images/products.jpg"
 
 const Wrapper = styled.div``
 
@@ -55,10 +56,7 @@ const Home = ({ location }) => {
             plant that is good for all human and plant kind.
           </p>
         </TextBlockWithImage>
-        <br />
-        <br />
-        <br />
-        <br />
+        <ImageHero src={products} alt="Saint and Center products" />
         <TextBlockWithImage
           title="Human Rites"
           image={humanRites}

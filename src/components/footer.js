@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import arrow from "../images/arrow.svg"
 import { device } from "../utils/devices"
 import Signup from "./signup"
-import Insta from "./insta"
+import PetLink from "./petLink"
 
 const Foot = styled.footer`
   @media ${device.laptop} {
@@ -166,7 +166,7 @@ const SignupSmall = styled.div`
 
 const Footer = () => (
   <Foot data-testid="footer">
-    <Insta />
+    <PetLink />
     <Signup />
     <FooterMenu>
       <SignupSmall>
