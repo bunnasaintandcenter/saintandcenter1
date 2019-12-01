@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   position: sticky;
   top: 74px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
   color: rgb(51, 51, 51);
   font-weight: 100;
   z-index: 10;
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   }
 
   @media ${device.laptop} {
-    top: calc(3vw + 2rem);
+    top: calc(2.5vw + 2rem);
   }
 `
 

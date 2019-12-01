@@ -37,7 +37,7 @@ const Logo = styled.div`
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    width: ${props => (props.background ? `2vw` : `15vw`)};
+    width: ${props => (props.background ? `1.5vw` : `20vw`)};
     padding: 1rem 0;
   }
 
@@ -56,8 +56,8 @@ const CartButton = styled.div`
     cursor: pointer;
     background: ${props => (props.background ? `black` : `white`)};
     transition: 0.2s all ease-in-out;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     border-radius: 16px;
     border: ${props =>
       props.background ? `1px solid black` : `1px solid white`};
