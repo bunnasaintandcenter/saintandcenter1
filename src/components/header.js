@@ -22,7 +22,7 @@ const Head = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5vw;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
   background: ${props =>
     props.background ? `rgb(248,249,244)` : `transparent`};
   z-index: 30;
@@ -83,7 +83,7 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   const listenScrollEvent = () => {
     if (home) {
-      if (window.scrollY > 400) {
+      if (window.scrollY > window.innerHeight * 2.5) {
         setBackground(true)
       } else {
         setBackground(false)
