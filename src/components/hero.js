@@ -1,15 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 import { device } from "../utils/devices"
 import arrow from "../images/down.svg"
 import Div100vh from "react-div-100vh"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
   padding: 5vw;
   background: ${props => props.theme.color.gold};
   background-size: cover;
@@ -18,35 +18,21 @@ const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
 
+  @media ${device.laptop} {
+    height: 100%;
+  }
+
   h2 {
     font-size: 24px;
     font-weight: 300;
     position: relative;
+    text-align: center;
     z-index: 1;
     margin-bottom: 4rem;
 
     @media ${device.laptop} {
       font-size: 60px;
       margin-bottom: 2rem;
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 3rem;
-      background: url(${arrow});
-      background-size: 100%;
-      width: 20px;
-      height: 26px;
-      z-index: 2;
-      cursor: pointer;
-
-      @media ${device.laptop} {
-        width: 30px;
-        height: 40px;
-        top: 5rem;
-      }
     }
   }
 
@@ -87,20 +73,12 @@ const Wrapper = styled.div`
   }
 `
 
-const Hero = ({ title, handleHeroScroll }) => (
-  <Div100vh style={{ height: "calc(100rvh - 2rem - 1.5vw)", width: "100%" }}>
+const Hero = () => (
+  <Div100vh>
     <Wrapper data-testid="hero">
-      <div>
-        <h2 data-testid="title" onClick={handleHeroScroll}>
-          {title}
-        </h2>
-      </div>
+      <h2>your higher self</h2>
+      <h2>without the high</h2>
     </Wrapper>
   </Div100vh>
 )
-
-Hero.propTypes = {
-  title: PropTypes.string.isRequired,
-}
-
 export default Hero

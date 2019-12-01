@@ -11,7 +11,6 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   position: fixed;
-  top: ${props => (props.bannerOpen ? `calc(2rem + 1.5vw)` : `0`)};
   z-index: 100;
 `
 

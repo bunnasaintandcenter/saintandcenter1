@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { useSelector } from "react-redux"
 import { ThemeProvider } from "styled-components"
-import Announcement from "./announcement"
 import Header from "./header"
 import Footer from "./footer"
 import { device } from "../utils/devices"
@@ -15,25 +14,6 @@ import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props =>
-    props.bannerOpen
-      ? props.home
-        ? `calc(2rem + 1.5vw)`
-        : `calc(1.5vw + 2rem + 74px)`
-      : props.home
-      ? `0`
-      : `74px`};
-
-  @media ${device.laptop} {
-    padding-top: ${props =>
-      props.bannerOpen
-        ? props.home
-          ? `calc(1.5vw + 2rem)`
-          : `calc(4vw + 4rem + 16px)`
-        : props.home
-        ? `0`
-        : `calc(4vw + 2rem)`};
-  }
 `
 
 const theme = {
@@ -103,11 +83,6 @@ const Layout = ({ children, location }) => {
         bannerOpen={bannerOpen}
         home={location && location.pathname === "/"}
       >
-        <Announcement
-          text="Free Shipping on All Orders"
-          toggle={handleToggleAnnouncement}
-          open={bannerOpen}
-        />
         <Header
           bannerOpen={bannerOpen}
           cart={cart}
