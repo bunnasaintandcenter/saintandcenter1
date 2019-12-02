@@ -84,16 +84,16 @@ const Layout = ({ children, location }) => {
         data-testid="layout"
         bannerOpen={bannerOpen}
         home={
-          (location && location.pathname === "/") ||
-          location.pathname === "/shop/pets"
+          location &&
+          (location.pathname === "/" || location.pathname === "/shop/pets")
         }
       >
         <Header
           bannerOpen={bannerOpen}
           cart={cart}
           home={
-            (location && location.pathname === "/") ||
-            location.pathname === "/shop/pets"
+            location &&
+            (location.pathname === "/" || location.pathname === "/shop/pets")
               ? true
               : false
           }
