@@ -26,7 +26,6 @@
     "prop-types": "^15.7.2",
     "qs": "^6.9.0",
     "react": "^16.8.6",
-    "react-crossfade-image": "^1.2.0",
     "react-device-detect": "^1.6.2",
     "react-div-100vh": "^0.3.4",
     "react-dom": "^16.8.6",
