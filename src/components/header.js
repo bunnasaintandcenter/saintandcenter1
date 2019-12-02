@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import logo from "../images/logo-black.svg"
 import logotype from "../images/logotype.svg"
+import logotypeBlack from "../images/logotype-black.svg"
 import Menu from "./menu"
 import Nav from "./nav"
 import { Link } from "gatsby"
@@ -37,16 +38,14 @@ const Logo = styled.div`
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    width: ${props => (props.background ? `1.5vw` : `20vw`)};
-    padding: 1rem 0;
-  }
-
-  &:hover {
-    transform: ${props => (props.background ? `rotate(180deg)` : `none`)};
+    width: ${props =>
+      props.background ? (props.hover ? `20vw` : `1.5vw`) : `20vw`};
+    padding: ${props => (props.hover ? `1.3vw 0` : `1rem 0`)};
   }
 
   img {
     width: 100%;
+    height: 100%;
     margin: 0;
   }
 `
@@ -78,6 +77,7 @@ const CartButton = styled.div`
 
 const Header = ({ cart, bannerOpen, home }) => {
   const [background, setBackground] = useState(home ? false : true)
+  const [hover, setHover] = useState(false)
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
@@ -126,9 +126,21 @@ const Header = ({ cart, bannerOpen, home }) => {
             open={navOpen}
             onClick={handleToggleNav}
           />
-          <Logo background={background}>
+          <Logo
+            hover={hover}
+            background={background}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
             <Link to="/">
-              <img src={background ? logo : logotype} alt="Saint and Center" />
+              {hover ? (
+                <img src={logotypeBlack} alt="Saint and Center" />
+              ) : (
+                <img
+                  src={background ? logo : logotype}
+                  alt="Saint and Center"
+                />
+              )}
             </Link>
           </Logo>
           <CartButton
