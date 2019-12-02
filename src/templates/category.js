@@ -125,7 +125,9 @@ const Category = ({ pageContext, updateCart, location }) => {
       <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
         <Image>
-          <Img fluid={images[1].localFile.childImageSharp.fluid} />
+          {images[1] && (
+            <Img fluid={images[1].localFile.childImageSharp.fluid} />
+          )}
           {isMobile && (
             <InfoToggle onClick={() => setInfoShown(!infoShown)}>
               {infoShown ? <span>X</span> : <span>?</span>}
