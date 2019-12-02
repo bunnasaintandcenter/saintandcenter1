@@ -98,23 +98,22 @@ const ProductList = () => {
           console.log("going up!")
           window.scrollTo({
             left: 0,
-            top: refs[index].current.offsetTop,
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         } else {
           console.log("going down!")
           window.scrollTo({
             left: 0,
-            top:
-              refs[index].current.offsetTop -
-              (window.innerHeight - window.innerWidth * 0.1),
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         }
       } else {
+        console.log("ok")
         window.scrollTo({
           left: 0,
-          top: refs[index].current.offsetTop,
+          top: refs[index].current.offsetTop + 60,
           behavior: "smooth",
         })
       }
