@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import { Waypoint } from "react-waypoint"
-import CrossFadeImage from "react-crossfade-image"
 
 import image from "../images/holy-hemp.jpg"
 import image1 from "../images/holy-hemp1.jpg"

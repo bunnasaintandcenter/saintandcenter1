@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { device } from "../utils/devices"
 import { isMobile } from "react-device-detect"
-import { FiArrowRight } from "react-icons/fi"
+import arrow from "../images/arrow-right.svg"
 import ProductListBlock from "./productListBlock"
 
 const Wrapper = styled.section`
@@ -27,6 +27,7 @@ const Item = styled.li`
   display: flex;
   align-items: baseline;
   cursor: pointer;
+  position: relative;
   margin: 0;
   justify-content: space-between;
 
@@ -40,14 +41,15 @@ const Item = styled.li`
   }
 
   &:last-of-type {
-    @media ${device.laptop} {
-      justify-content: center;
-      align-items: center;
-
-      a {
-        justify-content: center;
-        display: flex;
-      }
+    &:after {
+      content: "";
+      top: 0;
+      right: 2rem;
+      width: 62px;
+      margin: 4rem;
+      height: 34px;
+      background: url(${arrow});
+      background-size: 100%;
     }
   }
 
@@ -200,7 +202,6 @@ const ProductList = () => {
             <Item>
               <Link to="/shop">
                 <h2>View All</h2>
-                {isMobile && <FiArrowRight />}
               </Link>
             </Item>
           </List>
