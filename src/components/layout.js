@@ -103,7 +103,7 @@ const Layout = ({ children, location }) => {
             <SectionHeader title={renderTitle(location.pathname)} />
           )}
         {children}
-        <Footer />
+        <Footer location={location} />
       </Wrapper>
     </ThemeProvider>
   )
