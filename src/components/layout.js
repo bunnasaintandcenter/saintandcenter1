@@ -6,7 +6,6 @@ import { useSelector } from "react-redux"
 import { ThemeProvider } from "styled-components"
 import Header from "./header"
 import Footer from "./footer"
-import { device } from "../utils/devices"
 import Helmet from "react-helmet"
 import SectionHeader from "./sectionHeader"
 
@@ -35,7 +34,7 @@ const renderTitle = page => {
     case page.split("/")[2] === "product":
       return (
         <>
-          <Link to="/shop">Shop</Link> / {page.split("/")[3]}
+          <Link to="/shop">Shop / Products </Link> / {page.split("/")[3]}
         </>
       )
     case pagePath === "shop":
@@ -60,11 +59,11 @@ const Layout = ({ children, location }) => {
 
   const [bannerOpen, toggleBanner] = useState(true)
 
-  const handleToggleAnnouncement = () => {
-    const storageObj = { timestamp: new Date().getTime() }
-    localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
-    toggleBanner()
-  }
+  // const handleToggleAnnouncement = () => {
+  //   const storageObj = { timestamp: new Date().getTime() }
+  //   localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
+  //   toggleBanner()
+  // }
 
   return (
     <ThemeProvider theme={theme}>
