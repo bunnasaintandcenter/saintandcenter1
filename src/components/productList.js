@@ -199,7 +199,7 @@ const ProductList = () => {
               })}
             <Item>
               <Link to="/shop">
-                <h2>View Products</h2>
+                <h2>View All</h2>
                 {isMobile && <FiArrowRight />}
               </Link>
             </Item>
