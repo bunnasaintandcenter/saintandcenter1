@@ -1,12 +1,12 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../../components/layout"
 import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-import Product from "../components/product"
-import SEO from "../components/seo"
+import Product from "../../components/product"
+import SEO from "../../components/seo"
 import { isBrowser } from "react-device-detect"
-import Benefits from "../components/benefits"
-import { device } from "../utils/devices"
+import Benefits from "../../components/benefits"
+import { device } from "../../utils/devices"
 
 const ProductGrid = styled.div`
   display: grid;
