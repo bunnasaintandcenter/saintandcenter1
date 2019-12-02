@@ -77,7 +77,9 @@ const Nav = ({ open }) => {
           <Link to="/shop">Shop</Link>
         </li>
         <li>Learn</li>
-        <li>About</li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
         {user.email !== "" ? (
           <>
             <li>

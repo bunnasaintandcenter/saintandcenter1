@@ -43,6 +43,8 @@ const renderTitle = page => {
       return "Learn"
     case pagePath === "human-rites":
       return "Learn"
+    case pagePath === "about":
+      return "About"
     case pagePath === "account":
       return "Account"
     case pagePath === "faqs":
