@@ -15,6 +15,12 @@ const Wrapper = styled.div`
 
   @media ${device.laptop} {
     height: auto;
+
+    &:hover {
+      .hover-image {
+        opacity: 1;
+      }
+    }
   }
 
   a {
@@ -23,6 +29,24 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 3;
+  }
+
+  .hover-image {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.2s all ease-in-out;
+
+    img {
+      object-fit: contain !important;
+      object-position: center bottom !important;
+      margin: 0;
+    }
   }
 
   .product-image {
@@ -46,6 +70,7 @@ const Info = styled.div`
   left: 1.5rem;
   bottom: 1.5rem;
   justify-self: end;
+  z-index: 2;
 
   h2,
   h3 {
@@ -65,6 +90,7 @@ const Info = styled.div`
 `
 
 const Product = ({ name, image, slug, products }) => {
+  console.log(products)
   return (
     <Wrapper data-testid="product">
       <Link to={`/shop/product/${slug}`}></Link>
@@ -74,6 +100,10 @@ const Product = ({ name, image, slug, products }) => {
           fluid={image.localFile.childImageSharp.fluid}
         />
       )}
+      <Img
+        className="hover-image"
+        fluid={products[1].images[1].localFile.childImageSharp.fluid}
+      />
       <Info>
         <h2 data-testid="product-name">{name}</h2>
         <h3 data-testid="product-price">${products[1].price}</h3>
