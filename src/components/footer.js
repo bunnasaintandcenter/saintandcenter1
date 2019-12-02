@@ -167,7 +167,11 @@ const SignupSmall = styled.div`
 
 const Footer = ({ location }) => (
   <Foot data-testid="footer">
-    {location.pathname === "/shop/pets" ? <HumanLink /> : <PetLink />}
+    {location && location.pathname === "/shop/pets" ? (
+      <HumanLink />
+    ) : (
+      <PetLink />
+    )}
     <Signup />
     <FooterMenu>
       <SignupSmall>
