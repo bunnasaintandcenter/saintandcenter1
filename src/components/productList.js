@@ -41,15 +41,21 @@ const Item = styled.li`
   }
 
   &:last-of-type {
+    a {
+      display: block;
+      width: 100%;
+    }
     &:after {
       content: "";
       top: 0;
-      right: 2rem;
+      right: 0;
+      position: absolute;
       width: 62px;
       margin: 4rem;
       height: 34px;
       background: url(${arrow});
       background-size: 100%;
+      pointer-events: none;
     }
   }
 
