@@ -121,8 +121,8 @@ const ProductListBlock = ({ product, updateCart }) => {
     <Wrapper>
       <Image>
         <Img
-          key={images[3].localFile.childImageSharp.fluid.src}
-          fluid={images[3].localFile.childImageSharp.fluid}
+          key={images[4].localFile.childImageSharp.fluid.src}
+          fluid={images[4].localFile.childImageSharp.fluid}
         />
         <InfoToggle onClick={() => setInfoShown(!infoShown)}>
           {infoShown ? <span>X</span> : <span>?</span>}
