@@ -45,7 +45,6 @@ const Home = ({ location }) => {
         <TextBlockWithImage
           title="Holy Hemp"
           bgColor="rgb(0,51,37)"
-          textColor="rgb(2, 210, 161)"
           image={holyHemp}
           url="/holy-hemp"
           actionText="To Holy Hemp"
@@ -62,8 +61,7 @@ const Home = ({ location }) => {
           image={humanRites}
           reverse
           url="/human-rites"
-          bgColor="rgb(38,33,97)"
-          textColor="rgb(167,201,253)"
+          bgColor="rgb(139,41,4)"
           actionText="To Human Rites"
         >
           <p>

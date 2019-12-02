@@ -5,6 +5,7 @@ import arrow from "../images/arrow.svg"
 import { device } from "../utils/devices"
 import Signup from "./signup"
 import PetLink from "./petLink"
+import HumanLink from "./humanLink"
 
 const Foot = styled.footer`
   @media ${device.laptop} {
@@ -164,9 +165,9 @@ const SignupSmall = styled.div`
   }
 `
 
-const Footer = () => (
+const Footer = ({ location }) => (
   <Foot data-testid="footer">
-    <PetLink />
+    {location.pathname === "/shop/pets" ? <HumanLink /> : <PetLink />}
     <Signup />
     <FooterMenu>
       <SignupSmall>

@@ -24,6 +24,7 @@ const theme = {
     eggplant: "rgb(38,33,97)",
     darkBlue: "rgb(38,33,97)",
     blue: "rgb(167,201,253)",
+    brown: "rgb(202, 178, 140)",
   },
 }
 
@@ -82,18 +83,27 @@ const Layout = ({ children, location }) => {
       <Wrapper
         data-testid="layout"
         bannerOpen={bannerOpen}
-        home={location && location.pathname === "/"}
+        home={
+          (location && location.pathname === "/") ||
+          location.pathname === "/shop/pets"
+        }
       >
         <Header
           bannerOpen={bannerOpen}
           cart={cart}
-          home={location && location.pathname === "/" ? true : false}
+          home={
+            (location && location.pathname === "/") ||
+            location.pathname === "/shop/pets"
+              ? true
+              : false
+          }
         />
-        {location && location.pathname !== "/" && (
-          <SectionHeader title={renderTitle(location.pathname)} />
-        )}
+        {location &&
+          (location.pathname !== "/" && location.pathname !== "/shop/pets") && (
+            <SectionHeader title={renderTitle(location.pathname)} />
+          )}
         {children}
-        <Footer />
+        <Footer location={location} />
       </Wrapper>
     </ThemeProvider>
   )

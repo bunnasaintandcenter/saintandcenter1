@@ -100,10 +100,12 @@ const Product = ({ name, image, slug, products }) => {
           fluid={image.localFile.childImageSharp.fluid}
         />
       )}
-      <Img
-        className="hover-image"
-        fluid={products[1].images[1].localFile.childImageSharp.fluid}
-      />
+      {products[1].images[1] && (
+        <Img
+          className="hover-image"
+          fluid={products[1].images[1].localFile.childImageSharp.fluid}
+        />
+      )}
       <Info>
         <h2 data-testid="product-name">{name}</h2>
         <h3 data-testid="product-price">${products[1].price}</h3>
