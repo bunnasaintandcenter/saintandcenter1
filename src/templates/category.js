@@ -7,9 +7,9 @@ import { isBrowser, isMobile } from "react-device-detect"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import ProductSelect from "../components/productSelect"
-import Slider from "react-slick"
 
 const Wrapper = styled.div`
+  padding-top: calc(1.5vw + 3rem);
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -17,70 +17,23 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.div`
+  min-height: 90vh;
   background: #d1cece;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  grid-column: ${props => (props.full ? `span 2` : `auto`)};
 
-  .slick-slider {
-    height: 50vh;
-
-    @media ${device.laptop} {
-      height: 100%;
-    }
-  }
-
-  .slick-dots {
-    position: absolute;
-    left: 0;
-    bottom: 4rem;
-    text-align: left;
-    padding: 0 0 0 2rem;
-    display: flex;
-
-    li {
-      width: auto;
-      height: auto;
-
-      &.slick-active {
-        button {
-          background: rgb(51, 51, 51);
-        }
-      }
-
-      button {
-        border: 2px solid rgb(51, 51, 51);
-        border-radius: 50%;
-        transition: 0.2s all ease-in-out;
-
-        &:hover {
-          transform: scale(1.1);
-        }
-
-        &:before {
-          content: none;
-        }
-      }
-    }
-  }
-
-  .slick-track,
-  .slick-list {
+  .gatsby-image-wrapper {
     height: 100%;
-  }
-
-  .slick-slide {
-    div,
-    picture {
-      height: 100%;
-    }
   }
 
   img {
     height: 100%;
     object-fit: cover !important;
     margin-bottom: 0 !important;
+    display: block;
   }
 `
 
@@ -163,6 +116,8 @@ const Category = ({ pageContext, updateCart, location }) => {
     images = products[1].images
   }
 
+  console.log(images.slice(2, 5))
+
   // const { image } = data.allWcProductsCategories.edges[0].node;
 
   return (
@@ -170,21 +125,12 @@ const Category = ({ pageContext, updateCart, location }) => {
       <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
         <Image>
+          <Img fluid={images[1].localFile.childImageSharp.fluid} />
           {isMobile && (
             <InfoToggle onClick={() => setInfoShown(!infoShown)}>
               {infoShown ? <span>X</span> : <span>?</span>}
             </InfoToggle>
           )}
-          <Slider speed={500} infinite dots arrows={false}>
-            {images.length > 0 &&
-              images.map((img, index) => (
-                <Img
-                  key={img.localFile.childImageSharp.fluid.src}
-                  fluid={img.localFile.childImageSharp.fluid}
-                  alt={`${index}`}
-                />
-              ))}
-          </Slider>
           {isMobile && (
             <InfoOverlay open={infoShown}>
               <h4>{description}</h4>
@@ -203,6 +149,11 @@ const Category = ({ pageContext, updateCart, location }) => {
             />
           )}
         </Info>
+        {images.slice(2, 5).map((image, index) => (
+          <Image key={index} full={index === 2}>
+            <Img fluid={images[index + 2].localFile.childImageSharp.fluid} />
+          </Image>
+        ))}
       </Wrapper>
     </Layout>
   )

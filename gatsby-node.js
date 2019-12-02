@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
         image: edge.node.image,
         images: edge.node.images,
         description: edge.node.description,
-        products: edge.node.products
+        products: edge.node.products,
       },
     })
   })

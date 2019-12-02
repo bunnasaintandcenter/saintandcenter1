@@ -23,7 +23,7 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  border-bottom: 2px solid black;
+  border-bottom: ${props => (props.active ? `0` : `1px solid black`)};
   display: flex;
   align-items: baseline;
   cursor: pointer;
@@ -40,8 +40,6 @@ const Item = styled.li`
   }
 
   &:last-of-type {
-    border: 0;
-
     @media ${device.laptop} {
       justify-content: center;
       align-items: center;
@@ -49,15 +47,6 @@ const Item = styled.li`
       a {
         justify-content: center;
         display: flex;
-      }
-
-      h2 {
-        font-size: 24px;
-        padding: 2rem 0;
-
-        &:hover {
-          padding: 2rem 0;
-        }
       }
     }
   }
@@ -73,17 +62,13 @@ const Item = styled.li`
   h2 {
     font-size: 30px;
     font-weight: normal;
-    padding: 2rem;
+    padding: 3rem;
     margin: 0;
     transition: 0.2s all ease-in-out;
     text-transform: uppercase;
 
     @media ${device.laptop} {
       font-size: 48px;
-    }
-
-    &:hover {
-      padding-left: 4.5vw;
     }
   }
 
@@ -113,23 +98,22 @@ const ProductList = () => {
           console.log("going up!")
           window.scrollTo({
             left: 0,
-            top: refs[index].current.offsetTop,
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         } else {
           console.log("going down!")
           window.scrollTo({
             left: 0,
-            top:
-              refs[index].current.offsetTop -
-              (window.innerHeight - window.innerWidth * 0.1),
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         }
       } else {
+        console.log("ok")
         window.scrollTo({
           left: 0,
-          top: refs[index].current.offsetTop,
+          top: refs[index].current.offsetTop + 60,
           behavior: "smooth",
         })
       }
@@ -198,7 +182,11 @@ const ProductList = () => {
 
                 return (
                   <Fragment key={node.wordpress_id}>
-                    <Item ref={ref} onClick={() => handleClick(index)}>
+                    <Item
+                      ref={ref}
+                      active={current === index}
+                      onClick={() => handleClick(index)}
+                    >
                       <h2>{node.name}</h2>
                       <h2>
                         ${node.products[1].product_variations[0].price}
@@ -211,7 +199,7 @@ const ProductList = () => {
               })}
             <Item>
               <Link to="/shop">
-                <h2>View All</h2>
+                <h2>View Products</h2>
                 {isMobile && <FiArrowRight />}
               </Link>
             </Item>

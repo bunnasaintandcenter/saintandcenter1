@@ -51,8 +51,12 @@ const Shop = ({ location }) => (
       <Layout location={location}>
         <SEO title="Shop | Saint and Center" />
         <ProductGrid>
-          {data.allWcProductsCategories.edges.slice(0, 5).map(product => (
-            <Product key={product.node.wordpress_id} {...product.node} />
+          {data.allWcProductsCategories.edges.slice(0, 3).map(product => (
+            <Product
+              image={product.image}
+              key={product.node.wordpress_id}
+              {...product.node}
+            />
           ))}
         </ProductGrid>
         {isBrowser && <Benefits />}

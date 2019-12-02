@@ -11,7 +11,6 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   position: fixed;
-  top: ${props => (props.bannerOpen ? `calc(2rem + 1.5vw)` : `0`)};
   z-index: 100;
 `
 
@@ -23,7 +22,7 @@ const Head = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5vw;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
   background: ${props =>
     props.background ? `rgb(248,249,244)` : `transparent`};
   z-index: 30;
@@ -38,7 +37,7 @@ const Logo = styled.div`
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    width: ${props => (props.background ? `2vw` : `15vw`)};
+    width: ${props => (props.background ? `1.5vw` : `20vw`)};
     padding: 1rem 0;
   }
 
@@ -57,8 +56,8 @@ const CartButton = styled.div`
     cursor: pointer;
     background: ${props => (props.background ? `black` : `white`)};
     transition: 0.2s all ease-in-out;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     border-radius: 16px;
     border: ${props =>
       props.background ? `1px solid black` : `1px solid white`};
@@ -84,7 +83,7 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   const listenScrollEvent = () => {
     if (home) {
-      if (window.scrollY > 400) {
+      if (window.scrollY > window.innerHeight * 2.5) {
         setBackground(true)
       } else {
         setBackground(false)

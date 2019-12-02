@@ -8,6 +8,8 @@ const Join = styled.div`
   display: flex;
   align-items: center;
   height: 50vh;
+  background: black;
+  color: white;
 
   @media ${device.laptop} {
     height: auto;
@@ -41,6 +43,7 @@ const Join = styled.div`
     text-transform: uppercase;
     font-weight: 200;
     cursor: pointer;
+    color: white;
     background: transparent;
     outline: 0;
 

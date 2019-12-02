@@ -23,7 +23,7 @@ const Block = styled.section`
 `
 
 const Text = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 200;
   padding: 1rem;
   line-height: 24px;
@@ -33,14 +33,20 @@ const Text = styled.div`
     text-decoration: none;
   }
 
+  p {
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
   @media ${device.laptop} {
-    font-size: 30px;
+    font-size: 24px;
     text-align: left;
-    padding: 4rem;
-    line-height: 48px;
+    line-height: 36px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 `
 

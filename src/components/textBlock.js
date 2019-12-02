@@ -1,19 +1,23 @@
 import React, { forwardRef } from "react"
 import styled from "styled-components"
+import Div100vh from "react-div-100vh"
 import { device } from "../utils/devices"
 
 const Block = styled.section`
-  font-size: 18px;
-  line-height: 24px;
-  width: 90vw;
-  margin: 2rem auto;
-  /* max-width: 1440px; */
-  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  padding: 2rem;
+  background: black;
+  color: white;
+  height: 100%;
+  box-sizing: border-box;
+  text-transform: uppercase;
 
   @media ${device.laptop} {
-    font-size: 36px;
-    margin: 4rem auto;
-    line-height: 60px;
+    font-size: 24px;
   }
 
   h2 {
@@ -28,10 +32,6 @@ const Block = styled.section`
     }
   }
 
-  p {
-    margin-bottom: 3rem;
-  }
-
   strong {
     font-size: 30px;
     font-weight: 500;
@@ -43,9 +43,11 @@ const Block = styled.section`
 `
 
 const TextBlock = forwardRef(({ children }, ref) => (
-  <Block data-testid="text-block" ref={ref}>
-    {children}
-  </Block>
+  <Div100vh>
+    <Block data-testid="text-block" ref={ref}>
+      {children}
+    </Block>
+  </Div100vh>
 ))
 
 export default TextBlock

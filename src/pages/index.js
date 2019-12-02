@@ -3,13 +3,17 @@ import styled from "styled-components"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Hero from "../components/hero"
+import ImageHero from "../components/ImageHero"
 import SectionHeader from "../components/sectionHeader"
+import TextBlock from "../components/textBlock"
 import TextBlockWithImage from "../components/textBlockWithImage"
 import ProductList from "../components/productList"
 import Benefits from "../components/benefits"
 import holyHemp from "../images/holy-hemp.svg"
 import humanRites from "../images/human-rites.svg"
-import ProductCarousel from "../components/productCarousel"
+
+import tincture from "../images/tincture.jpg"
+import products from "../images/products.jpg"
 
 const Wrapper = styled.div``
 
@@ -25,30 +29,34 @@ const Home = ({ location }) => {
       <SEO title="Saint and Center" />
       <Wrapper>
         <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
+        <ImageHero src={tincture} alt="Tincture" />
+        <TextBlock>
+          <p>Your world is always on.</p>
+          <p>Giving rise to pain, stress, distractons, restlessness.</p>
+          <p>Changing you from a human being to a human doing.</p>
+          <p>CBD revives you and brings you to the center.</p>
+          <p>When you shine, we all shine.</p>
+          <p>Welcome to the Revival. Let there be you.</p>
+        </TextBlock>
         <SectionHeader title="Shop" />
-        <ProductCarousel />
         <ProductList />
         <Benefits />
-        <SectionHeader title="Learn" secondary="ABC" />
+        <SectionHeader title="Learn" secondary="Our Beliefs" />
         <TextBlockWithImage
           title="Holy Hemp"
           bgColor="rgb(0,51,37)"
           textColor="rgb(2, 210, 161)"
           image={holyHemp}
           url="/holy-hemp"
-          actionText="Learn More About Hemp"
+          actionText="To Holy Hemp"
         >
           <p>
-            A natural way to feel uplifted. We use organically grown hemp to
-            extract a pure, non-psychoactive CBD that works with our body's
-            endocannabinoid system to help regulate mood, stress, anxiety and
-            pain sensations.
+            Saint and Center delves into the past to inform the future of CBD.
+            Holy Hemp explores the roots and stems of this versatile Cannabius
+            plant that is good for all human and plant kind.
           </p>
         </TextBlockWithImage>
-        <br />
-        <br />
-        <br />
-        <br />
+        <ImageHero src={products} alt="Saint and Center products" />
         <TextBlockWithImage
           title="Human Rites"
           image={humanRites}
@@ -56,13 +64,13 @@ const Home = ({ location }) => {
           url="/human-rites"
           bgColor="rgb(38,33,97)"
           textColor="rgb(167,201,253)"
-          actionText="See How CBD Works"
+          actionText="To Human Rites"
         >
           <p>
-            We believe that all companies profiting from the cultivation and
-            production of hemp products have a responsibility to supporting fair
-            legislation and creating equitable solutions for people and
-            communities unfairly harmed by cannabis laws.
+            We believe a company profiting from the culvation and production of
+            hemp products should support fair legislation. We help create
+            equitable solution for people and communities unfairly harmed by
+            cannabis laws.
           </p>
         </TextBlockWithImage>
       </Wrapper>

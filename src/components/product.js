@@ -6,7 +6,6 @@ import { device } from "../utils/devices"
 
 const Wrapper = styled.div`
   height: 50vw;
-  padding: 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,7 @@ const Wrapper = styled.div`
   position: relative;
 
   @media ${device.laptop} {
-    height: 33.3vw;
+    height: auto;
   }
 
   a {
@@ -26,22 +25,10 @@ const Wrapper = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 400px) {
-    &:nth-of-type(3n + 1) {
-      background: #d1cece;
-    }
-  }
-
-  @media ${device.laptop} {
-    &:nth-child(even) {
-      background: #d1cece;
-    }
-  }
-
   .product-image {
-    width: 15vw;
-    height: 20vw;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     align-self: center;
     margin: auto 0;
     pointer-events: none;
@@ -55,12 +42,15 @@ const Wrapper = styled.div`
 `
 
 const Info = styled.div`
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1.5rem;
   justify-self: end;
 
   h2,
   h3 {
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 3vw;
     margin: 0;
 
@@ -70,7 +60,7 @@ const Info = styled.div`
   }
 
   h2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 `
 

@@ -1,82 +1,26 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { device } from "../utils/devices"
-import { isBrowser, isMobile } from "react-device-detect"
 import Img from "gatsby-image"
-import ProductSelect from "../components/productSelect"
-import Slider from "react-slick"
+import { Link } from "gatsby"
+import ProductListSelect from "../components/productListSelect"
 
-const Wrapper = styled.div`
-  @media ${device.laptop} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-`
+const Wrapper = styled.div``
 
 const Image = styled.div`
+  height: 75vh;
   background: #d1cece;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
 
-  .slick-slider {
-    height: 50vh;
-
-    @media ${device.laptop} {
-      height: 100%;
-    }
-  }
-
-  .slick-dots {
-    position: absolute;
-    left: 0;
-    bottom: 4rem;
-    text-align: left;
-    padding: 0 0 0 2rem;
-    display: flex;
-
-    li {
-      width: auto;
-      height: auto;
-
-      &.slick-active {
-        button {
-          background: rgb(51, 51, 51);
-        }
-      }
-
-      button {
-        border: 2px solid rgb(51, 51, 51);
-        border-radius: 50%;
-        transition: 0.2s all ease-in-out;
-
-        &:hover {
-          transform: scale(1.1);
-        }
-
-        &:before {
-          content: none;
-        }
-      }
-    }
-  }
-
-  .slick-track,
-  .slick-list {
+  .gatsby-image-wrapper {
     height: 100%;
-  }
-
-  .slick-slide {
-    div,
-    picture {
-      height: 100%;
-    }
   }
 
   img {
     height: 100%;
-    object-fit: cover !important;
+    object-fit: cover;
     margin-bottom: 0 !important;
   }
 `
@@ -85,7 +29,6 @@ const Info = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-height: calc(100vh - 10vw);
 
   h4 {
     font-weight: 300;
@@ -110,6 +53,7 @@ const InfoToggle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `
 
 const InfoOverlay = styled.div`
@@ -150,6 +94,19 @@ const InfoOverlay = styled.div`
   }
 `
 
+const Details = styled.div`
+  padding: 1rem 0;
+  font-size: 18px;
+  border-bottom: 1px solid rgb(51, 51, 51);
+
+  a {
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+    text-align: center;
+    display: block;
+  }
+`
+
 const ProductListBlock = ({ product, updateCart }) => {
   const { description, products } = product
   const [infoShown, setInfoShown] = useState(false)
@@ -163,32 +120,21 @@ const ProductListBlock = ({ product, updateCart }) => {
   return (
     <Wrapper>
       <Image>
-        {isMobile && (
-          <InfoToggle onClick={() => setInfoShown(!infoShown)}>
-            {infoShown ? <span>X</span> : <span>?</span>}
-          </InfoToggle>
-        )}
-        <Slider speed={500} infinite arrows={false} dots>
-          {images.length > 0 &&
-            images.map((img, index) => (
-              <Img
-                key={img.localFile.childImageSharp.fluid.src}
-                fluid={img.localFile.childImageSharp.fluid}
-                alt={`${index}`}
-              />
-            ))}
-        </Slider>
-        {isMobile && (
-          <InfoOverlay open={infoShown}>
-            <h4>{description}</h4>
-            <div className="background" />
-          </InfoOverlay>
-        )}
+        <Img
+          key={images[3].localFile.childImageSharp.fluid.src}
+          fluid={images[3].localFile.childImageSharp.fluid}
+        />
+        <InfoToggle onClick={() => setInfoShown(!infoShown)}>
+          {infoShown ? <span>X</span> : <span>?</span>}
+        </InfoToggle>
+        <InfoOverlay open={infoShown}>
+          <h4>{description}</h4>
+          <div className="background" />
+        </InfoOverlay>
       </Image>
       <Info>
-        {isBrowser && <h4>{description}</h4>}
         {products && products.length > 0 && (
-          <ProductSelect
+          <ProductListSelect
             id={products[0].id}
             updateCart={updateCart}
             options={products[0].product_variations}
@@ -196,6 +142,9 @@ const ProductListBlock = ({ product, updateCart }) => {
           />
         )}
       </Info>
+      <Details>
+        <Link to={`/shop/product/${product.slug}`}>View Details</Link>
+      </Details>
     </Wrapper>
   )
 }

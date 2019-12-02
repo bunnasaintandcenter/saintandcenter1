@@ -4,10 +4,8 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { useSelector } from "react-redux"
 import { ThemeProvider } from "styled-components"
-import Announcement from "./announcement"
 import Header from "./header"
 import Footer from "./footer"
-import { device } from "../utils/devices"
 import Helmet from "react-helmet"
 import SectionHeader from "./sectionHeader"
 
@@ -15,25 +13,6 @@ import "./layout.css"
 
 const Wrapper = styled.div`
   /* transition: 0.2 all ease-in-out; */
-  padding-top: ${props =>
-    props.bannerOpen
-      ? props.home
-        ? `calc(2rem + 1.5vw)`
-        : `calc(1.5vw + 2rem + 74px)`
-      : props.home
-      ? `0`
-      : `74px`};
-
-  @media ${device.laptop} {
-    padding-top: ${props =>
-      props.bannerOpen
-        ? props.home
-          ? `calc(1.5vw + 2rem)`
-          : `calc(4vw + 4rem + 16px)`
-        : props.home
-        ? `0`
-        : `calc(4vw + 2rem)`};
-  }
 `
 
 const theme = {
@@ -55,7 +34,7 @@ const renderTitle = page => {
     case page.split("/")[2] === "product":
       return (
         <>
-          <Link to="/shop">Shop</Link> / {page.split("/")[3]}
+          <Link to="/shop">Shop / Products </Link> / {page.split("/")[3]}
         </>
       )
     case pagePath === "shop":
@@ -80,11 +59,11 @@ const Layout = ({ children, location }) => {
 
   const [bannerOpen, toggleBanner] = useState(true)
 
-  const handleToggleAnnouncement = () => {
-    const storageObj = { timestamp: new Date().getTime() }
-    localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
-    toggleBanner()
-  }
+  // const handleToggleAnnouncement = () => {
+  //   const storageObj = { timestamp: new Date().getTime() }
+  //   localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
+  //   toggleBanner()
+  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -103,11 +82,6 @@ const Layout = ({ children, location }) => {
         bannerOpen={bannerOpen}
         home={location && location.pathname === "/"}
       >
-        <Announcement
-          text="Free Shipping on All Orders"
-          toggle={handleToggleAnnouncement}
-          open={bannerOpen}
-        />
         <Header
           bannerOpen={bannerOpen}
           cart={cart}
