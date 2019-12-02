@@ -32,6 +32,15 @@ const Shop = ({ location }) => (
               slug
               products {
                 price
+                images {
+                  localFile {
+                    childImageSharp {
+                      fluid(maxWidth: 1500, quality: 80) {
+                        src
+                      }
+                    }
+                  }
+                }
               }
               image {
                 localFile {

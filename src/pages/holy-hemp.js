@@ -1,126 +1,57 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import TextTransition, { presets } from "react-text-transition"
-import { Waypoint } from "react-waypoint"
-import SEO from "../components/seo"
-import { isMobile } from "react-device-detect"
 import { device } from "../utils/devices"
+import { Waypoint } from "react-waypoint"
+import CrossFadeImage from "react-crossfade-image"
+
+import image from "../images/holy-hemp.jpg"
+import image1 from "../images/holy-hemp1.jpg"
+import image2 from "../images/holy-hemp2.jpg"
 
 const Wrapper = styled.div`
-  p {
-    width: 90vw;
-    margin: 2rem auto;
-    font-weight: 200;
-    font-size: 18px;
-    line-height: 1.4em;
-
-    @media ${device.laptop} {
-      width: auto;
-      margin: 0 0 1.45rem 0;
-      font-size: 30px;
-    }
-  }
-
-  blockquote {
-    height: 50vh;
-    background: ${props => props.theme.color.forest};
-    color: ${props => props.theme.color.green};
-    padding: 0 5vw;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    text-align: center;
-    line-height: 30px;
-    text-transform: uppercase;
-    box-sizing: border-box;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   @media ${device.laptop} {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    padding-top: calc(1.5vw + 3rem);
+  }
+`
+const Image = styled.div`
+  position: sticky;
+  top: calc(1.5vw + 3rem);
+  height: calc(100vh - 1.5vw - 3rem);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `
 
-const Block = styled.div`
-  height: calc(100vh - 4vw - 2rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 4rem;
-  font-size: 30px;
-  line-height: 1.4em;
-  box-sizing: border-box;
-  font-weight: 200;
+const Text = styled.div`
+  div {
+    box-sizing: border-box;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 48px;
+    padding: 1rem;
+    height: calc(100vh - 1.5vw - 3rem);
+  }
 `
 
-const Heading = styled.div`
-  position: sticky;
-  top: calc(4vw + 2rem);
-  height: calc(100vh - 4vw - 2rem);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 48px;
-  padding: 0 4rem;
-  line-height: 1.4em;
-  box-sizing: border-box;
-  text-transform: uppercase;
-  background: ${props => props.theme.color.forest};
-  color: ${props => props.theme.color.green};
-`
-
-const content = [
+const data = [
   {
-    heading: "Holy Hemp",
-    paragraph:
-      "As one of the earliest cultivated plants in human history, hemp has been used for the health happiness and sustainability of people and the planet for millenia. Now that the stigma is waning, science is finally able to reveal the good news; hemp can heal our bodies, minds and planet.",
+    image: image,
+    text: `Up until the last century, hemp (or Cannabis Sativa) has been one of the most significant crops of humankind. Its usefulness has been recorded by ancient civilizations worldwide for 10,000 years. Before people found out about all the compounds that make up hemp, they knew the plant itself could provide spiritual, medicinal and practical benefits.`,
   },
   {
-    heading: "In the beginning there was hemp",
-    paragraph:
-      "For nearly 10,000 years, hemp has been used for food, textiles, biofuel and as a natural medicinal therapy. First cultivated in Asia, from George Washington to World War 2, it is a plant that has been used to sustain people through the millenia.",
+    image: image1,
+    text: `The oldest record of hemp is the pharmacopeia Pen Ts'ao Ching — Chinese traditional medicine passed down since pre-historic times. In it, dioecious hemp complemented the philosophy of yin/yang. Hemp originated in the steppes of Asia, and the Chinese were one of the first to notice the Cannabis’ balancing effect. The psychoactive flowering buds of the female plant were known as "yin", and strong CBD-infused non-flowering male plant as "yang". CBD and THC is one of the 100+ phytocannabinoids in hemp and other cannabis. Our bodies produce their own cannabinoids called endocannabinoid, which go into a regulatory system that keeps us balanced. When ingested, CBD acts as a supplement to the endocannabinoid system.`,
   },
   {
-    heading: "A divine vine with high potential",
-    paragraph:
-      "A distinct strain of the cannabis plant, hemp is rich in antioxidants and 116 naturally occurring compounds called cannabinoids. And CBD, aka cannabidiol, is a cannabinoid known for its powerful therapeutic effects.",
-  },
-  {
-    heading: "That works with our body",
-    paragraph:
-      "CBD binds with the receptors in our body’s endocannabinoid system - the network responsible for regulating pain, stress, mood, inflammation, sleep and memory. Taking CBD helps to balance our system, helping us to feel cool, calm, centered and in control of our everyday obstacles, responsibilities and experiences. ",
-  },
-  {
-    heading: "And our planet",
-    paragraph:
-      "As one of the most sustainable crops on earth, hemp is leading the way in environmental impact. It grows easily without pesticides, removes carbon dioxide from the atmosphere and returns essential nutrients back to the soil. And because virtually every part of the plant can be used to make everything from paper to construction materials, it has the power to replace destructive materials like plastics, cotton, soy and fossil fuels.",
-  },
-  {
-    heading: "But unlike THC, it won’t make you high.",
-    paragraph:
-      "Though they both are born from the cannabis plant, unlike marijuana, hemp contains little to no THC - the compound responsible for the intoxicating and mind-altering effects of marijuana. ",
-  },
-  {
-    heading: "But it will take you higher",
-    paragraph:
-      "Hemp-derived CBD works with your body to produce a natural high - lifting your mood, reducing stress, relieving your pain and deepening sleep to give you that pure and inspired feeling you get when you’re reaching toward your potential.",
-  },
-  {
-    heading: "We’ve created clean, natural hemp products that believe in you.",
-    paragraph: (
-      <>
-        <p>Take CBD in the morning to feel calm, uplifted, focused.</p>
-        <p>Or In the evening to relax and wake up rested.</p>
-        <p>Or rub it in wherever your body needs relief.</p>
-        <p>
-          Hemp-derived CBD frees us from mental and physical blocks to feel
-          better, focus, take action, balance and become.
-        </p>
-      </>
-    ),
+    image: image2,
+    text: `From the start of WW2 to the 1970's war on drugs campaign, the 20th century has seen a complete twist on perspective. However, the farm bill passed in 2014 seeks to reverse those effects. The future seems promising. Scientists and researchers have only begun to tap into what we already seem to know. As long as there are humans, there is hemp.`,
   },
 ]
 
@@ -129,38 +60,20 @@ const HolyHemp = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <SEO title="Holy Hemp | Saint and Center" />
-      {isMobile ? (
-        <Wrapper>
-          {content.map(({ paragraph, heading }) => (
-            <div key={heading}>
-              <blockquote>{heading}</blockquote>
-              <p>{paragraph}</p>
+      <Wrapper>
+        <Image>
+          <img src={data[slide].image} />
+        </Image>
+        <Text>
+          {data.map((p, index) => (
+            <div key={index}>
+              <Waypoint onEnter={() => setSlide(index)} />
+              <p>{p.text}</p>
             </div>
           ))}
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <div>
-            {content.map(({ paragraph }, index) => (
-              <Block key={paragraph}>
-                {paragraph}
-                <Waypoint onEnter={() => setSlide(index)} />
-              </Block>
-            ))}
-          </div>
-          <Heading>
-            {presets && (
-              <TextTransition
-                text={content[slide].heading}
-                springConfig={presets.default}
-              />
-            )}
-          </Heading>
-        </Wrapper>
-      )}
+        </Text>
+      </Wrapper>
     </Layout>
   )
 }
-
 export default HolyHemp
