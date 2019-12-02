@@ -23,7 +23,7 @@ const List = styled.ul`
 `
 
 const Item = styled.li`
-  border-bottom: 1px solid black;
+  border-bottom: ${props => (props.active ? `0` : `1px solid black`)};
   display: flex;
   align-items: baseline;
   cursor: pointer;
@@ -98,23 +98,22 @@ const ProductList = () => {
           console.log("going up!")
           window.scrollTo({
             left: 0,
-            top: refs[index].current.offsetTop,
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         } else {
           console.log("going down!")
           window.scrollTo({
             left: 0,
-            top:
-              refs[index].current.offsetTop -
-              (window.innerHeight - window.innerWidth * 0.1),
+            top: refs[index].current.offsetTop + 60,
             behavior: "smooth",
           })
         }
       } else {
+        console.log("ok")
         window.scrollTo({
           left: 0,
-          top: refs[index].current.offsetTop,
+          top: refs[index].current.offsetTop + 60,
           behavior: "smooth",
         })
       }
@@ -183,7 +182,11 @@ const ProductList = () => {
 
                 return (
                   <Fragment key={node.wordpress_id}>
-                    <Item ref={ref} onClick={() => handleClick(index)}>
+                    <Item
+                      ref={ref}
+                      active={current === index}
+                      onClick={() => handleClick(index)}
+                    >
                       <h2>{node.name}</h2>
                       <h2>
                         ${node.products[1].product_variations[0].price}
