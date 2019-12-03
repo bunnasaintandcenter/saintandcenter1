@@ -1,7 +1,6 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
-import arrow from "../images/down.svg"
 import Div100vh from "react-div-100vh"
 
 const Wrapper = styled.div`
@@ -17,6 +16,7 @@ const Wrapper = styled.div`
   color: white;
   position: relative;
   box-sizing: border-box;
+  width: 100%;
 
   @media ${device.laptop} {
     height: 100%;
@@ -73,12 +73,36 @@ const Wrapper = styled.div`
   }
 `
 
-const Hero = () => (
-  <Div100vh>
-    <Wrapper data-testid="hero">
-      <h2>your higher self</h2>
-      <h2>without the high</h2>
-    </Wrapper>
-  </Div100vh>
-)
+const useScrollHandler = handler => {
+  useEffect(() => {
+    window.addEventListener("scroll", handler)
+    return () => {
+      window.removeEventListener("scroll", handler)
+    }
+  }, [])
+}
+
+const Curtain = props => {
+  const ref = useRef()
+  const handler = () => {
+    if (window.scrollY < window.innerHeight) {
+      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
+    } else {
+      ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
+    }
+  }
+  useScrollHandler(handler)
+  return <div ref={ref} {...props} />
+}
+
+const Hero = () => {
+  return (
+    <Curtain className="curtain first">
+      <Wrapper data-testid="hero">
+        <h2>your higher self</h2>
+        <h2>without the high</h2>
+      </Wrapper>
+    </Curtain>
+  )
+}
 export default Hero

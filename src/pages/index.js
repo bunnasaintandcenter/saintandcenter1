@@ -17,6 +17,21 @@ import products from "../images/products.jpg"
 
 const Wrapper = styled.div``
 
+const Pushed = styled.div`
+  margin-top: 300vh;
+`
+
+const Feature = styled.div`
+  img {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    margin: 0;
+    display: block;
+  }
+`
+
 const Home = ({ location }) => {
   const intro = createRef()
 
@@ -39,7 +54,9 @@ const Home = ({ location }) => {
           <p>Welcome to the Revival. Let there be you.</p>
         </TextBlock>
         <SectionHeader title="Shop" />
-        <ProductList />
+        <Pushed>
+          <ProductList />
+        </Pushed>
         <Benefits />
         <SectionHeader title="Learn" secondary="Our Beliefs" />
         <TextBlockWithImage
@@ -55,7 +72,9 @@ const Home = ({ location }) => {
             plant that is good for all human and plant kind.
           </p>
         </TextBlockWithImage>
-        <ImageHero src={products} alt="Saint and Center products" />
+        <Feature>
+          <img src={products} alt="S+C Products" />
+        </Feature>
         <TextBlockWithImage
           title="Human Rites"
           image={humanRites}
