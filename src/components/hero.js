@@ -85,7 +85,11 @@ const useScrollHandler = handler => {
 const Curtain = props => {
   const ref = useRef()
   const handler = () => {
-    ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
+    if (window.scrollY < window.innerHeight) {
+      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
+    } else {
+      ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
+    }
   }
   useScrollHandler(handler)
   return <div ref={ref} {...props} />
@@ -93,7 +97,7 @@ const Curtain = props => {
 
 const Hero = () => {
   return (
-    <Curtain className="curtain">
+    <Curtain className="curtain first">
       <Wrapper data-testid="hero">
         <h2>your higher self</h2>
         <h2>without the high</h2>

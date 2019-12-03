@@ -712,4 +712,17 @@ pre tt:after {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  background: black;
+}
+
+.curtain.first {
+  z-index: 88;
+}
+
+.curtain.second {
+  z-index: 87;
+}
+
+.curtain.third {
+  z-index: 86;
 }
