@@ -37,14 +37,24 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const ImageHero = ({ src, alt }) => (
-  <Curtain className="curtain second">
-    <Div100vh>
-      <Wrapper>
-        <img src={src} alt={alt} />
-      </Wrapper>
-    </Div100vh>
-  </Curtain>
-)
+const ImageHero = ({ src, alt }) => {
+  const innerRef = useRef()
+  const handler = () => {
+    if (window.scrollY < window.innerHeight) {
+      innerRef.current.style.opacity = window.scrollY / window.innerHeight
+    }
+  }
+  useScrollHandler(handler)
+
+  return (
+    <Curtain className="curtain second">
+      <Div100vh>
+        <Wrapper ref={innerRef}>
+          <img src={src} alt={alt} />
+        </Wrapper>
+      </Div100vh>
+    </Curtain>
+  )
+}
 
 export default ImageHero
