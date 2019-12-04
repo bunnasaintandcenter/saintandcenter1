@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Div100vh from "react-div-100vh"
 import { device } from "../utils/devices"
@@ -15,6 +15,7 @@ const Block = styled.section`
   height: 100%;
   box-sizing: border-box;
   text-transform: uppercase;
+  opacity: 0;
 
   @media ${device.laptop} {
     font-size: 24px;
@@ -68,14 +69,26 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const TextBlock = forwardRef(({ children }, ref) => (
-  <Curtain className="curtain third">
-    <Div100vh>
-      <Block data-testid="text-block" ref={ref}>
-        {children}
-      </Block>
-    </Div100vh>
-  </Curtain>
-))
+const TextBlock = ({ children }) => {
+  const innerRef = useRef()
+  console.log(innerRef.current)
+  const handler = () => {
+    if (window.scrollY < window.innerHeight * 2) {
+      innerRef.current.style.opacity =
+        Math.abs(window.scrollY - window.innerHeight) / window.innerHeight
+    }
+  }
+  useScrollHandler(handler)
+
+  return (
+    <Curtain className="curtain third">
+      <Div100vh>
+        <Block ref={innerRef} data-testid="text-block">
+          {children}
+        </Block>
+      </Div100vh>
+    </Curtain>
+  )
+}
 
 export default TextBlock
