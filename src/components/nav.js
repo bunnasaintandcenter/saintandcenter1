@@ -15,7 +15,7 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  z-index: 20;
+  z-index: 200;
   display: ${props => (props.open ? `flex` : `none`)};
 
   @media ${device.laptop} {
