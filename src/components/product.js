@@ -43,8 +43,8 @@ const Wrapper = styled.div`
     transition: 0.2s all ease-in-out;
 
     img {
-      object-fit: contain !important;
-      object-position: center bottom !important;
+      object-fit: cover !important;
+      object-position: center center !important;
       margin: 0;
     }
   }

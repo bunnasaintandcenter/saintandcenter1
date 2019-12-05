@@ -26,7 +26,7 @@ const Image = styled.div`
   grid-column: ${props => (props.full ? `span 2` : `auto`)};
 
   .gatsby-image-wrapper {
-    height: 100%;
+    min-height: 90vh;
   }
 
   img {
