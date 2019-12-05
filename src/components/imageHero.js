@@ -3,6 +3,7 @@ import Div100vh from "react-div-100vh"
 import styled from "styled-components"
 
 const Wrapper = styled.section`
+  opacity: 0;
   img {
     height: 100vh;
     width: 100%;
@@ -24,10 +25,12 @@ const useScrollHandler = handler => {
 const Curtain = props => {
   const ref = useRef()
   const handler = () => {
-    if (window.scrollY < window.innerHeight) {
+    if (window.scrollY < window.innerHeight * 3) {
       ref.current.style.transform = `translateZ(0) translateY(0)`
-    } else if (window.scrollY < window.innerHeight * 2) {
+    } else if (window.scrollY < window.innerHeight * 4) {
       ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
+        window.innerHeight -
+        window.innerHeight -
         window.innerHeight}px)`
     } else {
       ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
@@ -40,8 +43,10 @@ const Curtain = props => {
 const ImageHero = ({ src, alt }) => {
   const innerRef = useRef()
   const handler = () => {
-    if (window.scrollY < window.innerHeight) {
-      innerRef.current.style.opacity = window.scrollY / window.innerHeight
+    if (window.scrollY > window.innerHeight * 2) {
+      console.log("hey!")
+      innerRef.current.style.opacity =
+        Math.abs(window.scrollY - window.innerHeight * 1.5) / window.innerHeight
     }
   }
   useScrollHandler(handler)
