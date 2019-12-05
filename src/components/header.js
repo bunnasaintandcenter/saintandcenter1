@@ -37,9 +37,8 @@ const Logo = styled.div`
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    width: ${props =>
-      props.background ? (props.hover ? `20vw` : `1.5vw`) : `20vw`};
-    padding: ${props => (props.hover ? `1.3vw 0` : `1rem 0`)};
+    width: ${props => (props.background ? `1.5vw` : `20vw`)};
+    padding: 1rem 0;
   }
 
   img {
@@ -76,7 +75,6 @@ const CartButton = styled.div`
 
 const Header = ({ cart, bannerOpen, home }) => {
   const [background, setBackground] = useState(home ? false : true)
-  const [hover, setHover] = useState(false)
   const [navOpen, toggleNav] = useState(false)
   const [cartOpen, toggleCart] = useState(false)
 
@@ -125,21 +123,9 @@ const Header = ({ cart, bannerOpen, home }) => {
             open={navOpen}
             onClick={handleToggleNav}
           />
-          <Logo
-            hover={hover}
-            background={background}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
+          <Logo background={background}>
             <Link to="/">
-              {hover ? (
-                <img src={logotypeBlack} alt="Saint and Center" />
-              ) : (
-                <img
-                  src={background ? logo : logotype}
-                  alt="Saint and Center"
-                />
-              )}
+              <img src={background ? logo : logotype} alt="Saint and Center" />
             </Link>
           </Logo>
           <CartButton
