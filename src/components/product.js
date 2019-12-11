@@ -3,11 +3,13 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import { device } from "../utils/devices"
+import arrow from "../images/arrow-right.svg"
 
 const Wrapper = styled.div`
   height: 50vw;
   box-sizing: border-box;
   display: flex;
+  margin-top: 56px;
   flex-direction: column;
   justify-content: center;
   background: #e1d6d6;
@@ -58,7 +60,7 @@ const Wrapper = styled.div`
     pointer-events: none;
 
     img {
-      object-fit: contain !important;
+      object-fit: cover !important;
       object-position: center bottom !important;
       margin: 0;
     }
@@ -67,8 +69,8 @@ const Wrapper = styled.div`
 
 const Info = styled.div`
   position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
+  left: 24px;
+  top: 24px;
   justify-self: end;
   z-index: 2;
 
@@ -88,30 +90,51 @@ const Info = styled.div`
     margin-bottom: 0;
   }
 `
+const Action = styled.div`
+  position: absolute;
+  point-events: none;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 24px;
+  font-weight: 300;
+  z-index: 2;
 
-const Product = ({ name, image, slug, products }) => {
-  console.log(products)
-  return (
-    <Wrapper data-testid="product">
-      <Link to={`/shop/product/${slug}`}></Link>
-      {image && (
-        <Img
-          className="product-image"
-          fluid={image.localFile.childImageSharp.fluid}
-        />
-      )}
-      {products[1].images[1] && (
-        <Img
-          className="hover-image"
-          fluid={products[1].images[1].localFile.childImageSharp.fluid}
-        />
-      )}
-      <Info>
-        <h2 data-testid="product-name">{name}</h2>
-        <h3 data-testid="product-price">${products[1].price}</h3>
-      </Info>
-    </Wrapper>
-  )
-}
+  &:after {
+    content: "";
+    position: absolute;
+    right: 24px;
+    background: url(${arrow});
+    background-size: 100%;
+    width: 35px;
+    height: 22px;
+    background-repeat: no-repeat;
+  }
+`
+
+const Product = ({ name, image, slug, products }) => (
+  <Wrapper data-testid="product">
+    <Info>
+      <h2 data-testid="product-name">{name}</h2>
+      <h3 data-testid="product-price">${products[1].price}</h3>
+    </Info>
+    <Link to={`/shop/product/${slug}`}></Link>
+    {image && (
+      <Img
+        className="product-image"
+        fluid={image.localFile.childImageSharp.fluid}
+      />
+    )}
+    {products[1].images[1] && (
+      <Img
+        className="hover-image"
+        fluid={products[1].images[1].localFile.childImageSharp.fluid}
+      />
+    )}
+    <Action>View</Action>
+  </Wrapper>
+)
 
 export default Product
