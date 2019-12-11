@@ -75,15 +75,17 @@ const Shop = ({ location }) => (
     `}
     render={data => (
       <Layout location={location}>
-        <Div100vh>
-          <Hero>
-            <h2>Saint and Center</h2>
-            <div>
-              <h2>For</h2>
-              <h2>Pets</h2>
-            </div>
-          </Hero>
-        </Div100vh>
+        {typeof document !== "undefined" && (
+          <Div100vh>
+            <Hero>
+              <h2>Saint and Center</h2>
+              <div>
+                <h2>For</h2>
+                <h2>Pets</h2>
+              </div>
+            </Hero>
+          </Div100vh>
+        )}
         <SEO title="For Pets | Saint and Center" />
         <ProductGrid>
           {data.allWcProductsCategories.edges.slice(3, 5).map(product => (

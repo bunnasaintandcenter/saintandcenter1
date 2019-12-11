@@ -54,11 +54,13 @@ const ImageHero = ({ src, alt }) => {
 
   return (
     <Curtain className="curtain second">
-      <Div100vh>
-        <Wrapper ref={innerRef}>
-          <img src={src} alt={alt} />
-        </Wrapper>
-      </Div100vh>
+      {typeof document !== "undefined" && (
+        <Div100vh>
+          <Wrapper ref={innerRef}>
+            <img src={src} alt={alt} />
+          </Wrapper>
+        </Div100vh>
+      )}
     </Curtain>
   )
 }
