@@ -86,10 +86,7 @@ const Curtain = props => {
   const ref = useRef()
   const handler = () => {
     if (window.scrollY < window.innerHeight) {
-      ref.current.style.transform = `translateZ(0) translateY(0)`
-    } else if (window.scrollY < window.innerHeight * 2) {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
-        window.innerHeight}px)`
+      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
     } else {
       ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
     }

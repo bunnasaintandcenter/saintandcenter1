@@ -25,11 +25,10 @@ const useScrollHandler = handler => {
 const Curtain = props => {
   const ref = useRef()
   const handler = () => {
-    if (window.scrollY < window.innerHeight * 3) {
+    if (window.scrollY < window.innerHeight) {
       ref.current.style.transform = `translateZ(0) translateY(0)`
-    } else if (window.scrollY < window.innerHeight * 4) {
+    } else if (window.scrollY < window.innerHeight * 3) {
       ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
-        window.innerHeight -
         window.innerHeight -
         window.innerHeight}px)`
     } else {
@@ -43,10 +42,12 @@ const Curtain = props => {
 const ImageHero = ({ src, alt }) => {
   const innerRef = useRef()
   const handler = () => {
-    if (window.scrollY > window.innerHeight * 2) {
-      console.log("hey!")
-      innerRef.current.style.opacity =
-        Math.abs(window.scrollY - window.innerHeight * 1.5) / window.innerHeight
+    if (window.scrollY < window.innerHeight) {
+      innerRef.current.style.opacity = Math.abs(
+        window.scrollY / window.innerHeight
+      )
+    } else {
+      innerRef.current.style.opacity = 1
     }
   }
   useScrollHandler(handler)
