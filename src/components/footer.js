@@ -5,7 +5,7 @@ const Foot = styled.footer`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 16.66vw);
-  grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal";
+  grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
 `
 
 const Block = styled.div`
@@ -106,6 +106,17 @@ const Block = styled.div`
   }
 `
 
+const Bottom = styled.div`
+  background: black;
+  color: white;
+  padding: 24px;
+  text-align: center;
+  grid-area: bottom;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 400;
+`
+
 const Footer = () => (
   <Foot>
     <Block className="subscribe">
@@ -181,6 +192,9 @@ const Footer = () => (
         <li>Lab Results</li>
       </ul>
     </Block>
+    <Bottom>
+      Distributed by NoahFunk LLC D/B/A Saint and Center Atlanta, GA 30312
+    </Bottom>
   </Foot>
 )
 
