@@ -107,20 +107,24 @@ const Curtain = props => {
 
 const Hero = () => {
   return (
-    <Div100vh>
-      <Curtain className="curtain first">
-        <Wrapper data-testid="hero">
-          <h2>
-            Saint and Center is about connections.
-            <br /> Your mind to your body. You to the world.
-            <br /> We also extract, infuse and bottle pure
-            <br /> CBD from hemp. Learn about hemp and
-            <br /> our cause to help communities affected by
-            <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
-          </h2>
-        </Wrapper>
-      </Curtain>
-    </Div100vh>
+    <>
+      {typeof document !== "undefined" && (
+        <Div100vh>
+          <Curtain className="curtain first">
+            <Wrapper data-testid="hero">
+              <h2>
+                Saint and Center is about connections.
+                <br /> Your mind to your body. You to the world.
+                <br /> We also extract, infuse and bottle pure
+                <br /> CBD from hemp. Learn about hemp and
+                <br /> our cause to help communities affected by
+                <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
+              </h2>
+            </Wrapper>
+          </Curtain>
+        </Div100vh>
+      )}
+    </>
   )
 }
 export default Hero
