@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
+  opacity: 0;
   display: flex;
 
   @media ${device.laptop} {
@@ -96,7 +97,11 @@ const Curtain = props => {
   const ref = useRef()
   const handler = () => {
     if (window.scrollY < window.innerHeight) {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
+      ref.current.style.transform = `translateZ(0) translateY(0)`
+    } else if (window.scrollY < window.innerHeight * 3) {
+      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
+        window.innerHeight -
+        window.innerHeight}px)`
     } else {
       ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
     }
@@ -106,12 +111,23 @@ const Curtain = props => {
 }
 
 const Hero = () => {
+  const innerRef = useRef()
+  const handler = () => {
+    if (window.scrollY < window.innerHeight) {
+      innerRef.current.style.opacity = Math.abs(
+        window.scrollY / window.innerHeight
+      )
+    } else {
+      innerRef.current.style.opacity = 1
+    }
+  }
+  useScrollHandler(handler)
   return (
     <>
       {typeof document !== "undefined" && (
         <Div100vh>
-          <Curtain className="curtain first">
-            <Wrapper data-testid="hero">
+          <Curtain className="curtain second">
+            <Wrapper data-testid="hero" ref={innerRef}>
               <h2>
                 Saint and Center is about connections.
                 <br /> Your mind to your body. You to the world.
