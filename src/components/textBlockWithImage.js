@@ -36,7 +36,7 @@ const Block = styled.section`
 const Text = styled.div`
   font-size: 16px;
   font-weight: 200;
-  padding: 1rem;
+  padding: 24px;
   line-height: 24px;
   color: ${props => props.color};
 
@@ -54,7 +54,7 @@ const Text = styled.div`
   @media ${device.laptop} {
     font-size: 24px;
     text-align: left;
-    line-height: 36px;
+    line-height: 42px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
