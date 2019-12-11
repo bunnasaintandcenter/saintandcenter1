@@ -1,247 +1,144 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
-import arrow from "../images/arrow.svg"
-import { device } from "../utils/devices"
-import Signup from "./signup"
-import PetLink from "./petLink"
-import HumanLink from "./humanLink"
 
 const Foot = styled.footer`
-  @media ${device.laptop} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 16.66vw);
+  grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal";
 `
 
-const FooterMenu = styled.div`
-  background: white;
-  padding: 2rem 0;
-  font-size: 14px;
-  margin-top: -8px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+const Block = styled.div`
+  padding: 24px;
+  box-sizing: border-box;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
 
-  @media ${device.laptop} {
-    grid-column: span 2;
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  a {
-    color: rgb(51, 51, 51);
-    text-decoration: none;
+  h4 {
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 0 0 12px;
   }
 
   ul {
     list-style: none;
-    font-weight: 200;
-    text-transform: uppercase;
-    line-height: 1em;
-    margin: 0 0 2rem;
-    text-align: center;
-
-    @media ${device.laptop} {
-      text-align: center;
-      margin: 0;
-    }
+    padding: 0;
+    margin: 0;
 
     li {
-      strong {
-        display: block;
+      font-weight: 300;
+      line-height: 18px;
+    }
+  }
+
+  p {
+    font-weight: 300;
+    margin: 0;
+  }
+
+  &.subscribe {
+    grid-area: subscribe;
+  }
+
+  &.help {
+    grid-area: help;
+  }
+
+  &.social {
+    grid-area: social;
+
+    ul {
+      display: flex;
+
+      li {
+        margin-right: 12px;
+
+        &:last-of-type {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.other {
+    grid-area: other;
+  }
+
+  &.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: contact;
+
+    small {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 13px;
+    }
+  }
+
+  &.legal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: legal;
+
+    ul {
+      display: flex;
+      text-transform: uppercase;
+      font-size: 13px;
+
+      li {
         font-weight: 500;
-        margin-bottom: 2rem;
+        margin: 0 12px 0 0;
+
+        &:last-of-type {
+          margin: 0;
+        }
       }
     }
   }
 `
 
-const Disclaimer = styled.div`
-  grid-column: span 2;
-  background: white;
-
-  p {
-    border: 1px solid rgb(51, 51, 51);
-    padding: 1rem;
-    margin: 2rem auto;
-    width: 90vw;
-    max-width: 900px;
-    font-weight: 200;
-    font-size: 16px;
-  }
-`
-
-const Legal = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: white;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  grid-column: span 2;
-  padding: 2rem;
-  text-align: center;
-
-  @media ${device.laptop} {
-    display: flex;
-    text-align: left;
-    justify-content: center;
-    padding: 2rem 0;
-  }
-
-  &.dark {
-    background: black;
-    color: white;
-  }
-
-  li {
-    @media ${device.laptop} {
-      margin-right: 2rem;
-    }
-
-    &:last-of-type {
-      margin: 0;
-    }
-  }
-`
-
-const SignupSmall = styled.div`
-  grid-column: span 2;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  span {
-    margin: 0 0 2rem;
-    display: block;
-    line-height: 16px;
-    text-align: center;
-
-    @media ${device.laptop} {
-      text-align: center;
-    }
-  }
-
-  div {
-    position: relative;
-    margin-bottom: 2rem;
-
-    @media ${device.laptop} {
-      text-align: center;
-      margin: 0;
-    }
-
-    &:after {
-      position: absolute;
-      content: "";
-      bottom: 0.5rem;
-      right: 0.5rem;
-      background: url(${arrow});
-      height: 30px;
-      width: 20px;
-      background-size: 100%;
-    }
-  }
-
-  input {
-    width: 100%;
-    min-width: 300px;
-    background: #ddd;
-    border: 2px solid #ddd;
-    padding: 0.5rem;
-    appearance: none;
-    outline: none;
-
-    &:focus {
-      background: transparent;
-      border: 2px solid rgb(51, 51, 51);
-    }
-  }
-
-  strong {
-    text-transform: uppercase;
-    margin: 0 0 2rem;
-    font-weight: 500;
-  }
-`
-
-const Footer = ({ location }) => (
-  <Foot data-testid="footer">
-    {location && location.pathname === "/shop/pets" ? (
-      <HumanLink />
-    ) : (
-      <PetLink />
-    )}
-    <Signup />
-    <FooterMenu>
-      <SignupSmall>
-        <div>
-          <span>
-            <strong>Join Us</strong>
-          </span>
-          <input type="email" />
-        </div>
-      </SignupSmall>
+const Footer = () => (
+  <Foot>
+    <Block className="subscribe">
+      <h4>Get the Good News</h4>
+      <p>Stay up to date.</p>
+    </Block>
+    <Block className="help">
+      <h4>Help</h4>
       <ul>
-        <li>
-          <strong>Saint and Center</strong>
-        </li>
-        <li>Meet Us</li>
-        <li>Contact Us</li>
+        <li>Account</li>
+        <li>Track</li>
+        <li>Returns</li>
+        <li>FAQ</li>
+      </ul>
+    </Block>
+    <Block className="social">
+      <h4>Social</h4>
+      <ul>
+        <li>IG</li>
+        <li>FB</li>
+        <li>TW</li>
+      </ul>
+    </Block>
+    <Block className="other">
+      <h4>Other</h4>
+      <ul>
         <li>Wholesale</li>
         <li>White Label</li>
       </ul>
+    </Block>
+    <Block className="contact">
       <ul>
-        <li>
-          <strong>Shop</strong>
-        </li>
-        <li>
-          <Link to="/account">Account</Link>
-        </li>
-        <li>Track Your Order</li>
-        <li>Lab Results</li>
-        <li>Returns</li>
+        <li>Call us</li>
+        <li>Email us</li>
       </ul>
-      <ul>
-        <li>
-          <strong>Learn</strong>
-        </li>
-        <li>
-          <Link to="/holy-hemp">Holy Hemp</Link>
-        </li>
-        <li>
-          <Link to="/human-rites">Human Rites</Link>
-        </li>
-        <li>
-          <Link to="/faqs">FAQ</Link>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <strong>Connect</strong>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/saintandcenter/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.facebook.com/saintandcenter/posts/422070068388076"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Facebook
-          </a>
-        </li>
-        <li>Twitter</li>
-      </ul>
-    </FooterMenu>
-    <Disclaimer>
+      <small>&copy; Saint and Center All Rights Reserved</small>
+    </Block>
+    <Block className="legal">
       <p>
         Consult a medical doctor before taking this or any other supplement, if
         you are pregnant, nursing, have, or suspect a medical condition, or are
@@ -249,17 +146,12 @@ const Footer = ({ location }) => (
         Food and Drug Administration. This product is not intended to diagnoze,
         treat, cure or prevent any disease.
       </p>
-    </Disclaimer>
-    <Legal>
-      <li>&copy; Saint and Center All Rights Reserved</li>
-      <li>Privacy Policy</li>
-      <li>Terms of Use</li>
-    </Legal>
-    <Legal className="dark">
-      <li>
-        Distributed by NoahFunk LLC D/B/A Saint and Center Atlanta, GA 30312
-      </li>
-    </Legal>
+      <ul>
+        <li>Privacy Policy</li>
+        <li>Terms of Use</li>
+        <li>Lab Results</li>
+      </ul>
+    </Block>
   </Foot>
 )
 
