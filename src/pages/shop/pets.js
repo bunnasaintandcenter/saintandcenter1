@@ -6,7 +6,6 @@ import Product from "../../components/product"
 import SEO from "../../components/seo"
 import { isBrowser } from "react-device-detect"
 import Benefits from "../../components/benefits"
-import { device } from "../../utils/devices"
 import Div100vh from "react-div-100vh"
 
 const Hero = styled.div`

@@ -55,10 +55,12 @@ const useScrollHandler = handler => {
 const Curtain = props => {
   const ref = useRef()
   const handler = () => {
-    if (window.scrollY < window.innerHeight * 2) {
+    if (window.scrollY < window.innerHeight * 3) {
       ref.current.style.transform = `translateZ(0) translateY(0)`
-    } else if (window.scrollY < window.innerHeight * 3) {
+    } else if (window.scrollY < window.innerHeight * 5) {
       ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
+        window.innerHeight -
+        window.innerHeight -
         window.innerHeight -
         window.innerHeight}px)`
     } else {
@@ -73,9 +75,10 @@ const TextBlock = ({ children }) => {
   const innerRef = useRef()
   console.log(innerRef.current)
   const handler = () => {
-    if (window.scrollY < window.innerHeight * 2) {
+    if (window.scrollY > window.innerHeight * 2) {
+      console.log("hey!")
       innerRef.current.style.opacity =
-        Math.abs(window.scrollY - window.innerHeight) / window.innerHeight
+        Math.abs(window.scrollY - window.innerHeight * 2) / window.innerHeight
     }
   }
   useScrollHandler(handler)
