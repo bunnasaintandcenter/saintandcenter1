@@ -31,6 +31,11 @@ const Block = styled.div`
     }
   }
 
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
   p {
     font-weight: 300;
     margin: 0;
@@ -119,9 +124,33 @@ const Footer = () => (
     <Block className="social">
       <h4>Social</h4>
       <ul>
-        <li>IG</li>
-        <li>FB</li>
-        <li>TW</li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/saintandcenter/"
+          >
+            IG
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/saintandcenter/"
+          >
+            FB
+          </a>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/saintandcenter/"
+          >
+            TW
+          </a>
+        </li>
       </ul>
     </Block>
     <Block className="other">
