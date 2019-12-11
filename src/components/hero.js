@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import Div100vh from "react-div-100vh"
+import { Link } from "gatsby"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
   padding: 5vw;
@@ -17,6 +16,7 @@ const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
+  display: flex;
 
   @media ${device.laptop} {
     height: 100%;
@@ -26,13 +26,23 @@ const Wrapper = styled.div`
     font-size: 24px;
     font-weight: 300;
     position: relative;
-    text-align: center;
     z-index: 1;
+    letter-spacing: 0.1em;
     margin-bottom: 4rem;
 
+    a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 3px solid currentColor;
+      text-shadow: 2px 2px ${props => props.theme.color.gold},
+        2px -2px ${props => props.theme.color.gold},
+        -2px 2px ${props => props.theme.color.gold},
+        -2px -2px ${props => props.theme.color.gold};
+    }
+
     @media ${device.laptop} {
-      font-size: 60px;
-      margin-bottom: 2rem;
+      font-size: 54px;
+      line-height: 72px;
     }
   }
 
@@ -97,12 +107,20 @@ const Curtain = props => {
 
 const Hero = () => {
   return (
-    <Curtain className="curtain first">
-      <Wrapper data-testid="hero">
-        <h2>your higher self</h2>
-        <h2>without the high</h2>
-      </Wrapper>
-    </Curtain>
+    <Div100vh>
+      <Curtain className="curtain first">
+        <Wrapper data-testid="hero">
+          <h2>
+            Saint and Center is about connections.
+            <br /> Your mind to your body. You to the world.
+            <br /> We also extract, infuse and bottle pure
+            <br /> CBD from hemp. Learn about hemp and
+            <br /> our cause to help communities affected by
+            <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
+          </h2>
+        </Wrapper>
+      </Curtain>
+    </Div100vh>
   )
 }
 export default Hero
