@@ -17,18 +17,20 @@ const Wrapper = styled.div`
 
 const Head = styled.header`
   width: 100vw;
+  height: 56px;
+  box-sizing: border-box;
   box-sizing: border-box;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5vw;
+  padding: 24px;
   background: ${props =>
     props.background ? `rgb(248,249,244)` : `transparent`};
   z-index: 999;
 
   @media ${device.laptop} {
-    padding: 0 2rem;
+    padding: 0 24px;
   }
 `
 
@@ -37,8 +39,12 @@ const Logo = styled.div`
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    width: ${props => (props.background ? `1.5vw` : `20vw`)};
-    padding: 1rem 0;
+    height: ${props => (props.background ? `32px` : `20px`)};
+  }
+
+  a {
+    display: block;
+    height: ${props => (props.background ? `32px` : `20px`)};
   }
 
   img {
@@ -53,8 +59,8 @@ const CartButton = styled.div`
     cursor: pointer;
     background: ${props => (props.background ? `black` : `white`)};
     transition: 0.2s all ease-in-out;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 16px;
     border: ${props =>
       props.background ? `1px solid black` : `1px solid white`};

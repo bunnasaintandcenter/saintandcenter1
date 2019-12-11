@@ -5,9 +5,11 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   background: white;
-  padding: 0.25rem 2rem;
+  padding: 0 24px;
   position: sticky;
-  top: 74px;
+  top: 56px;
+  heiught: 32px;
+  align-items: center;
   text-transform: uppercase;
   font-size: 16px;
   color: rgb(51, 51, 51);
@@ -23,10 +25,6 @@ const Wrapper = styled.div`
     &:hover {
       opacity: 0.6;
     }
-  }
-
-  @media ${device.laptop} {
-    top: calc(2.5vw + 2rem);
   }
 `
 
