@@ -86,7 +86,7 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   const listenScrollEvent = () => {
     if (home) {
-      if (window.scrollY > window.innerHeight * 5) {
+      if (window.scrollY > window.innerHeight * 3) {
         setBackground(true)
       } else {
         setBackground(false)

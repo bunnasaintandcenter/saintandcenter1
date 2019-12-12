@@ -18,7 +18,7 @@ import products from "../images/products.jpg"
 const Wrapper = styled.div``
 
 const Pushed = styled.div`
-  margin-top: 400vh;
+  margin-top: 200vh;
 `
 
 const Feature = styled.div`
@@ -43,16 +43,8 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
-        <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
         <ImageHero src={tincture} alt="Tincture" />
-        <TextBlock>
-          <p>Your world is always on.</p>
-          <p>Giving rise to pain, stress, distractons, restlessness.</p>
-          <p>Changing you from a human being to a human doing.</p>
-          <p>CBD revives you and brings you to the center.</p>
-          <p>When you shine, we all shine.</p>
-          <p>Welcome to the Revival. Let there be you.</p>
-        </TextBlock>
+        <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
         <SectionHeader title="Shop" />
         <Pushed>
           <ProductList />
