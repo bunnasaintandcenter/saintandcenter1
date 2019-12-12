@@ -12,6 +12,7 @@ import PropTypes from "prop-types"
 const Wrapper = styled.div`
   position: fixed;
   z-index: 100;
+  top: 0;
 `
 
 const Head = styled.header`
@@ -85,7 +86,7 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   const listenScrollEvent = () => {
     if (home) {
-      if (window.scrollY > window.innerHeight * 3) {
+      if (window.scrollY > window.innerHeight * 3 - 56) {
         setBackground(true)
       } else {
         setBackground(false)
