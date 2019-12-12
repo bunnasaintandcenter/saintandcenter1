@@ -141,7 +141,7 @@ const ProductSelect = ({ options, products }) => {
       `https://andnone.co/saintcenter/wp-json/wc/v3`,
       { withCredentials: true }
     )
-
+    console.log(response)
     const item = {
       product_id: products[recurrence === "monthly" ? 0 : 1].wordpress_id,
       variation_id:
@@ -155,7 +155,9 @@ const ProductSelect = ({ options, products }) => {
       `https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`,
       item
     )
-    dispatch({ type: "ADD_TO_CART", payload: item })
+    if (res) {
+      dispatch({ type: "ADD_TO_CART", payload: item })
+    }
   }
 
   const addToCount = () => {
