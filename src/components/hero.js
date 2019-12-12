@@ -151,8 +151,7 @@ const Hero = () => {
           </h2>
         ) : (
           <h2>
-            Saint and Center
-            <br /> is about connections.
+            Saint and Center is about connections.
             <br /> Your mind to your body. You to the world.
             <br /> We also extract, infuse and bottle pure
             <br /> CBD from hemp. Learn about hemp and
