@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
+import Img from "gatsby-image"
 
 const Wrapper = styled.section`
   position: relative;
+
+  .gatsby-image-wrapper {
+    height: 100vh;
+  }
 
   img {
     height: 100vh;
@@ -57,11 +62,11 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const ImageHero = ({ src, alt }) => {
+const ImageHero = ({ img }) => {
   return (
     <Curtain className="curtain first">
       <Wrapper>
-        <img src={src} alt={alt} />
+        <Img fluid={img.childImageSharp.fluid} />
         <Text>
           <h2>your higher self</h2>
           <h2>without the high</h2>

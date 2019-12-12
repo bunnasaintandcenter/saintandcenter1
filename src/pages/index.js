@@ -1,6 +1,7 @@
 import React, { createRef } from "react"
 import styled from "styled-components"
 import SEO from "../components/seo"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Hero from "../components/hero"
 import ImageHero from "../components/imageHero"
@@ -9,15 +10,13 @@ import TextBlockWithImage from "../components/textBlockWithImage"
 import ProductList from "../components/productList"
 import Benefits from "../components/benefits"
 import holyHemp from "../images/holy-hemp.svg"
+import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
-
-import tincture from "../images/tincture.jpg"
-import products from "../images/products.jpg"
 
 const Wrapper = styled.div``
 
 const Pushed = styled.div`
-  margin-top: 200vh;
+  margin-top: 300vh;
 `
 
 const Feature = styled.div`
@@ -38,11 +37,54 @@ const Home = ({ location }) => {
     intro.current.scrollIntoView({ behavior: "smooth", block: "center" })
   }
 
+  const images = useStaticQuery(graphql`
+    query HeroQuery {
+      tincture: file(relativePath: { eq: "tincture.jpg" }) {
+        childImageSharp {
+          fluid(quality: 90, maxWidth: 1800) {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+            presentationWidth
+            presentationHeight
+          }
+        }
+      }
+      products: file(relativePath: { eq: "products.jpg" }) {
+        childImageSharp {
+          fluid(quality: 85, maxWidth: 1800) {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+            presentationWidth
+            presentationHeight
+          }
+        }
+      }
+    }
+  `)
+
+  console.log(images.tincture)
+
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
-        <ImageHero src={tincture} alt="Tincture" />
+        <ImageHero img={images.tincture} alt="Tincture" />
         <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
         <SectionHeader title="Shop" />
         <Pushed>
@@ -64,7 +106,10 @@ const Home = ({ location }) => {
           </p>
         </TextBlockWithImage>
         <Feature>
-          <img src={products} alt="S+C Products" />
+          <Img
+            fluid={images.products.childImageSharp.fluid}
+            alt="S+C Products"
+          />
         </Feature>
         <TextBlockWithImage
           title="Human Rites"
