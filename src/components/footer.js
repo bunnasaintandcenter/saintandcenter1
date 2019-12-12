@@ -1,11 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import { device } from "../utils/devices"
+import { isBrowser } from "react-device-detect"
 
 const Foot = styled.footer`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 16.66vw);
-  grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 16.66vw);
+    grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
+  }
 `
 
 const Block = styled.div`
@@ -109,12 +113,19 @@ const Block = styled.div`
 const Bottom = styled.div`
   background: black;
   color: white;
-  padding: 24px;
+  padding: 6px;
   text-align: center;
   grid-area: bottom;
-  font-size: 13px;
+  font-size: 10px;
   text-transform: uppercase;
   font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 12px;
+
+  @media ${device.laptop} {
+    font-size: 13px;
+    padding: 24px;
+  }
 `
 
 const Footer = () => (
@@ -124,7 +135,7 @@ const Footer = () => (
       <p>Stay up to date.</p>
     </Block>
     <Block className="help">
-      <h4>Help</h4>
+      {isBrowser && <h4>Help</h4>}
       <ul>
         <li>Account</li>
         <li>Track</li>
@@ -133,7 +144,7 @@ const Footer = () => (
       </ul>
     </Block>
     <Block className="social">
-      <h4>Social</h4>
+      {isBrowser && <h4>Social</h4>}
       <ul>
         <li>
           <a
@@ -165,7 +176,7 @@ const Footer = () => (
       </ul>
     </Block>
     <Block className="other">
-      <h4>Other</h4>
+      {isBrowser && <h4>Other</h4>}
       <ul>
         <li>Wholesale</li>
         <li>White Label</li>
@@ -193,7 +204,8 @@ const Footer = () => (
       </ul>
     </Block>
     <Bottom>
-      Distributed by NoahFunk LLC D/B/A Saint and Center Atlanta, GA 30312
+      Distributed by NoahFunk LLC {!isBrowser && <br />} D/B/A Saint and Center
+      Atlanta, GA 30312
     </Bottom>
   </Foot>
 )
