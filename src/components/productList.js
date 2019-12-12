@@ -4,11 +4,14 @@ import { device } from "../utils/devices"
 import { useStaticQuery, graphql } from "gatsby"
 import Product from "./product"
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  height: 70vh;
+`
 
 const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  height: 100%;
 
   @media ${device.laptop} {
     grid-template-columns: repeat(3, 1fr);
@@ -32,7 +35,7 @@ const ProductList = () => {
               images {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1500, quality: 80) {
+                    fluid(maxWidth: 1000, quality: 80) {
                       src
                     }
                   }
@@ -42,7 +45,7 @@ const ProductList = () => {
             image {
               localFile {
                 childImageSharp {
-                  fluid {
+                  fluid(maxWidth: 1000, quality: 85) {
                     ...GatsbyImageSharpFluid
                   }
                 }
