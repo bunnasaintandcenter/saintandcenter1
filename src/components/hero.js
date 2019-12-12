@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
-import Div100vh from "react-div-100vh"
 import { Link } from "gatsby"
 
 const Wrapper = styled.div`
@@ -123,24 +122,18 @@ const Hero = () => {
   }
   useScrollHandler(handler)
   return (
-    <>
-      {typeof document !== "undefined" && (
-        <Div100vh>
-          <Curtain className="curtain second">
-            <Wrapper data-testid="hero" ref={innerRef}>
-              <h2>
-                Saint and Center is about connections.
-                <br /> Your mind to your body. You to the world.
-                <br /> We also extract, infuse and bottle pure
-                <br /> CBD from hemp. Learn about hemp and
-                <br /> our cause to help communities affected by
-                <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
-              </h2>
-            </Wrapper>
-          </Curtain>
-        </Div100vh>
-      )}
-    </>
+    <Curtain className="curtain second">
+      <Wrapper data-testid="hero" ref={innerRef}>
+        <h2>
+          Saint and Center is about connections.
+          <br /> Your mind to your body. You to the world.
+          <br /> We also extract, infuse and bottle pure
+          <br /> CBD from hemp. Learn about hemp and
+          <br /> our cause to help communities affected by
+          <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
+        </h2>
+      </Wrapper>
+    </Curtain>
   )
 }
 export default Hero

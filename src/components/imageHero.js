@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import Div100vh from "react-div-100vh"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 
@@ -61,17 +60,13 @@ const Curtain = props => {
 const ImageHero = ({ src, alt }) => {
   return (
     <Curtain className="curtain first">
-      {typeof document !== "undefined" && (
-        <Div100vh>
-          <Wrapper>
-            <img src={src} alt={alt} />
-            <Text>
-              <h2>your higher self</h2>
-              <h2>without the high</h2>
-            </Text>
-          </Wrapper>
-        </Div100vh>
-      )}
+      <Wrapper>
+        <img src={src} alt={alt} />
+        <Text>
+          <h2>your higher self</h2>
+          <h2>without the high</h2>
+        </Text>
+      </Wrapper>
     </Curtain>
   )
 }
