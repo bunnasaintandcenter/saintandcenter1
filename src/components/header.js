@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import logoLight from "../images/logo.svg"
+import { isMobile } from "react-device-detect"
 import logo from "../images/logo-black.svg"
 import logotype from "../images/logotype.svg"
 import Menu from "./menu"
@@ -131,7 +133,10 @@ const Header = ({ cart, bannerOpen, home }) => {
           />
           <Logo background={background}>
             <Link to="/">
-              <img src={background ? logo : logotype} alt="Saint and Center" />
+              <img
+                src={background ? logo : isMobile ? logoLight : logotype}
+                alt="Saint and Center"
+              />
             </Link>
           </Logo>
           <CartButton

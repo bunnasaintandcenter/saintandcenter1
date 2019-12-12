@@ -5,16 +5,16 @@ import { useStaticQuery, graphql } from "gatsby"
 import Product from "./product"
 
 const Wrapper = styled.div`
-  height: 70vh;
+  @media ${device.laptop} {
+    height: 70vh;
+  }
 `
 
 const ProductGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100%;
-
   @media ${device.laptop} {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    height: 100%;
   }
 `
 

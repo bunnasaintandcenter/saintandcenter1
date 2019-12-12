@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import { Link } from "gatsby"
+import { isMobile } from "react-device-detect"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
@@ -24,20 +25,29 @@ const Wrapper = styled.div`
 
   h2 {
     font-size: 24px;
+    line-height: 36px;
     font-weight: 300;
     position: relative;
     z-index: 1;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     margin-bottom: 4rem;
+
+    @media ${device.laptop} {
+      letter-spacing: 0.1em;
+    }
 
     a {
       color: white;
       text-decoration: none;
-      border-bottom: 3px solid currentColor;
+      border-bottom: 1px solid currentColor;
       text-shadow: 2px 2px ${props => props.theme.color.gold},
         2px -2px ${props => props.theme.color.gold},
         -2px 2px ${props => props.theme.color.gold},
         -2px -2px ${props => props.theme.color.gold};
+
+      @media ${device.laptop} {
+        border-bottom: 3px solid currentColor;
+      }
     }
 
     @media ${device.laptop} {
@@ -124,14 +134,32 @@ const Hero = () => {
   return (
     <Curtain className="curtain second">
       <Wrapper data-testid="hero" ref={innerRef}>
-        <h2>
-          Saint and Center is about connections.
-          <br /> Your mind to your body. You to the world.
-          <br /> We also extract, infuse and bottle pure
-          <br /> CBD from hemp. Learn about hemp and
-          <br /> our cause to help communities affected by
-          <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
-        </h2>
+        {isMobile ? (
+          <h2>
+            Saint and Center is
+            <br /> about connections. Your
+            <br /> mind to your body. You
+            <br /> to the world. We also
+            <br /> extract, infuse and bottle
+            <br /> pure CBD from hemp.
+            <br /> Learn about hemp and
+            <br />
+            our cause to help communities affected by
+            <br />
+            cannabis laws.
+            <br /> Or <Link to="/shop">shop CBD.</Link>
+          </h2>
+        ) : (
+          <h2>
+            Saint and Center
+            <br /> is about connections.
+            <br /> Your mind to your body. You to the world.
+            <br /> We also extract, infuse and bottle pure
+            <br /> CBD from hemp. Learn about hemp and
+            <br /> our cause to help communities affected by
+            <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
+          </h2>
+        )}
       </Wrapper>
     </Curtain>
   )

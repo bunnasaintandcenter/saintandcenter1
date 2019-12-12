@@ -5,13 +5,14 @@ import Img from "gatsby-image"
 
 const Wrapper = styled.section`
   position: relative;
+  height: 100%;
 
   .gatsby-image-wrapper {
-    height: 100vh;
+    height: 100%;
   }
 
   img {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
@@ -21,12 +22,17 @@ const Wrapper = styled.section`
 
 const Text = styled.div`
   position: absolute;
-  top: 0;
+  top: 20%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media ${device.laptop} {
+    top: 0;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -34,9 +40,13 @@ const Text = styled.div`
 
   h2 {
     color: white;
-    font-size: 57px;
+    font-size: 30px;
     font-weight: 300;
     text-align: center;
+
+    @media ${device.laptop} {
+      font-size: 57px;
+    }
   }
 `
 
