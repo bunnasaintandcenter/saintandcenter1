@@ -6,7 +6,7 @@ import { device } from "../utils/devices"
 import arrow from "../images/arrow-right.svg"
 
 const Wrapper = styled.div`
-  height: 50vw;
+  height: 70vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -77,11 +77,11 @@ const Info = styled.div`
   h3 {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 3vw;
+    font-size: 18px;
     margin: 0;
 
     @media ${device.laptop} {
-      font-size: 1vw;
+      font-size: 24px;
     }
   }
 

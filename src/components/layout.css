@@ -710,9 +710,15 @@ pre tt:after {
   top: 0;
   left: 0;
   position: fixed;
-  height: 100vh;
+  height: -webkit-fill-available;
   width: 100vw;
   background: black;
+}
+
+@media only screen and (min-width: 480px) {
+  .curtain {
+    height: 100vh;
+  }
 }
 
 .curtain.first {

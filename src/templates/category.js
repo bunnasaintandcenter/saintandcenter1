@@ -9,7 +9,7 @@ import SEO from "../components/seo"
 import ProductSelect from "../components/productSelect"
 
 const Wrapper = styled.div`
-  padding-top: calc(1.5vw + 3rem);
+  padding-top: 56px;
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: 1fr 1fr;
