@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { device } from "../utils/devices"
 import PropTypes from "prop-types"
 
 const Wrapper = styled.div`

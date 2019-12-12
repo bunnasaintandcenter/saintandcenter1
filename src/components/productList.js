@@ -2,7 +2,6 @@ import React, { Fragment, useState, createRef } from "react"
 import styled from "styled-components"
 import { StaticQuery, graphql, Link } from "gatsby"
 import { device } from "../utils/devices"
-import { isMobile } from "react-device-detect"
 import arrow from "../images/arrow-right.svg"
 import ProductListBlock from "./productListBlock"
 
