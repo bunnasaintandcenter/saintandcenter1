@@ -1,6 +1,7 @@
 import React, { createRef } from "react"
 import styled from "styled-components"
 import SEO from "../components/seo"
+import { device } from "../utils/devices"
 import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Hero from "../components/hero"
@@ -21,7 +22,11 @@ const Spacer = styled.div`
 
 const Feature = styled.div`
   .gatsby-image-wrapper {
-    height: 100vh;
+    height: 30vh;
+
+    @media ${device.laptop} {
+      height: 100vh;
+    }
   }
 
   img {
