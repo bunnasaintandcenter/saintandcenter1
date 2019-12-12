@@ -41,7 +41,7 @@ const Home = ({ location }) => {
     query HeroQuery {
       tincture: file(relativePath: { eq: "tincture.jpg" }) {
         childImageSharp {
-          fluid(quality: 85) {
+          fluid(quality: 90, maxWidth: 1800) {
             base64
             tracedSVG
             aspectRatio
@@ -59,7 +59,7 @@ const Home = ({ location }) => {
       }
       products: file(relativePath: { eq: "products.jpg" }) {
         childImageSharp {
-          fluid(quality: 85) {
+          fluid(quality: 85, maxWidth: 1800) {
             base64
             tracedSVG
             aspectRatio
