@@ -46,7 +46,11 @@ const Logo = styled.div`
 
   a {
     display: block;
-    height: ${props => (props.background ? `32px` : `20px`)};
+    height: 32px;
+
+    @media ${device.laptop} {
+      height: ${props => (props.background ? `32px` : `20px`)};
+    }
   }
 
   img {
