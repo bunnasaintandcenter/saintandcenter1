@@ -15,12 +15,8 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  z-index: 200;
+  z-index: 90;
   display: ${props => (props.open ? `flex` : `none`)};
-
-  @media ${device.laptop} {
-    height: calc(100vh - 2.5vw - 2rem);
-  }
 
   a {
     color: black;
