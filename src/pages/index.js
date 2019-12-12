@@ -17,7 +17,7 @@ import products from "../images/products.jpg"
 const Wrapper = styled.div``
 
 const Pushed = styled.div`
-  margin-top: 200vh;
+  margin-top: 300vh;
 `
 
 const Feature = styled.div`
