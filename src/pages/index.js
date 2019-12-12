@@ -20,8 +20,12 @@ const Spacer = styled.div`
 `
 
 const Feature = styled.div`
-  img {
+  .gatsby-image-wrapper {
     height: 100vh;
+  }
+
+  img {
+    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
