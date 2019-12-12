@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   height: 50vw;
   box-sizing: border-box;
   display: flex;
-  margin-top: 56px;
   flex-direction: column;
   justify-content: center;
   background: #e1d6d6;

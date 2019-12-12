@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   padding: 0 24px;
   position: sticky;
   top: 56px;
-  heiught: 32px;
+  height: 32px;
   align-items: center;
   text-transform: uppercase;
   font-size: 16px;

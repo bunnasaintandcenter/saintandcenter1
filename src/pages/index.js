@@ -15,13 +15,17 @@ import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div``
 
-const Pushed = styled.div`
+const Spacer = styled.div`
   margin-top: 300vh;
 `
 
 const Feature = styled.div`
-  img {
+  .gatsby-image-wrapper {
     height: 100vh;
+  }
+
+  img {
+    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
@@ -86,10 +90,9 @@ const Home = ({ location }) => {
       <Wrapper>
         <ImageHero img={images.tincture} alt="Tincture" />
         <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
+        <Spacer />
         <SectionHeader title="Shop" />
-        <Pushed>
-          <ProductList />
-        </Pushed>
+        <ProductList />
         <Benefits />
         <SectionHeader title="Learn" secondary="Our Beliefs" />
         <TextBlockWithImage
