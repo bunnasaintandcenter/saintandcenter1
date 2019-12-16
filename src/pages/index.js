@@ -1,4 +1,4 @@
-import React, { createRef } from "react"
+import React, { useState, useEffect, createRef } from "react"
 import styled from "styled-components"
 import SEO from "../components/seo"
 import { device } from "../utils/devices"
@@ -14,10 +14,20 @@ import holyHemp from "../images/holy-hemp.svg"
 import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  height: 500vh;
+`
 
 const Spacer = styled.div`
   margin-top: 300vh;
+`
+
+const Page = styled.div`
+  position: ${props => (props.fixed ? `fixed` : `static`)};
+  top: 56px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 56px);
 `
 
 const Feature = styled.div`
@@ -42,6 +52,22 @@ const Feature = styled.div`
 const Home = ({ location }) => {
   const hemp = createRef()
   const human = createRef()
+
+  const [pageFixed, setPageFixed] = useState(true)
+
+  const listenScrollEvent = () => {
+    if (window.scrollY > window.innerHeight * 3 - 56) {
+      setPageFixed(false)
+    } else {
+      setPageFixed(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent)
+
+    // return window.removeEventListener("scroll", listenScrollEvent)
+  })
 
   const handlePageScroll = section => {
     switch (section) {
@@ -107,47 +133,49 @@ const Home = ({ location }) => {
       <Wrapper>
         <ImageHero img={images.tincture} alt="Tincture" />
         <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
-        <Spacer />
-        <SectionHeader title="Shop" />
-        <ProductList />
-        <Benefits />
-        <SectionHeader title="Learn" secondary="Our Beliefs" />
-        <TextBlockWithImage
-          title="Holy Hemp"
-          bgColor="rgb(0,51,37)"
-          image={holyHemp}
-          ref={hemp}
-          url="/holy-hemp"
-          actionText="To Holy Hemp"
-        >
-          <p>
-            Saint and Center delves into the past to inform the future of CBD.
-            Holy Hemp explores the roots and stems of this versatile Cannabis
-            plant that is good for all human and plant kind.
-          </p>
-        </TextBlockWithImage>
-        <Feature>
-          <Img
-            fluid={images.products.childImageSharp.fluid}
-            alt="S+C Products"
-          />
-        </Feature>
-        <TextBlockWithImage
-          title="Human Rites"
-          image={humanRites}
-          reverse
-          ref={human}
-          url="/human-rites"
-          bgColor="rgb(139,41,4)"
-          actionText="To Human Rites"
-        >
-          <p>
-            We believe a company profiting from the culvation and production of
-            hemp products should support fair legislation. We help create
-            equitable solution for people and communities unfairly harmed by
-            cannabis laws.
-          </p>
-        </TextBlockWithImage>
+        {!pageFixed && <Spacer />}
+        <Page fixed={pageFixed}>
+          <SectionHeader title="Shop" />
+          <ProductList />
+          <Benefits />
+          <SectionHeader title="Learn" secondary="Our Beliefs" />
+          <TextBlockWithImage
+            title="Holy Hemp"
+            bgColor="rgb(0,51,37)"
+            image={holyHemp}
+            ref={hemp}
+            url="/holy-hemp"
+            actionText="To Holy Hemp"
+          >
+            <p>
+              Saint and Center delves into the past to inform the future of CBD.
+              Holy Hemp explores the roots and stems of this versatile Cannabis
+              plant that is good for all human and plant kind.
+            </p>
+          </TextBlockWithImage>
+          <Feature>
+            <Img
+              fluid={images.products.childImageSharp.fluid}
+              alt="S+C Products"
+            />
+          </Feature>
+          <TextBlockWithImage
+            title="Human Rites"
+            image={humanRites}
+            reverse
+            ref={human}
+            url="/human-rites"
+            bgColor="rgb(139,41,4)"
+            actionText="To Human Rites"
+          >
+            <p>
+              We believe a company profiting from the culvation and production
+              of hemp products should support fair legislation. We help create
+              equitable solution for people and communities unfairly harmed by
+              cannabis laws.
+            </p>
+          </TextBlockWithImage>
+        </Page>
       </Wrapper>
     </Layout>
   )

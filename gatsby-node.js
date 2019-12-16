@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 1500, quality: 80) {
-                      src
+                      srcSetWebp
                     }
                   }
                 }
