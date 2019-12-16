@@ -43,6 +43,10 @@ const Info = styled.div`
   flex-direction: column;
   min-height: calc(100vh - 10vw);
 
+  @media ${device.laptop} {
+    min-height: 80vh;
+  }
+
   h4 {
     font-weight: 300;
     font-size: 1.5vw;
