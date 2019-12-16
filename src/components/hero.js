@@ -47,7 +47,7 @@ const Wrapper = styled.div`
         0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
         -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
         -0.15em 0 #eeb805;
-      background-position: 0 95%, 100% 95%, 0 95%;
+      background-position: 0 95%, 100% 100%, 0 95%;
     }
 
     @media ${device.laptop} {
