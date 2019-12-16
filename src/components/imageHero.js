@@ -34,6 +34,7 @@ const Text = styled.div`
     top: 0;
     height: 100%;
     display: grid;
+    grid-gap: 35vw;
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
