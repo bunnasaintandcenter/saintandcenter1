@@ -42,7 +42,7 @@ const Text = styled.div`
   h2 {
     color: white;
     font-size: 30px;
-    font-weight: 200;
+    font-weight: 300;
     text-align: center;
 
     @media ${device.laptop} {
