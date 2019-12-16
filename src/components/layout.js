@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
 const theme = {
   color: {
-    gold: "rgb(239,181,8)",
+    gold: "rgb(238,184,5)",
     forest: "rgb(0,51,37)",
     green: "rgb(0, 162, 123)",
     crimson: "rgb(139,41,4)",

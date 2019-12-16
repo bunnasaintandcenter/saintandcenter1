@@ -34,6 +34,7 @@ const Text = styled.div`
     top: 0;
     height: 100%;
     display: grid;
+    grid-gap: 35vw;
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
@@ -45,7 +46,7 @@ const Text = styled.div`
     text-align: center;
 
     @media ${device.laptop} {
-      font-size: 57px;
+      font-size: 51px;
     }
   }
 `

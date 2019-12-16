@@ -40,10 +40,24 @@ const Feature = styled.div`
 `
 
 const Home = ({ location }) => {
-  const intro = createRef()
+  const hemp = createRef()
+  const human = createRef()
 
-  const handleHeroScroll = () => {
-    intro.current.scrollIntoView({ behavior: "smooth", block: "center" })
+  const handlePageScroll = section => {
+    switch (section) {
+      case "hemp":
+        window.scrollTo({
+          top: hemp.current.offsetTop - 56 - 32,
+          behavior: "smooth",
+        })
+
+        break
+      default:
+        window.scrollTo({
+          top: human.current.offsetTop - 56 - 32,
+          behavior: "smooth",
+        })
+    }
   }
 
   const images = useStaticQuery(graphql`
@@ -87,14 +101,12 @@ const Home = ({ location }) => {
     }
   `)
 
-  console.log(images.tincture)
-
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
         <ImageHero img={images.tincture} alt="Tincture" />
-        <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
+        <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
         <Spacer />
         <SectionHeader title="Shop" />
         <ProductList />
@@ -104,12 +116,13 @@ const Home = ({ location }) => {
           title="Holy Hemp"
           bgColor="rgb(0,51,37)"
           image={holyHemp}
+          ref={hemp}
           url="/holy-hemp"
           actionText="To Holy Hemp"
         >
           <p>
             Saint and Center delves into the past to inform the future of CBD.
-            Holy Hemp explores the roots and stems of this versatile Cannabius
+            Holy Hemp explores the roots and stems of this versatile Cannabis
             plant that is good for all human and plant kind.
           </p>
         </TextBlockWithImage>
@@ -123,6 +136,7 @@ const Home = ({ location }) => {
           title="Human Rites"
           image={humanRites}
           reverse
+          ref={human}
           url="/human-rites"
           bgColor="rgb(139,41,4)"
           actionText="To Human Rites"

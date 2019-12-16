@@ -32,7 +32,7 @@ const Item = styled.div`
   letter-spacing: 0.05em;
 
   @media ${device.laptop} {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   img {

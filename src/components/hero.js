@@ -26,28 +26,28 @@ const Wrapper = styled.div`
   h2 {
     font-size: 24px;
     line-height: 36px;
-    font-weight: 300;
+    font-weight: 200;
     position: relative;
     z-index: 1;
     letter-spacing: 0.05em;
     margin-bottom: 4rem;
 
     @media ${device.laptop} {
-      letter-spacing: 0.1em;
+      letter-spacing: 0.075em;
     }
 
     a {
       color: white;
       text-decoration: none;
-      border-bottom: 1px solid currentColor;
-      text-shadow: 2px 2px ${props => props.theme.color.gold},
-        2px -2px ${props => props.theme.color.gold},
-        -2px 2px ${props => props.theme.color.gold},
-        -2px -2px ${props => props.theme.color.gold};
-
-      @media ${device.laptop} {
-        border-bottom: 3px solid currentColor;
-      }
+      background: linear-gradient(#eeb805, #eeb805),
+        linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+      background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+      background-repeat: no-repeat, no-repeat, repeat-x;
+      text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+        0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+        -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+        -0.15em 0 #eeb805;
+      background-position: 0 95%, 100% 100%, 0 95%;
     }
 
     @media ${device.laptop} {
@@ -93,6 +93,19 @@ const Wrapper = styled.div`
   }
 `
 
+const PageLink = styled.span`
+  cursor: pointer;
+  background: linear-gradient(#eeb805, #eeb805),
+    linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+  background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+    0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+    -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+    -0.15em 0 #eeb805;
+  background-position: 0 95%, 100% 100%, 0 95%;
+`
+
 const useScrollHandler = handler => {
   useEffect(() => {
     window.addEventListener("scroll", handler)
@@ -119,7 +132,7 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const Hero = () => {
+const Hero = ({ handlePageScroll }) => {
   const innerRef = useRef()
   const handler = () => {
     if (window.scrollY < window.innerHeight) {
@@ -151,12 +164,19 @@ const Hero = () => {
           </h2>
         ) : (
           <h2>
-            Saint and Center
-            <br /> is about connections.
+            Saint and Center is about connections.
             <br /> Your mind to your body. You to the world.
             <br /> We also extract, infuse and bottle pure
-            <br /> CBD from hemp. Learn about hemp and
-            <br /> our cause to help communities affected by
+            <br /> CBD from hemp. Learn about{" "}
+            <PageLink onClick={() => handlePageScroll("hemp")}>
+              hemp
+            </PageLink>{" "}
+            and
+            <br />{" "}
+            <PageLink onClick={() => handlePageScroll("human")}>
+              our cause
+            </PageLink>{" "}
+            to help communities affected by
             <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
           </h2>
         )}
