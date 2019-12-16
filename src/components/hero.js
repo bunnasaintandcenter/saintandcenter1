@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     margin-bottom: 4rem;
 
     @media ${device.laptop} {
-      letter-spacing: 0.1em;
+      letter-spacing: 0.075em;
     }
 
     a {
