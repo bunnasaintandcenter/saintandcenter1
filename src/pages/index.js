@@ -101,14 +101,12 @@ const Home = ({ location }) => {
     }
   `)
 
-  console.log(images.tincture)
-
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
         <ImageHero img={images.tincture} alt="Tincture" />
-        <Hero title="We have a mission" handleHeroScroll={handleHeroScroll} />
+        <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
         <Spacer />
         <SectionHeader title="Shop" />
         <ProductList />
@@ -118,6 +116,7 @@ const Home = ({ location }) => {
           title="Holy Hemp"
           bgColor="rgb(0,51,37)"
           image={holyHemp}
+          ref={hemp}
           url="/holy-hemp"
           actionText="To Holy Hemp"
         >
@@ -137,6 +136,7 @@ const Home = ({ location }) => {
           title="Human Rites"
           image={humanRites}
           reverse
+          ref={human}
           url="/human-rites"
           bgColor="rgb(139,41,4)"
           actionText="To Human Rites"
