@@ -132,7 +132,7 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const Hero = () => {
+const Hero = ({ handlePageScroll }) => {
   const innerRef = useRef()
   const handler = () => {
     if (window.scrollY < window.innerHeight) {
