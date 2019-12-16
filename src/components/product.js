@@ -69,7 +69,7 @@ const Wrapper = styled.div`
 const Info = styled.div`
   position: absolute;
   left: 24px;
-  top: 24px;
+  top: 22px;
   justify-self: end;
   z-index: 2;
 
@@ -77,12 +77,9 @@ const Info = styled.div`
   h3 {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 18px;
     margin: 0;
-
-    @media ${device.laptop} {
-      font-size: 24px;
-    }
+    font-size: 18px;
+    line-height: 18px;
   }
 
   h2 {
@@ -97,7 +94,8 @@ const Action = styled.div`
   width: 100%;
   box-sizing: border-box;
   text-transform: uppercase;
-  padding: 24px;
+  padding: 22px 24px;
+  line-height: 18px;
   font-weight: 300;
   z-index: 2;
 
