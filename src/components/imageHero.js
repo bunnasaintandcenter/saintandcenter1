@@ -77,7 +77,7 @@ const ImageHero = ({ img }) => {
   return (
     <Curtain className="curtain first">
       <Wrapper>
-        <Img fluid={img.childImageSharp.fluid} />
+        <Img loading="eager" critical fluid={img.childImageSharp.fluid} />
         <Text>
           <h2>your higher self</h2>
           <h2>without the high</h2>

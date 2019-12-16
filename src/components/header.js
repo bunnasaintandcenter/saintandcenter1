@@ -97,6 +97,8 @@ const Header = ({ cart, bannerOpen, home }) => {
       } else {
         if (navOpen) {
           setBackground(true)
+        } else {
+          setBackground(false)
         }
       }
     }
@@ -104,6 +106,8 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent)
+
+    // return window.removeEventListener("scroll", listenScrollEvent)
   })
 
   const handleToggleNav = () => {
