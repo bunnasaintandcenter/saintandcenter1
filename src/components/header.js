@@ -95,7 +95,9 @@ const Header = ({ cart, bannerOpen, home }) => {
       if (window.scrollY > window.innerHeight * 3 - 56) {
         setBackground(true)
       } else {
-        setBackground(false)
+        if (navOpen) {
+          setBackground(true)
+        }
       }
     }
   }
