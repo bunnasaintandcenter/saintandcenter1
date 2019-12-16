@@ -52,8 +52,8 @@ const Wrapper = styled.div`
     }
 
     @media ${device.laptop} {
-      font-size: 54px;
-      line-height: 72px;
+      font-size: calc(24px + ((100vw - 320px) * 0.02868));
+      line-height: 1.35em;
     }
   }
 
