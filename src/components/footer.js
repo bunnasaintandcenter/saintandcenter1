@@ -59,6 +59,10 @@ const Block = styled.div`
     ul {
       display: flex;
 
+      @media ${device.laptop} {
+        display: block;
+      }
+
       li {
         margin-right: 12px;
 
@@ -152,7 +156,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             href="https://www.instagram.com/saintandcenter/"
           >
-            IG
+            {isBrowser ? `Instagram` : `IG`}
           </a>
         </li>
         <li>
@@ -161,7 +165,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             href="https://www.facebook.com/saintandcenter/"
           >
-            FB
+            {isBrowser ? `Facebook` : `FB`}
           </a>
         </li>
         <li>
@@ -170,7 +174,7 @@ const Footer = () => (
             rel="noopener noreferrer"
             href="https://twitter.com/saintandcenter/"
           >
-            TW
+            {isBrowser ? `Twitter` : `TW`}
           </a>
         </li>
       </ul>
