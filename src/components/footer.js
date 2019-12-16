@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { device } from "../utils/devices"
 import { isBrowser } from "react-device-detect"
 import Routine from "./routine"
+import HumanLink from "./humanLink"
 import PetLink from "./petLink"
 
 const Foot = styled.footer`
@@ -134,10 +135,10 @@ const Bottom = styled.div`
   }
 `
 
-const Footer = () => (
+const Footer = ({ location }) => (
   <Foot>
     <Routine />
-    <PetLink />
+    {location.pathname === "/shop/pets" ? <HumanLink /> : <PetLink />}
     <Block className="subscribe">
       <h4>Get the Good News</h4>
       <p>Stay up to date.</p>

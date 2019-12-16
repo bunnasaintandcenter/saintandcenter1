@@ -5,6 +5,7 @@ import humans from "../images/humans.jpg"
 
 const Wrapper = styled.div`
   position: relative;
+  grid-area: pets;
 
   h2 {
     position: absolute;
