@@ -18,6 +18,15 @@ const Wrapper = styled.nav`
   z-index: 90;
   display: ${props => (props.open ? `flex` : `none`)};
 
+  @media ${device.laptop} {
+    width: 95vw;
+    left: 5vw;
+    height: 56px;
+    top: 0;
+    z-index: 200;
+    justify-content: flex-start;
+  }
+
   a {
     color: black;
     text-decoration: none;
@@ -37,10 +46,20 @@ const List = styled.ul`
 
   @media ${device.laptop} {
     line-height: 3vw;
+    justify-content: flex-start;
+    flex-direction: row;
   }
 
   li {
     font-size: 36px;
+
+    @media ${device.laptop} {
+      margin: 0 48px 0 0;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
 
     &.clickable {
       cursor: pointer;
@@ -51,7 +70,8 @@ const List = styled.ul`
     }
 
     @media ${device.laptop} {
-      font-size: 3vw;
+      font-size: 24px;
+      font-weight: 300;
     }
   }
 `

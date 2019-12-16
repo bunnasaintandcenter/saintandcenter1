@@ -105,7 +105,6 @@ const Header = ({ cart, bannerOpen, home }) => {
   })
 
   const handleToggleNav = () => {
-    // toggleBodyLock()
     toggleCart(false)
     toggleNav(!navOpen)
 
@@ -114,7 +113,11 @@ const Header = ({ cart, bannerOpen, home }) => {
     }
 
     if (home && background && navOpen) {
-      setBackground(false)
+      if (window.scrollY > window.innerHeight * 3 - 56) {
+        setBackground(true)
+      } else {
+        setBackground(false)
+      }
     }
   }
 
