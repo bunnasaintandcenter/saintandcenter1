@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   h2 {
     font-size: 24px;
     line-height: 36px;
-    font-weight: 300;
+    font-weight: 200;
     position: relative;
     z-index: 1;
     letter-spacing: 0.05em;
