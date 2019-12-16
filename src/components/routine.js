@@ -18,9 +18,9 @@ const Wrapper = styled.div`
   }
 
   h3 {
-    font-weight: 300;
+    font-weight: 200;
     font-size: 51px;
-    line-height: 60px;
+    line-height: 72px;
     margin: 0;
   }
 `
