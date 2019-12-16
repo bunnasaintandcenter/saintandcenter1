@@ -40,10 +40,24 @@ const Feature = styled.div`
 `
 
 const Home = ({ location }) => {
-  const intro = createRef()
+  const hemp = createRef()
+  const human = createRef()
 
-  const handleHeroScroll = () => {
-    intro.current.scrollIntoView({ behavior: "smooth", block: "center" })
+  const handlePageScroll = section => {
+    switch (section) {
+      case "hemp":
+        window.scrollTo({
+          top: hemp.current.offsetTop - 56 - 32,
+          behavior: "smooth",
+        })
+
+        break
+      default:
+        window.scrollTo({
+          top: human.current.offsetTop - 56 - 32,
+          behavior: "smooth",
+        })
+    }
   }
 
   const images = useStaticQuery(graphql`
