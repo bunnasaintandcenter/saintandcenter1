@@ -1,4 +1,4 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { device } from "../utils/devices"
@@ -78,35 +78,30 @@ const Image = styled.div`
   }
 `
 
-const TextBlockWithImage = ({
-  bgColor,
-  children,
-  image,
-  reverse,
-  actionText,
-  url,
-}) => (
-  <Block data-testid="text-block-w-image" reverse={reverse}>
-    <Image bg={bgColor}>
-      <Link to={url}>
-        <img src={image} alt="placer" />
-      </Link>
-    </Image>
-    <Text color={bgColor}>
-      {children}
-      {url ? (
+const TextBlockWithImage = forwardRef(
+  ({ bgColor, children, image, reverse, actionText, url }, ref) => (
+    <Block ref={ref} data-testid="text-block-w-image" reverse={reverse}>
+      <Image bg={bgColor}>
         <Link to={url}>
+          <img src={image} alt="placer" />
+        </Link>
+      </Image>
+      <Text color={bgColor}>
+        {children}
+        {url ? (
+          <Link to={url}>
+            <p>
+              <span>{actionText}</span>
+            </p>
+          </Link>
+        ) : (
           <p>
             <span>{actionText}</span>
           </p>
-        </Link>
-      ) : (
-        <p>
-          <span>{actionText}</span>
-        </p>
-      )}
-    </Text>
-  </Block>
+        )}
+      </Text>
+    </Block>
+  )
 )
 
 export default TextBlockWithImage
