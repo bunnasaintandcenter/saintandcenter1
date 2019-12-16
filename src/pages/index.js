@@ -122,7 +122,7 @@ const Home = ({ location }) => {
         >
           <p>
             Saint and Center delves into the past to inform the future of CBD.
-            Holy Hemp explores the roots and stems of this versatile Cannabius
+            Holy Hemp explores the roots and stems of this versatile Cannabis
             plant that is good for all human and plant kind.
           </p>
         </TextBlockWithImage>
