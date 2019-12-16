@@ -39,15 +39,15 @@ const Wrapper = styled.div`
     a {
       color: white;
       text-decoration: none;
-      border-bottom: 1px solid currentColor;
-      text-shadow: 2px 2px ${props => props.theme.color.gold},
-        2px -2px ${props => props.theme.color.gold},
-        -2px 2px ${props => props.theme.color.gold},
-        -2px -2px ${props => props.theme.color.gold};
-
-      @media ${device.laptop} {
-        border-bottom: 3px solid currentColor;
-      }
+      background: linear-gradient(#eeb805, #eeb805),
+        linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+      background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+      background-repeat: no-repeat, no-repeat, repeat-x;
+      text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+        0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+        -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+        -0.15em 0 #eeb805;
+      background-position: 0 95%, 100% 95%, 0 95%;
     }
 
     @media ${device.laptop} {
@@ -91,6 +91,19 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 1;
   }
+`
+
+const PageLink = styled.span`
+  cursor: pointer;
+  background: linear-gradient(#eeb805, #eeb805),
+    linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+  background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+    0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+    -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+    -0.15em 0 #eeb805;
+  background-position: 0 95%, 100% 95%, 0 95%;
 `
 
 const useScrollHandler = handler => {
