@@ -164,20 +164,16 @@ const Hero = ({ handlePageScroll }) => {
           </h2>
         ) : (
           <h2>
-            Saint and Center is about connections.
-            <br /> Your mind to your body. You to the world.
-            <br /> We also extract, infuse and bottle pure
-            <br /> CBD from hemp. Learn about{" "}
-            <PageLink onClick={() => handlePageScroll("hemp")}>
-              hemp
-            </PageLink>{" "}
-            and
-            <br />{" "}
+            Saint and Center is about connections. Your mind to your body. You
+            to the world. We also extract, infuse and bottle pure CBD from hemp.
+            Learn about{" "}
+            <PageLink onClick={() => handlePageScroll("hemp")}>hemp</PageLink>{" "}
+            and{" "}
             <PageLink onClick={() => handlePageScroll("human")}>
               our cause
             </PageLink>{" "}
-            to help communities affected by
-            <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
+            to help communities affected by cannabis laws. Or{" "}
+            <Link to="/shop">shop CBD.</Link>
           </h2>
         )}
       </Wrapper>
