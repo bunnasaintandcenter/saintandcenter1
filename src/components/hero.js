@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     z-index: 1;
     letter-spacing: 0.05em;
     margin-bottom: 4rem;
-    max-width: 1050px;
+    max-width: 80vw;
 
     @media ${device.laptop} {
       letter-spacing: 0.075em;
