@@ -46,7 +46,7 @@ const Text = styled.div`
     text-align: center;
 
     @media ${device.laptop} {
-      font-size: 57px;
+      font-size: 51px;
     }
   }
 `
