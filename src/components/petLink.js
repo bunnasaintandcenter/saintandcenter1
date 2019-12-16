@@ -5,12 +5,13 @@ import treats from "../images/treats.jpg"
 
 const Wrapper = styled.div`
   position: relative;
+  grid-area: pets;
 
   h2 {
     position: absolute;
     color: white;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: 24px;
+    left: 24px;
     font-weight: 300;
     z-index: 1;
     text-transform: uppercase;

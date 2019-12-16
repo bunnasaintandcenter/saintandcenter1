@@ -2,13 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import { isBrowser } from "react-device-detect"
+import Routine from "./routine"
+import PetLink from "./petLink"
 
 const Foot = styled.footer`
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 16.66vw);
-    grid-template-areas: "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
+    grid-template-rows: 50vw 16.66vw 16.66vw;
+    grid-template-areas: "sub sub sub pets pets pets" "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
   }
 `
 
@@ -134,6 +136,8 @@ const Bottom = styled.div`
 
 const Footer = () => (
   <Foot>
+    <Routine />
+    <PetLink />
     <Block className="subscribe">
       <h4>Get the Good News</h4>
       <p>Stay up to date.</p>

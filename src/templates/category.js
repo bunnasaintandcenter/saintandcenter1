@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.div`
-  min-height: 90vh;
+  min-height: 80vh;
   background: #d1cece;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ const Image = styled.div`
   grid-column: ${props => (props.full ? `span 2` : `auto`)};
 
   .gatsby-image-wrapper {
-    min-height: 90vh;
+    min-height: 100%;
   }
 
   img {
@@ -42,6 +42,10 @@ const Info = styled.div`
   justify-content: space-between;
   flex-direction: column;
   min-height: calc(100vh - 10vw);
+
+  @media ${device.laptop} {
+    min-height: 80vh;
+  }
 
   h4 {
     font-weight: 300;
