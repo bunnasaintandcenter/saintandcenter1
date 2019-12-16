@@ -634,14 +634,14 @@ pre tt:after {
 @font-face {
   font-family: "US";
   src: url("../type/UntitledSansWeb-Light.woff") format("woff");
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: "US";
   src: url("../type/UntitledSansWeb-LightItalic.woff") format("woff");
-  font-weight: 300;
+  font-weight: 200;
   font-style: italic;
 }
 
