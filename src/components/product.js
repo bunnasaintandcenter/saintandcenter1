@@ -124,7 +124,7 @@ const Product = ({ name, image, slug, products }) => (
         fluid={image.localFile.childImageSharp.fluid}
       />
     )}
-    {products[1].images[1] && (
+    {products[1] && products[1].images[1] && (
       <Img
         className="hover-image"
         fluid={products[1].images[1].localFile.childImageSharp.fluid}

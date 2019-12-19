@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  height: 500vh;
+  height: 400vh;
 `
 
 const Spacer = styled.div`
@@ -31,6 +31,8 @@ const Page = styled.div`
 `
 
 const Feature = styled.div`
+  background: ${props => props.theme.color.gold};
+
   .gatsby-image-wrapper {
     height: 30vh;
 
@@ -71,16 +73,21 @@ const Home = ({ location }) => {
 
   const handlePageScroll = section => {
     switch (section) {
-      case "hemp":
+      case "intro":
         window.scrollTo({
-          top: hemp.current.offsetTop - 56 - 32,
+          top: window.innerHeight,
           behavior: "smooth",
         })
-
+        break
+      case "hemp":
+        window.scrollTo({
+          top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 3,
+          behavior: "smooth",
+        })
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32,
+          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 6,
           behavior: "smooth",
         })
     }
@@ -91,8 +98,6 @@ const Home = ({ location }) => {
       tincture: file(relativePath: { eq: "tincture.jpg" }) {
         childImageSharp {
           fluid(quality: 90, maxWidth: 1800) {
-            base64
-            tracedSVG
             aspectRatio
             src
             srcSet
@@ -109,8 +114,6 @@ const Home = ({ location }) => {
       products: file(relativePath: { eq: "products.jpg" }) {
         childImageSharp {
           fluid(quality: 85, maxWidth: 1800) {
-            base64
-            tracedSVG
             aspectRatio
             src
             srcSet
@@ -131,7 +134,11 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
-        <ImageHero img={images.tincture} alt="Tincture" />
+        <ImageHero
+          handlePageScroll={handlePageScroll}
+          img={images.tincture}
+          alt="Tincture"
+        />
         <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
         {!pageFixed && <Spacer />}
         <Page fixed={pageFixed}>
@@ -169,9 +176,9 @@ const Home = ({ location }) => {
             actionText="To Human Rites"
           >
             <p>
-              We believe a company profiting from the culvation and production
-              of hemp products should support fair legislation. We help create
-              equitable solution for people and communities unfairly harmed by
+              We believe in the fundamental freedom of natural plant wellness
+              therapies and its fair legislation. Our mission is to help create
+              equitable solutions for people and communities unfairly harmed by
               cannabis laws.
             </p>
           </TextBlockWithImage>

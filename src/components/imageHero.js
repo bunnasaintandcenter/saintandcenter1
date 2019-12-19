@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import Img from "gatsby-image"
+import arrow from "../images/down.svg"
 
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
+  background: ${props => props.theme.color.gold};
 
   .gatsby-image-wrapper {
     height: 100%;
@@ -34,8 +36,8 @@ const Text = styled.div`
     top: 0;
     height: 100%;
     display: grid;
-    grid-gap: 35vw;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "left . right";
     align-items: center;
   }
 
@@ -45,10 +47,32 @@ const Text = styled.div`
     font-weight: 200;
     text-align: center;
 
+    &:first-of-type {
+      grid-area: left;
+      text-align: right;
+    }
+
+    &:nth-of-type(2) {
+      grid-area: right;
+      text-align: left;
+    }
+
     @media ${device.laptop} {
       font-size: 51px;
     }
   }
+`
+
+const Arrow = styled.div`
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  background: url(${arrow});
+  background-size: 100%;
+  width: 24px;
+  height: 33px;
+  cursor: pointer;
+  z-index: 3;
 `
 
 const useScrollHandler = handler => {
@@ -73,16 +97,21 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const ImageHero = ({ img }) => {
+const ImageHero = ({ handlePageScroll, img }) => {
   return (
     <Curtain className="curtain first">
       <Wrapper>
-        <Img loading="eager" critical fluid={img.childImageSharp.fluid} />
+        <Img
+          placeholderClassName="loading"
+          loading="eager"
+          fluid={img.childImageSharp.fluid}
+        />
         <Text>
           <h2>your higher self</h2>
           <h2>without the high</h2>
         </Text>
       </Wrapper>
+      <Arrow onClick={() => handlePageScroll("intro")} />
     </Curtain>
   )
 }
