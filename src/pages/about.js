@@ -24,23 +24,23 @@ const About = ({ location }) => (
     <Wrapper>
       <Intro>
         <p>
-          Saint and Center is about personal transformation. We believe in a
-          natural ‘high’, the pure and inspired feeling we get when we’re
-          reaching towards our potential.
+          Saint and Center believes in a natural high, that pure and inspired
+          feeling you get when you’re reaching toward your potential and helping
+          others to do the same.
         </p>
 
         <p>
-          While CBD isn’t a miracle, cure-all, it has helped us (and thousands
-          of people) to alleviate stress, anxiety and pain that are obstacles to
-          living more vibrantly.
+          From seed to spirit, Saint and Center was birthed out of the rhythmic
+          individuality and activism of Atlanta, Georgia.
         </p>
 
         <p>
-          We all have the right to do the feel-good things that contribute to a
-          more meaningful existence.
+          Inspired by the restful contentedness of southern Sundays, creativity,
+          responsibility and rebellion, we make products for personal
+          transformation that support collective elevation.
         </p>
 
-        <p>Our CBD is a good start.</p>
+        <p>Welcome to the revival. </p>
       </Intro>
     </Wrapper>
   </Layout>
