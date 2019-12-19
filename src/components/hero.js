@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { device } from "../utils/devices"
 import { Link } from "gatsby"
 import { isMobile } from "react-device-detect"
+import arrow from "../images/down.svg"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
@@ -94,6 +95,29 @@ const Wrapper = styled.div`
   }
 `
 
+const Arrow = styled.div`
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  background: url(${arrow});
+  background-position: center bottom;
+  width: 20vw;
+  height: 72px;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  z-index: 3;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+
+  span {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 24px;
+    display: block;
+  }
+`
+
 const PageLink = styled.span`
   cursor: pointer;
   background: linear-gradient(#eeb805, #eeb805),
@@ -177,6 +201,9 @@ const Hero = ({ handlePageScroll }) => {
             <Link to="/shop">shop CBD.</Link>
           </h2>
         )}
+        <Arrow>
+          <span>Welcome to your revival</span>
+        </Arrow>
       </Wrapper>
     </Curtain>
   )

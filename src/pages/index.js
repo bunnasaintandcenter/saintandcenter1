@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  height: 500vh;
+  height: 400vh;
 `
 
 const Spacer = styled.div`
@@ -81,13 +81,13 @@ const Home = ({ location }) => {
         break
       case "hemp":
         window.scrollTo({
-          top: hemp.current.offsetTop - 56 - 32,
+          top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 3,
           behavior: "smooth",
         })
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32,
+          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 6,
           behavior: "smooth",
         })
     }
