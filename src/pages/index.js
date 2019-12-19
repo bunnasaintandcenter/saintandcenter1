@@ -73,12 +73,17 @@ const Home = ({ location }) => {
 
   const handlePageScroll = section => {
     switch (section) {
+      case "intro":
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: "smooth",
+        })
+        break
       case "hemp":
         window.scrollTo({
           top: hemp.current.offsetTop - 56 - 32,
           behavior: "smooth",
         })
-
         break
       default:
         window.scrollTo({
@@ -129,7 +134,11 @@ const Home = ({ location }) => {
     <Layout location={location}>
       <SEO title="Saint and Center" />
       <Wrapper>
-        <ImageHero img={images.tincture} alt="Tincture" />
+        <ImageHero
+          handlePageScroll={handlePageScroll}
+          img={images.tincture}
+          alt="Tincture"
+        />
         <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
         {!pageFixed && <Spacer />}
         <Page fixed={pageFixed}>

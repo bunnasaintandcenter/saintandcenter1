@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import Img from "gatsby-image"
+import arrow from "../images/down.svg"
 
 const Wrapper = styled.section`
   position: relative;
@@ -62,6 +63,18 @@ const Text = styled.div`
   }
 `
 
+const Arrow = styled.div`
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  background: url(${arrow});
+  background-size: 100%;
+  width: 24px;
+  height: 33px;
+  cursor: pointer;
+  z-index: 3;
+`
+
 const useScrollHandler = handler => {
   useEffect(() => {
     window.addEventListener("scroll", handler)
@@ -84,7 +97,7 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const ImageHero = ({ img }) => {
+const ImageHero = ({ handlePageScroll, img }) => {
   return (
     <Curtain className="curtain first">
       <Wrapper>
@@ -98,6 +111,7 @@ const ImageHero = ({ img }) => {
           <h2>without the high</h2>
         </Text>
       </Wrapper>
+      <Arrow onClick={() => handlePageScroll("intro")} />
     </Curtain>
   )
 }
