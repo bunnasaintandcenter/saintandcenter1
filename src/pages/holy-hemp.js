@@ -106,15 +106,77 @@ const HolyHemp = ({ location }) => {
   const content = [
     {
       image: data.first,
-      text: `Up until the last century, hemp (or Cannabis Sativa) has been one of the most significant crops of humankind. Its usefulness has been recorded by ancient civilizations worldwide for 10,000 years. Before people found out about all the compounds that make up hemp, they knew the plant itself could provide spiritual, medicinal and practical benefits.`,
+      text: (
+        <>
+          <p>
+            Up until the last century, hemp (or Cannabis Sativa) has been one of
+            the most significant crops of humankind. Its usefulness has been
+            recorded by ancient civilizations worldwide for 10,000 years. Before
+            people found out about all the compounds that make up hemp, they
+            knew the plant itself could provide spiritual, medicinal and
+            practical benefits.
+          </p>
+          <p>
+            The oldest record of hemp is the pharmacopeia Pen Ts'ao Ching —
+            Chinese traditional medicine passed down since prehistoric times. In
+            it, dioecious hemp complemented the philosophy of yin/yang. Hemp
+            originated in the steppes of Asia, and the Chinese were one of the
+            first to notice the Cannabis’ balancing effect. The psychoactive
+            flowering buds of the female plant were known as "yin", and strong
+            CBD-infused non-flowering male plant as "yang".
+          </p>
+        </>
+      ),
     },
     {
       image: data.second,
-      text: `The oldest record of hemp is the pharmacopeia Pen Ts'ao Ching — Chinese traditional medicine passed down since pre-historic times. In it, dioecious hemp complemented the philosophy of yin/yang. Hemp originated in the steppes of Asia, and the Chinese were one of the first to notice the Cannabis’ balancing effect. The psychoactive flowering buds of the female plant were known as "yin", and strong CBD-infused non-flowering male plant as "yang". CBD and THC is one of the 100+ phytocannabinoids in hemp and other cannabis. Our bodies produce their own cannabinoids called endocannabinoid, which go into a regulatory system that keeps us balanced. When ingested, CBD acts as a supplement to the endocannabinoid system.`,
+      text: (
+        <>
+          <p>
+            CBD and THC is one of the 100+ phytocannabinoids in hemp and other
+            cannabis. Our bodies produce their own cannabinoids called
+            endocannabinoid.
+          </p>
+          <p>
+            These endocannabinoids make up the endocannabinoid system (ECS)
+            which is a biological network of receptors throughout our body
+            controlling vital functions like our immune system, sleep patterns,
+            pain-sensation, mood, and even appetite. These bind to cannabinoid
+            receptors and proteins that are expressed throughout the central
+            nervous system (including the brain) and peripheral nervous system.
+          </p>
+          <p>
+            When ingested or applied, CBD acts as a supplement to the
+            endocannabinoid system, which go into our natural regulatory system
+            to keeps us balanced. CBD signals the body to self regulate and self
+            correct.
+          </p>
+        </>
+      ),
     },
     {
       image: data.third,
-      text: `From the start of WW2 to the 1970's war on drugs campaign, the 20th century has seen a complete twist on perspective. However, the farm bill passed in 2014 seeks to reverse those effects. The future seems promising. Scientists and researchers have only begun to tap into what we already seem to know. As long as there are humans, there is hemp.`,
+      text: (
+        <>
+          <p>
+            CBD has been linked to helping the human body deal with a number of
+            modern stresses and illnesses including insomnia, depression,
+            anxiety, migraines, fibromyalgia, epilepsy, Alzheimer's,
+            Parkinson's, PTSD, hypertension, asthma, acne, arthritis, diabetes,
+            Crohn’s disease, IBS, gastrointestinal disorders, chronic joint
+            pain, menstrual cramps, menopause, osteoporosis, and that’s not even
+            all.
+          </p>
+          <p>
+            The healing power of hemp has been rediscovered. People are once
+            again reincorporating hemp into their everyday wellness rituals. CBD
+            is not a trend, it is a solution. As we overcome the stigma of hemp
+            and the disconnection with our own bodies, what’s revealed is a
+            higher you. The future of your wellbeing begins with a return to
+            nature, a return to you.
+          </p>
+        </>
+      ),
     },
   ]
 
