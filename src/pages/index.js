@@ -176,9 +176,9 @@ const Home = ({ location }) => {
             actionText="To Human Rites"
           >
             <p>
-              We believe a company profiting from the culvation and production
-              of hemp products should support fair legislation. We help create
-              equitable solution for people and communities unfairly harmed by
+              We believe in the fundamental freedom of natural plant wellness
+              therapies and its fair legislation. Our mission is to help create
+              equitable solutions for people and communities unfairly harmed by
               cannabis laws.
             </p>
           </TextBlockWithImage>
