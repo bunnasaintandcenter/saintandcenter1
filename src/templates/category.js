@@ -130,7 +130,7 @@ const Category = ({ pageContext, updateCart, location }) => {
       <Wrapper>
         <Image>
           {images[1] && (
-            <Img fluid={images[1].localFile.childImageSharp.fluid} />
+            <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
           )}
           {isMobile && (
             <InfoToggle onClick={() => setInfoShown(!infoShown)}>

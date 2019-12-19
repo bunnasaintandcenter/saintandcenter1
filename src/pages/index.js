@@ -31,6 +31,8 @@ const Page = styled.div`
 `
 
 const Feature = styled.div`
+  background: ${props => props.theme.color.gold};
+
   .gatsby-image-wrapper {
     height: 30vh;
 
@@ -91,8 +93,6 @@ const Home = ({ location }) => {
       tincture: file(relativePath: { eq: "tincture.jpg" }) {
         childImageSharp {
           fluid(quality: 90, maxWidth: 1800) {
-            base64
-            tracedSVG
             aspectRatio
             src
             srcSet
@@ -109,8 +109,6 @@ const Home = ({ location }) => {
       products: file(relativePath: { eq: "products.jpg" }) {
         childImageSharp {
           fluid(quality: 85, maxWidth: 1800) {
-            base64
-            tracedSVG
             aspectRatio
             src
             srcSet

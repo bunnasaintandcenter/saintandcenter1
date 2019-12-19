@@ -6,6 +6,7 @@ import Img from "gatsby-image"
 const Wrapper = styled.section`
   position: relative;
   height: 100%;
+  background: ${props => props.theme.color.gold};
 
   .gatsby-image-wrapper {
     height: 100%;
@@ -77,7 +78,11 @@ const ImageHero = ({ img }) => {
   return (
     <Curtain className="curtain first">
       <Wrapper>
-        <Img loading="eager" critical fluid={img.childImageSharp.fluid} />
+        <Img
+          placeholderClassName="loading"
+          loading="eager"
+          fluid={img.childImageSharp.fluid}
+        />
         <Text>
           <h2>your higher self</h2>
           <h2>without the high</h2>
