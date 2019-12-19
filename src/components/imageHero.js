@@ -35,8 +35,8 @@ const Text = styled.div`
     top: 0;
     height: 100%;
     display: grid;
-    grid-gap: 35vw;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "left . right";
     align-items: center;
   }
 
@@ -45,6 +45,16 @@ const Text = styled.div`
     font-size: 30px;
     font-weight: 200;
     text-align: center;
+
+    &:first-of-type {
+      grid-area: left;
+      text-align: right;
+    }
+
+    &:nth-of-type(2) {
+      grid-area: right;
+      text-align: left;
+    }
 
     @media ${device.laptop} {
       font-size: 51px;
