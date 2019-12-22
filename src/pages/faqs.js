@@ -5,7 +5,9 @@ import Expandable from "../components/expandable"
 import { StaticQuery, graphql } from "gatsby"
 import FAQsCategory from "../components/faqsCategory"
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  margin-top: 56px;
+`
 
 const FAQs = ({ location }) => {
   return (
