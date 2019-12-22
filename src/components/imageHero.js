@@ -45,6 +45,7 @@ const Text = styled.div`
     color: white;
     font-size: 30px;
     font-weight: 200;
+    margin: 0;
     text-align: center;
 
     @media ${device.laptop} {
@@ -60,7 +61,7 @@ const Text = styled.div`
     }
 
     @media ${device.laptop} {
-      font-size: 51px;
+      font-size: calc(28px + ((100vw - 600px) * 0.03));
     }
   }
 `

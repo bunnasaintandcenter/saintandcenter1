@@ -35,7 +35,7 @@ const renderTitle = page => {
     case page.split("/")[2] === "product":
       return (
         <>
-          <Link to="/shop">Shop / Products </Link> / {page.split("/")[3]}
+          <Link to="/shop">Shop </Link> / {page.split("/")[3]}
         </>
       )
     case pagePath === "shop":
