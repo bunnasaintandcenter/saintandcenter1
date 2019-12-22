@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import { isBrowser } from "react-device-detect"
+import { Link } from "react-router-dom"
 import Routine from "./routine"
 import HumanLink from "./humanLink"
 import PetLink from "./petLink"
@@ -153,7 +154,9 @@ const Footer = ({ location }) => (
         <li>Account</li>
         <li>Track</li>
         <li>Returns</li>
-        <li>FAQ</li>
+        <li>
+          <Link to="/faqs">FAQs</Link>
+        </li>
       </ul>
     </Block>
     <Block className="social">
