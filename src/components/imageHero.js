@@ -60,7 +60,7 @@ const Text = styled.div`
     }
 
     @media ${device.laptop} {
-      font-size: 51px;
+      font-size: calc(28px + ((100vw - 600px) * 0.03));
     }
   }
 `
