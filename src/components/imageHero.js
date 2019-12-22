@@ -47,14 +47,16 @@ const Text = styled.div`
     font-weight: 200;
     text-align: center;
 
-    &:first-of-type {
-      grid-area: left;
-      text-align: right;
-    }
+    @media ${device.laptop} {
+      &:first-of-type {
+        grid-area: left;
+        text-align: right;
+      }
 
-    &:nth-of-type(2) {
-      grid-area: right;
-      text-align: left;
+      &:nth-of-type(2) {
+        grid-area: right;
+        text-align: left;
+      }
     }
 
     @media ${device.laptop} {
