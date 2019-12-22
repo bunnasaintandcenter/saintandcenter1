@@ -1,23 +1,21 @@
-import React, { useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import { device } from "../utils/devices"
-import { isBrowser, isMobile } from "react-device-detect"
+import { isBrowser } from "react-device-detect"
 import Img from "gatsby-image"
 import SEO from "../components/seo"
 import ProductSelect from "../components/productSelect"
 
 const Wrapper = styled.div`
   padding-top: 56px;
-  @media ${device.laptop} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `
 
 const Image = styled.div`
-  min-height: 80vh;
+  min-height: ${props => (props.main ? `50vh` : `50vw`)};
   background: #d1cece;
   align-items: center;
   justify-content: center;
@@ -25,8 +23,16 @@ const Image = styled.div`
   overflow: hidden;
   grid-column: ${props => (props.full ? `span 2` : `auto`)};
 
+  @media ${device.laptop} {
+    min-height: 80vh !important;
+  }
+
   .gatsby-image-wrapper {
-    min-height: 100%;
+    min-height: ${props => (props.main ? `50vh` : `50vw`)};
+
+    @media ${device.laptop} {
+      min-height: 80vh !important;
+    }
   }
 
   img {
@@ -41,10 +47,11 @@ const Info = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-height: calc(100vh - 10vw);
+  grid-column: span 2;
 
   @media ${device.laptop} {
     min-height: 80vh;
+    grid-column: span 1;
   }
 
   h4 {
@@ -55,64 +62,8 @@ const Info = styled.div`
   }
 `
 
-const InfoToggle = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 24px;
-  appearance: none;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  z-index: 3;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const InfoOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  padding: 5vw;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  pointer-events: none;
-
-  h4 {
-    opacity: ${props => (props.open ? 1 : 0)};
-    position: relative;
-    z-index: 2;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 1.4em;
-    transition-delay: 0.3s;
-    transition: 0.2s all ease-in-out;
-  }
-
-  .background {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgb(248, 249, 244);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: 0.3s all ease-in-out;
-    transform: ${props => (props.open ? `scale(100)` : `scale(0)`)};
-  }
-`
-
 const Category = ({ pageContext, updateCart, location }) => {
   const { name, description, products } = pageContext
-  const [infoShown, setInfoShown] = useState(false)
 
   let images = []
 
@@ -128,20 +79,9 @@ const Category = ({ pageContext, updateCart, location }) => {
     <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />
       <Wrapper>
-        <Image>
+        <Image main full>
           {images[1] && (
             <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
-          )}
-          {isMobile && (
-            <InfoToggle onClick={() => setInfoShown(!infoShown)}>
-              {infoShown ? <span>X</span> : <span>?</span>}
-            </InfoToggle>
-          )}
-          {isMobile && (
-            <InfoOverlay open={infoShown}>
-              <h4>{description}</h4>
-              <div className="background" />
-            </InfoOverlay>
           )}
         </Image>
         <Info>
