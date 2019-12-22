@@ -3,7 +3,6 @@ import styled from "styled-components"
 import logoLight from "../images/logo.svg"
 import { isMobile } from "react-device-detect"
 import logo from "../images/logo-black.svg"
-import logotype from "../images/logotype.svg"
 import Menu from "./menu"
 import Nav from "./nav"
 import { Link } from "gatsby"
@@ -37,11 +36,11 @@ const Head = styled.header`
 `
 
 const Logo = styled.div`
-  width: ${props => (props.background ? `24px` : `200px`)};
+  width: 24px;
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    height: ${props => (props.background ? `32px` : `20px`)};
+    height: 32px;
   }
 
   a {
@@ -146,10 +145,7 @@ const Header = ({ cart, bannerOpen, home }) => {
           />
           <Logo background={background}>
             <Link to="/">
-              <img
-                src={background ? logo : isMobile ? logoLight : logotype}
-                alt="Saint and Center"
-              />
+              <img src={background ? logo : logoLight} alt="Saint and Center" />
             </Link>
           </Logo>
           <CartButton
