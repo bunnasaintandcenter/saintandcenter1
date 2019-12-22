@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import { device } from "../utils/devices"
 import { Waypoint } from "react-waypoint"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
