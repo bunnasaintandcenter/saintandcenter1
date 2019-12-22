@@ -137,7 +137,10 @@ const Bottom = styled.div`
 
 const Footer = ({ location }) => (
   <Foot data-testid="footer">
-    <Routine />
+    {i!sMobile &&
+      <Routine />
+
+    }
     {location && location.pathname === "/shop/pets" ? (
       <HumanLink />
     ) : (
