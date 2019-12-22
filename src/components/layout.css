@@ -713,6 +713,7 @@ pre tt:after {
   height: -webkit-fill-available;
   width: 100vw;
   background: black;
+  backface-visibility: hidden;
 }
 
 @media only screen and (min-width: 480px) {
