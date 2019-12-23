@@ -52,6 +52,8 @@ const renderTitle = page => {
       return "FAQS"
     case pagePath === "order-received":
       return "Order Recieved"
+    case pagePath === "privacy-policy":
+      return "Privacy Policy"
     default:
       return false
   }

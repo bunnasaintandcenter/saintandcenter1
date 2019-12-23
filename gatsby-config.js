@@ -1,5 +1,6 @@
 var proxy = require("http-proxy-middleware")
-let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 
 require("dotenv").config({
   path: `.env.${activeEnv}`,
@@ -37,32 +38,27 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         baseUrl: `andnone.co/saintcenter`,
-        protocol: 'https',
+        protocol: "https",
         verbose: true,
-        useACF:  true,
-        hostingWPCOM: false,
         useACF: true,
-        includedRoutes: [
-          "**/faq",
-          "**/products",
-          "**/categories"
-       ]
-      }
+        hostingWPCOM: false,
+        includedRoutes: ["**/faq", "**/products", "**/categories"],
+      },
     },
     {
-      resolve: '@pasdo501/gatsby-source-woocommerce',
+      resolve: "@pasdo501/gatsby-source-woocommerce",
       options: {
-        api: 'andnone.co/saintcenter',
+        api: "andnone.co/saintcenter",
         itemCount: 20,
         verbose: true,
         useACF: true,
         https: false,
-          api_keys: {
-            consumer_key: process.env.WOOCOMMERCE_KEY,
-            consumer_secret: process.env.WOOCOMMERCE_SECRET,
-          },
-        fields: ['products', 'products/categories']
-      }
+        api_keys: {
+          consumer_key: process.env.WOOCOMMERCE_KEY,
+          consumer_secret: process.env.WOOCOMMERCE_SECRET,
+        },
+        fields: ["products", "products/categories"],
+      },
     },
     {
       resolve: `gatsby-plugin-styled-components`,
@@ -83,6 +79,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-    }
+    },
   ],
 }
