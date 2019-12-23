@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `andnone.co/saintcenter`,
+        baseUrl: `checkout.saintandcenter.com`,
         protocol: "https",
         verbose: true,
         useACF: true,
@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: "@pasdo501/gatsby-source-woocommerce",
       options: {
-        api: "andnone.co/saintcenter",
+        api: "checkout.saintandcenter.com",
         itemCount: 20,
         verbose: true,
         useACF: true,

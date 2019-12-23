@@ -38,7 +38,7 @@ const Subscriptions = ({ id }) => {
       status: "cancelled",
     }
     const response = await axios.put(
-      `https://andnone.co/saintcenter/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
+      `https://checkout.saintandcenter.com/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
       data
     )
     if (response.status === 200) {
@@ -51,7 +51,7 @@ const Subscriptions = ({ id }) => {
       status: "on-hold",
     }
     const response = await axios.put(
-      `https://andnone.co/saintcenter/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
+      `https://checkout.saintandcenter.com/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
       data
     )
     if (response.status === 200) {
@@ -64,7 +64,7 @@ const Subscriptions = ({ id }) => {
       status: "active",
     }
     const response = await axios.put(
-      `https://andnone.co/saintcenter/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
+      `https://checkout.saintandcenter.com/wp-json/wc/v1/subscriptions/${sub_id}/?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
       data
     )
     if (response.status === 200) {

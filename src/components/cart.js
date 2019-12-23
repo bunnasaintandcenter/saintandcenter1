@@ -302,7 +302,7 @@ const Cart = ({ open, cart, toggle }) => {
                 </Row>
               </section>
               <aside>
-                <a href="https://andnone.co/saintcenter/checkout">
+                <a href="https://checkout.saintandcenter.com/checkout">
                   <Button ghost>Checkout</Button>
                 </a>
               </aside>
