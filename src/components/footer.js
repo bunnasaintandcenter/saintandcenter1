@@ -214,7 +214,9 @@ const Footer = ({ location }) => (
         treat, cure or prevent any disease.
       </p>
       <ul>
-        <li>Privacy Policy</li>
+        <li>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+        </li>
         <li>Terms of Use</li>
         <li>Lab Results</li>
       </ul>
