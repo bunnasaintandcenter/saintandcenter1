@@ -9,10 +9,10 @@ import Benefits from "../../components/benefits"
 import { device } from "../../utils/devices"
 
 const ProductGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  margin-top: 56px;
 
   @media ${device.laptop} {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 `

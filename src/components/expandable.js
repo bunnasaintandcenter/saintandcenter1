@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 const Menu = styled.div`
   cursor: pointer;
   grid-column: span 2;
-  border-bottom: 2px solid rgb(51, 51, 51);
+  border-bottom: 1px solid rgb(51, 51, 51);
 `
 
 const Title = styled.div`

@@ -15,6 +15,8 @@ const Wrapper = styled.div`
   button {
     grid-column: span 2;
     border: 0;
+    font-size: 24px;
+    font-weight: 200;
     background: white;
     padding: 1.5rem;
 
@@ -36,14 +38,15 @@ const Select = styled.div`
 `
 
 const Price = styled.div`
-  padding: 2rem 5vw;
-  font-size: 16px;
+  padding: 24px;
+  font-size: 18px;
   grid-column: ${props => (props.recurrence === "once" ? `span 1` : `span 2`)};
   text-transform: uppercase;
-  border-top: 2px solid rgba(51, 51, 51, 1);
+  border-top: 1px solid black;
+  text-align: center;
 
   @media ${device.laptop} {
-    font-size: 18px;
+    font-size: 24px;
   }
 `
 
@@ -52,65 +55,55 @@ const Counter = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  border-top: 2px solid rgba(51, 51, 51, 1);
+  border-top: 1px solid black;
 
   @media ${device.laptop} {
     font-size: 18px;
   }
 
   span {
-    width: 36px;
-    height: 36px;
+    width: 33px;
+    height: 33px;
     border-top: 1px solid rgb(51, 51, 51);
     border-bottom: 1px solid rgb(51, 51, 51);
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media ${device.laptop} {
-      width: 48px;
-      height: 48px;
-    }
   }
 
   button {
     cursor: pointer;
-    width: 36px;
-    height: 36px;
-    border: 1px solid rgba(51, 51, 51, 1);
+    width: 33px;
+    height: 33px;
+    border: 1px solid black;
     padding: 0;
     outline: 0;
+    -webkit-font-smoothing: none;
     display: flex;
     justify-content: center;
     align-items: center;
     background: none;
-    font-weight: 400;
+    font-weight: 100;
     font-size: 20px;
-
-    @media ${device.laptop} {
-      width: 48px;
-      height: 48px;
-      font-size: 24px;
-    }
   }
 `
 
 const Option = styled.div`
   font-size: 14px;
   text-transform: uppercase;
-  padding: 1rem 0;
+  padding: 12px 0;
   cursor: pointer;
-  border-top: 2px solid rgba(51, 51, 51, 1);
+  border-top: 1px solid black;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: ${props => (props.selected ? `rgb(51,51,51)` : `transparent`)};
-  color: ${props => (props.selected ? `white` : `rgb(51,51,51)`)};
+  background: ${props => (props.selected ? `white` : `transparent`)};
+  color: black;
+  text-decoration: ${props => (props.selected ? `underline` : `none`)};
 
   @media ${device.laptop} {
-    font-size: 18px;
-    padding: 2rem 0;
+    font-size: 16px;
   }
 
   label {
@@ -125,7 +118,7 @@ const Option = styled.div`
   }
 
   &:nth-of-type(2n) {
-    border-left: 2px solid rgb(51, 51, 51);
+    border-left: 1px solid black;
   }
 `
 
@@ -141,7 +134,7 @@ const ProductSelect = ({ options, products }) => {
       `https://andnone.co/saintcenter/wp-json/wc/v3`,
       { withCredentials: true }
     )
-
+    console.log(response)
     const item = {
       product_id: products[recurrence === "monthly" ? 0 : 1].wordpress_id,
       variation_id:
@@ -155,7 +148,9 @@ const ProductSelect = ({ options, products }) => {
       `https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`,
       item
     )
-    dispatch({ type: "ADD_TO_CART", payload: item })
+    if (res) {
+      dispatch({ type: "ADD_TO_CART", payload: item })
+    }
   }
 
   const addToCount = () => {

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
-import Div100vh from "react-div-100vh"
 import { Link } from "gatsby"
+import { isMobile } from "react-device-detect"
+import arrow from "../images/down.svg"
 
 const Wrapper = styled.div`
   height: -webkit-fill-available;
@@ -25,25 +26,35 @@ const Wrapper = styled.div`
 
   h2 {
     font-size: 24px;
-    font-weight: 300;
+    line-height: 36px;
+    font-weight: 200;
     position: relative;
     z-index: 1;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     margin-bottom: 4rem;
+    max-width: 80vw;
+
+    @media ${device.laptop} {
+      letter-spacing: 0.075em;
+    }
 
     a {
       color: white;
       text-decoration: none;
-      border-bottom: 3px solid currentColor;
-      text-shadow: 2px 2px ${props => props.theme.color.gold},
-        2px -2px ${props => props.theme.color.gold},
-        -2px 2px ${props => props.theme.color.gold},
-        -2px -2px ${props => props.theme.color.gold};
+      background: linear-gradient(#eeb805, #eeb805),
+        linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+      background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+      background-repeat: no-repeat, no-repeat, repeat-x;
+      text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+        0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+        -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+        -0.15em 0 #eeb805;
+      background-position: 0 95%, 100% 100%, 0 95%;
     }
 
     @media ${device.laptop} {
-      font-size: 54px;
-      line-height: 72px;
+      font-size: calc(24px + ((100vw - 320px) * 0.02868));
+      line-height: 1.35em;
     }
   }
 
@@ -84,6 +95,42 @@ const Wrapper = styled.div`
   }
 `
 
+const Arrow = styled.div`
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  background: url(${arrow});
+  background-position: center bottom;
+  width: 20vw;
+  height: 72px;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  z-index: 3;
+  text-transform: uppercase;
+  background-repeat: no-repeat;
+
+  span {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 24px;
+    display: block;
+  }
+`
+
+const PageLink = styled.span`
+  cursor: pointer;
+  background: linear-gradient(#eeb805, #eeb805),
+    linear-gradient(#eeb805, #eeb805), linear-gradient(#fff, #fff);
+  background-size: 0.05em 2px, 0.05em 2px, 2px 2px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #eeb805, -0.03em 0 #eeb805, 0 0.03em #eeb805,
+    0 -0.03em #eeb805, 0.06em 0 #eeb805, -0.06em 0 #eeb805, 0.09em 0 #eeb805,
+    -0.09em 0 #eeb805, 0.12em 0 #eeb805, -0.12em 0 #eeb805, 0.15em 0 #eeb805,
+    -0.15em 0 #eeb805;
+  background-position: 0 95%, 100% 100%, 0 95%;
+`
+
 const useScrollHandler = handler => {
   useEffect(() => {
     window.addEventListener("scroll", handler)
@@ -110,7 +157,7 @@ const Curtain = props => {
   return <div ref={ref} {...props} />
 }
 
-const Hero = () => {
+const Hero = ({ handlePageScroll }) => {
   const innerRef = useRef()
   const handler = () => {
     if (window.scrollY < window.innerHeight) {
@@ -123,24 +170,42 @@ const Hero = () => {
   }
   useScrollHandler(handler)
   return (
-    <>
-      {typeof document !== "undefined" && (
-        <Div100vh>
-          <Curtain className="curtain second">
-            <Wrapper data-testid="hero" ref={innerRef}>
-              <h2>
-                Saint and Center is about connections.
-                <br /> Your mind to your body. You to the world.
-                <br /> We also extract, infuse and bottle pure
-                <br /> CBD from hemp. Learn about hemp and
-                <br /> our cause to help communities affected by
-                <br /> cannabis laws. Or <Link to="/shop">shop CBD.</Link>
-              </h2>
-            </Wrapper>
-          </Curtain>
-        </Div100vh>
-      )}
-    </>
+    <Curtain className="curtain second">
+      <Wrapper data-testid="hero" ref={innerRef}>
+        {isMobile ? (
+          <h2>
+            Saint and Center is
+            <br /> about connections. Your
+            <br /> mind to your body. You
+            <br /> to the world. We also
+            <br /> extract, infuse and bottle
+            <br /> pure CBD from hemp.
+            <br /> Learn about hemp and
+            <br />
+            our cause to help communities affected by
+            <br />
+            cannabis laws.
+            <br /> Or <Link to="/shop">shop CBD.</Link>
+          </h2>
+        ) : (
+          <h2>
+            Saint and Center is about connections. Your mind to your body. You
+            to the world. We also extract, infuse and bottle pure CBD from hemp.
+            Learn about{" "}
+            <PageLink onClick={() => handlePageScroll("hemp")}>hemp</PageLink>{" "}
+            and{" "}
+            <PageLink onClick={() => handlePageScroll("human")}>
+              our cause
+            </PageLink>{" "}
+            to help communities affected by cannabis laws. Or{" "}
+            <Link to="/shop">shop CBD.</Link>
+          </h2>
+        )}
+        <Arrow onClick={() => handlePageScroll("shop")}>
+          {!isMobile && <span>Welcome to your revival</span>}
+        </Arrow>
+      </Wrapper>
+    </Curtain>
   )
 }
 export default Hero

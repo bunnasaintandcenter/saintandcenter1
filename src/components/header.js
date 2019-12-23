@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import logoLight from "../images/logo.svg"
+import { isMobile } from "react-device-detect"
 import logo from "../images/logo-black.svg"
-import logotype from "../images/logotype.svg"
-import logotypeBlack from "../images/logotype-black.svg"
 import Menu from "./menu"
 import Nav from "./nav"
 import { Link } from "gatsby"
@@ -13,6 +13,7 @@ import PropTypes from "prop-types"
 const Wrapper = styled.div`
   position: fixed;
   z-index: 100;
+  top: 0;
 `
 
 const Head = styled.header`
@@ -35,16 +36,20 @@ const Head = styled.header`
 `
 
 const Logo = styled.div`
-  width: ${props => (props.background ? `24px` : `200px`)};
+  width: 24px;
   transition: 0.3s transform ease-in-out;
 
   @media ${device.laptop} {
-    height: ${props => (props.background ? `32px` : `20px`)};
+    height: 32px;
   }
 
   a {
     display: block;
-    height: ${props => (props.background ? `32px` : `20px`)};
+    height: 32px;
+
+    @media ${device.laptop} {
+      height: 32px;
+    }
   }
 
   img {
@@ -86,20 +91,25 @@ const Header = ({ cart, bannerOpen, home }) => {
 
   const listenScrollEvent = () => {
     if (home) {
-      if (window.scrollY > window.innerHeight * 3) {
+      if (window.scrollY > window.innerHeight * 3 - 56) {
         setBackground(true)
       } else {
-        setBackground(false)
+        if (navOpen) {
+          setBackground(true)
+        } else {
+          setBackground(false)
+        }
       }
     }
   }
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent)
+
+    // return window.removeEventListener("scroll", listenScrollEvent)
   })
 
   const handleToggleNav = () => {
-    // toggleBodyLock()
     toggleCart(false)
     toggleNav(!navOpen)
 
@@ -108,7 +118,11 @@ const Header = ({ cart, bannerOpen, home }) => {
     }
 
     if (home && background && navOpen) {
-      setBackground(false)
+      if (window.scrollY > window.innerHeight * 3 - 56) {
+        setBackground(true)
+      } else {
+        setBackground(false)
+      }
     }
   }
 
@@ -131,7 +145,7 @@ const Header = ({ cart, bannerOpen, home }) => {
           />
           <Logo background={background}>
             <Link to="/">
-              <img src={background ? logo : logotype} alt="Saint and Center" />
+              <img src={background ? logo : logoLight} alt="Saint and Center" />
             </Link>
           </Logo>
           <CartButton

@@ -28,16 +28,17 @@ const Item = styled.div`
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 
   @media ${device.laptop} {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   img {
     margin: 0 auto 2rem;
     display: block;
-    width: 10vw;
+    width: 30px;
 
     @media ${device.laptop} {
       width: 3.5vw;

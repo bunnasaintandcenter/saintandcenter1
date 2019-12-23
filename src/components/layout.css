@@ -11,7 +11,7 @@ html {
 body {
   font-family: "US";
   margin: 0;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(248, 249, 244);
 }
@@ -634,14 +634,14 @@ pre tt:after {
 @font-face {
   font-family: "US";
   src: url("../type/UntitledSansWeb-Light.woff") format("woff");
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: "US";
   src: url("../type/UntitledSansWeb-LightItalic.woff") format("woff");
-  font-weight: 300;
+  font-weight: 200;
   font-style: italic;
 }
 
@@ -710,9 +710,16 @@ pre tt:after {
   top: 0;
   left: 0;
   position: fixed;
-  height: 100vh;
+  height: -webkit-fill-available;
   width: 100vw;
   background: black;
+  backface-visibility: hidden;
+}
+
+@media only screen and (min-width: 480px) {
+  .curtain {
+    height: 100vh;
+  }
 }
 
 .curtain.first {
