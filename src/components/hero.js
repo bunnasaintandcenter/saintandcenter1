@@ -201,7 +201,9 @@ const Hero = ({ handlePageScroll }) => {
             <Link to="/shop">shop CBD.</Link>
           </h2>
         )}
-        <Arrow>{!isMobile && <span>Welcome to your revival</span>}</Arrow>
+        <Arrow onClick={() => handlePageScroll("shop")}>
+          {!isMobile && <span>Welcome to your revival</span>}
+        </Arrow>
       </Wrapper>
     </Curtain>
   )
