@@ -4,16 +4,28 @@ import styled from "styled-components"
 import { device } from "../utils/devices"
 
 const Wrapper = styled.div`
-  margin: 218px 162px 162px;
+  width: 90vw;
+  margin: 6rem auto;
   font-weight: 300;
+
+  @media ${device.laptop} {
+    width: auto;
+    margin: 218px 162px 162px;
+  }
 
   h2 {
     text-align: center;
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 0.075em;
-    font-size: 48px;
-    margin: 0 0 4rem;
+    font-size: 30px;
+    margin: 0 0 3rem;
+
+    @media ${device.laptop} {
+      letter-spacing: 0.075em;
+      font-size: 48px;
+      margin: 0 0 4rem;
+    }
   }
 
   a {
@@ -27,8 +39,12 @@ const Wrapper = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 2em;
+
+    @media ${device.laptop} {
+      font-size: 20;x;
+    }
   }
 `
 
