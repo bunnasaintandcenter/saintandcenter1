@@ -79,6 +79,13 @@ const Home = ({ location }) => {
           behavior: "smooth",
         })
         break
+      case "shop": {
+        window.scrollTo({
+          top: window.innerHeight * 3,
+          behavior: "smooth",
+        })
+        break
+      }
       case "hemp":
         window.scrollTo({
           top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 3,
