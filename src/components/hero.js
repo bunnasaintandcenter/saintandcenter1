@@ -17,11 +17,11 @@ const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  opacity: 0;
+  /* opacity: 0; */
   display: flex;
 
   @media ${device.laptop} {
-    height: 100%;
+    height: 100vh;
   }
 
   h2 {
@@ -140,72 +140,52 @@ const useScrollHandler = handler => {
   }, [])
 }
 
-const Curtain = props => {
-  const ref = useRef()
-  const handler = () => {
-    if (window.scrollY < window.innerHeight) {
-      ref.current.style.transform = `translateZ(0) translateY(0)`
-    } else if (window.scrollY < window.innerHeight * 3) {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
-        window.innerHeight -
-        window.innerHeight}px)`
-    } else {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
-    }
-  }
-  useScrollHandler(handler)
-  return <div ref={ref} {...props} />
-}
-
 const Hero = ({ handlePageScroll }) => {
   const innerRef = useRef()
-  const handler = () => {
-    if (window.scrollY < window.innerHeight) {
-      innerRef.current.style.opacity = Math.abs(
-        window.scrollY / window.innerHeight
-      )
-    } else {
-      innerRef.current.style.opacity = 1
-    }
-  }
-  useScrollHandler(handler)
+  // const handler = () => {
+  //   if (window.scrollY < window.innerHeight) {
+  //     innerRef.current.style.opacity = Math.abs(
+  //       window.scrollY / window.innerHeight
+  //     )
+  //   } else {
+  //     innerRef.current.style.opacity = 1
+  //   }
+  // }
+  // useScrollHandler(handler)
   return (
-    <Curtain className="curtain second">
-      <Wrapper data-testid="hero" ref={innerRef}>
-        {isMobile ? (
-          <h2>
-            Saint and Center is
-            <br /> about connections. Your
-            <br /> mind to your body. You
-            <br /> to the world. We also
-            <br /> extract, infuse and bottle
-            <br /> pure CBD from hemp.
-            <br /> Learn about hemp and
-            <br />
-            our cause to help communities affected by
-            <br />
-            cannabis laws.
-            <br /> Or <Link to="/shop">shop CBD.</Link>
-          </h2>
-        ) : (
-          <h2>
-            Saint and Center is about connections. Your mind to your body. You
-            to the world. We also extract, infuse and bottle pure CBD from hemp.
-            Learn about{" "}
-            <PageLink onClick={() => handlePageScroll("hemp")}>hemp</PageLink>{" "}
-            and{" "}
-            <PageLink onClick={() => handlePageScroll("human")}>
-              our cause
-            </PageLink>{" "}
-            to help communities affected by cannabis laws. Or{" "}
-            <Link to="/shop">shop CBD.</Link>
-          </h2>
-        )}
-        <Arrow onClick={() => handlePageScroll("shop")}>
-          {!isMobile && <span>Welcome to your revival</span>}
-        </Arrow>
-      </Wrapper>
-    </Curtain>
+    <Wrapper data-testid="hero" ref={innerRef}>
+      {isMobile ? (
+        <h2>
+          Saint and Center is
+          <br /> about connections. Your
+          <br /> mind to your body. You
+          <br /> to the world. We also
+          <br /> extract, infuse and bottle
+          <br /> pure CBD from hemp.
+          <br /> Learn about hemp and
+          <br />
+          our cause to help communities affected by
+          <br />
+          cannabis laws.
+          <br /> Or <Link to="/shop">shop CBD.</Link>
+        </h2>
+      ) : (
+        <h2>
+          Saint and Center is about connections. Your mind to your body. You to
+          the world. We also extract, infuse and bottle pure CBD from hemp.
+          Learn about{" "}
+          <PageLink onClick={() => handlePageScroll("hemp")}>hemp</PageLink> and{" "}
+          <PageLink onClick={() => handlePageScroll("human")}>
+            our cause
+          </PageLink>{" "}
+          to help communities affected by cannabis laws. Or{" "}
+          <Link to="/shop">shop CBD.</Link>
+        </h2>
+      )}
+      <Arrow onClick={() => handlePageScroll("shop")}>
+        {!isMobile && <span>Welcome to your revival</span>}
+      </Arrow>
+    </Wrapper>
   )
 }
 export default Hero

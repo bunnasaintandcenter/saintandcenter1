@@ -23,11 +23,10 @@ const Spacer = styled.div`
 `
 
 const Page = styled.div`
-  position: ${props => (props.fixed ? `fixed` : `static`)};
-  top: 56px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 56px);
+  margin-top: 100vh;
+  z-index: 200;
+  position: relative;
+  background: rgb(248, 249, 244);
 `
 
 const Feature = styled.div`
@@ -81,20 +80,20 @@ const Home = ({ location }) => {
         break
       case "shop": {
         window.scrollTo({
-          top: window.innerHeight * 3,
+          top: window.innerHeight * 2,
           behavior: "smooth",
         })
         break
       }
       case "hemp":
         window.scrollTo({
-          top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 3,
+          top: hemp.current.offsetTop + window.innerHeight - 56 - 32,
           behavior: "smooth",
         })
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 6,
+          top: human.current.offsetTop + window.innerHeight - 56 - 32,
           behavior: "smooth",
         })
     }
@@ -146,9 +145,8 @@ const Home = ({ location }) => {
           img={images.tincture}
           alt="Tincture"
         />
-        <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
-        {!pageFixed && <Spacer />}
         <Page fixed={pageFixed}>
+          <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
           <SectionHeader title="Shop" />
           <ProductList />
           <Benefits />

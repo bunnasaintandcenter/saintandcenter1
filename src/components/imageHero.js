@@ -1,12 +1,15 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 import Img from "gatsby-image"
 import arrow from "../images/down.svg"
 
 const Wrapper = styled.section`
-  position: relative;
-  height: 100%;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  width: 100vw;
+  z-index: 90;
   background: ${props => props.theme.color.gold};
 
   .gatsby-image-wrapper {
@@ -78,44 +81,20 @@ const Arrow = styled.div`
   z-index: 3;
 `
 
-const useScrollHandler = handler => {
-  useEffect(() => {
-    window.addEventListener("scroll", handler)
-    return () => {
-      window.removeEventListener("scroll", handler)
-    }
-  }, [])
-}
-
-const Curtain = props => {
-  const ref = useRef()
-  const handler = () => {
-    if (window.scrollY < window.innerHeight) {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
-    } else {
-      ref.current.style.transform = `translateZ(0) translateY(-${window.innerHeight}px)`
-    }
-  }
-  useScrollHandler(handler)
-  return <div ref={ref} {...props} />
-}
-
 const ImageHero = ({ handlePageScroll, img }) => {
   return (
-    <Curtain className="curtain first">
-      <Wrapper>
-        <Img
-          placeholderClassName="loading"
-          loading="eager"
-          fluid={img.childImageSharp.fluid}
-        />
-        <Text>
-          <h2>your higher self</h2>
-          <h2>without the high</h2>
-        </Text>
-      </Wrapper>
+    <Wrapper>
+      <Img
+        placeholderClassName="loading"
+        loading="eager"
+        fluid={img.childImageSharp.fluid}
+      />
+      <Text>
+        <h2>your higher self</h2>
+        <h2>without the high</h2>
+      </Text>
       <Arrow onClick={() => handlePageScroll("intro")} />
-    </Curtain>
+    </Wrapper>
   )
 }
 
