@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
@@ -60,8 +60,6 @@ const renderTitle = page => {
 const Layout = ({ children, location }) => {
   const cart = useSelector(state => state.cart)
 
-  const [bannerOpen, toggleBanner] = useState(true)
-
   // const handleToggleAnnouncement = () => {
   //   const storageObj = { timestamp: new Date().getTime() }
   //   localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
@@ -82,14 +80,12 @@ const Layout = ({ children, location }) => {
       </Helmet>
       <Wrapper
         data-testid="layout"
-        bannerOpen={bannerOpen}
         home={
           location &&
           (location.pathname === "/" || location.pathname === "/shop/pets")
         }
       >
         <Header
-          bannerOpen={bannerOpen}
           cart={cart}
           home={
             location &&

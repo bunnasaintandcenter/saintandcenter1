@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import logoLight from "../images/logo.svg"
-import { isMobile } from "react-device-detect"
 import logo from "../images/logo-black.svg"
 import Menu from "./menu"
 import Nav from "./nav"
