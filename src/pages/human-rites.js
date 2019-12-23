@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import { Waypoint } from "react-waypoint"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -38,8 +37,6 @@ const Text = styled.div`
 `
 
 const HumanRites = ({ location }) => {
-  const [slide, setSlide] = useState(0)
-
   const data = useStaticQuery(graphql`
     query HumanRitesQuery {
       file(relativePath: { eq: "human-rites-logo.jpg" }) {
@@ -148,7 +145,6 @@ const HumanRites = ({ location }) => {
         <Text>
           {content.map((p, index) => (
             <div key={index}>
-              <Waypoint onEnter={() => setSlide(index)} />
               <p>{p.text}</p>
             </div>
           ))}
