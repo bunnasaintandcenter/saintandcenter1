@@ -727,7 +727,8 @@ pre tt:after {
 }
 
 .curtain.second {
-  z-index: 87;
+  z-index: 200;
+  top: 100vh;
   /* background: rgb(0, 162, 123); */
 }
 
