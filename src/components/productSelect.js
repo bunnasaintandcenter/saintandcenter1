@@ -155,6 +155,9 @@ const ProductSelect = ({ options, products }) => {
         Cookies.set("woocommerce_cart_hash", hash, {
           domain: ".saintandcenter.com",
         })
+        Cookies.set("woocommerce_items_in_cart", 1, {
+          domain: ".saintandcenter.com",
+        })
         dispatch({ type: "ADD_TO_CART", payload: item })
       }
     }
