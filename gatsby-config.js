@@ -51,8 +51,8 @@ module.exports = {
         api: "checkout.saintandcenter.com",
         https: true,
         api_keys: {
-          consumer_key: process.env.WOOCOMMERCE_KEY,
-          consumer_secret: process.env.WOOCOMMERCE_SECRET,
+          consumer_key: `ck_c738a074975755a97ed0c2f38478adb386dbd00d`,
+          consumer_secret: `cs_c97e62bdf352180e1b08c277da6faa28d8c5d8fc`,
         },
         fields: ["products", "products/categories"],
       },
