@@ -115,7 +115,7 @@ const Product = ({ name, image, slug, products }) => (
   <Wrapper data-testid="product">
     <Info>
       <h2 data-testid="product-name">{name}</h2>
-      <h3 data-testid="product-price">${products[1].price}</h3>
+      <h3 data-testid="product-price">${products && products[1].price}</h3>
     </Info>
     <Link to={`/shop/product/${slug}`}></Link>
     {image && (
@@ -124,7 +124,7 @@ const Product = ({ name, image, slug, products }) => (
         fluid={image.localFile.childImageSharp.fluid}
       />
     )}
-    {products[1] && products[1].images[1] && (
+    {products && products[1] && products[1].images[1] && (
       <Img
         className="hover-image"
         fluid={products[1].images[1].localFile.childImageSharp.fluid}

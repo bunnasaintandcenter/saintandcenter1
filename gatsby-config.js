@@ -49,7 +49,7 @@ module.exports = {
       resolve: `@pasdo501/gatsby-source-woocommerce`,
       options: {
         api: `checkout.saintandcenter.com`,
-        https: true,
+        https: false,
         per_page: 10,
         api_keys: {
           consumer_key: process.env.WOOCOMMERCE_KEY,
