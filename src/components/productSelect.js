@@ -147,17 +147,19 @@ const ProductSelect = ({ options, products }) => {
 
       const res = await axios.post(
         `https://checkout.saintandcenter.com/wp-json/cocart/v1/add-item`,
-        item
+        item,
+        { withCredentials: true }
       )
       if (res) {
+        console.log(res)
         const hash = res.data.data_hash
         console.log("hash", hash)
-        Cookies.set("woocommerce_cart_hash", hash, {
-          domain: ".saintandcenter.com",
-        })
-        Cookies.set("woocommerce_items_in_cart", 1, {
-          domain: ".saintandcenter.com",
-        })
+        // Cookies.set("woocommerce_cart_hash", hash, {
+        //   domain: ".saintandcenter.com",
+        // })
+        // Cookies.set("woocommerce_items_in_cart", 1, {
+        //   domain: ".saintandcenter.com",
+        // })
         dispatch({ type: "ADD_TO_CART", payload: item })
       }
     }
