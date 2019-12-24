@@ -76,7 +76,7 @@ const ProductSelect = ({ options, products }) => {
 
   const addToCart = async () => {
     const response = await axios.get(
-      `https://andnone.co/saintcenter/wp-json/wc/v3`,
+      `https://checkout.saintandcenter.com/wp-json/wc/v3`,
       { withCredentials: true }
     )
     console.log(response)
@@ -91,7 +91,7 @@ const ProductSelect = ({ options, products }) => {
     }
 
     const res = await axios.post(
-      `https://andnone.co/saintcenter/wp-json/cocart/v1/add-item`,
+      `https://checkout.saintandcenter.com/wp-json/cocart/v1/add-item`,
       item
     )
     if (res) {

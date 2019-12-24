@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `andnone.co/saintcenter`,
+        baseUrl: `checkout.saintandcenter.com`,
         protocol: "https",
         verbose: true,
         useACF: true,
@@ -46,13 +46,11 @@ module.exports = {
       },
     },
     {
-      resolve: "@pasdo501/gatsby-source-woocommerce",
+      resolve: `@pasdo501/gatsby-source-woocommerce`,
       options: {
-        api: "andnone.co/saintcenter",
-        itemCount: 20,
-        verbose: true,
-        useACF: true,
+        api: `checkout.saintandcenter.com`,
         https: false,
+        per_page: 10,
         api_keys: {
           consumer_key: process.env.WOOCOMMERCE_KEY,
           consumer_secret: process.env.WOOCOMMERCE_SECRET,
@@ -62,9 +60,6 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

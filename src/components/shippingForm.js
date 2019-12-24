@@ -96,7 +96,7 @@ const ShippingForm = ({ user, address, title }) => {
 
     axios
       .put(
-        `https://andnone.co/saintcenter/wp-json/wc/v3/customers/3?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
+        `https://checkout.saintandcenter.com/wp-json/wc/v3/customers/3?consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`,
         {
           ...user,
           [title]: data,
