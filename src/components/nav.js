@@ -23,7 +23,6 @@ const Wrapper = styled.nav`
     left: 5vw;
     height: 56px;
     top: 0;
-    z-index: 200;
     justify-content: flex-start;
   }
 
