@@ -146,7 +146,6 @@ const Curtain = props => {
     if (window.scrollY < window.innerHeight) {
       ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY}px)`
     } else if (window.scrollY < window.innerHeight * 2) {
-      console.log(window.innerHeight)
       ref.current.style.transform = `translateZ(0) translateY(-100%})`
     } else {
       ref.current.style.transform = `translateZ(0) translateY(-${window.scrollY -
