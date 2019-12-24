@@ -68,7 +68,6 @@ const Home = ({ location }) => {
   const listenScrollEvent = () => {
     if (window.scrollY > window.innerHeight) {
       setRaiseUp(true)
-      console.log("raise up!")
     } else {
       setRaiseUp(false)
     }
