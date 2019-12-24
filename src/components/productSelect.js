@@ -221,7 +221,11 @@ const ProductSelect = ({ options, products }) => {
           {recurrence === "monthly" ? (
             <>Coming soon</>
           ) : (
-            <>${products[1].product_variations[selectedOption].price * count}</>
+            <>
+              $
+              {products[1] &&
+                products[1].product_variations[selectedOption].price * count}
+            </>
           )}
         </Price>
         {recurrence === "once" && (
