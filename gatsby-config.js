@@ -50,6 +50,7 @@ module.exports = {
       options: {
         api: `checkout.saintandcenter.com`,
         https: true,
+        per_page: 10,
         api_keys: {
           consumer_key: `ck_97b703a08bfde2257417ab7415a67f8bd1268e07`,
           consumer_secret: `cs_9738d10494129e406d3a65d41b9a0c76e4123e2c`,

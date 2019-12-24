@@ -1256,6 +1256,13 @@
   dependencies:
     core-js "^2.5.7"
 
+"@massivdash/gatsby-source-woocommerce@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@massivdash/gatsby-source-woocommerce/-/gatsby-source-woocommerce-0.2.4.tgz#14aea7a2d8c6eadeb50983915c5778fa73c45d38"
+  integrity sha512-XaRw1ObPOhhbhZ5qqIw13rmlTlljzcHToX+oMiSZf6vuPyK2P1xGP1ewHyMNNKIqiZUCxuICGjaaniWbt7ed0A==
+  dependencies:
+    woocommerce-api "^1.4.2"
+
 "@mikaelkristiansson/domready@^1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mikaelkristiansson/domready/-/domready-1.0.9.tgz#b2b85d8ac7bb2797e577050b61aeaf1b26fbd906"
