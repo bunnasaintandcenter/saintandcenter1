@@ -8,6 +8,7 @@ import { device } from "../utils/devices"
 import axios from "axios"
 import PropTypes from "prop-types"
 import { MdAttachFile } from "react-icons/md"
+import Cookies from "js-cookie"
 
 const Wrapper = styled.div`
   font-weight: 300;
@@ -134,22 +135,28 @@ const ProductSelect = ({ options, products }) => {
       `https://checkout.saintandcenter.com/wp-json/wc/v3`,
       { withCredentials: true }
     )
-    console.log(response)
-    const item = {
-      product_id: products[recurrence === "monthly" ? 0 : 1].wordpress_id,
-      variation_id:
-        products[recurrence === "monthly" ? 0 : 1].product_variations[
-          selectedOption
-        ].id,
-      quantity: count,
-    }
+    if (response) {
+      const item = {
+        product_id: products[recurrence === "monthly" ? 0 : 1].wordpress_id,
+        variation_id:
+          products[recurrence === "monthly" ? 0 : 1].product_variations[
+            selectedOption
+          ].id,
+        quantity: count,
+      }
 
-    const res = await axios.post(
-      `https://checkout.saintandcenter.com/wp-json/cocart/v1/add-item`,
-      item
-    )
-    if (res) {
-      dispatch({ type: "ADD_TO_CART", payload: item })
+      const res = await axios.post(
+        `https://checkout.saintandcenter.com/wp-json/cocart/v1/add-item`,
+        item
+      )
+      if (res) {
+        const hash = res.data.data_hash
+        console.log("hash", hash)
+        Cookies.set("woocommerce_cart_hash", hash, {
+          domain: "saintandcenter.com",
+        })
+        dispatch({ type: "ADD_TO_CART", payload: item })
+      }
     }
   }
 
