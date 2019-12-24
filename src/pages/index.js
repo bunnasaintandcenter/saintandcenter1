@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  height: 400vh;
+  min-height: 500vh;
 `
 
 const Spacer = styled.div`
@@ -24,12 +24,13 @@ const Spacer = styled.div`
 
 const Page = styled.div`
   position: ${props => (props.fixed ? `fixed` : `static`)};
-  top: 0;
+  top: 56px;
   left: 0;
   width: 100vw;
   height: calc(100vh);
   z-index: ${props => (props.raiseUp ? 100 : 1)};
   background: rgb(248, 249, 244);
+  margin-top: ${props => (props.fixed ? 0 : `calc(300vh + 56px)`)};
 `
 
 const Feature = styled.div`
@@ -68,7 +69,7 @@ const Home = ({ location }) => {
       setRaiseUp(false)
     }
 
-    if (window.scrollY > window.innerHeight * 3 - 32) {
+    if (window.scrollY > window.innerHeight * 3) {
       setPageFixed(false)
     } else {
       setPageFixed(true)
