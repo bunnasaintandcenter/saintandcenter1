@@ -46,13 +46,13 @@ module.exports = {
       },
     },
     {
-      resolve: "@pasdo501/gatsby-source-woocommerce",
+      resolve: `@pasdo501/gatsby-source-woocommerce`,
       options: {
-        api: "checkout.saintandcenter.com",
+        api: `checkout.saintandcenter.com`,
         https: true,
         api_keys: {
-          consumer_key: `ck_c738a074975755a97ed0c2f38478adb386dbd00d`,
-          consumer_secret: `cs_c97e62bdf352180e1b08c277da6faa28d8c5d8fc`,
+          consumer_key: `ck_97b703a08bfde2257417ab7415a67f8bd1268e07`,
+          consumer_secret: `cs_9738d10494129e406d3a65d41b9a0c76e4123e2c`,
         },
         fields: ["products", "products/categories"],
       },
