@@ -24,10 +24,12 @@ const Spacer = styled.div`
 
 const Page = styled.div`
   position: ${props => (props.fixed ? `fixed` : `static`)};
-  top: 56px;
+  top: 0;
   left: 0;
   width: 100vw;
-  height: calc(100vh - 56px);
+  height: calc(100vh);
+  z-index: ${props => (props.raiseUp ? 100 : 1)};
+  background: rgb(248, 249, 244);
 `
 
 const Feature = styled.div`
@@ -56,9 +58,17 @@ const Home = ({ location }) => {
   const human = createRef()
 
   const [pageFixed, setPageFixed] = useState(true)
+  const [raiseUp, setRaiseUp] = useState(false)
 
   const listenScrollEvent = () => {
-    if (window.scrollY > window.innerHeight * 3 - 56) {
+    if (window.scrollY > window.innerHeight) {
+      setRaiseUp(true)
+      console.log("raise up!")
+    } else {
+      setRaiseUp(false)
+    }
+
+    if (window.scrollY > window.innerHeight * 3 - 32) {
       setPageFixed(false)
     } else {
       setPageFixed(true)
@@ -148,7 +158,7 @@ const Home = ({ location }) => {
         />
         <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
         {!pageFixed && <Spacer />}
-        <Page fixed={pageFixed}>
+        <Page raiseUp={raiseUp} fixed={pageFixed}>
           <SectionHeader title="Shop" />
           <ProductList />
           <Benefits />

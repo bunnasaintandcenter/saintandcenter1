@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 100;
+  z-index: 900;
   top: 0;
 `
 
