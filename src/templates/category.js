@@ -58,7 +58,7 @@ const Info = styled.div`
     font-weight: 300;
     font-size: 1.5vw;
     line-height: 3vw;
-    padding: 4rem 4rem 0 4rem;
+    padding: 24px;
   }
 `
 
