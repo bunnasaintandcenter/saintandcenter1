@@ -13,6 +13,7 @@ import Benefits from "../components/benefits"
 import holyHemp from "../images/holy-hemp.svg"
 import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
+import { ParallaxProvider, Parallax } from "react-scroll-parallax"
 
 const Wrapper = styled.div`
   min-height: 500vh;
@@ -63,27 +64,27 @@ const Home = ({ location }) => {
   const human = createRef()
 
   const [pageFixed, setPageFixed] = useState(true)
-  const [raiseUp, setRaiseUp] = useState(false)
-
-  const listenScrollEvent = () => {
-    if (window.scrollY > window.innerHeight) {
-      setRaiseUp(true)
-    } else {
-      setRaiseUp(false)
-    }
-
-    if (window.scrollY > window.innerHeight * 3) {
-      setPageFixed(false)
-    } else {
-      setPageFixed(true)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent)
-
-    // return window.removeEventListener("scroll", listenScrollEvent)
-  })
+  // const [raiseUp, setRaiseUp] = useState(false)
+  //
+  // const listenScrollEvent = () => {
+  //   if (window.scrollY > window.innerHeight) {
+  //     setRaiseUp(true)
+  //   } else {
+  //     setRaiseUp(false)
+  //   }
+  //
+  //   if (window.scrollY > window.innerHeight * 3) {
+  //     setPageFixed(false)
+  //   } else {
+  //     setPageFixed(true)
+  //   }
+  // }
+  //
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenScrollEvent)
+  //
+  //   // return window.removeEventListener("scroll", listenScrollEvent)
+  // })
 
   const handlePageScroll = section => {
     switch (section) {
@@ -154,15 +155,20 @@ const Home = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
-      <Wrapper>
-        <ImageHero
-          handlePageScroll={handlePageScroll}
-          img={images.tincture}
-          alt="Tincture"
-        />
-        <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
-        {!pageFixed && <Spacer />}
-        <Page raiseUp={raiseUp} fixed={pageFixed}>
+      <ParallaxProvider>
+        <Wrapper>
+          <ImageHero
+            handlePageScroll={handlePageScroll}
+            img={images.tincture}
+            alt="Tincture"
+          />
+          <Parallax className="custom-class" y={[0, -100]} tagOuter="figure">
+            <Hero
+              title="We have a mission"
+              handlePageScroll={handlePageScroll}
+            />
+          </Parallax>
+          {!pageFixed && <Spacer />}
           <SectionHeader title="Shop" />
           <ProductList />
           <Benefits />
@@ -203,8 +209,8 @@ const Home = ({ location }) => {
               cannabis laws.
             </p>
           </TextBlockWithImage>
-        </Page>
-      </Wrapper>
+        </Wrapper>
+      </ParallaxProvider>
     </Layout>
   )
 }

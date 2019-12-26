@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useSelector } from 'react-redux'
-import Layout from '../../components/layout'
-import AccountNav from '../../components/accountNav'
-import { device } from '../../utils/devices'
-import tabs from '../../utils/tabs'
+import React from "react"
+import styled from "styled-components"
+import { useSelector } from "react-redux"
+import Layout from "../../components/layout"
+import AccountNav from "../../components/accountNav"
+import { device } from "../../utils/devices"
+import tabs from "../../utils/tabs"
 
 const Section = styled.section`
   margin: 0 auto;
@@ -19,7 +19,7 @@ const Section = styled.section`
     font-weight: 300;
     text-transform: uppercase;
   }
-`;
+`
 
 const Main = styled.div`
   padding: 4rem;
@@ -33,35 +33,40 @@ const Main = styled.div`
     line-height: 1.6em;
 
     a {
-      color: rgb(51,51,51);
+      color: rgb(51, 51, 51);
     }
   }
-`;
+`
 
 const Settings = ({ location }) => {
-
   const user = useSelector(state => state.user)
 
   return (
     <Layout location={location}>
-      {user.id ?
+      {user.id ? (
         <>
-        <Section cols={2}>
-          <AccountNav
-            tabs={tabs}
-          />
-          <Main>
-            <p>Hi {user.first_name}</p>
-            <p>Welcome to your Saint and Center account dashboard.</p>
-            <p>Here you can track your orders, edit your subscriptions and update your billing and shipping information.</p>
-            <p>And, as always, contact us <a href="mailto:test@gmail.com">here</a> if you have any questions.</p>
-          </Main>
-        </Section>
+          <Section cols={2}>
+            <AccountNav tabs={tabs} />
+            <Main>
+              <p>Hi {user.first_name}</p>
+              <p>Welcome to your Saint and Center account dashboard.</p>
+              <p>
+                Here you can track your orders, edit your subscriptions and
+                update your billing and shipping information.
+              </p>
+              <p>
+                And, as always, contact us{" "}
+                <a href="mailto:test@gmail.com">here</a> if you have any
+                questions.
+              </p>
+            </Main>
+          </Section>
         </>
-        : <span>Please log in</span>
-      }
+      ) : (
+        <span>Please log in</span>
+      )}
     </Layout>
   )
 }
 
-export default Settings;
+export default Settings
