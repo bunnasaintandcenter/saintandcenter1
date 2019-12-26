@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 `
 
 const Spacer = styled.div`
-  margin-top: 300vh;
+  margin-top: 200vh;
 `
 
 const Page = styled.div`
@@ -34,7 +34,7 @@ const Page = styled.div`
   height: calc(100vh);
   z-index: ${props => (props.raiseUp ? 100 : 1)};
   background: rgb(248, 249, 244);
-  margin-top: ${props => (props.fixed ? 0 : `calc(300vh + 56px)`)};
+  margin-top: ${props => (props.fixed ? 0 : `calc(100vh + 56px)`)};
 `
 
 const Feature = styled.div`
@@ -72,7 +72,7 @@ const Home = ({ location }) => {
       setRaiseUp(false)
     }
 
-    if (window.scrollY > window.innerHeight * 3) {
+    if (window.scrollY > window.innerHeight * 2) {
       setPageFixed(false)
     } else {
       setPageFixed(true)

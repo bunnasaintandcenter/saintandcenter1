@@ -76,6 +76,7 @@ const Arrow = styled.div`
   background-size: 100%;
   width: 24px;
   height: 33px;
+  transform: translate(-50%, 0);
   cursor: pointer;
   z-index: 3;
 `
