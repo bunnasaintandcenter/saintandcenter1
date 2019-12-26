@@ -8,7 +8,6 @@ import { device } from "../utils/devices"
 import axios from "axios"
 import PropTypes from "prop-types"
 import { MdAttachFile } from "react-icons/md"
-import Cookies from "js-cookie"
 
 const Wrapper = styled.div`
   font-weight: 300;
