@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import arrow from "../images/down.svg"
 
 const Wrapper = styled.section`
-  position: relative;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   z-index: 100;

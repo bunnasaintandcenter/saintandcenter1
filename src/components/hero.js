@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   display: flex;
 
   @media ${device.laptop} {
-    height: 100%;
+    height: 100vh;
   }
 
   h2 {

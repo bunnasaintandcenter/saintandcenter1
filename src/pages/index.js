@@ -15,27 +15,10 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 import { ParallaxProvider, Parallax } from "react-scroll-parallax"
 
-const Wrapper = styled.div`
-  min-height: 500vh;
-
-  @media ${device.laptop} {
-    min-height: calc(400vh);
-  }
-`
+const Wrapper = styled.div``
 
 const Spacer = styled.div`
   margin-top: 300vh;
-`
-
-const Page = styled.div`
-  position: ${props => (props.fixed ? `fixed` : `static`)};
-  top: 56px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh);
-  z-index: ${props => (props.raiseUp ? 100 : 1)};
-  background: rgb(248, 249, 244);
-  margin-top: ${props => (props.fixed ? 0 : `calc(300vh + 56px)`)};
 `
 
 const Feature = styled.div`
@@ -64,27 +47,6 @@ const Home = ({ location }) => {
   const human = createRef()
 
   const [pageFixed, setPageFixed] = useState(true)
-  // const [raiseUp, setRaiseUp] = useState(false)
-  //
-  // const listenScrollEvent = () => {
-  //   if (window.scrollY > window.innerHeight) {
-  //     setRaiseUp(true)
-  //   } else {
-  //     setRaiseUp(false)
-  //   }
-  //
-  //   if (window.scrollY > window.innerHeight * 3) {
-  //     setPageFixed(false)
-  //   } else {
-  //     setPageFixed(true)
-  //   }
-  // }
-  //
-  // useEffect(() => {
-  //   window.addEventListener("scroll", listenScrollEvent)
-  //
-  //   // return window.removeEventListener("scroll", listenScrollEvent)
-  // })
 
   const handlePageScroll = section => {
     switch (section) {
@@ -162,7 +124,11 @@ const Home = ({ location }) => {
             img={images.tincture}
             alt="Tincture"
           />
-          <Parallax className="custom-class" y={[0, -100]} tagOuter="figure">
+          <Parallax
+            className="custom-class"
+            y={[`${window.innerHeight / 2}`, 100]}
+            styleOuter={{ zIndex: 9999, position: `relative` }}
+          >
             <Hero
               title="We have a mission"
               handlePageScroll={handlePageScroll}
