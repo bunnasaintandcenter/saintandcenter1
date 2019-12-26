@@ -729,7 +729,7 @@ pre tt:after {
 .curtain.second {
   z-index: 200;
   top: 100vh;
-  /* background: rgb(0, 162, 123); */
+  background: rgb(238, 184, 5);
 }
 
 .curtain.third {

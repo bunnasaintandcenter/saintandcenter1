@@ -143,14 +143,7 @@ const useScrollHandler = handler => {
 const Curtain = props => {
   const ref = useRef()
   const handler = () => {
-    if (window.scrollY < window.innerHeight) {
-      ref.current.style.transform = `translate3d(0,-${window.scrollY}px,0)`
-    } else if (window.scrollY < window.innerHeight * 2) {
-      ref.current.style.transform = `translate3d(0,-100%,0})`
-    } else {
-      ref.current.style.transform = `translate3d(0,-${window.scrollY -
-        window.innerHeight}px,0)`
-    }
+    ref.current.style.transform = `translate3d(0,-${window.scrollY}px,0)`
   }
   useScrollHandler(handler)
   return <div ref={ref} {...props} />
