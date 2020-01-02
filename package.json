@@ -34,7 +34,7 @@
     "react-google-login": "^5.0.5",
     "react-headroom": "^3.0.0",
     "react-helmet": "^5.2.1",
-    "react-hook-form": "^3.26.5",
+    "react-hook-form": "^4.4.2",
     "react-icons": "^3.7.0",
     "react-instafeed": "^1.0.0",
     "react-moment": "^0.9.2",
