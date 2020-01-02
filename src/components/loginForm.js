@@ -6,7 +6,7 @@ import axios from "axios"
 import { navigate, Link } from "gatsby"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
 import { device } from "../utils/devices"
-import useForm from "react-hook-form"
+import { useForm } from "react-hook-form"
 
 const Form = styled.form`
   display: flex;
