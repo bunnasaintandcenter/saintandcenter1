@@ -15,11 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  min-height: 500vh;
-
-  @media ${device.laptop} {
-    min-height: 395.5vh;
-  }
+  min-height: 395.5vh;
 `
 
 const Spacer = styled.div`
