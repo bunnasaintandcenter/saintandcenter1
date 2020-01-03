@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  min-height: 395.5vh;
+  min-height: ${props => (props.pageFixed ? `400vh` : `0`)};
 `
 
 const Spacer = styled.div`
@@ -150,7 +150,7 @@ const Home = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
-      <Wrapper>
+      <Wrapper pageFixed={pageFixed}>
         <ImageHero
           handlePageScroll={handlePageScroll}
           img={images.tincture}
