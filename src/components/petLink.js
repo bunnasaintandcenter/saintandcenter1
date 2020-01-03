@@ -8,14 +8,14 @@ const Wrapper = styled.div`
   grid-area: pets;
 
   h2 {
-    position: absolute;
-    color: white;
-    top: 24px;
-    left: 24px;
     font-weight: 300;
     z-index: 1;
     text-transform: uppercase;
     font-size: 24px;
+    position: absolute;
+    color: white;
+    top: 24px;
+    left: 24px;
   }
 
   .gatsby-image-wrapper {
