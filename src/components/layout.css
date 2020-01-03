@@ -699,6 +699,7 @@ pre tt:after {
   src: url("../type/UntitledSansWeb-Black.woff") format("woff");
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
