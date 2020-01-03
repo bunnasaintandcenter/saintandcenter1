@@ -19,8 +19,11 @@ const Foot = styled.footer`
 const Block = styled.div`
   padding: 24px;
   box-sizing: border-box;
-  border-right: 1px solid black;
   border-top: 1px solid black;
+
+  @media ${device.laptop} {
+    border-right: 1px solid black;
+  }
 
   h4 {
     text-transform: uppercase;
