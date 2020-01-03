@@ -14,6 +14,34 @@ const Foot = styled.footer`
     grid-template-rows: 50vw 16.66vw 16.66vw;
     grid-template-areas: "sub sub sub pets pets pets" "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
   }
+
+  .petLink {
+    position: relative;
+    grid-area: pets;
+
+    .gatsby-image-wrapper {
+      height: 100%;
+    }
+
+    h2 {
+      font-weight: 300;
+      z-index: 1;
+      text-transform: uppercase;
+      font-size: 24px;
+      position: absolute;
+      color: white;
+      top: 24px;
+      left: 24px;
+    }
+
+    img {
+      width: 100%;
+      height: 50vw;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+    }
+  }
 `
 
 const Block = styled.div`
