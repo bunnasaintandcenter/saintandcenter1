@@ -56,9 +56,9 @@ const PetLink = () => {
   `)
 
   return (
-    <Wrapper>
+    <Wrapper className="petLink">
       <Link to="/shop/pets">
-        <h2 className="testing">CBD for Pets</h2>
+        <h2>CBD for Pets</h2>
         <Img fluid={data.file.childImageSharp.fluid} alt="Pet Products" />
       </Link>
     </Wrapper>
