@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 
   .gatsby-image-wrapper {
-    height 100%;
+    height: 100%;
   }
 
   img {
