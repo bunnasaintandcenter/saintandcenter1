@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   position: relative;
   grid-area: pets;
 
+  .gatsby-image-wrapper {
+    height: 100%;
+  }
+
   h2 {
     font-weight: 300;
     z-index: 1;
@@ -16,10 +20,6 @@ const Wrapper = styled.div`
     color: white;
     top: 24px;
     left: 24px;
-  }
-
-  .gatsby-image-wrapper {
-    height: 100%;
   }
 
   img {
