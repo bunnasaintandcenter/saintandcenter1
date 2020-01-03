@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   min-height: 500vh;
 
   @media ${device.laptop} {
-    min-height: 400vh;
+    min-height: 395.5vh;
   }
 `
 

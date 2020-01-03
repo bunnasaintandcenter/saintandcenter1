@@ -46,7 +46,7 @@ const ProductList = () => {
               localFile {
                 childImageSharp {
                   fluid(maxWidth: 1000, quality: 85) {
-                    ...GatsbyImageSharpFluid
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
