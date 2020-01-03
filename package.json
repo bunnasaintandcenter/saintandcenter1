@@ -7,7 +7,7 @@
   "dependencies": {
     "@pasdo501/gatsby-source-woocommerce": "^0.11.0",
     "@react-hook/window-scroll": "^1.0.6",
-    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.51",
     "gatsby-image": "^2.0.41",
