@@ -11,8 +11,12 @@ import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   top: 0;
+
+  @media ${device.laptop} {
+    z-index: 999;
+  }
 `
 
 const Head = styled.header`
@@ -31,6 +35,7 @@ const Head = styled.header`
 
   @media ${device.laptop} {
     padding: 0 24px;
+    z-index: 999;
   }
 `
 
