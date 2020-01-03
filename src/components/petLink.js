@@ -1,7 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 import styled from "styled-components"
-import treats from "../images/treats.jpg"
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,6 +18,10 @@ const Wrapper = styled.div`
     font-size: 24px;
   }
 
+  .gatsby-image-wrapper {
+    height 100%;
+  }
+
   img {
     width: 100%;
     height: 50vw;
@@ -27,13 +31,38 @@ const Wrapper = styled.div`
   }
 `
 
-const PetLink = () => (
-  <Wrapper>
-    <Link to="/shop/pets">
-      <h2>CBD for Pets</h2>
-      <img src={treats} alt="Pet Products" />
-    </Link>
-  </Wrapper>
-)
+const PetLink = () => {
+  const data = useStaticQuery(graphql`
+    query PetLinkQuery {
+      file: file(relativePath: { eq: "treats.jpg" }) {
+        childImageSharp {
+          fluid {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+            presentationWidth
+            presentationHeight
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <Wrapper>
+      <Link to="/shop/pets">
+        <h2>CBD for Pets</h2>
+        <Img fluid={data.file.childImageSharp.fluid} alt="Pet Products" />
+      </Link>
+    </Wrapper>
+  )
+}
 
 export default PetLink

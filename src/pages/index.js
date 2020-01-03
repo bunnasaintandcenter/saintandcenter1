@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   min-height: 500vh;
 
   @media ${device.laptop} {
-    min-height: calc(400vh);
+    min-height: 400vh;
   }
 `
 
@@ -31,7 +31,7 @@ const Page = styled.div`
   top: 56px;
   left: 0;
   width: 100vw;
-  height: calc(100vh);
+  height: ${props => (props.raiseUp ? `auto` : `100vh`)};
   z-index: ${props => (props.raiseUp ? 100 : 1)};
   background: rgb(248, 249, 244);
   margin-top: ${props => (props.fixed ? 0 : `calc(100vh + 56px)`)};
