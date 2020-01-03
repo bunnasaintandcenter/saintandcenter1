@@ -58,9 +58,7 @@ module.exports = {
         fields: ["products", "products/categories"],
       },
     },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-    },
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
