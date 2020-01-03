@@ -63,7 +63,7 @@ const Shop = ({ location }) => (
                 localFile {
                   childImageSharp {
                     fluid {
-                      ...GatsbyImageSharpFluid
+                      ...GatsbyImageSharpFluid_withWebp
                     }
                   }
                 }
