@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  min-height: 395.5vh;
+  min-height: ${props => (props.pageFixed ? `400vh` : `0`)};
 `
 
 const Spacer = styled.div`
@@ -30,7 +30,7 @@ const Page = styled.div`
   height: ${props => (props.raiseUp ? `auto` : `100vh`)};
   z-index: ${props => (props.raiseUp ? 100 : 1)};
   background: rgb(248, 249, 244);
-  margin-top: ${props => (props.fixed ? 0 : `calc(100vh + 56px)`)};
+  margin-top: ${props => (props.fixed ? 0 : `200vh`)};
 `
 
 const Feature = styled.div`
@@ -62,6 +62,7 @@ const Home = ({ location }) => {
   const [raiseUp, setRaiseUp] = useState(false)
 
   const listenScrollEvent = () => {
+    console.log(window.scrollY / window.innerHeight)
     if (window.scrollY > window.innerHeight) {
       setRaiseUp(true)
     } else {
@@ -77,7 +78,6 @@ const Home = ({ location }) => {
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent)
-
     // return window.removeEventListener("scroll", listenScrollEvent)
   })
 
@@ -98,13 +98,13 @@ const Home = ({ location }) => {
       }
       case "hemp":
         window.scrollTo({
-          top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 3,
+          top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 2,
           behavior: "smooth",
         })
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 6,
+          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 2,
           behavior: "smooth",
         })
     }
@@ -150,14 +150,13 @@ const Home = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO title="Saint and Center" />
-      <Wrapper>
+      <Wrapper pageFixed={pageFixed}>
         <ImageHero
           handlePageScroll={handlePageScroll}
           img={images.tincture}
           alt="Tincture"
         />
         <Hero title="We have a mission" handlePageScroll={handlePageScroll} />
-        {!pageFixed && <Spacer />}
         <Page raiseUp={raiseUp} fixed={pageFixed}>
           <SectionHeader title="Shop" />
           <ProductList />
