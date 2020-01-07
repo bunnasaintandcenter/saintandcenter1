@@ -5,13 +5,13 @@ import { device } from "../utils/devices"
 import { Waypoint } from "react-waypoint"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { isMobile } from "react-device-detect"
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
   @media ${device.laptop} {
-    padding-top: calc(1.5vw + 3rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 56px;
   }
 `
 const Image = styled.div`
@@ -31,13 +31,30 @@ const Image = styled.div`
 `
 
 const Text = styled.div`
+  p {
+    padding: 0 5vw;
+    margin: 0 0 22px;
+
+    @media ${device.laptop} {
+      padding: 0;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    margin-bottom: 22px;
+  }
+
   div {
     box-sizing: border-box;
     font-weight: 300;
-    font-size: 30px;
-    line-height: 48px;
-    padding: 1rem;
-    height: calc(100vh - 1.5vw - 3rem);
+    font-size: 16px;
+    line-height: 30px;
+
+    @media ${device.laptop} {
+      font-size: 30px;
+      line-height: 48px;
+      padding: 1rem;
+    }
   }
 `
 
@@ -185,13 +202,19 @@ const HolyHemp = ({ location }) => {
   return (
     <Layout location={location}>
       <Wrapper>
-        <Image>
-          <Img fluid={content[slide].image.childImageSharp.fluid} />
-        </Image>
+        {!isMobile && (
+          <Image>
+            <Img fluid={content[slide].image.childImageSharp.fluid} />
+          </Image>
+        )}
         <Text>
           {content.map((p, index) => (
             <div key={index}>
-              <Waypoint onEnter={() => setSlide(index)} />
+              {isMobile ? (
+                <Img fluid={p.image.childImageSharp.fluid} />
+              ) : (
+                <Waypoint onEnter={() => setSlide(index)} />
+              )}
               <p>{p.text}</p>
             </div>
           ))}
