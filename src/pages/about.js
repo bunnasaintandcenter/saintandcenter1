@@ -4,19 +4,23 @@ import Layout from "../components/layout"
 import { device } from "../utils/devices"
 
 const Wrapper = styled.div`
-  @media ${device.laptop} {
-    padding-top: calc(1.5vw + 3rem);
-  }
+  padding-top: 56px;
 `
 
 const Intro = styled.div`
   width: 90vw;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 1rem;
-  font-weight: 300;
-  font-size: 51px;
-  line-height: 72px;
+  padding: 24px;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 36px;
+
+  @media ${device.laptop} {
+    margin: 0 auto;
+    font-size: 51px;
+    line-height: 72px;
+  }
 `
 
 const About = ({ location }) => (
