@@ -7,7 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // query content for WordPress posts
   const result = await graphql(`
     query {
-      allWcProductsCategories {
+      allWcProductsCategories(filter: { wordpress_id: { nin: [25, 15] } }) {
         edges {
           node {
             id

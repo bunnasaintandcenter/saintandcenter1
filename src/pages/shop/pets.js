@@ -6,7 +6,6 @@ import Product from "../../components/product"
 import SEO from "../../components/seo"
 import { isBrowser } from "react-device-detect"
 import Benefits from "../../components/benefits"
-import Div100vh from "react-div-100vh"
 import { device } from "../../utils/devices"
 
 const Hero = styled.div`
@@ -14,6 +13,8 @@ const Hero = styled.div`
   height: 100%;
   color: white;
   display: flex;
+  height: 100vh;
+  height: fill-available;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -78,16 +79,14 @@ const Shop = ({ location }) => (
     `}
     render={data => (
       <Layout location={location}>
-        {typeof document !== "undefined" && (
-          <Div100vh>
-            <Hero>
-              <h2>Saint and Center</h2>
-              <div>
-                <h2>For</h2>
-                <h2>Pets</h2>
-              </div>
-            </Hero>
-          </Div100vh>
+        {typeof document !== "undefined" && typeof window !== "undefined" && (
+          <Hero>
+            <h2>Saint and Center</h2>
+            <div>
+              <h2>For</h2>
+              <h2>Pets</h2>
+            </div>
+          </Hero>
         )}
         <SEO title="For Pets | Saint and Center" />
         <ProductGrid>
