@@ -1,18 +1,24 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
+import { device } from "../utils/devices"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   padding-top: 56px;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 const Image = styled.div`
-  position: sticky;
-  top: calc(1.5vw + 3rem);
-  height: calc(100vh - 1.5vw - 3rem);
+  @media ${device.laptop} {
+    height: calc(100vh - 1.5vw - 3rem);
+    position: sticky;
+    top: calc(1.5vw + 3rem);
+  }
 
   .gatsby-image-wrapper {
     height: 100%;
@@ -29,9 +35,14 @@ const Text = styled.div`
   div {
     box-sizing: border-box;
     font-weight: 300;
-    font-size: 30px;
-    line-height: 48px;
+    font-size: 16px;
+    line-height: 30px;
     padding: 1rem;
+
+    @media ${device.laptop} {
+      font-size: 30px;
+      line-height: 48px;
+    }
   }
 `
 
