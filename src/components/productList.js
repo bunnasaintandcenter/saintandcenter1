@@ -23,7 +23,7 @@ const ProductList = () => {
     query ProductListQuery {
       allWcProductsCategories(
         sort: { fields: menu_order }
-        filter: { wordpress_id: { ne: 29 } }
+        filter: { wordpress_id: { ne: 25 } }
       ) {
         edges {
           node {
