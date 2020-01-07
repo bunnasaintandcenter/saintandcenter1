@@ -78,14 +78,17 @@ const Category = ({ pageContext, updateCart, location }) => {
   return (
     <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />
-      <Wrapper full={isBrowser ? false : true}>
-        <Image main full={isBrowser ? false : true}>
+      <Wrapper full={typeof window !== "undefined" && isBrowser ? false : true}>
+        <Image
+          main
+          full={typeof window !== "undefined" && isBrowser ? false : true}
+        >
           {images[1] && (
             <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
           )}
         </Image>
         <Info>
-          {isBrowser && <h4>{description}</h4>}
+          {typeof window !== "undefined" && isBrowser && <h4>{description}</h4>}
           {products && products.length > 0 && (
             <ProductSelect
               id={products[0].id}
