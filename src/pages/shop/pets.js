@@ -99,7 +99,7 @@ const Shop = ({ location }) => (
             />
           ))}
         </ProductGrid>
-        {isBrowser && <Benefits />}
+        {typeof window !== "undefined" && isBrowser && <Benefits />}
       </Layout>
     )}
   />
