@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: calc(1.5vw + 3rem);
+    padding-top: 56px;
   }
 `
 const Image = styled.div`
@@ -34,6 +34,10 @@ const Text = styled.div`
   p {
     padding: 0 5vw;
     margin: 0 0 22px;
+
+    @media ${device.laptop} {
+      padding: 0;
+    }
   }
 
   .gatsby-image-wrapper {
