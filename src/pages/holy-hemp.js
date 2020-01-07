@@ -202,7 +202,7 @@ const HolyHemp = ({ location }) => {
   return (
     <Layout location={location}>
       <Wrapper>
-        {!isMobile && (
+        {typeof window !== "undefined" && !isMobile && (
           <Image>
             <Img fluid={content[slide].image.childImageSharp.fluid} />
           </Image>
