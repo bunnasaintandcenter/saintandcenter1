@@ -169,7 +169,7 @@ const Bottom = styled.div`
 
 const Footer = ({ location }) => (
   <Foot data-testid="footer">
-    {typeof window !== "undefined" && <Routine />}
+    {typeof window !== "undefined" && isBrowser <Routine />}
     {location && location.pathname === "/shop/pets" ? (
       <HumanLink />
     ) : (
