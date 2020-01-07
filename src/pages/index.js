@@ -18,10 +18,6 @@ const Wrapper = styled.div`
   min-height: ${props => (props.pageFixed ? `400vh` : `0`)};
 `
 
-const Spacer = styled.div`
-  margin-top: 200vh;
-`
-
 const Page = styled.div`
   position: ${props => (props.fixed ? `fixed` : `static`)};
   top: 56px;
