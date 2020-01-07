@@ -169,6 +169,11 @@ const Bottom = styled.div`
 
 const Footer = ({ location }) => (
   <Foot data-testid="footer">
+    {location && location.pathname === "/shop/pets" ? (
+      <HumanLink />
+    ) : (
+      <PetLink />
+    )}
     <Block className="subscribe">
       <h4>Get the Good News</h4>
       <p>Stay up to date.</p>
