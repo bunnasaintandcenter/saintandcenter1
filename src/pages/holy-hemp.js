@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 const Image = styled.div`
   position: sticky;
   top: calc(1.5vw + 3rem);
+  height: calc(100vh - 1.5vw - 3rem);
 
   .gatsby-image-wrapper {
     height: 100%;
@@ -36,7 +37,6 @@ const Text = styled.div`
     font-size: 30px;
     line-height: 48px;
     padding: 1rem;
-    height: calc(100vh - 1.5vw - 3rem);
   }
 `
 
