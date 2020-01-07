@@ -78,7 +78,7 @@ const Category = ({ pageContext, updateCart, location }) => {
   return (
     <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />
-      <Wrapper>
+      <Wrapper full={isBrowser ? false : true}>
         <Image main full={isBrowser ? false : true}>
           {images[1] && (
             <Img fluid={images[1]?.localFile.childImageSharp.fluid} />

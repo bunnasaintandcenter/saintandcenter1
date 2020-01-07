@@ -7,6 +7,7 @@ import SEO from "../../components/seo"
 import { isBrowser } from "react-device-detect"
 import Benefits from "../../components/benefits"
 import Div100vh from "react-div-100vh"
+import { device } from "../../utils/devices"
 
 const Hero = styled.div`
   background: ${props => props.theme.color.brown};
@@ -30,8 +31,10 @@ const Hero = styled.div`
 `
 
 const ProductGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const Shop = ({ location }) => (
@@ -40,7 +43,7 @@ const Shop = ({ location }) => (
       query ShopPetQuery {
         allWcProductsCategories(
           sort: { fields: menu_order }
-          filter: { wordpress_id: { ne: 29 } }
+          filter: { wordpress_id: { ne: 25 } }
         ) {
           edges {
             node {
