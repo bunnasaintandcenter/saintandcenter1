@@ -8,12 +8,9 @@ import Header from "./header"
 import Footer from "./footer"
 import Helmet from "react-helmet"
 import SectionHeader from "./sectionHeader"
-
 import "./layout.css"
 
-const Wrapper = styled.div`
-  /* transition: 0.2 all ease-in-out; */
-`
+const Wrapper = styled.div``
 
 const theme = {
   color: {
@@ -61,12 +58,6 @@ const renderTitle = page => {
 
 const Layout = ({ children, location }) => {
   const cart = useSelector(state => state.cart)
-
-  // const handleToggleAnnouncement = () => {
-  //   const storageObj = { timestamp: new Date().getTime() }
-  //   localStorage.setItem("sc-hide-announcement", JSON.stringify(storageObj))
-  //   toggleBanner()
-  // }
 
   return (
     <ThemeProvider theme={theme}>
