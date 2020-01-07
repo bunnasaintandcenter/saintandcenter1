@@ -68,7 +68,6 @@ const Shop = ({ location }) => (
             />
           ))}
         </ProductGrid>
-        {typeof window !== "undefined" && isBrowser && <Benefits />}
       </Layout>
     )}
   />
