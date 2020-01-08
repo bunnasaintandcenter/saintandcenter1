@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 import arrow from "../images/arrow-right.svg"
 
-const Wrapper = styled.div`
+const RoutineWrapper = styled.div`
   grid-area: sub;
   box-sizing: border-box;
   padding: 24px;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Action = styled.div`
+const RoutineAction = styled.div`
   position: absolute;
   point-events: none;
   left: 0;
@@ -46,7 +46,7 @@ const Action = styled.div`
   }
 `
 
-const Top = styled.div`
+const RoutineTop = styled.div`
   position: absolute;
   top: 24px;
   left: 24px;
@@ -95,19 +95,19 @@ const Routine = () => {
   `)
 
   return (
-    <Wrapper>
-      <Top>
+    <RoutineWrapper>
+      <RoutineTop>
         <h2>Start a routine</h2>
         <h3>
           Subscribe with 15% off your order. You control the delivery date and
           cancellation. We ship it to you, free.
         </h3>
-      </Top>
+      </RoutineTop>
       <Img fluid={data.file.childImageSharp.fluid} />
       <Link to="/register">
-        <Action>Shop</Action>
+        <RoutineAction>Shop</RoutineAction>
       </Link>
-    </Wrapper>
+    </RoutineWrapper>
   )
 }
 
