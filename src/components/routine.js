@@ -66,6 +66,7 @@ const Top = styled.div`
     font-size: 18px;
     line-height: 30px;
     margin: 0;
+    width: calc(100% - 24px);
   }
 `
 
