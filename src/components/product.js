@@ -111,11 +111,28 @@ const Action = styled.div`
   }
 `
 
+const showPrice = products => {
+  let lastPrice = null
+
+  const { product_variations } = products[1]
+
+  return product_variations.map((variation, index) => {
+    if (variation.price !== lastPrice) {
+      lastPrice = variation.price
+      if (index < 1) {
+        return <span key={variation.id}>${variation.price}</span>
+      } else {
+        return <span key={variation.id}> / {variation.price}</span>
+      }
+    } else return null
+  })
+}
+
 const Product = ({ name, image, slug, products }) => (
   <Wrapper data-testid="product">
     <Info>
       <h2 data-testid="product-name">{name}</h2>
-      <h3 data-testid="product-price">${products && products[1].price}</h3>
+      <h3 data-testid="product-price">{showPrice(products)}</h3>
     </Info>
     <Link to={`/shop/product/${slug}`}></Link>
     {image && (

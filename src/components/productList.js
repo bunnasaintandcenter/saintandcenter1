@@ -32,6 +32,9 @@ const ProductList = () => {
             slug
             products {
               price
+              product_variations {
+                price
+              }
               images {
                 localFile {
                   childImageSharp {
