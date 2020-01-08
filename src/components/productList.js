@@ -34,6 +34,7 @@ const ProductList = () => {
               price
               product_variations {
                 price
+                id
               }
               images {
                 localFile {
