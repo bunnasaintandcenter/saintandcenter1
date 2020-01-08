@@ -1,6 +1,5 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import { device } from "../utils/devices"
 
