@@ -2,6 +2,7 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { device } from "../utils/devices"
 
 const Wrapper = styled.div`
   position: relative;
@@ -10,6 +11,11 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 60vh;
+
+  @media ${device.laptop} {
+    height: auto;
+  }
 
   a {
     text-decoration: none;
@@ -28,22 +34,32 @@ const Top = styled.div`
   font-weight: 300;
   z-index: 1;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 100;
   position: absolute;
   color: white;
   top: 24px;
   left: 24px;
+
+  @media ${device.laptop} {
+    font-size: 24px;
+  }
 `
 
 const Bottom = styled.div`
   font-weight: 300;
   z-index: 1;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 100;
   position: absolute;
   color: white;
   bottom: 24px;
   left: 24px;
+
+  @media ${device.laptop} {
+    font-size: 24px;
+  }
 `
 
 const Heading = styled.div`
@@ -52,7 +68,11 @@ const Heading = styled.div`
 
   h2 {
     margin: 0;
-    font-size: 48px;
+    font-size: 24px;
+
+    @media ${device.laptop} {
+      font-size: 48px;
+    }
   }
 
   div {
