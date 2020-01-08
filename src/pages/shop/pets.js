@@ -44,7 +44,7 @@ const Shop = ({ location }) => (
       query ShopPetQuery {
         allWcProductsCategories(
           sort: { fields: menu_order }
-          filter: { wordpress_id: { ne: 25 } }
+          filter: { wordpress_id: { nin: [25, 15] } }
         ) {
           edges {
             node {
