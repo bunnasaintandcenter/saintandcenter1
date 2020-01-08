@@ -32,6 +32,10 @@ const Shop = ({ location }) => (
               slug
               products {
                 price
+                product_variations {
+                  price
+                  id
+                }
                 images {
                   localFile {
                     childImageSharp {
