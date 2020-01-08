@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { device } from "../utils/devices"
+import arrow from "../images/arrow-right.svg"
 
 const Wrapper = styled.div`
   position: relative;
@@ -80,6 +81,34 @@ const Heading = styled.div`
   }
 `
 
+const Action = styled.div`
+  position: absolute;
+  point-events: none;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 22px 24px;
+  line-height: 18px;
+  font-weight: 300;
+  font-size: 24px;
+  z-index: 2;
+  color: white;
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: 24px;
+    background: url(${arrow});
+    background-size: 100%;
+    width: 35px;
+    height: 22px;
+    background-repeat: no-repeat;
+    filter: invert(1);
+  }
+`
+
 const PetLink = () => (
   <Wrapper className="petLink">
     <Link to="/shop/pets">
@@ -91,7 +120,7 @@ const PetLink = () => (
           <h2>Pets</h2>
         </div>
       </Heading>
-      <Bottom>Visit</Bottom>
+      <Action>Visit</Action>
     </Link>
   </Wrapper>
 )
