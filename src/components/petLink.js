@@ -19,6 +19,15 @@ const Wrapper = styled.div`
 
   a {
     text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   img {

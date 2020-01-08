@@ -10,6 +10,19 @@ const RoutineWrapper = styled.div`
   padding: 24px;
   position: relative;
 
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+  }
+
   .gatsby-image-wrapper {
     position: absolute;
     top: -24px;
