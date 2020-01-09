@@ -141,7 +141,7 @@ const Bottom = styled.div`
 
 const Footer = () => (
   <Foot data-testid="footer">
-    {isBrowser && <Routine />}
+    <Routine />
     <PetLink />
     <Block className="subscribe">
       <h4>Get the Good News</h4>
