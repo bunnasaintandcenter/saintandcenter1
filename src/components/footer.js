@@ -152,7 +152,9 @@ const Footer = () => (
       <ul>
         <li>Account</li>
         <li>Track</li>
-        <li>Returns</li>
+        <li>
+          <Link to="/returns">Returns</Link>
+        </li>
         <li>
           <Link to="/faqs">FAQs</Link>
         </li>
