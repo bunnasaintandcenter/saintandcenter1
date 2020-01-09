@@ -23,7 +23,7 @@ const ProductList = () => {
     query ProductListQuery {
       allWcProductsCategories(
         sort: { fields: menu_order }
-        filter: { wordpress_id: { ne: 25 } }
+        filter: { wordpress_id: { nin: [25, 15] } }
       ) {
         edges {
           node {
@@ -32,6 +32,10 @@ const ProductList = () => {
             slug
             products {
               price
+              product_variations {
+                price
+                id
+              }
               images {
                 localFile {
                   childImageSharp {

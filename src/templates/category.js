@@ -71,10 +71,6 @@ const Category = ({ pageContext, updateCart, location }) => {
     images = products[1].images
   }
 
-  console.log(images.slice(2, 5))
-
-  // const { image } = data.allWcProductsCategories.edges[0].node;
-
   return (
     <Layout location={location}>
       <SEO title={`${name} | Saint and Center`} />

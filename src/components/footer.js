@@ -139,13 +139,10 @@ const Bottom = styled.div`
   }
 `
 
-const Footer = ({ location }) => (
+const Footer = () => (
   <Foot data-testid="footer">
-    {location && location.pathname === "/shop/pets" ? (
-      <HumanLink />
-    ) : (
-      <PetLink />
-    )}
+    <Routine />
+    <PetLink />
     <Block className="subscribe">
       <h4>Get the Good News</h4>
       <p>Stay up to date.</p>
@@ -155,7 +152,9 @@ const Footer = ({ location }) => (
       <ul>
         <li>Account</li>
         <li>Track</li>
-        <li>Returns</li>
+        <li>
+          <Link to="/returns">Returns</Link>
+        </li>
         <li>
           <Link to="/faqs">FAQs</Link>
         </li>

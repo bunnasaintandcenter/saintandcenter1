@@ -1,33 +1,38 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import arrow from "../images/arrow-right.svg"
 
-const Wrapper = styled.div`
+const RoutineWrapper = styled.div`
   grid-area: sub;
   box-sizing: border-box;
   padding: 24px;
   position: relative;
 
-  h2 {
-    top: 24px;
-    left: 24px;
-    font-weight: 300;
-    z-index: 1;
-    text-transform: uppercase;
-    font-size: 24px;
-    margin: 0 0 24px;
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
   }
 
-  h3 {
-    font-weight: 200;
-    font-size: 51px;
-    line-height: 72px;
-    margin: 0;
+  .gatsby-image-wrapper {
+    position: absolute;
+    top: -24px;
+    left: -24px;
+    width: calc(100% + 48px);
+    height: calc(100% + 48px);
   }
 `
 
-const Action = styled.div`
+const RoutineAction = styled.div`
   position: absolute;
   point-events: none;
   left: 0;
@@ -54,17 +59,69 @@ const Action = styled.div`
   }
 `
 
-const Routine = () => (
-  <Wrapper>
-    <h2>Start a routine</h2>
-    <h3>
-      Subscribe with 15% off your order. You control the delivery date and
-      cancellation. We ship it to you, free.
-    </h3>
-    <Link to="/register">
-      <Action>Sign Up</Action>
-    </Link>
-  </Wrapper>
-)
+const RoutineTop = styled.div`
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: calc(100% - 24px);
+  z-index: 5;
+
+  h2 {
+    font-weight: 300;
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: 24px;
+    margin: 0 0 24px;
+  }
+
+  h3 {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0;
+    width: calc(100% - 24px);
+  }
+`
+
+const Routine = () => {
+  const data = useStaticQuery(graphql`
+    query RoutineQuery {
+      file(relativePath: { eq: "humans.jpg" }) {
+        childImageSharp {
+          fluid {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+            presentationWidth
+            presentationHeight
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <RoutineWrapper>
+      <RoutineTop>
+        <h2>Start a routine</h2>
+        <h3>
+          Subscribe with 15% off your order. You control the delivery date and
+          cancellation. We ship it to you, free.
+        </h3>
+      </RoutineTop>
+      <Img fluid={data.file.childImageSharp.fluid} />
+      <Link to="/register">
+        <RoutineAction>Shop</RoutineAction>
+      </Link>
+    </RoutineWrapper>
+  )
+}
 
 export default Routine
