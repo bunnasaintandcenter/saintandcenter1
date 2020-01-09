@@ -202,7 +202,9 @@ const Footer = () => (
     <Block className="contact">
       <ul>
         <li>Call us</li>
-        <li>Email us</li>
+        <li>
+          <a href="mailto:hi@saintandcenter.com">Email us</a>
+        </li>
       </ul>
       <small>&copy; Saint and Center All Rights Reserved</small>
     </Block>
