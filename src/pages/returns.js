@@ -11,10 +11,14 @@ const Intro = styled.div`
   width: 90vw;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 100px 24px;
+  padding: 48px 24px;
   font-weight: 200;
   font-size: 18px;
   line-height: 30px;
+
+  @media ${device.laptop} {
+    padding: 100px 24px;
+  }
 
   h2 {
     text-transform: uppercase;
