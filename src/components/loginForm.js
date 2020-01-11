@@ -122,7 +122,7 @@ const LoginForm = () => {
         if (res.status === 200) {
           console.log("fetching user", email)
           return axios.get(
-            `https://checkout.saintandcenter.com/wp-json/wc/v3/customers?email=${email}&consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`
+            `https://checkout.saintandcenter.com/wp-json/wc/v3/customers?email=${email}&consumer_key=${process.env.WOOCOMMERCE_KEY}&consumer_secret=${process.env.WOOCOMMERCE_SECRET}`
           )
         } else {
           return false
@@ -154,7 +154,7 @@ const LoginForm = () => {
       const { cookie } = facebookConnect
 
       const user = await axios.get(
-        `https://checkout.saintandcenter.com/wp-json/wc/v3/customers?email=${response.email}&consumer_key=ck_990f62c74b9f424eb1ecf8b6b1bd3a2b7e180c7a&consumer_secret=cs_0c39f3c5f8db99d8f1493394fffadba7629215cd`
+        `https://checkout.saintandcenter.com/wp-json/wc/v3/customers?email=${response.email}&consumer_key=ck_fcb9fcb9cba761435ee18fd7979bba855b07af05&consumer_secret=cs_d1965d7c20b828c253c5b38360095578c431e9b1`
       )
       const { data } = user
 

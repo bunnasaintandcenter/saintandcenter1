@@ -55,22 +55,6 @@ const Top = styled.div`
   }
 `
 
-const Bottom = styled.div`
-  font-weight: 300;
-  z-index: 1;
-  text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 100;
-  position: absolute;
-  color: white;
-  bottom: 24px;
-  left: 24px;
-
-  @media ${device.laptop} {
-    font-size: 24px;
-  }
-`
-
 const Heading = styled.div`
   color: white;
   text-transform: uppercase;
