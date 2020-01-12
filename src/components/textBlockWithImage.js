@@ -14,10 +14,14 @@ const Block = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     text-transform: uppercase;
     margin-top: 2rem;
+
+    @media ${device.laptop} {
+      font-size: 18px;
+    }
 
     &:after {
       content: "";
@@ -38,11 +42,18 @@ const Text = styled.div`
   font-weight: 200;
   padding: 24px;
   line-height: 24px;
-  color: ${props => props.color};
+
+  @media ${device.laptop} {
+    color: ${props => props.color};
+  }
 
   a {
-    color: ${props => props.color};
+    color: black;
     text-decoration: none;
+
+    @media ${device.laptop} {
+      color: ${props => props.color};
+    }
   }
 
   p {
@@ -64,15 +75,15 @@ const Text = styled.div`
 
 const Image = styled.div`
   background: ${props => props.bg};
-  color: ${props => props.color};
   text-align: center;
   padding: 4rem 0;
 
   img {
-    height: 30vh;
+    width: 80vw;
     margin: 0 auto;
 
     @media ${device.laptop} {
+      width: auto;
       height: 60vh;
     }
   }

@@ -3,12 +3,17 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import arrow from "../images/arrow-right.svg"
+import { device } from "../utils/devices"
 
 const RoutineWrapper = styled.div`
   grid-area: sub;
   box-sizing: border-box;
-  padding: 24px;
   position: relative;
+  height: 60vh;
+
+  @media ${device.laptop} {
+    height: auto;
+  }
 
   a {
     position: absolute;
@@ -25,16 +30,18 @@ const RoutineWrapper = styled.div`
 
   .gatsby-image-wrapper {
     position: absolute;
-    top: -24px;
-    left: -24px;
-    width: calc(100% + 48px);
-    height: calc(100% + 48px);
+    width: 100%;
+    height: 100%;
+
+    img {
+      margin: 0;
+    }
   }
 `
 
 const RoutineAction = styled.div`
   position: absolute;
-  point-events: none;
+  pointer-events: none;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -71,15 +78,24 @@ const RoutineTop = styled.div`
     z-index: 1;
     text-transform: uppercase;
     font-size: 24px;
-    margin: 0 0 24px;
+    margin: 0 0 12px;
+
+    @media ${device.laptop} {
+      margin: 0 0 24px;
+      font-size: 24px;
+    }
   }
 
   h3 {
     font-weight: 300;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 30px;
     margin: 0;
     width: calc(100% - 24px);
+
+    @media ${device.laptop} {
+      font-size: 18px;
+    }
   }
 `
 
@@ -117,7 +133,7 @@ const Routine = () => {
         </h3>
       </RoutineTop>
       <Img fluid={data.file.childImageSharp.fluid} />
-      <Link to="/register">
+      <Link to="/shop">
         <RoutineAction>Shop</RoutineAction>
       </Link>
     </RoutineWrapper>

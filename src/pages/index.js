@@ -33,7 +33,7 @@ const Feature = styled.div`
   background: ${props => props.theme.color.gold};
 
   .gatsby-image-wrapper {
-    height: 30vh;
+    height: 60vh;
 
     @media ${device.laptop} {
       height: 100vh;
