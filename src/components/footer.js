@@ -4,7 +4,7 @@ import { device } from "../utils/devices"
 import { isBrowser } from "react-device-detect"
 import { Link } from "gatsby"
 import Routine from "./routine"
-import HumanLink from "./humanLink"
+// import HumanLink from "./humanLink"
 import PetLink from "./petLink"
 
 const Foot = styled.footer`
