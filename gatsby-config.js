@@ -52,8 +52,8 @@ module.exports = {
         https: false,
         per_page: 10,
         api_keys: {
-          consumer_key: process.env.WOOCOMMERCE_KEY,
-          consumer_secret: process.env.WOOCOMMERCE_SECRET,
+          consumer_key: process.env.GATSBY_WOOCOMMERCE_KEY,
+          consumer_secret: process.env.GATSBY_WOOCOMMERCE_SECRET,
         },
         fields: ["products", "products/categories"],
       },
