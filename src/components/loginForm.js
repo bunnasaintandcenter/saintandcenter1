@@ -5,6 +5,7 @@ import Button from "./button"
 import axios from "axios"
 import { navigate, Link } from "gatsby"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
+import GoogleLogin from "react-google-login"
 import { device } from "../utils/devices"
 import { useForm } from "react-hook-form"
 
@@ -144,6 +145,10 @@ const LoginForm = () => {
       })
   }
 
+  const handleGoogle = async response => {
+    console.log(response)
+  }
+
   const handleFacebook = async response => {
     const { accessToken } = response
 
@@ -186,7 +191,16 @@ const LoginForm = () => {
             </Button>
           )}
         />
-        <Button ghost>Google</Button>
+        <GoogleLogin
+          clientId={process.env.GATSBY_GOOGLE_CLIENT_ID}
+          fields="name, email, picture"
+          callback={res => handleGoogle(res)}
+          render={renderProps => (
+            <Button ghost onClick={renderProps.onClick}>
+              Google
+            </Button>
+          )}
+        />
       </Connect>
       <Field error={errors.email}>
         <label htmlFor="email">Email Address</label>
