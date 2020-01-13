@@ -104,7 +104,7 @@ const Routine = () => {
     query RoutineQuery {
       file(relativePath: { eq: "humans.jpg" }) {
         childImageSharp {
-          fluid {
+          fluid(quality: 100, maxWidth: 1000) {
             base64
             tracedSVG
             aspectRatio
