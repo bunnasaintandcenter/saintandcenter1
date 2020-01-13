@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 
 const Wrapper = styled.div`
-  min-height: ${props => (props.pageFixed ? `400vh` : `0`)};
+  min-height: ${props => (props.pageFixed ? `600vh` : `0`)};
 `
 
 const Page = styled.div`
@@ -86,7 +86,7 @@ const Home = ({ location }) => {
         break
       case "shop": {
         window.scrollTo({
-          top: window.innerHeight * 3,
+          top: window.innerHeight * 2,
           behavior: "smooth",
         })
         break
@@ -98,8 +98,13 @@ const Home = ({ location }) => {
         })
         break
       default:
+        console.log("offset", human.current.offsetTop)
+        console.log(
+          "scroll to",
+          human.current.offsetTop - 56 - 32 + window.innerHeight * 2
+        )
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 2,
+          top: window.innerHeight * 5,
           behavior: "smooth",
         })
     }

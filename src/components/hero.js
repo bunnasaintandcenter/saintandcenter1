@@ -190,7 +190,9 @@ const Hero = ({ handlePageScroll }) => {
               our cause
             </PageLink>{" "}
             to help communities affected by cannabis laws. Or{" "}
-            <Link to="/shop">shop CBD.</Link>
+            <PageLink onClick={() => handlePageScroll("shop")}>
+              shop CBD.
+            </PageLink>
           </h2>
         )}
         <Arrow onClick={() => handlePageScroll("shop")}>
