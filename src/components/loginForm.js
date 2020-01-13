@@ -5,6 +5,7 @@ import Button from "./button"
 import axios from "axios"
 import { navigate, Link } from "gatsby"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"
+import GoogleLogin from "react-google-login"
 import { device } from "../utils/devices"
 import { useForm } from "react-hook-form"
 
@@ -144,6 +145,76 @@ const LoginForm = () => {
       })
   }
 
+  const handleGoogle = async response => {
+    const { email, givenName, familyName } = response
+
+    try {
+      const user = await axios.get(
+        `https://checkout.saintandcenter.com/wp-json/wc/v3/customers?email=${email}&consumer_key=${process.env.GATSBY_WOOCOMMERCE_KEY}&consumer_secret=${process.env.GATSBY_WOOCOMMERCE_SECRET}`
+      )
+      console.log(user)
+      const { data } = user
+
+      if (data.length > 0) {
+        // localStorage.setItem("cookie", cookie)
+        localStorage.setItem("user", data[0])
+
+        dispatch({
+          type: "USER_SIGNIN",
+          payload: data[0],
+        })
+      } else {
+        const password = `TESTING 123 HEY!`
+
+        axios
+          .get(
+            "https://checkout.saintandcenter.com/api/get_nonce/?controller=user&method=register"
+          )
+          .then(res => {
+            const { nonce } = res.data
+
+            return axios
+              .post(
+                `https://checkout.saintandcenter.com/api/user/register/?username=${givenName}${familyName}&first_name=${givenName}&last_name=${familyName}&email=${email}&display_name=${givenName}${familyName}&nonce=${nonce}&user_pass=${password}`
+              )
+              .then(res => {
+                console.log(res)
+                const { status, cookie, user_id } = res.data
+                if (status === "ok") {
+                  localStorage.setItem("cookie", cookie)
+                  localStorage.setItem("user", {
+                    email: email,
+                    first_name: givenName,
+                    last_name: familyName,
+                    id: user_id,
+                  })
+
+                  dispatch({
+                    type: "USER_SIGNIN",
+                    payload: {
+                      email: email,
+                      first_name: givenName,
+                      last_name: familyName,
+                      id: user_id,
+                    },
+                  })
+
+                  navigate("/")
+                } else {
+                  throw new Error(res)
+                }
+              })
+              .catch(err => console.log(err))
+          })
+          .catch(err => console.error(err))
+      }
+
+      navigate("/")
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const handleFacebook = async response => {
     const { accessToken } = response
 
@@ -186,7 +257,21 @@ const LoginForm = () => {
             </Button>
           )}
         />
-        <Button ghost>Google</Button>
+        <GoogleLogin
+          clientId={process.env.GATSBY_GOOGLE_CLIENT_ID}
+          fields="name, email, picture"
+          onSuccess={({ profileObj }) => {
+            handleGoogle(profileObj)
+          }}
+          onFailure={err => {
+            console.log(err)
+          }}
+          render={renderProps => (
+            <Button ghost onClick={renderProps.onClick}>
+              Google
+            </Button>
+          )}
+        />
       </Connect>
       <Field error={errors.email}>
         <label htmlFor="email">Email Address</label>
