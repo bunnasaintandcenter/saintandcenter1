@@ -81,7 +81,7 @@ const RegisterForm = () => {
             `https://checkout.saintandcenter.com/api/user/register/?username=${firstName}${lastName}&email=${email}&display_name=${firstName}${lastName}&nonce=${nonce}&user_pass=${password}`
           )
           .then(res => {
-            const { status, cookie, wp_user_id } = res.data
+            const { status, cookie, user_id } = res.data
             console.log("status", status)
             if (status === "ok") {
               localStorage.setItem("cookie", cookie)
@@ -89,7 +89,7 @@ const RegisterForm = () => {
                 email: email,
                 first_name: firstName,
                 last_name: lastName,
-                id: wp_user_id,
+                id: user_id,
               })
 
               dispatch({
@@ -98,7 +98,7 @@ const RegisterForm = () => {
                   email: email,
                   first_name: firstName,
                   last_name: lastName,
-                  id: wp_user_id,
+                  id: user_id,
                 },
               })
 
