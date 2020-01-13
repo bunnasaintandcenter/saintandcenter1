@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import { device } from "../utils/devices"
 import { isMobile } from "react-device-detect"
 import PropTypes from "prop-types"
+import { useDispatch } from "react-redux"
 
 const Nav = styled.nav`
   position: relative;
@@ -110,28 +111,41 @@ const Item = styled.li`
   }
 `
 
-const AccountNav = ({ tabs }) => (
-  <Nav data-testid="account-nav">
-    <List>
-      {tabs.map(({ url, title, action }) => (
-        <Item key={title} data-testid="tab">
-          {url ? (
-            <Link activeClassName="active" to={`/account/${url}`}>
-              {title}
-            </Link>
-          ) : (
-            <span onClick={action}>{title}</span>
-          )}
-        </Item>
-      ))}
-      {isMobile && (
+const AccountNav = ({ tabs }) => {
+  const dispatch = useDispatch()
+  return (
+    <Nav data-testid="account-nav">
+      <List>
+        {tabs.map(({ url, title, action }) => (
+          <Item key={title} data-testid="tab">
+            {url ? (
+              <Link activeClassName="active" to={`/account/${url}`}>
+                {title}
+              </Link>
+            ) : (
+              <span onClick={action}>{title}</span>
+            )}
+          </Item>
+        ))}
         <Item>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span
+            onClick={() => {
+              dispatch({ type: "USER_SIGNOUT" })
+              navigate("/")
+            }}
+          >
+            Logout
+          </span>
         </Item>
-      )}
-    </List>
-  </Nav>
-)
+        {isMobile && (
+          <Item>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Item>
+        )}
+      </List>
+    </Nav>
+  )
+}
 
 AccountNav.propTypes = {
   location: PropTypes.object,
