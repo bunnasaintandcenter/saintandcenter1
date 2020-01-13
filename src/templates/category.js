@@ -28,7 +28,7 @@ const Image = styled.div`
   }
 
   .gatsby-image-wrapper {
-    min-height: ${props => (props.main ? `50vh` : `50vw`)};
+    min-height: ${props => (props.main ? `60vh` : `50vw`)};
 
     @media ${device.laptop} {
       min-height: 80vh !important;
@@ -40,6 +40,15 @@ const Image = styled.div`
     object-fit: cover !important;
     margin-bottom: 0 !important;
     display: block;
+    width: 150% !important;
+    height: 150% !important;
+    transform: translate(0, -12.5%);
+
+    @media ${device.laptop} {
+      width: 100% !important;
+      height: 100% !important;
+      transform: none;
+    }
   }
 `
 
