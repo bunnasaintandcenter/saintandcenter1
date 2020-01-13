@@ -99,7 +99,7 @@ const Home = ({ location }) => {
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 2,
+          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 3,
           behavior: "smooth",
         })
     }
