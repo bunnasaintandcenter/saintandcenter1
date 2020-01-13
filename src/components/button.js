@@ -23,15 +23,16 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ children, ghost, onClick, primary, disabled }) => (
+const Button = ({ children, ghost, onClick, primary, disabled, loading }) => (
   <StyledButton
     data-testid="button"
     disabled={disabled}
     onClick={onClick}
     ghost={ghost}
+    loading={loading}
     primary={primary}
   >
-    {children}
+    {loading ? <span>Loading</span> : children}
   </StyledButton>
 )
 
@@ -41,6 +42,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   primary: PropTypes.bool,
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 }
 
 export default Button
