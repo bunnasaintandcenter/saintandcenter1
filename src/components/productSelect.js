@@ -262,15 +262,6 @@ const ProductSelect = ({ options, products }) => {
               <MdAttachFile size={24} /> Product Lab Results
             </a>
           )}
-          {products[1].acf.bulk_cbd_lab_results && (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={products[1].acf.bulk_cbd_lab_results.url}
-            >
-              <MdAttachFile size={24} /> Bulk CBD Lab Results
-            </a>
-          )}
         </Expandable>
       </Select>
     </Wrapper>

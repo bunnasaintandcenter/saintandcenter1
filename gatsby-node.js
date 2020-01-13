@@ -33,9 +33,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 product_lab_results {
                   url
                 }
-                bulk_cbd_lab_results {
-                  url
-                }
               }
               name
               description
