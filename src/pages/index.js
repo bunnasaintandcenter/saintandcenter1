@@ -86,7 +86,7 @@ const Home = ({ location }) => {
         break
       case "shop": {
         window.scrollTo({
-          top: window.innerHeight * 3,
+          top: window.innerHeight * 2,
           behavior: "smooth",
         })
         break
@@ -99,7 +99,7 @@ const Home = ({ location }) => {
         break
       default:
         window.scrollTo({
-          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 3,
+          top: human.current.offsetTop - 56 - 32 + window.innerHeight * 10,
           behavior: "smooth",
         })
     }
