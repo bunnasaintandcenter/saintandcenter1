@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import Button from "./button"
@@ -9,17 +9,23 @@ import GoogleLogin from "react-google-login"
 import { device } from "../utils/devices"
 import { useForm } from "react-hook-form"
 
-const Form = styled.form`
+const Wrapper = styled.div`
   display: flex;
-  padding: 0 5vw 5vw;
   flex-direction: column;
   min-height: 60vh;
-  margin: 0;
-  border-bottom: 2px solid rgb(51, 51, 51, 0.2);
+  padding: 0 5vw 5vw;
+  justify-content: center;
 
   @media ${device.laptop} {
     padding: 4rem 8rem;
   }
+`
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border-bottom: 2px solid rgb(51, 51, 51, 0.2);
 
   &:first-of-type {
     border: 0;
@@ -48,13 +54,14 @@ const Form = styled.form`
 const Connect = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem 2rem;
+  grid-gap: 0 2rem;
   margin-bottom: 4rem;
 
   p {
     grid-column: span 2;
     font-weight: 2;
     text-transform: uppercase;
+    text-align: center;
   }
 
   button {
@@ -95,20 +102,28 @@ const Field = styled.div`
       props.error ? `1px solid red` : `1px solid rgb(51,51,51)`};
     margin-bottom: 1rem;
     outline: 0;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 300;
     text-transform: uppercase;
     font-weight: 300;
     background: transparent;
+
+    @media ${device.laptop} {
+      font-size: 13px;
+    }
   }
 `
 
 const LoginForm = () => {
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors, setError, clearError } = useForm()
 
   const dispatch = useDispatch()
 
+  const [loading, setLoading] = useState(false)
+
   const onSubmit = values => {
+    clearError(["email", "password"])
+    setLoading(true)
     const { email, password } = values
 
     axios
@@ -117,6 +132,7 @@ const LoginForm = () => {
         password: password,
       })
       .then(res => {
+        console.log(res)
         const { status } = res
         console.log("status", status)
 
@@ -141,7 +157,18 @@ const LoginForm = () => {
         navigate("/")
       })
       .catch(err => {
-        console.error(err)
+        const { code } = err.response.data
+        setLoading(false)
+        switch (code) {
+          case `[jwt_auth] invalid_email`:
+            setError("email", "invalidEmail", "Email is invalid")
+            break
+          case `[jwt_auth] incorrect_password`:
+            setError("password", "invalidPass", "Password is incorrect")
+            break
+          default:
+            console.log(code)
+        }
       })
   }
 
@@ -244,7 +271,7 @@ const LoginForm = () => {
   }
 
   return (
-    <Form data-testid="login-form" onSubmit={handleSubmit(onSubmit)}>
+    <Wrapper>
       <Connect>
         <p>Connect With</p>
         <FacebookLogin
@@ -273,32 +300,36 @@ const LoginForm = () => {
           )}
         />
       </Connect>
-      <Field error={errors.email}>
-        <label htmlFor="email">Email Address</label>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email Address"
-          ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-        />
-        {errors.email && <span>Required</span>}
-      </Field>
-      <Field error={errors.password}>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          suggested="current-password"
-          ref={register({ required: true })}
-        />
-        {errors.password && <span>Required</span>}
-      </Field>
-      <Button type="submit">Log in</Button>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-    </Form>
+      <Form data-testid="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <Field error={errors.email}>
+          <label htmlFor="email">Email Address</label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+          />
+          {errors.email && <span>{errors.email.message}</span>}
+        </Field>
+        <Field error={errors.password}>
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            suggested="current-password"
+            ref={register({ required: true })}
+          />
+          {errors.password && <span>{errors.password.message}</span>}
+        </Field>
+        <Button loading={loading} type="submit">
+          Log in
+        </Button>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+      </Form>
+    </Wrapper>
   )
 }
 
