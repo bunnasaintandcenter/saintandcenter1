@@ -16,6 +16,17 @@ beforeEach(() => {
   )
 })
 
+// Mock Routine for now, routine has it's own test
+jest.mock("../routine", () => {
+  return {
+    __esModule: true,
+    A: true,
+    default: () => {
+      return <div></div>
+    },
+  }
+})
+
 const data = {
   allWcProducts: {
     edges: [
