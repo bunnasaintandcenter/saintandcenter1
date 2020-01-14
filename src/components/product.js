@@ -120,9 +120,9 @@ const showPrice = products => {
     if (variation.price !== lastPrice) {
       lastPrice = variation.price
       if (index < 1) {
-        return <span key={variation.id}>${variation.price}</span>
+        return <span key={index}>${variation.price}</span>
       } else {
-        return <span key={variation.id}> / {variation.price}</span>
+        return <span key={index}> / {variation.price}</span>
       }
     } else return null
   })
