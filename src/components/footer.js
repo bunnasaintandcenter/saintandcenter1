@@ -151,7 +151,6 @@ const Footer = () => (
       {isBrowser && <h4>Help</h4>}
       <ul>
         <li>Account</li>
-        <li>Track</li>
         <li>
           <Link to="/returns">Returns</Link>
         </li>
@@ -201,7 +200,6 @@ const Footer = () => (
     </Block>
     <Block className="contact">
       <ul>
-        <li>Call us</li>
         <li>
           <a href="mailto:hi@saintandcenter.com">Email us</a>
         </li>
