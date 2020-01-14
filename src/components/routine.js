@@ -104,7 +104,23 @@ const RoutineTop = styled.div`
   }
 `
 
-const Routine = () => {
+export const PureRoutine = ({ data }) => (
+  <RoutineWrapper data-testid="routine">
+    <RoutineTop>
+      <h2>Start a routine</h2>
+      <h3>
+        Subscribe with 15% off your order. You control the delivery date and
+        cancellation. We ship it to you, free.
+      </h3>
+    </RoutineTop>
+    <Img fluid={data && data.file.childImageSharp.fluid} />
+    <Link to="/shop">
+      <RoutineAction>Shop</RoutineAction>
+    </Link>
+  </RoutineWrapper>
+)
+
+export const Routine = () => {
   const data = useStaticQuery(graphql`
     query RoutineQuery {
       file(relativePath: { eq: "humans.jpg" }) {
@@ -129,7 +145,7 @@ const Routine = () => {
   `)
 
   return (
-    <RoutineWrapper>
+    <RoutineWrapper data-testid="routine" data={data}>
       <RoutineTop>
         <h2>Start a routine</h2>
         <h3>
@@ -137,7 +153,7 @@ const Routine = () => {
           cancellation. We ship it to you, free.
         </h3>
       </RoutineTop>
-      <Img fluid={data.file.childImageSharp.fluid} />
+      <Img fluid={data && data.file.childImageSharp.fluid} />
       <Link to="/shop">
         <RoutineAction>Shop</RoutineAction>
       </Link>
