@@ -322,7 +322,7 @@ const LoginForm = () => {
           />
           {errors.password && <span>{errors.password.message}</span>}
         </Field>
-        <Button loading={loading} type="submit">
+        <Button loading={loading} disabled={loading} type="submit">
           Log in
         </Button>
         <p>
