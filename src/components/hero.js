@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
-import { Link } from "gatsby"
 import { isMobile } from "react-device-detect"
 import arrow from "../images/down.svg"
 
