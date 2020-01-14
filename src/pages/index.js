@@ -15,7 +15,7 @@ import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
 import smoothscroll from "smoothscroll-polyfill"
 
-if (window) {
+if (typeof window !== "undefined") {
   smoothscroll.polyfill()
 }
 
