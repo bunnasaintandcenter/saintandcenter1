@@ -13,6 +13,9 @@ import Benefits from "../components/benefits"
 import holyHemp from "../images/holy-hemp.svg"
 import Img from "gatsby-image"
 import humanRites from "../images/human-rites.svg"
+import smoothscroll from "smoothscroll-polyfill"
+
+smoothscroll.polyfill()
 
 const Wrapper = styled.div`
   min-height: ${props => (props.pageFixed ? `600vh` : `0`)};
