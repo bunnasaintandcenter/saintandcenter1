@@ -172,12 +172,22 @@ const Hero = ({ handlePageScroll }) => {
             <br /> to the world. We also
             <br /> extract, infuse and bottle
             <br /> pure CBD from hemp.
-            <br /> Learn about hemp and
+            <br /> Learn about{" "}
+            <PageLink onClick={() => handlePageScroll("hemp")}>
+              hemp
+            </PageLink>{" "}
+            and
             <br />
-            our cause to help communities affected by
+            <PageLink onClick={() => handlePageScroll("human")}>
+              our cause
+            </PageLink>{" "}
+            to help communities affected by
             <br />
             cannabis laws.
-            <br /> Or <Link to="/shop">shop CBD.</Link>
+            <br /> Or{" "}
+            <PageLink onClick={() => handlePageScroll("shop")}>
+              shop CBD.
+            </PageLink>
           </h2>
         ) : (
           <h2>
