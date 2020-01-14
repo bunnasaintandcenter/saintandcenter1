@@ -200,7 +200,6 @@ const Footer = () => (
     </Block>
     <Block className="contact">
       <ul>
-        <li>Call us</li>
         <li>
           <a href="mailto:hi@saintandcenter.com">Email us</a>
         </li>
