@@ -1,11 +1,11 @@
-import React from "react"
+import React, { Suspense, lazy } from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { useSelector } from "react-redux"
 import { ThemeProvider } from "styled-components"
 import Header from "./header"
-import Footer from "./footer"
+const Footer = lazy(() => import("./footer"))
 import Helmet from "react-helmet"
 import SectionHeader from "./sectionHeader"
 import "./layout.css"
@@ -96,7 +96,9 @@ const Layout = ({ children, location }) => {
             <SectionHeader title={renderTitle(location.pathname)} />
           )}
         {children}
-        <Footer location={location} />
+        <Suspense fallback={<div></div>}>
+          <Footer location={location} />
+        </Suspense>
       </Wrapper>
     </ThemeProvider>
   )
