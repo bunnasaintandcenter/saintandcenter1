@@ -35,6 +35,11 @@ const RoutineWrapper = styled.div`
 
     img {
       margin: 0;
+      height: 130% !important;
+
+      @media ${device.laptop} {
+        height: 100% !important;
+      }
     }
   }
 `
