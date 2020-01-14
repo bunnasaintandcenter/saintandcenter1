@@ -35,6 +35,11 @@ const RoutineWrapper = styled.div`
 
     img {
       margin: 0;
+      height: 130% !important;
+
+      @media ${device.laptop} {
+        height: 100% !important;
+      }
     }
   }
 `
@@ -104,7 +109,7 @@ const Routine = () => {
     query RoutineQuery {
       file(relativePath: { eq: "humans.jpg" }) {
         childImageSharp {
-          fluid {
+          fluid(quality: 100, maxWidth: 1000) {
             base64
             tracedSVG
             aspectRatio
