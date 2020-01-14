@@ -151,7 +151,6 @@ const Footer = () => (
       {isBrowser && <h4>Help</h4>}
       <ul>
         <li>Account</li>
-        <li>Track</li>
         <li>
           <Link to="/returns">Returns</Link>
         </li>
