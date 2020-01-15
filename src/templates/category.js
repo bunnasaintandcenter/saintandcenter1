@@ -64,10 +64,16 @@ const Info = styled.div`
   }
 
   h4 {
-    font-weight: 300;
-    font-size: 1.5vw;
-    line-height: 3vw;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
     padding: 24px;
+    margin: 0;
+
+    @media ${device.laptop} {
+      font-size: 1.5vw;
+      line-height: 3vw;
+    }
   }
 `
 
@@ -93,7 +99,7 @@ const Category = ({ pageContext, updateCart, location }) => {
           )}
         </Image>
         <Info>
-          {typeof window !== "undefined" && isBrowser && <h4>{description}</h4>}
+          <h4>{description}</h4>
           {products && products.length > 0 && (
             <ProductSelect
               id={products[0].id}
