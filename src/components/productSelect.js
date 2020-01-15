@@ -128,6 +128,8 @@ const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
   const [recurrence, selectRecurrence] = useState("once")
   const [count, updateCount] = useState(1)
 
+  console.log(products[0])
+
   const addToCart = async () => {
     const response = await axios.get(
       `https://checkout.saintandcenter.com/wp-json/wc/v3`,
@@ -226,7 +228,7 @@ const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
             <>
               $
               {products[0] &&
-                products[0].product_variations[selectedOption].price * count}
+                products[1].product_variations[selectedOption].price * count}
             </>
           ) : (
             <>

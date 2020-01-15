@@ -54,6 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   }
                 }
                 price
+                sale_price
                 sku
                 id
               }
