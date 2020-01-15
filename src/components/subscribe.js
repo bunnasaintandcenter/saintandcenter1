@@ -10,19 +10,23 @@ const Wrapper = styled.div`
 `
 
 const Form = styled.form`
-  position: absolute;
-  top: 50%;
   display: grid;
   grid-template-columns: 8fr 1fr;
   margin: 1rem 0;
   width: calc(100% + 48px);
   background: ${props => (props.success ? `transparent` : `white`)};
   transform: ${props =>
-    props.success ? `translate(0, -50%)` : `translate(-24px, -50%)`};
-
+    props.success ? `translate(0, 0)` : `translate(-24px, 0)`};
   span {
     font-weight: 300;
     text-transform: uppercase;
+  }
+
+  @media ${device.laptop} {
+    position: absolute;
+    top: 50%;
+    transform: ${props =>
+      props.success ? `translate(0, -50%)` : `translate(-24px, -50%)`};
   }
 `
 
