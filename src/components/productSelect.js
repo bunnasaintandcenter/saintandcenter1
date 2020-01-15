@@ -227,8 +227,10 @@ const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
           {recurrence === "monthly" ? (
             <>
               $
-              {products[0] &&
-                products[1].product_variations[selectedOption].price * count}
+              {Number(
+                products[0] &&
+                  products[0].product_variations[selectedOption].price
+              ).toFixed(2)}
             </>
           ) : (
             <>
