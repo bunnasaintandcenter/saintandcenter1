@@ -105,7 +105,9 @@ const Category = ({ pageContext, updateCart, location }) => {
               id={products[0].id}
               updateCart={updateCart}
               options={products[0].product_variations}
-              products={products}
+              products={products.sort((a, b) =>
+                a.menu_order < b.menu_order ? 1 : -1
+              )}
             />
           )}
         </Info>
