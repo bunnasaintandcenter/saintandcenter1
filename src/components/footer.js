@@ -5,8 +5,6 @@ import { isBrowser } from "react-device-detect"
 import { Link } from "gatsby"
 import Routine from "./routine"
 import Subscribe from "./subscribe"
-import HumanLink from "./humanLink"
-import PetLink from "./petLink"
 
 const Foot = styled.footer`
   @media ${device.laptop} {
@@ -143,7 +141,11 @@ const Bottom = styled.div`
 const Footer = ({ location, user }) => (
   <Foot data-testid="footer">
     <Routine />
-    {location?.pathname === "/shop/pets" ? <HumanLink /> : <PetLink />}
+    {typeof window !== "undefined" && location?.pathname === "/shop/pets" ? (
+      <div>humans</div>
+    ) : (
+      <div>pets</div>
+    )}
     <Block className="subscribe">
       <Subscribe />
     </Block>
