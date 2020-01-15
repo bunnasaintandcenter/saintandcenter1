@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { graphql } from "gatsby"
@@ -64,15 +64,23 @@ const Info = styled.div`
   }
 
   h4 {
-    font-weight: 300;
-    font-size: 1.5vw;
-    line-height: 3vw;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
     padding: 24px;
+    margin: 0;
+
+    @media ${device.laptop} {
+      font-size: 1.5vw;
+      line-height: 3vw;
+    }
   }
 `
 
 const Category = ({ pageContext, updateCart, location }) => {
   const { name, description, products } = pageContext
+
+  const [selectedOption, selectOption] = useState(0)
 
   let images = []
 
@@ -88,18 +96,31 @@ const Category = ({ pageContext, updateCart, location }) => {
           main
           full={typeof window !== "undefined" && isBrowser ? false : true}
         >
-          {images[1] && (
-            <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
+          {products[1].product_variations.length > 1 ? (
+            <Img
+              fluid={
+                products[1].product_variations[selectedOption].image.localFile
+                  .childImageSharp.fluid
+              }
+            />
+          ) : (
+            images[1] && (
+              <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
+            )
           )}
         </Image>
         <Info>
-          {typeof window !== "undefined" && isBrowser && <h4>{description}</h4>}
+          <h4>{description}</h4>
           {products && products.length > 0 && (
             <ProductSelect
               id={products[0].id}
+              selectedOption={selectedOption}
+              selectOption={selectOption}
               updateCart={updateCart}
               options={products[0].product_variations}
-              products={products}
+              products={products.sort((a, b) =>
+                a.menu_order < b.menu_order ? 1 : -1
+              )}
             />
           )}
         </Info>

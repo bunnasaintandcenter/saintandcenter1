@@ -122,10 +122,9 @@ const Option = styled.div`
   }
 `
 
-const ProductSelect = ({ options, products }) => {
+const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
   const dispatch = useDispatch()
 
-  const [selectedOption, selectOption] = useState(0)
   const [recurrence, selectRecurrence] = useState("once")
   const [count, updateCount] = useState(1)
 
@@ -224,7 +223,11 @@ const ProductSelect = ({ options, products }) => {
         </Option>
         <Price recurrence={recurrence}>
           {recurrence === "monthly" ? (
-            <>Coming soon</>
+            <>
+              $
+              {products[0] &&
+                products[0].product_variations[selectedOption].price * count}
+            </>
           ) : (
             <>
               $
@@ -242,11 +245,7 @@ const ProductSelect = ({ options, products }) => {
             <button onClick={addToCount}>+</button>
           </Counter>
         )}
-        <Button
-          disabled={recurrence === "monthly"}
-          className="btn"
-          onClick={() => addToCart()}
-        >
+        <Button className="btn" onClick={() => addToCart()}>
           Add to cart
         </Button>
         <Expandable padded title="Ingredients">

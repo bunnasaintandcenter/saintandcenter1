@@ -16,6 +16,7 @@ exports.createPages = async ({ graphql, actions }) => {
             description
             products {
               id
+              menu_order
               images {
                 localFile {
                   childImageSharp {
@@ -40,6 +41,17 @@ exports.createPages = async ({ graphql, actions }) => {
               product_variations {
                 attributes {
                   option
+                }
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, fit: COVER, toFormatBase64: WEBP) {
+                        src
+                        srcSetWebp
+                        base64
+                      }
+                    }
+                  }
                 }
                 price
                 sku
