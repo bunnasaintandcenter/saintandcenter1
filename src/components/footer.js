@@ -230,7 +230,9 @@ const Footer = ({ user }) => (
         <li>
           <Link to="/terms-of-use">Terms of Use</Link>
         </li>
-        <li>Lab Results</li>
+        <li>
+          <Link to="/lab-results">Lab Results</Link>
+        </li>
       </ul>
     </Block>
     <Bottom>

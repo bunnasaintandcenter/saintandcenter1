@@ -16,7 +16,6 @@ exports.createPages = async ({ graphql, actions }) => {
             description
             products {
               id
-              purchase_note
               menu_order
               images {
                 localFile {
