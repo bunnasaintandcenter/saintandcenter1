@@ -73,6 +73,7 @@ const Info = styled.div`
     @media ${device.laptop} {
       font-size: 1.5vw;
       line-height: 3vw;
+      font-weight: 300;
     }
   }
 `
