@@ -223,7 +223,11 @@ const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
         </Option>
         <Price recurrence={recurrence}>
           {recurrence === "monthly" ? (
-            <>Coming soon</>
+            <>
+              $
+              {products[0] &&
+                products[0].product_variations[selectedOption].price * count}
+            </>
           ) : (
             <>
               $
@@ -241,11 +245,7 @@ const ProductSelect = ({ options, products, selectOption, selectedOption }) => {
             <button onClick={addToCount}>+</button>
           </Counter>
         )}
-        <Button
-          disabled={recurrence === "monthly"}
-          className="btn"
-          onClick={() => addToCart()}
-        >
+        <Button className="btn" onClick={() => addToCart()}>
           Add to cart
         </Button>
         <Expandable padded title="Ingredients">
