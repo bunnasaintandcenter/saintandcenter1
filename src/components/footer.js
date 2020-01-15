@@ -196,8 +196,15 @@ const Footer = ({ user }) => (
     <Block className="other">
       {isBrowser && <h4>Other</h4>}
       <ul>
-        <li>Wholesale</li>
-        <li>White Label</li>
+        <li>
+          <a
+            target="_blank"
+            href="https://airtable.com/shrMApCo1H9yvLZY2"
+            rel="noopener noreferrer"
+          >
+            Wholesale
+          </a>
+        </li>
       </ul>
     </Block>
     <Block className="contact">
