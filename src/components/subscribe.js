@@ -1,87 +1,94 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { device } from "../utils/devices"
+import axios from "axios"
+import arrow from "../images/arrow-right.svg"
 
 const Wrapper = styled.div`
-  max-width: 800px;
-  width: 90vw;
-  margin-bottom: 1rem;
-`
-
-const Text = styled.div`
-  margin-bottom: 0.5rem;
-  font-size: 13px;
-  letter-spacing: 0;
-
-  p {
-    margin-bottom: 0rem;
-
-    &:last-of-type {
-      color: ${props => props.color};
-    }
-  }
-
-  @media ${device.laptop} {
-    display: flex;
-    font-size: 16px;
-    justify-content: space-between;
-  }
+  position: relative;
+  height: 100%;
 `
 
 const Form = styled.form`
-  border: 1px solid white;
+  position: absolute;
+  top: 50%;
   display: grid;
   grid-template-columns: 8fr 1fr;
-  margin: 0;
+  margin: 1rem 0;
+  width: calc(100% + 48px);
+  background: ${props => (props.success ? `transparent` : `white`)};
+  transform: ${props =>
+    props.success ? `translate(0, -50%)` : `translate(-24px, -50%)`};
+
+  span {
+    font-weight: 300;
+    text-transform: uppercase;
+  }
 `
 
 const Input = styled.input`
-  background: transparent;
+  background: white;
   border: 0;
   appearance: none;
   outline: 0;
   font-size: 16px;
-  padding: 1rem;
-  color: white;
-  width: 100%;
+  font-weight: 300;
+  padding: 24px;
   box-sizing: border-box;
   text-transform: uppercase;
 `
 
 const Submit = styled.button`
   outline: 0;
-  height: 100%;
-  background-size: 30%;
-  background: transparent;
-  text-transform: uppercase;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 0;
-  padding: 1rem;
   cursor: pointer;
-  color: white;
-
-  &:hover {
-    color: ${props => props.color};
-  }
+  border: 0;
+  text-indent: -999em;
+  background: url(${arrow});
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: left;
 `
 
-const Subscribe = ({ email, handleSubmit, handleChange, phrase, color }) => (
-  <Wrapper data-testid="subscribe">
-    <Text color={color}>
-      <p>Get A Free CBD Sample and</p>
-      <p>{phrase}</p>
-    </Text>
-    <Form onSubmit={handleSubmit}>
-      <Input
-        type="email"
-        value={email}
-        onChange={handleChange}
-        placeholder="Email Us"
-      />
-      <Submit color={color}>{email !== "" ? "SEND" : ""}</Submit>
-    </Form>
-  </Wrapper>
-)
+const Subscribe = () => {
+  const [email, setEmail] = useState("")
+  const [success, setSuccess] = useState(false)
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    try {
+      setSuccess(true)
+
+      console.log("omnisend url", process.env.GATSBY_OMNISEND_FUNCTION)
+      const response = await axios.post(process.env.GATSBY_OMNISEND_FUNCTION, {
+        email: email,
+      })
+      console.log(response)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return (
+    <Wrapper data-testid="subscribe">
+      <h4>Get the good news</h4>
+      <p>Stay up to date.</p>
+      <Form onSubmit={handleSubmit} success={success}>
+        {success ? (
+          <span>Thank you for subscribing</span>
+        ) : (
+          <>
+            <Input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Email Address"
+            />
+            <Submit>Submit</Submit>
+          </>
+        )}
+      </Form>
+    </Wrapper>
+  )
+}
 
 export default Subscribe

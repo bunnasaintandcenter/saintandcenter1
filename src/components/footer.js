@@ -4,6 +4,7 @@ import { device } from "../utils/devices"
 import { isBrowser } from "react-device-detect"
 import { Link } from "gatsby"
 import Routine from "./routine"
+import Subscribe from "./subscribe"
 // import HumanLink from "./humanLink"
 import PetLink from "./petLink"
 
@@ -144,8 +145,7 @@ const Footer = () => (
     <Routine />
     <PetLink />
     <Block className="subscribe">
-      <h4>Get the Good News</h4>
-      <p>Stay up to date.</p>
+      <Subscribe />
     </Block>
     <Block className="help">
       {isBrowser && <h4>Help</h4>}
