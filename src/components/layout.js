@@ -62,6 +62,7 @@ const renderTitle = page => {
 
 const Layout = ({ children, location }) => {
   const cart = useSelector(state => state.cart)
+  const user = useSelector(state => state.user)
 
   return (
     <ThemeProvider theme={theme}>
@@ -96,7 +97,7 @@ const Layout = ({ children, location }) => {
             <SectionHeader title={renderTitle(location.pathname)} />
           )}
         {children}
-        <Footer location={location} />
+        <Footer user={user} location={location} />
       </Wrapper>
     </ThemeProvider>
   )

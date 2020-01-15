@@ -140,7 +140,7 @@ const Bottom = styled.div`
   }
 `
 
-const Footer = () => (
+const Footer = ({ user }) => (
   <Foot data-testid="footer">
     <Routine />
     <PetLink />
@@ -150,7 +150,9 @@ const Footer = () => (
     <Block className="help">
       {isBrowser && <h4>Help</h4>}
       <ul>
-        <li>Account</li>
+        <li>
+          <Link to={user.email === "" ? `/login` : `/account`}>Account</Link>
+        </li>
         <li>
           <Link to="/returns">Returns</Link>
         </li>
