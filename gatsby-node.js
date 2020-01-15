@@ -42,6 +42,17 @@ exports.createPages = async ({ graphql, actions }) => {
                 attributes {
                   option
                 }
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, fit: COVER, toFormatBase64: WEBP) {
+                        src
+                        srcSetWebp
+                        base64
+                      }
+                    }
+                  }
+                }
                 price
                 sku
                 id

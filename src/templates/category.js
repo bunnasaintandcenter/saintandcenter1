@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
 import { graphql } from "gatsby"
@@ -80,6 +80,8 @@ const Info = styled.div`
 const Category = ({ pageContext, updateCart, location }) => {
   const { name, description, products } = pageContext
 
+  const [selectedOption, selectOption] = useState(0)
+
   let images = []
 
   if (products && products.length > 0) {
@@ -94,8 +96,17 @@ const Category = ({ pageContext, updateCart, location }) => {
           main
           full={typeof window !== "undefined" && isBrowser ? false : true}
         >
-          {images[1] && (
-            <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
+          {products[1].product_variations.length > 1 ? (
+            <Img
+              fluid={
+                products[1].product_variations[selectedOption].image.localFile
+                  .childImageSharp.fluid
+              }
+            />
+          ) : (
+            images[1] && (
+              <Img fluid={images[1]?.localFile.childImageSharp.fluid} />
+            )
           )}
         </Image>
         <Info>
@@ -103,6 +114,8 @@ const Category = ({ pageContext, updateCart, location }) => {
           {products && products.length > 0 && (
             <ProductSelect
               id={products[0].id}
+              selectedOption={selectedOption}
+              selectOption={selectOption}
               updateCart={updateCart}
               options={products[0].product_variations}
               products={products.sort((a, b) =>

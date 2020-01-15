@@ -19,6 +19,7 @@ const Join = styled.div`
     padding: 2rem;
     outline: 0;
     border: 0;
+    transform: translate(-24px, 0);
     appearance: none;
     text-align: center;
     box-sizing: border-box;
@@ -99,7 +100,6 @@ const Signup = () => {
         </>
       ) : (
         <>
-          <span>Get the Good News</span>
           <input
             placeholder="Enter your email"
             value={email}
