@@ -142,9 +142,9 @@ const Footer = ({ location, user }) => (
   <Foot data-testid="footer">
     <Routine />
     {typeof window !== "undefined" && location?.pathname === "/shop/pets" ? (
-      <div>humans</div>
+      <HumanLink />
     ) : (
-      <div>pets</div>
+      <PetLink />
     )}
     <Block className="subscribe">
       <Subscribe />
