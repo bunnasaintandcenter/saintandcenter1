@@ -132,11 +132,7 @@ const Product = ({ name, image, slug, products }) => (
   <Wrapper data-testid="product">
     <Info>
       <h2 data-testid="product-name">{name}</h2>
-      <h3 data-testid="product-price">
-        {showPrice(
-          products.sort((a, b) => (a.menu_order < b.menu_order ? 1 : -1))
-        )}
-      </h3>
+      <h3 data-testid="product-price">{showPrice(products)}</h3>
     </Info>
     <Link to={`/shop/product/${slug}`}></Link>
     {image && (
