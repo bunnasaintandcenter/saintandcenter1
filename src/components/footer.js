@@ -5,7 +5,7 @@ import { isBrowser } from "react-device-detect"
 import { Link } from "gatsby"
 import Routine from "./routine"
 import Subscribe from "./subscribe"
-import HumanLink from "./humanLink"
+// import HumanLink from "./humanLink"
 import PetLink from "./petLink"
 
 const Foot = styled.footer`
@@ -16,6 +16,7 @@ const Foot = styled.footer`
     grid-template-areas: "sub sub sub pets pets pets" "subscribe subscribe help social other other" "contact contact legal legal legal legal" "bottom bottom bottom bottom bottom bottom";
   }
 `
+
 const Block = styled.div`
   padding: 24px;
   box-sizing: border-box;
@@ -139,16 +140,10 @@ const Bottom = styled.div`
   }
 `
 
-const Footer = ({ location, user }) => (
+const Footer = ({ user }) => (
   <Foot data-testid="footer">
     <Routine />
-    {typeof window !== "undefined" &&
-    (location?.pathname === "/shop/pets" ||
-      location?.pathname === "/shop/pets") ? (
-      <HumanLink />
-    ) : (
-      <PetLink />
-    )}
+    <PetLink />
     <Block className="subscribe">
       <Subscribe />
     </Block>

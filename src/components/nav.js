@@ -86,10 +86,7 @@ const Nav = ({ open }) => {
   }
 
   return (
-    <Wrapper open={open} data-testid="nav" cartOpen={cartOpen}>
-      {cart.length > 0 && (
-          <Cart open={cartOpen} toggle={toggleCart} cart={cart} />
-        )}
+    <Wrapper open={open} data-testid="nav">
       <List>
         <li>
           <Link to="/shop">Shop</Link>
@@ -114,7 +111,7 @@ const Nav = ({ open }) => {
         )}
         <br />
         <li>
-          <Link to={() => toggleCart(!cartOpen)}>
+          <Link to="/cart">
             Cart <span data-testid="cart-count">({cart.length})</span>
           </Link>
         </li>
