@@ -212,6 +212,9 @@ const Footer = ({ user }) => (
         <li>
           <a href="mailto:hi@saintandcenter.com">Email us</a>
         </li>
+        <li className="sslCertLogo">
+        <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=9YtY38QFWvl05YrNDDs6ATOheDU68fRJy8ojddD9EXIQztdbKhh2zG62I6jb"></script></span>
+        </li>
       </ul>
       <small>&copy; Saint and Center All Rights Reserved</small>
     </Block>

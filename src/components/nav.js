@@ -91,7 +91,9 @@ const Nav = ({ open }) => {
         <li>
           <Link to="/shop">Shop</Link>
         </li>
-        <li>Learn</li>
+        <li>
+          <Link to="/holy-hemp">Learn</Link>
+        </li>
         <li>
           <Link to="/about">About</Link>
         </li>

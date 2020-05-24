@@ -169,7 +169,7 @@ const Hero = ({ handlePageScroll }) => {
             <br /> about connections. Your
             <br /> mind to your body. You
             <br /> to the world. We also
-            <br /> extract, infuse and bottle
+            <br /> extract, infuse, and bottle
             <br /> pure CBD from hemp.
             <br /> Learn about{" "}
             <PageLink onClick={() => handlePageScroll("hemp")}>
@@ -191,7 +191,7 @@ const Hero = ({ handlePageScroll }) => {
         ) : (
           <h2>
             Saint and Center is about connections. Your mind to your body. You
-            to the world. We also extract, infuse and bottle pure CBD from hemp.
+            to the world. We also extract, infuse, and bottle pure CBD from hemp.
             Learn about{" "}
             <PageLink onClick={() => handlePageScroll("hemp")}>hemp</PageLink>{" "}
             and{" "}
