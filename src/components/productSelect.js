@@ -34,6 +34,14 @@ const Select = styled.div`
     &:first-of-type {
       grid-column: ${props => (props.options < 2 ? `span 2` : `auto`)};
     }
+    &:hover{
+      background: #000;
+      color: #fff;
+    }
+    &:active{
+      background: #000;
+      color: #fff;
+    }
   }
 `
 
@@ -115,6 +123,16 @@ const Option = styled.div`
 
   input {
     display: none;
+  }
+
+  input:hover {
+    background: #000;
+    color: #fff;
+  }
+
+  input:active {
+    background: #000;
+    color: #fff;
   }
 
   &:nth-of-type(2n) {
