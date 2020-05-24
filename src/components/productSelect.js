@@ -125,16 +125,6 @@ const Option = styled.div`
     display: none;
   }
 
-  input:hover {
-    background: #000;
-    color: #fff;
-  }
-
-  input:active {
-    background: #000;
-    color: #fff;
-  }
-
   &:nth-of-type(2n) {
     border-left: 1px solid black;
   }
