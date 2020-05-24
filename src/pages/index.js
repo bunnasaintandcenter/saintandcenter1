@@ -96,7 +96,7 @@ const Home = ({ location }) => {
         })
         break
       }
-      case "learn":
+      case "hemp":
         window.scrollTo({
           top: hemp.current.offsetTop - 56 - 32 + window.innerHeight * 2,
           behavior: "smooth",
