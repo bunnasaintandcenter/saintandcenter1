@@ -27,6 +27,7 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: width 0.80s ease-in-out 1s;
   }
 `
 
