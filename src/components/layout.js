@@ -37,7 +37,7 @@ const renderTitle = page => {
       )
     case pagePath === "shop":
       return "Shop / Products"
-    case pagePath === "learn":
+    case pagePath === "holy-hemp":
       return "Learn"
     case pagePath === "login":
       return "Login"
